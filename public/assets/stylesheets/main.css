@@ -1,0 +1,1192 @@
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: middle;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles - diego.griep@planb.com.br
+   ========================================================================== */
+
+/* Fontes utilizadas no projeto */
+
+@font-face {
+    font-family: 'Condensado Black';
+    src: url('/assets/fonts/helveticaneue-blackcond-webfont.eot');
+    src: url('/assets/fonts/helveticaneue-blackcond-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/helveticaneue-blackcond-webfont.woff') format('woff'),
+         url('/assets/fonts/helveticaneue-blackcond-webfont.ttf') format('truetype'),
+         url('/assets/fonts/helveticaneue-blackcond-webfont.svg#helveticaneue_blackcondRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Condensado Negrito';
+    src: url('/assets/fonts/helveticaneue-boldcond-webfont.eot');
+    src: url('/assets/fonts/helveticaneue-boldcond-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/helveticaneue-boldcond-webfont.woff') format('woff'),
+         url('/assets/fonts/helveticaneue-boldcond-webfont.ttf') format('truetype'),
+         url('/assets/fonts/helveticaneue-boldcond-webfont.svg#helveticaneue_condensedbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Condensado';
+    src: url('/assets/fonts/helveticaneue-condensed-webfont.eot');
+    src: url('/assets/fonts/helveticaneue-condensed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/helveticaneue-condensed-webfont.woff') format('woff'),
+         url('/assets/fonts/helveticaneue-condensed-webfont.ttf') format('truetype'),
+         url('/assets/fonts/helveticaneue-condensed-webfont.svg#helveticaneue_condensedRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cubano';
+    src: url('/assets/fonts/cubano-regular-webfont.eot');
+    src: url('/assets/fonts/cubano-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fonts/cubano-regular-webfont.woff') format('woff'),
+         url('/assets/fonts/cubano-regular-webfont.ttf') format('truetype'),
+         url('/assets/fonts/cubano-regular-webfont.svg#CubanoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Títulos */
+h1{
+    background:url('/assets/logo.png') no-repeat;
+    width: 409px;
+    height: 148px;
+    text-indent: -9999px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.modal h1{
+    background: none;
+    width: auto;
+    height: auto;
+    text-indent: 0;
+    margin: 0;
+    font:36px/34px 'Condensado Negrito';
+    color: #353535;
+    text-transform: uppercase;
+}
+
+h2{
+    font:27px/29px 'Condensado';
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding:30px 0;
+    margin: 0;
+}
+
+h2 span{
+    font-family: 'Condensado Negrito' ;
+}
+
+.header-right h2{
+    background:url('/assets/slogan-sublinhado.png') no-repeat 177px 90px;
+}
+
+.pagina-parceiros .header-right h2{
+    background-position: 45px 90px;
+}
+
+.modal h2{
+    font-size: 16px;
+    line-height: 16px;
+    padding:10px 0 30px;
+    text-transform: inherit;
+    text-shadow: none;
+    color: #606060;
+}
+
+h3{
+    background: url("/assets/slogan-seta-baixo.png");
+    width: 409px;
+    height: 128px;
+    margin: 0;
+    padding: 0;
+    text-indent: -9999px;
+    float: right;
+    margin-right: 110px;
+}
+
+.pagina-parceiros h3{
+    background: url("/assets/slogan-parceiros-seta-baixo.png");
+    width: 472px;
+    height: 134px;
+    margin-right: 28px;
+}
+
+h4{
+    font:64px/57px 'Condensado Negrito';
+    color: #ff9121;
+    width: 215px;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+}
+
+h4 span, h4 b{
+    color: #353535;
+    font-weight: normal;
+}
+
+h5{
+    font:30px/28px 'Condensado Negrito';
+    color: #353535;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.simples-pratico h4{
+    color: #353535;
+    width:auto;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.para-negocio h4{
+    font:48px 'Cubano';
+    color: #353535;
+    width:auto;
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 20px 0;
+    border-top: 1px dashed #c2c2c2;
+    border-bottom: 1px dashed #c2c2c2;
+}
+
+.simples-pratico h5{
+    margin: 60px 0 30px;
+}
+
+h6{
+    font:27px/29px 'Condensado';
+    text-transform: uppercase;
+    width: 278px;
+    margin: 0;
+    padding: 15px 0 0;
+    color: #353535;
+}
+
+h6 span{
+    font-family:'Condensado Negrito';
+}
+
+/* Conteúdo */
+body{
+    background:#fff url('/assets/bg-header.jpg') no-repeat center top;
+}
+
+.wrapper{
+    width: 1100px;
+    position: relative;
+    padding-left: 160px;
+    margin: 0 auto;
+}
+
+section .wrapper{
+    width: 940px;
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Botões */
+a.btn
+{
+    min-width: 225px;
+    color:#fff;
+    display:table;
+    font:bold 24px Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, .15);
+
+    -webkit-border-radius:  8px;
+    -moz-border-radius:     8px;
+    border-radius:          8px;
+
+    -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, .2);
+    -moz-box-shadow:    inset 0px 0px 5px 0px rgba(0, 0, 0, .2);
+    box-shadow:         inset 0px 0px 5px 0px rgba(0, 0, 0, .2);
+
+    background:rgba(0, 0, 0, .2);
+    margin-top:2px;
+    margin-bottom:2px;
+
+    text-shadow: 0 2px 0 #ff630c;
+}
+
+a.btn span
+{
+    display:block;
+    text-align: center;
+
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffb248), to(#ff871a));
+
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #ffb248, #ff871a);
+
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #ffb248, #ff871a);
+
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #ffb248, #ff871a);
+
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #ffb248, #ff871a);
+
+    /*For IE7-8-9*/
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffb248', endColorstr='#ff871a');
+
+    -webkit-border-radius:  5px;
+    -moz-border-radius:     5px;
+    border-radius:          5px;
+
+    -webkit-box-shadow: inset 0px -3px 1px 0px #ff640c,
+    inset 0px -3px 0px 0px rgba(255, 115, 20, 1),
+    0px  2px 3px 0px rgba(0, 0, 0, .3);
+
+    -moz-box-shadow:    inset 0px -3px 1px 0px #ff640c,
+    inset 0px -3px 0px 0px rgba(255, 115, 20, 1),
+    0px  2px 3px 0px rgba(0, 0, 0, .3);
+
+    box-shadow:         inset 0px -3px 1px 0px #ff640c,
+    inset 0px -3px 0px 0px rgba(255, 115, 20, 1),
+    0px  2px 3px 0px rgba(0, 0, 0, .3);
+
+    padding:10px;
+    margin:9px;
+}
+
+a.btn:hover span{
+    /* Safari 4-5, Chrome 1-9 */
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ff871a), to(#ffb248));
+
+    /* Safari 5.1, Chrome 10+ */
+    background: -webkit-linear-gradient(top, #ff871a, #ffb248);
+
+    /* Firefox 3.6+ */
+    background: -moz-linear-gradient(top, #ff871a, #ffb248);
+
+    /* IE 10 */
+    background: -ms-linear-gradient(top, #ff871a, #ffb248);
+
+    /* Opera 11.10+ */
+    background: -o-linear-gradient(top, #ff871a, #ffb248);
+
+    /*For IE7-8-9*/
+    filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ff871a', endColorstr='#ffb248');
+}
+
+.header-right a.btn{
+    margin-left:40px;
+    float: left;
+}
+
+/* Botões facebook */
+.fb-like{
+    float: left;
+    width:150px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+/* Icons header */
+.icon-header{
+    display: block;
+    position: absolute;
+}
+
+.icon-pimenta{
+    top: 97px;
+    left: 0;
+    background: url("/assets/icon-pimenta.png") no-repeat;
+    width: 55px;
+    height: 55px;
+}
+
+.icon-cafe{
+    top: 44px;
+    left: 513px;
+    background: url("/assets/icon-cafe.png") no-repeat;
+    width: 80px;
+    height: 80px;
+}
+
+.icon-queijo{
+    top: 199px;
+    left: 95px;
+    background: url("/assets/icon-queijo.png") no-repeat;
+    width: 80px;
+    height: 80px;
+    z-index: 3;
+}
+
+.icon-pimenta-menor{
+    top: 188px;
+    left: 500px;
+    background: url("/assets/icon-pimenta-menor.png") no-repeat;
+    width: 43px;
+    height: 39px;
+}
+
+.icon-carne{
+    top: 258px;
+    left: 440px;
+    background: url("/assets/icon-carne.png") no-repeat;
+    width: 79px;
+    height: 79px;
+    z-index: 3;
+}
+
+.icon-chopp{
+    top: 358px;
+    left: 10px;
+    background: url("/assets/icon-chopp.png") no-repeat;
+    width: 137px;
+    height: 137px;
+}
+
+.icon-sopa{
+    top: 485px;
+    left: 521px;
+    background: url("/assets/icon-sopa.png") no-repeat;
+    width: 61px;
+    height: 61px;
+    z-index: 2;
+}
+
+.wrapper-border{
+    border-top: 1px dashed #fff;
+    top:502px;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+/* structure home */
+header{
+    overflow: hidden;
+}
+
+.clear{
+    clear: both;
+}
+
+.iphone{
+    width: 319px;
+    height: 653px;
+    background: url('/assets/iphone.png') no-repeat 0 40px;
+    float: left;
+    position: relative;
+    z-index: 2;
+}
+.iphone-splash{
+    width: 319px;
+    height: 653px;
+    background: url('/assets/iphone-splash.png') no-repeat 0 40px;
+    float: left;
+    position: relative;
+    z-index: 2;
+}
+
+.header-right{
+    float: left;
+    width: 452px;
+    padding-top:118px;
+    text-align: center;
+    padding-left: 110px;
+}
+
+/* sections */
+.video-container{
+    background: url("/assets/pattern.png");
+    padding:50px 0 0;
+    margin-top:-146px;
+    width: 100%;
+    position: relative;
+    height: 474px;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.content-video{
+   top:165px;
+   position: absolute;
+   left: 0;
+}
+
+.description-app{
+    padding-top: 285px;
+}
+
+.onde-estiver{
+    background: url("/assets/bg-onde-estiver.png") no-repeat right 30px;
+    padding-bottom: 75px;
+    border-bottom: 1px dashed #c2c2c2;
+    margin-bottom: 55px;
+}
+
+.onde-estiver p{
+    font:30px/28px 'Condensado';
+    color: #606060;
+    width: 375px;
+    margin: 0;
+    padding: 15px 0 0;
+}
+
+.onde-estiver em{
+    display: none;
+}
+
+.box-icon{
+    width: 300px;
+    border-bottom: 1px dashed #c2c2c2;
+    padding-bottom: 15px;
+    float: left;
+    margin-right: 20px;
+}
+
+.box-icon h4{
+    font-size: 30px;
+    background: url("/assets/icon-tempo.png") no-repeat;
+    line-height: 28px;
+    padding: 5px 0 10px 85px;
+}
+
+.box-icon h4 span{
+    display:block;
+}
+
+.box-icon p{
+    font:16px 'Condensado';
+    color: #606060;
+}
+
+.box-icon.icon-ofertas h4{
+    background: url("/assets/icon-oferta.png") no-repeat 0 12px;
+}
+
+
+
+.box-icon.icon-indicacoes{
+    margin-right: 0;
+}
+
+.box-icon.icon-indicacoes h4{
+    background: url("/assets/icon-indicacao.png") no-repeat 0 5px;
+}
+
+.box-icon.icon-completo h4{
+    background: url("/assets/icon-cardapio.png") no-repeat 0 5px;
+}
+
+.box-icon.icon-trofeu h4{
+    background: url("/assets/icon-trofeu.png") no-repeat 0 -1px;
+}
+
+.dica-amigo{
+    margin-top: 45px;
+    background: url("/assets/dica-amigo.png") no-repeat 0 5px;
+    padding-left: 530px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #c2c2c2;
+    margin-bottom: 50px;
+}
+
+.dica-amigo h4{
+    font-size: 64px;
+    line-height: 57px;
+}
+
+.dica-amigo p{
+    font:30px/28px 'Condensado';
+    color: #606060;
+}
+
+.box-icon-slider{
+    width: 220px;
+    padding-left: 80px;
+    border-bottom: 1px dashed #c2c2c2;
+    padding-bottom: 5px;
+    float: left;
+    position: relative;
+}
+
+.box-icon-slider ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 130px;
+    text-align: center;
+}
+
+.box-icon-slider p{
+    font:bold 11px Arial, Helvetica, sans-serif;
+    color:#353535;
+    margin: 0 auto;
+    padding-top:2px;
+}
+
+.box-icon-slider p span{
+    font-size:10px;
+    display: block;
+}
+
+.box-icon-slider .pagination{
+    display: none;
+}
+
+.prev{
+    display: block;
+    width: 25px;
+    height: 40px;
+    background: url("/assets/seta-esquerda.png") no-repeat;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    text-indent: -9999px;
+    outline: none;
+}
+
+.next{
+    display: block;
+    width: 25px;
+    height: 40px;
+    background: url("/assets/seta-direita.png") no-repeat;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    text-indent: -9999px;
+}
+
+a.next:focus, a.prev:focus{
+   outline: 0 none;
+}
+
+.box-icon.icon-completo{
+    padding-bottom: 34px;
+}
+
+.quem-aderiu{
+    padding:45px 0;
+    position: relative;
+    border-bottom: 1px dashed #c2c2c2;
+    margin-bottom: 60px;
+}
+
+.quem-aderiu ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 520px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.quem-aderiu ul li{
+    display: block;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-right: 40px;
+}
+
+.quem-aderiu .prev, .quem-aderiu .next{
+    top: 175px;
+}
+
+.quem-aderiu ul.pagination{
+    width: 132px;
+    margin: 40px auto 0;
+}
+
+.quem-aderiu ul.pagination li{
+    width: 8px !important;
+    height: 6px !important;
+    margin-right: 3px;
+}
+
+.quem-aderiu ul.pagination li a{
+    display: block;
+    width: 8px;
+    height: 6px;
+    background: url("/assets/bullet.gif") no-repeat right top;
+    text-indent: -9999px;
+}
+
+.quem-aderiu ul.pagination li a:hover, .quem-aderiu ul.pagination li.current a{
+    background-position: 0 0;
+}
+
+.simples-pratico{
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #c2c2c2;
+    overflow: hidden;
+}
+
+.simples-pratico ul li{
+    display: block;
+    float: left;
+    width: 260px;
+    padding-right: 29px;
+    text-align: center;
+    font:16px 'Condensado';
+    color: #606060;
+}
+
+.simples-pratico ul li h5, .simples-pratico ul li p{
+    text-align: left;
+}
+
+.simples-pratico ul li.meio{
+    width: 267px;
+    padding:0 29px 0 24px;
+    border-left: 1px dashed #c2c2c2;
+    border-right: 1px dashed #c2c2c2;
+}
+
+.simples-pratico ul li.col-right{
+    width: 240px;
+    padding-left: 30px;
+    padding-right: 0;
+    padding-top: 15px;
+}
+
+.cadastre-vantagens{
+    padding-bottom: 45px;
+    margin-bottom: 30px;
+    border-bottom: 1px dashed #c2c2c2;
+    overflow: hidden;
+}
+
+.cadastre-vantagens h6{
+    float: left;
+}
+
+.cadastre-vantagens .btn{
+    margin-left: 40px;
+    float: left;
+    margin-top: 10px;
+    background-image: url("/assets/pattern.png");
+}
+
+.cadastre-vantagens .fb-like{
+    margin-left: 155px;
+    float: left;
+    padding-top: 12px;
+
+}
+
+.logos-plataform{
+    font:10px 'Condensado Negrito';
+    text-transform: uppercase;
+    padding:10px 0 70px;
+    overflow: hidden;
+}
+
+.logos-plataform span{
+    width: 110px;
+    padding-left: 67px;
+    height:39px;
+    padding-top: 8px;
+    display: block;
+    float: left;
+    margin-right: 15px;
+    border: 1px solid #c5c5c5;
+    background: url("/assets/icon-android.png") no-repeat 17px 9px;
+    color: #353535;
+    line-height: 13px;
+}
+
+.logos-plataform span b{
+    font-size: 18px;
+    font-weight: normal;
+    display: block;
+}
+
+.logos-plataform span.logo-smartphone{
+    background: url("/assets/icon-smartphone.png") no-repeat 27px 9px;
+}
+
+.logos-plataform span.logo-desktop{
+    background: url("/assets/icon-navegador.png") no-repeat 17px 9px;
+}
+
+.logo-moip{
+    float: right
+}
+
+/* slider badge */
+.box-icon-slider .slides ul.slides_container{
+    width: 131px;
+    height: 170px;
+}
+
+.box-icon-slider .slides ul li{
+    width: 131px;
+    height: 170px;
+    display: block;
+}
+
+/* slider quem aderiu*/
+.quem-aderiu .slides .slides_container{
+    width: 520px;
+    height: 100px;
+    margin: 70px auto 0;
+}
+
+.quem-aderiu .slides .slides_container li{
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+
+.quem-aderiu .slides .slides_container li.last{
+    margin: 0;
+}
+
+/* Modal */
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: none;
+    left: 0;
+    top: 0;
+}
+
+.wrapper-modal{
+    width: 588px;
+    height: 333px;
+    padding: 16px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 99999;
+    top: 50%;
+    left: 50%;
+    margin: -175px 0 0 -279px;
+    display: none;
+}
+
+.ie9 .wrapper-modal{
+    height: 345px;
+}
+
+.wrapper-modal-parceiros{
+    height: 462px;
+    margin-top: -220px;
+}
+
+.ie9 .wrapper-modal-parceiros{
+    height: 419px;
+}
+
+.close-modal{
+    width: 17px;
+    height: 17px;
+    display: block;
+    background: url("/assets/close-modal.png") no-repeat;
+    position: absolute;
+    right: 0;
+    top: -25px;
+}
+
+
+.content-modal{
+    background: url("/assets/pattern.png");
+    padding: 29px 31px;
+    overflow: hidden;
+}
+
+.modal legend{
+    display: none;
+}
+
+.modal label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal input{
+    padding: 12px 20px;
+    border: 1px solid #dadada;
+    font: 14px 'Condensado';
+    color: #a8a8a8;
+}
+
+.modal .input-maior{
+    width: 485px;
+}
+
+.modal .input-menor{
+    width: 219px;
+}
+
+.modal .label-input-menor{
+    width: 260px;
+    float: left;
+}
+
+.modal .label-last{
+    margin-left: 5px;
+}
+
+.ie9 .modal .input-menor{
+    width: 218px;
+}
+
+.modal .btn{
+    float: right;
+    margin-top: 15px;
+    font-size: 19px;
+    min-width: 184px;
+}
+
+.modal .btn span{
+    padding: 5px 10px;
+}
+
+/* Parceiros */
+.pagina-parceiros .video-container{
+    height: 580px;
+}
+
+.lista-vantagens{
+    margin-top: 25px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.lista-vantagens li{
+    color: #3e3e3e;
+    font: 24px 'Condensado Negrito';
+    width: 295px;
+    float: left;
+    margin-right: 15px;
+    list-style-position: inside;
+}
+
+.lista-vantagens li.last{
+    margin-right: 0;
+}
+
+.lista-vantagens li span{
+    display: block;
+    font: 16px/20px 'Condensado';
+    color: #606060;
+    padding-top: 10px;
+}
+
+.pagina-parceiros .content-video{
+    top: 330px;
+}
+
+.pagina-parceiros .description-app{
+    padding-top: 275px;
+}
+
+.pagina-parceiros .onde-estiver{
+    background: url("/assets/bg-plataforma.png") no-repeat scroll right 0 transparent
+}
+
+.pagina-parceiros .box-icon.icon-praticidade h4{
+    background: url("/assets/icon-praticidade.png") no-repeat;
+    padding: 10px 0 17px 85px;
+}
+
+.pagina-parceiros .box-icon h4{
+    padding: 10px 0 8px 85px;
+}
+
+.pagina-parceiros .box-icon.icon-indicacoes h4 {
+    background: url("/assets/icon-indicacao.png") no-repeat;
+    padding: 10px 0 17px 85px;
+}
+
+.pagina-parceiros .box-icon.icon-geolocalizacao h4 {
+    background: url("/assets/icon-geolocalizacao.png") no-repeat;
+}
+
+.pagina-parceiros .box-icon.icon-geolocalizacao, .pagina-parceiros .box-icon.icon-ofertas{
+    width: 380px;
+    border: 0;
+}
+
+.pagina-parceiros .box-icon.icon-geolocalizacao h4, .pagina-parceiros .box-icon.icon-ofertas h4{
+    padding-bottom: 35px;
+}
+
+.pagina-parceiros .box-icon.icon-geolocalizacao{
+    float: right;
+}
+
+.pagina-parceiros .box-icon.icon-ofertas h4{
+    background-position: 0 5px;
+}
+
+.acesso-vantagens{
+    padding: 30px 0 40px;
+    border-top: 1px dashed #c2c2c2;
+    border-bottom: 1px dashed #c2c2c2;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.acesso-vantagens h5{
+    margin-bottom: 40px;
+}
+
+.acesso-vantagens h5 span{
+    color: #ff9121;
+}
+
+.pagina-parceiros h6{
+    width: 430px;
+}
+
+.box-acesso-vantagens{
+    width: 423px;
+    text-align: center;
+    font: 30px/28px 'Condensado';
+    color: #606060;
+    background: url("/assets/box-acesso-1.png") no-repeat;
+    float: left;
+    padding: 130px 0 10px;
+}
+
+.vantagens-experiencia{
+    background: url("/assets/box-acesso-2.png") no-repeat;
+    margin-left: 20px;
+}
+
+.pagina-parceiros .cadastre-vantagens .fb-like{
+    margin-left: 75px;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+/* menor que 1020px */
+@media only screen and (max-width: 1020px) {
+    .wrapper{
+        width: 940px;
+        margin: 0 auto;
+        padding-left: 20px;
+    }
+
+    .icon-pimenta{display: none;}
+    .icon-cafe{left: 365px;}
+    .icon-queijo{left: 0;}
+    .icon-pimenta-menor{left:365px;}
+    .icon-carne{left: 305px;}
+    .icon-chopp{display: none;}
+    .icon-sopa{left: 365px;}
+}
+
+@media only screen and (min-width: 35em) {
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+       only screen and (min-resolution: 144dpi) {
+
+}
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+.ir {
+    background-color: transparent;
+    border: 0;
+    overflow: hidden;
+    *text-indent: -9999px;
+}
+
+.ir:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 100%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow:none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
