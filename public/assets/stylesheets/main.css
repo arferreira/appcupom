@@ -161,11 +161,9 @@ h3{
     background: url("/assets/images/slogan-seta-baixo.png");
     width: 409px;
     height: 128px;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     text-indent: -9999px;
-    float: right;
-    margin-right: 110px;
 }
 
 .pagina-parceiros h3{
@@ -177,7 +175,7 @@ h3{
 
 h4{
     font:64px/57px 'Condensado Negrito';
-    color: #ff9121;
+    color: #45A4DC;
     width: 215px;
     text-transform: uppercase;
     margin: 0;
@@ -235,7 +233,8 @@ h6 span{
 
 /* Conteúdo */
 body{
-    background:#fff url('/assets/images/bg-header.jpg') no-repeat center top;
+    background:#fff url('/assets/images/bg.png') no-repeat center top;
+    background-size: 100%;
 }
 
 .wrapper{
@@ -462,9 +461,9 @@ header{
 
 /* sections */
 .video-container{
-    background: url("/assets/images/pattern.png");
+    background: white;
     padding:50px 0 0;
-    margin-top:-146px;
+    margin-top:30px;
     width: 100%;
     position: relative;
     height: 474px;
