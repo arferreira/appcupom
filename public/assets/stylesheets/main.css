@@ -438,7 +438,7 @@ header{
 .iphone{
     width: 319px;
     height: 653px;
-    background: url('/assets/images/iphone.png') no-repeat 0 40px;
+    /*background: url('/assets/images/iphone.png') no-repeat 0 40px;*/
     float: left;
     position: relative;
     z-index: 2;
