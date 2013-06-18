@@ -108,7 +108,7 @@ textarea {
 
 /* Títulos */
 h1{
-    background:url('/assets/logo.png') no-repeat;
+    background:url('/assets/images/logo.png') no-repeat;
     width: 409px;
     height: 148px;
     text-indent: -9999px;
@@ -158,7 +158,7 @@ h2 span{
 }
 
 h3{
-    background: url("/assets/slogan-seta-baixo.png");
+    background: url("/assets/images/slogan-seta-baixo.png");
     width: 409px;
     height: 128px;
     margin: 0;
@@ -169,7 +169,7 @@ h3{
 }
 
 .pagina-parceiros h3{
-    background: url("/assets/slogan-parceiros-seta-baixo.png");
+    background: url("/assets/images/slogan-parceiros-seta-baixo.png");
     width: 472px;
     height: 134px;
     margin-right: 28px;
@@ -235,7 +235,7 @@ h6 span{
 
 /* Conteúdo */
 body{
-    background:#fff url('/assets/bg-header.jpg') no-repeat center top;
+    background:#fff url('/assets/images/bg-header.jpg') no-repeat center top;
 }
 
 .wrapper{
@@ -362,7 +362,7 @@ a.btn:hover span{
 .icon-pimenta{
     top: 97px;
     left: 0;
-    background: url("/assets/icon-pimenta.png") no-repeat;
+    background: url("/assets/images/icon-pimenta.png") no-repeat;
     width: 55px;
     height: 55px;
 }
@@ -370,7 +370,7 @@ a.btn:hover span{
 .icon-cafe{
     top: 44px;
     left: 513px;
-    background: url("/assets/icon-cafe.png") no-repeat;
+    background: url("/assets/images/icon-cafe.png") no-repeat;
     width: 80px;
     height: 80px;
 }
@@ -378,7 +378,7 @@ a.btn:hover span{
 .icon-queijo{
     top: 199px;
     left: 95px;
-    background: url("/assets/icon-queijo.png") no-repeat;
+    background: url("/assets/images/icon-queijo.png") no-repeat;
     width: 80px;
     height: 80px;
     z-index: 3;
@@ -387,7 +387,7 @@ a.btn:hover span{
 .icon-pimenta-menor{
     top: 188px;
     left: 500px;
-    background: url("/assets/icon-pimenta-menor.png") no-repeat;
+    background: url("/assets/images/icon-pimenta-menor.png") no-repeat;
     width: 43px;
     height: 39px;
 }
@@ -395,7 +395,7 @@ a.btn:hover span{
 .icon-carne{
     top: 258px;
     left: 440px;
-    background: url("/assets/icon-carne.png") no-repeat;
+    background: url("/assets/images/icon-carne.png") no-repeat;
     width: 79px;
     height: 79px;
     z-index: 3;
@@ -404,7 +404,7 @@ a.btn:hover span{
 .icon-chopp{
     top: 358px;
     left: 10px;
-    background: url("/assets/icon-chopp.png") no-repeat;
+    background: url("/assets/images/icon-chopp.png") no-repeat;
     width: 137px;
     height: 137px;
 }
@@ -412,7 +412,7 @@ a.btn:hover span{
 .icon-sopa{
     top: 485px;
     left: 521px;
-    background: url("/assets/icon-sopa.png") no-repeat;
+    background: url("/assets/images/icon-sopa.png") no-repeat;
     width: 61px;
     height: 61px;
     z-index: 2;
@@ -438,7 +438,7 @@ header{
 .iphone{
     width: 319px;
     height: 653px;
-    background: url('/assets/iphone.png') no-repeat 0 40px;
+    background: url('/assets/images/iphone.png') no-repeat 0 40px;
     float: left;
     position: relative;
     z-index: 2;
@@ -446,7 +446,7 @@ header{
 .iphone-splash{
     width: 319px;
     height: 653px;
-    background: url('/assets/iphone-splash.png') no-repeat 0 40px;
+    background: url('/assets/images/iphone-splash.png') no-repeat 0 40px;
     float: left;
     position: relative;
     z-index: 2;
@@ -462,7 +462,7 @@ header{
 
 /* sections */
 .video-container{
-    background: url("/assets/pattern.png");
+    background: url("/assets/images/pattern.png");
     padding:50px 0 0;
     margin-top:-146px;
     width: 100%;
@@ -482,7 +482,7 @@ header{
 }
 
 .onde-estiver{
-    background: url("/assets/bg-onde-estiver.png") no-repeat right 30px;
+    background: url("/assets/images/bg-onde-estiver.png") no-repeat right 30px;
     padding-bottom: 75px;
     border-bottom: 1px dashed #c2c2c2;
     margin-bottom: 55px;
@@ -510,7 +510,7 @@ header{
 
 .box-icon h4{
     font-size: 30px;
-    background: url("/assets/icon-tempo.png") no-repeat;
+    background: url("/assets/images/icon-tempo.png") no-repeat;
     line-height: 28px;
     padding: 5px 0 10px 85px;
 }
@@ -525,7 +525,7 @@ header{
 }
 
 .box-icon.icon-ofertas h4{
-    background: url("/assets/icon-oferta.png") no-repeat 0 12px;
+    background: url("/assets/images/icon-oferta.png") no-repeat 0 12px;
 }
 
 
@@ -535,20 +535,20 @@ header{
 }
 
 .box-icon.icon-indicacoes h4{
-    background: url("/assets/icon-indicacao.png") no-repeat 0 5px;
+    background: url("/assets/images/icon-indicacao.png") no-repeat 0 5px;
 }
 
 .box-icon.icon-completo h4{
-    background: url("/assets/icon-cardapio.png") no-repeat 0 5px;
+    background: url("/assets/images/icon-cardapio.png") no-repeat 0 5px;
 }
 
 .box-icon.icon-trofeu h4{
-    background: url("/assets/icon-trofeu.png") no-repeat 0 -1px;
+    background: url("/assets/images/icon-trofeu.png") no-repeat 0 -1px;
 }
 
 .dica-amigo{
     margin-top: 45px;
-    background: url("/assets/dica-amigo.png") no-repeat 0 5px;
+    background: url("/assets/images/dica-amigo.png") no-repeat 0 5px;
     padding-left: 530px;
     padding-bottom: 10px;
     border-bottom: 1px dashed #c2c2c2;
@@ -602,7 +602,7 @@ header{
     display: block;
     width: 25px;
     height: 40px;
-    background: url("/assets/seta-esquerda.png") no-repeat;
+    background: url("/assets/images/seta-esquerda.png") no-repeat;
     position: absolute;
     top: 48px;
     left: 0;
@@ -614,7 +614,7 @@ header{
     display: block;
     width: 25px;
     height: 40px;
-    background: url("/assets/seta-direita.png") no-repeat;
+    background: url("/assets/images/seta-direita.png") no-repeat;
     position: absolute;
     top: 48px;
     right: 0;
@@ -672,7 +672,7 @@ a.next:focus, a.prev:focus{
     display: block;
     width: 8px;
     height: 6px;
-    background: url("/assets/bullet.gif") no-repeat right top;
+    background: url("/assets/images/bullet.gif") no-repeat right top;
     text-indent: -9999px;
 }
 
@@ -730,7 +730,7 @@ a.next:focus, a.prev:focus{
     margin-left: 40px;
     float: left;
     margin-top: 10px;
-    background-image: url("/assets/pattern.png");
+    background-image: url("/assets/images/pattern.png");
 }
 
 .cadastre-vantagens .fb-like{
@@ -756,7 +756,7 @@ a.next:focus, a.prev:focus{
     float: left;
     margin-right: 15px;
     border: 1px solid #c5c5c5;
-    background: url("/assets/icon-android.png") no-repeat 17px 9px;
+    background: url("/assets/images/icon-android.png") no-repeat 17px 9px;
     color: #353535;
     line-height: 13px;
 }
@@ -768,11 +768,11 @@ a.next:focus, a.prev:focus{
 }
 
 .logos-plataform span.logo-smartphone{
-    background: url("/assets/icon-smartphone.png") no-repeat 27px 9px;
+    background: url("/assets/images/icon-smartphone.png") no-repeat 27px 9px;
 }
 
 .logos-plataform span.logo-desktop{
-    background: url("/assets/icon-navegador.png") no-repeat 17px 9px;
+    background: url("/assets/images/icon-navegador.png") no-repeat 17px 9px;
 }
 
 .logo-moip{
@@ -850,7 +850,7 @@ a.next:focus, a.prev:focus{
     width: 17px;
     height: 17px;
     display: block;
-    background: url("/assets/close-modal.png") no-repeat;
+    background: url("/assets/images/close-modal.png") no-repeat;
     position: absolute;
     right: 0;
     top: -25px;
@@ -858,7 +858,7 @@ a.next:focus, a.prev:focus{
 
 
 .content-modal{
-    background: url("/assets/pattern.png");
+    background: url("/assets/images/pattern.png");
     padding: 29px 31px;
     overflow: hidden;
 }
@@ -951,11 +951,11 @@ a.next:focus, a.prev:focus{
 }
 
 .pagina-parceiros .onde-estiver{
-    background: url("/assets/bg-plataforma.png") no-repeat scroll right 0 transparent
+    background: url("/assets/images/bg-plataforma.png") no-repeat scroll right 0 transparent
 }
 
 .pagina-parceiros .box-icon.icon-praticidade h4{
-    background: url("/assets/icon-praticidade.png") no-repeat;
+    background: url("/assets/images/icon-praticidade.png") no-repeat;
     padding: 10px 0 17px 85px;
 }
 
@@ -964,12 +964,12 @@ a.next:focus, a.prev:focus{
 }
 
 .pagina-parceiros .box-icon.icon-indicacoes h4 {
-    background: url("/assets/icon-indicacao.png") no-repeat;
+    background: url("/assets/images/icon-indicacao.png") no-repeat;
     padding: 10px 0 17px 85px;
 }
 
 .pagina-parceiros .box-icon.icon-geolocalizacao h4 {
-    background: url("/assets/icon-geolocalizacao.png") no-repeat;
+    background: url("/assets/images/icon-geolocalizacao.png") no-repeat;
 }
 
 .pagina-parceiros .box-icon.icon-geolocalizacao, .pagina-parceiros .box-icon.icon-ofertas{
@@ -1014,13 +1014,13 @@ a.next:focus, a.prev:focus{
     text-align: center;
     font: 30px/28px 'Condensado';
     color: #606060;
-    background: url("/assets/box-acesso-1.png") no-repeat;
+    background: url("/assets/images/box-acesso-1.png") no-repeat;
     float: left;
     padding: 130px 0 10px;
 }
 
 .vantagens-experiencia{
-    background: url("/assets/box-acesso-2.png") no-repeat;
+    background: url("/assets/images/box-acesso-2.png") no-repeat;
     margin-left: 20px;
 }
 
