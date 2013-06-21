@@ -64,15 +64,15 @@ class OffersController < ApplicationController
           long = user_latlong.split('|')[1]
         else
           city = City.first
-          lat = city.latitude.to_s
-          long = city.longitude.to_s
+          #lat = city.latitude.to_s
+          #long = city.longitude.to_s
         end
       end
 
     end
 
-    @user_latlong = lat + "|" + long
-    session[:user_latlong] = @user_latlong
+    #@user_latlong = lat + "|" + long
+    #session[:user_latlong] = @user_latlong
 
 =begin
     if params[:search]
@@ -192,7 +192,7 @@ class OffersController < ApplicationController
       @selected_category = params[:category]
       @offers = Offer.find_by_partner_category session[:city], category.id
     end
-    
+
     @user_latlong = session[:user_latlong]
     lat = @user_latlong.split('|')[0]
     long = @user_latlong.split('|')[1]
@@ -335,7 +335,7 @@ class OffersController < ApplicationController
 
     add_breadcrumb "Comprar", "offers/#{@offer.id}/payment_info"
 
-    
+
     respond_to do |format|
       if moip_error
         flash[:notice] = "O contato com o Moip foi falhou, tente novamente.";
@@ -344,7 +344,7 @@ class OffersController < ApplicationController
         @menu = true
         @submenu = false
         require_moip
-        
+
         format.html# payment_info.html.erb
       end
 
@@ -521,7 +521,7 @@ class OffersController < ApplicationController
 
         format.html {
           flash[:notice] = 'Oferta criada com sucesso.'
-          redirect_to partner_offers_path @partner 
+          redirect_to partner_offers_path @partner
         }
       else
         if @offer.is_product_offer?
