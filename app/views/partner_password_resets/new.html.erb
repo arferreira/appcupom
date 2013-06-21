@@ -1,0 +1,15 @@
+<div id="main-container" class="scrollable">
+	<div id="main" class="clearfix">
+		<div class="wrapper">
+			<section>
+				<p>Digite seu e-mail para recuperar a senha.</p>
+				<%= form_tag partner_password_resets_path, :id => "recoverform", :method => :post do %>
+				<fieldset>
+				<%= text_field_tag :email, params[:email], :placeholder => "Email" %>
+				</fieldset>
+				<%= link_to_submit content_tag(:span, "Recuperar senha"), :class => "std-button bt-bigsize" %>
+			<% end %>
+		</section>
+		</div>
+	</div> <!-- #main -->
+</div> <!-- #main-container -->

@@ -1,0 +1,9 @@
+<% unless @cupon.nil? %>
+	
+	$("#approved_cupon").html("<%= "Cupon #{@cupon.cupon_code} aprovado!"%>");
+	
+<% else %>
+
+	$("#approved_cupon").html("<%= "Cupon não encontrado!"%>");
+
+<% end %>

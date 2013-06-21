@@ -1,0 +1,6 @@
+var new_item = $(".items-all").first().clone()
+new_item.find(".picture").first().html('<%= image_tag @comment.user.pic(:small), :alt => @comment.user.name, :width => "41", :height => "41", :class => "border" %>')
+new_item.find(".chat").first().html('<%= @comment.opinion %>')
+
+new_item.insertAfter($(".items-all").last());
+$("#comments_input").val('');

@@ -1,0 +1,25 @@
+<div class="info ui-box to-left">
+	<div class="comment">
+		<p class="user-comment coffee">
+			<%= rec_product_comment.timeline_resume%>: <%= recommend_product.opinion %>
+		</p>
+	</div>
+
+	<div class="row answer">
+		<div class="overflow">
+			<%= image_tag rec_product_comment.user.pic(:small), :class => "border to-left", :style => "height:23px; width:23px;" unless rec_product_comment.nil? %>
+			<p class="to-left act answer-comment">
+				<%= "#{last_comment.opinion}" unless last_comment.nil? %>
+			</p>
+		</div>
+		<% if comments_count > 0 %>
+		<%= link_to prod_rec_path(recommend_product.product.partner, recommend_product.product, recommend_product), :class => "ver-comentarios" do %>
+		Ver todos os <b><%= comments_count %> comentários</b>
+		<% end %>
+		<% end %>
+	</div>
+
+	<%= link_to prod_rec_path(recommend_product.product.partner, recommend_product.product, recommend_product), :class => "row see-comments" do %>
+		Comentar <span class="push-tab to-right"></span>
+	<% end %>
+</div>

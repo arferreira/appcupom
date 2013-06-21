@@ -1,0 +1,24 @@
+Você acaba de comprar um novo voucher no Nowon!
+Segue as informações:
+
+
+<br />
+Titulo: <%= @cupon.offer.resume %>
+<br />
+Código: <%= @cupon.cupon_code %>
+<br />
+Restaurante: <%= @cupon.offer.partner.company_name %>
+<br />
+Tipo de Oferta: <%= @cupon.offer.ttype == "po" ? "Produtos" : "Crédito" %>
+<br />
+Dia: <%=l @cupon.good_date, :format => :default %>
+<br />
+Horário: <%= @cupon.offer.next_ocurrency %>
+<br />
+Endereço: <%= @cupon.offer.partner.address %>
+<br />
+Regras:
+
+<% @rules.each do |rule| %>
+  <%= rule.resume_text @cupon.offer %> <br />
+<% end %>

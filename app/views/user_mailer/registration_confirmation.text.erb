@@ -1,0 +1,11 @@
+<%= @user.name %>,
+
+Você esta cadastrado no Nowon!
+Obrigado!
+
+Editar seu perfil: 
+<% if Rails.env.production? %>
+<%= "http://www.nowon.com.br/users/#{@user.id}/edit" %>
+<% else %>
+<%= "http://dev.nowon.com.br/users/#{@user.id}/edit" %>
+<% end %>

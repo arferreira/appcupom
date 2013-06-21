@@ -1,0 +1,19 @@
+<h1>Ofertas por data</h1>
+
+<div id="main-container" class="scrollable internal view-nowon">
+		<%= form_tag url_for(:controller => "administrators", :action => "offers_date") do %>
+			<%= label_tag "Data da Oferta"%>
+			<%= select_date @offer_date %>
+			<%= submit_tag "Buscar" %>
+		<% end %>
+		<div id="main" class="clearfix">
+			
+			<article>
+				
+			<ul class="cupons">
+			<%= render @offers, :locals => { :list => true }  %>
+			</ul>
+			
+			</article>
+		</div>
+</div>

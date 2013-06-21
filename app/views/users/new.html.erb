@@ -1,0 +1,77 @@
+<div id="register-container" class="scrollable">
+	<div id="main" class="clearfix">
+		<article>
+			<% if @user.errors.any? %>
+			<div id="error_explanation">
+				<ul>
+					<% @user.errors.full_messages.each do |msg| %>
+					<li>
+						<%= msg %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+			<% end %>
+			<div class="wrapper">
+				<section>
+			<%= form_for @user, :html => {:class => "registerform", :id => "main-form"} do |f| %>
+				<% if @fb_mail && @fb_name %>
+					<%= hidden_field_tag :user_name, @fb_name, :name => "user[name]" %>
+					
+					<%= hidden_field_tag :user_email, @fb_mail, :name => "user[email]" %>
+					
+					<%= hidden_field_tag :user_password, @random_password, :name => "user[password]" %>
+
+					<%= hidden_field_tag :origin, "facebook" %>
+					
+					<p class="smallText centered">
+						Ao criar a conta, você concorda com os nossos</br><a href="/termos" target="blank">Termos de uso</a> e <a href="/privacidade" target="blank">privacidade</a>
+					</p>
+
+
+
+				<% else %>
+					<fieldset>
+						<%= f.text_field :name, :placeholder => "Nome" %>
+
+						<%= f.text_field :email, :placeholder => "E-mail" %>
+
+						<%= f.password_field :password, :placeholder => "Senha" %>
+
+						<!--<%= f.password_field :password_confirmation, :placeholder => "Repetir senha" %>-->
+					</fieldset>
+				<% end %>
+
+
+				<% if facebook_logged? %>
+					<div id="facebook_logged">
+						<h1 class="centered">Estamos quase lá!</h1>
+						<p class="smallText centered"><%= link_to_submit_id "#main-form", content_tag(:span, "Clique aqui"), :class => "" %> para completar seu cadastro!</p>
+					</div>
+					<script>
+						$(document).ready(function(){
+							$("#facebook_logged").html("<h1 class=\"centered\">Parabéns, você acaba de criar sua conta no Nowon!</h1>"+
+						"<p class=\"smallText centered\">Aguarde enquanto completamos seu cadastro!</p>")
+							$("#main-form").submit();
+						})
+					</script>
+				<% else %>
+				<%= link_to_submit_id "#main-form", content_tag(:span, "Criar conta"), {:class => "std-button bt-bigsize sbmt"}, false %>
+				
+				<p class="smallText centered">
+					Ao criar a conta, você concorda com os nossos</br><a href="/termos" target="blank">Termos de uso</a> e <a href="/privacidade" target="blank">privacidade</a>
+				</p>
+				<% end %>
+			<% end %>
+			<% unless mobile_device? %>
+				<br />
+				<br />
+				<br />
+			<% end %>
+				</section>
+			</div>
+		</article>
+	</div>
+	<!-- #main -->
+</div>
+<!-- #main-container -->

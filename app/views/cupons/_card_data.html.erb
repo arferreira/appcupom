@@ -1,0 +1,81 @@
+<div id="card_fields" style="display: <%= 'none' if show_payment_fields || (!user_card.nil? && user_card.has_key?) %>">
+	<%= hidden_field_tag :transaction_id, transaction_id %>
+	<%= hidden_field_tag :cupon_id, cupon.nil? ? "" : cupon.id %>
+	<%= hidden_field_tag :DataNascimento2, user_birthdate %>
+	<%= hidden_field_tag :Identidade2, user_cpf %>
+	
+	<section>
+		<fieldset>
+			<%= label_tag "nome"%>
+			<%= text_field_tag :name2, user_card_name, :placeholder => "Nome Impresso no Cartão" %>
+			<label for=":card_flag_id">Bandeira</label>
+			<p class="select-block">
+				<%= select_tag :card_flag_id, options_from_collection_for_select(card_flags, "code", "flag", !user_card.nil? && !user_card.card_flag.nil?  ? user_card.card_flag.code : "" ) %>
+			</p>
+			
+			<%= text_field_tag :Numero, nil, :placeholder => "Número do cartão" %>
+			
+			<%= text_field_tag :Expiracao, nil, :placeholder => "Data de validade" %>
+			
+			<%= text_field_tag :CodigoSeguranca, nil, :placeholder => "Código de segurança" %>
+		</fieldset>
+
+		<div class="inline-group">
+			<%= check_box_tag :save_data, :id => "salvardados" %>
+			<label for="salvardados">Salvar os dados do cartão para agilizar a minha próxima compra. Para sua maior segurança, o código de segurança do cartão não será armazenado.</label>
+		</div>
+	</section>
+	
+	<ul class="values-list">
+		<% if !@user_credits.nil? && !@user_credits.empty? %>
+		<li class="value-credit">
+			<%= link_to "/users/#{@current_user.id}/credits" do %>
+			<div class="local col-60">
+				<p>Crédito</p>
+			</div>
+			<div class="value col-40">
+				<span><%= number_to_currency @credit_value %></span>
+			</div>
+			<% end %>
+		</li>
+		<% end %>
+		<li class="value-nowon">
+			<div class="local col-60">
+				<p>Pague agora ao NowOn</p>
+			</div>
+			<div class="value col-40">
+				<span class="ticket"><%= number_to_currency @nowon_value %></span>
+			</div>
+		</li>
+		<li class="value-establishment">
+			<div class="local col-60">
+				<p>Pague depois ao <%= @offer.partner.company_name %></p>
+			</div>
+			<div class="value col-40">
+				<span><%= number_to_currency @offer.partner_price %></span>
+			</div>
+		</li>
+		<li class="value-total">
+			<div class="local col-60">
+				<p>Total</p>
+			</div>
+			<div class="value col-40">
+				<span><%= number_to_currency @offer.price %></span>
+			</div>
+		</li>
+	</ul>
+</div>
+<!--
+<script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="/js/jquery.placeholder.js"></script>
+-->
+	<%= javascript_include_tag "/assets/jquery.maskedinput" %>
+	<%= javascript_include_tag "/assets/jquery.placeholder" %>
+
+<script type="text/javascript">
+	$('#Expiracao').focus(function(){
+		$(this).mask('99/99');
+	}).blur(function(){
+		$(this).unmask();
+	});
+</script>

@@ -1,0 +1,25 @@
+<div id="approved_cupon"></div>
+
+<%= form_tag url_for(:controller => "cupons", :action => "validate"), :remote => true do %>
+
+<%= label_tag "Codigo Cupon"%>
+<%= text_field_tag :cupon_code %>
+
+<%= label_tag "Total da Conta"%>
+<%= number_field_tag :bill_value,"" , :min => 0 %>
+
+<%= hidden_field_tag :partner_id, @partner.id %>
+
+<%= submit_tag "Validar" %>
+
+<% end %>
+
+<% @today_cupons.each do |cupon| %>
+	
+	<%= cupon.cupon_code %>|
+	<%= cupon.validated_date %>|
+	<%= cupon.user.name %>|
+	<%= cupon.bill_value %>
+	
+
+<% end %>

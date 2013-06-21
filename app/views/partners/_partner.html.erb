@@ -1,0 +1,24 @@
+<%= div_for partner do %>
+
+<li class="establishment-item <%= get_category_icon partner %>" >
+	<%= link_to partner, {:class => "push-tab big"} do %>
+	<h3><%= partner.company_name %></h3>
+	<ul class="info-list">
+		<li><%= partner.temp_distance %> km</li>
+		<li><%= partner.today_offers.count.to_s + (partner.today_offers.count > 1 ? " ofertas ativas" : " oferta ativa" )%></li>
+	</ul>
+	<ul class="counter medium">
+		<li class="count <%= get_category_icon(partner) %>">
+			<%= partner.category.name %>
+		</li>
+	</ul>
+			<!--<ul class="counter small">
+				<li class="count recommend-menu"><%= partner.how_many_prods_recommendations %></li>
+				<li class="count <%= get_category_icon partner %>"><%= partner.how_many_recommendations %></li>
+				<li class="count wish-menu"><%= partner.how_many_prods_wishes %></li>
+			</ul>-->
+		</a>
+		<% end %>
+	</li>
+
+	<% end %>

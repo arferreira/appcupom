@@ -1,0 +1,115 @@
+<h1>DASHBOARD - Administrador <%= @administrator.name %></h1>
+<table style="padding:5px;">
+	<tr>
+		<td>
+			<%= link_to 'Admins', administrators_path %> 
+		</td>
+		<td></td>
+		<td>
+			<%= link_to 'Privacidades', privacies_path %>
+		</td>
+		<td></td>
+		<td>
+			<%= link_to 'Privacidade de Correio', mail_privacies_path %> 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= link_to 'Badges', badges_path %>
+		</td>
+		<td></td>
+		<td>
+			<%= link_to 'Categorias', categories_path %> 
+		</td>
+		<td></td>
+		<td>
+			<%= link_to 'Opções de Pagamento', payment_options_path %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<%= link_to 'Cidades', cities_path %>
+		</td>
+		<td></td>
+		<td>
+			<%= link_to 'Facilidades', facilities_path %>
+		</td>
+		<td></td>
+		<td>
+			<!-- link_to 'Recomandações', recommendations_path -->
+			<%= link_to 'Admin Roles', admin_roles_path %>
+		</td>
+	</tr>
+		<tr>
+			<td>
+				<%= link_to 'Parceiros', listar_parceiros_path %>
+			</td>
+			<td></td>
+			<td>
+				<%= link_to 'Novo Parceiro', new_partner_path %>
+			</td>
+			<td></td>
+			<td>
+				<%= link_to 'Parceiros Pendentes', aprovar_path  %>
+			</td>
+			<td></td>
+			<td>
+				<%= link_to 'Ofertas por data', offers_by_date_path  %>
+			</td>
+			<td></td>
+			<td>
+				<%= link_to 'Nova Pergunta Frequente', new_faq_path %>
+			</td>
+		</tr>
+</table>
+<!-- 
+tem que ter link pra index de privacies
+mail_privacies
+pra index de city
+-->
+
+<br />
+
+<br />
+
+<table style="border: 2px">
+	<tr>
+		<td align="left">
+			<%= t("administrator.name")%>:
+		</td>
+		<td align="left"> 
+			<%= @administrator.name %>  <%= link_to 'Edit', edit_administrator_path(@administrator) %>
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<%= t("administrator.role")%>:
+		</td>
+		<td align="left">
+			<%= @administrator.admin_role.name %>
+		</td>
+	</tr>
+</table>
+
+<table>
+	<tr>
+		<td align="left">
+			Quantidade de Cupons:
+		</td>
+		<td align="left"> 
+			<%= @numCupons %>
+		</td>
+	</tr>
+	<tr>
+		<td align="left">
+			Lucro: 
+		</td>
+		<td align="left"> 
+			<%= number_to_currency @money %>
+		</td>
+	</tr>
+
+</table>
+
+<br />
+<br />

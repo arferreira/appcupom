@@ -1,0 +1,29 @@
+<%= form_for(@mail_privacy) do |f| %>
+  <% if @mail_privacy.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mail_privacy.errors.count, "error") %> prohibited this mail_privacy from being saved:</h2>
+
+      <ul>
+      <% @mail_privacy.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :default %><br />
+    <%= f.check_box :default %>
+  </div>
+  <div class="field">
+	<%= f.label :user_type %><br />
+	<%= f.select :user_type, options_for_select([ [t('access.user'), "U"], [t('access.partner'), "P"], [t('access.admin'), "A"]  ]) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

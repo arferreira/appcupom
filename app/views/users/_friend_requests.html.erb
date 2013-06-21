@@ -1,0 +1,11 @@
+<% @friend_requests.each do |friend| %>
+	<li>
+		<div class="avatar">
+			<%= image_tag friend.pic(:small) %>
+		</div>
+		
+		<p> <%= link_to friend.name, friend %> </p>
+		<%= link_to "Recusar", {:controller => "users", :action => "deny_friendhip", :id => friend.id}, :class => "refuse" %>
+		<%= link_to "Aceitar", {:controller => "users", :action => "start_friendship", :id => friend.id}, :class => "accept" %>  
+	</li>
+<% end %>

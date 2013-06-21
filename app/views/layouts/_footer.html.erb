@@ -1,0 +1,176 @@
+<% unless @login %>
+	<% if @menu %>
+	<% if signed_in? && !@no_mobile_header %>
+	<nav id="main-menu">
+		<ul>
+			<li><%= link_to content_tag(:span, "Acontece"), {:controller => "users", :action => "timeline", :id => current_user.id}, :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
+			<li><%= link_to content_tag(:span, "Explorar"), {:controller => "partners", :action => "index"}, :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%></li>
+			<li><%= link_to content_tag(:span, "Now On"), root_path, :class => "bt-nowon" %></li>
+			<li><%= link_to content_tag(:span, "Compras"), {:controller => "cupons", :action => "index", :user_id => current_user.id}, :class => "bt-mainmenu bt-shopping"  %></li>
+			<li><%= link_to content_tag(:span, "Perfil"), {:controller => get_controller(user_type), :action => "show", :id => current_user.id}, :class => "bt-mainmenu bt-profile"+ (@profile ? "active" : "") %></li>
+		</ul>
+	</nav>
+	<% else  %>
+	<nav id="main-menu">
+		<ul>
+			<li><%= link_to content_tag(:span, "Acontece"), '/signin', :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
+			<li><%= link_to content_tag(:span, "Explorar"), '/signin', :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%></li>
+			<li><%= link_to content_tag(:span, "Now On"), root_path, :class => "bt-nowon" %></li>
+			<li><%= link_to content_tag(:span, "Compras"), '/signin', :class => "bt-mainmenu bt-shopping"  %></li>
+			<li><%= link_to content_tag(:span, "Perfil"), '/signin', :class => "bt-mainmenu bt-profile"+ (@profile ? "active" : "") %></li>
+		</ul>
+	</nav>
+	<% end %>
+	<div id="footer-container" class="web">
+		<footer class="wrapper">
+			<div class="social-footer">
+				<div class="access-link">
+					Acesse Nowon.com.br
+					<span>pelo celular</span>
+				</div>
+
+					<div class="btn-like">
+						<div class="fb-like" data-href="http://www.facebook.com/nowonbrasil" data-send="false" data-layout="box_count" data-width="450" data-show-faces="true"></div>
+					</div>
+
+					<div class="social-buttons-footer">
+						<a href="http://www.twitter.com/nowonbr" class="tw-button">Twitter button</a>
+
+						<a href="http://www.facebook.com/nowonbrasil" class="fb-button">Facebook button</a>
+					</div>
+
+					<div class="clearfix"></div>
+				</div>
+
+				<!--<div class="news-footer">
+					<ul>
+						<li>
+							<a href="javascript:;" title="Novo restaurante do bairro Lourdes é parceiro do Nowon">
+								Novo restaurante do bairro Lourdes é parceiro do Nowon
+								<span>Conheça o novo parceiro do NowOn e aproveite a oferta especial de lançamento.</span>
+							</a>
+						</li>
+
+						<li>
+							<a href="javascript:;" title="Novo restaurante do bairro Lourdes é parceiro do Nowon">
+								Novo restaurante do bairro Lourdes é parceiro do Nowon
+								<span>Conheça o novo parceiro do NowOn e aproveite a oferta especial de lançamento.</span>
+							</a>
+						</li>
+					</ul>
+				</div>-->
+
+				<div class="menu-footer">
+					<ul>
+						<li class="title-footer-list"><h3>nowon</h3></li>
+						<li><a href="/sobre" title="a1">Sobre</a></li>
+						<li><a href="/termos" title="a1">Termos de uso</a></li>
+						<li><a href="/privacidade" title="a1">Privacidade</a></li>
+					</ul>
+
+					<ul>
+						<li class="title-footer-list"><h3>precisa de ajuda?</h3></li>
+						<li><a href="/comofunciona" title="a2">Como funciona</a></li>
+						<li><a href="/faqs" title="a2">Perguntas frequentes</a></li>
+						<li><a href="/fale-conosco" title="a2">Fale Conosco</a></li>
+					</ul>
+
+					<ul>
+						<li class="title-footer-list"><h3>seja nosso parceiro</h3></li>
+						<li><a href="javascript:;" title="a3">Diferenciais</a></li>
+						<li><a href="/p/signin" title="a3">Área do parceiro</a></li>
+					</ul>
+
+					<a href="http://moip.com.br" class="moip-footer" title="Moip - Compra segura">Moip - Compra segura</a>
+				</div>
+			</footer>
+		</div>
+	</div> <!-- #global-container -->
+	<% end %>
+
+	<div id="appendable" style="display: none">
+	</div>
+
+	<!--
+	<script src="/js/scrollfix.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/touch-scroll.js" type="text/javascript" charset="utf-8"></script>
+	-->
+	<%= javascript_include_tag "/assets/scrollfix" %>
+	<%= javascript_include_tag "/assets/touch-scroll" %>
+
+	<% if @partner_script_and_css %>
+	<!--
+	<script src="/js/jquery.colorbox-min.js" type="text/javascript"></script>
+	<script src="/js/jquery.validate.min.js" type="text/javascript"></script>
+	<script src="/js/script.js" type="text/javascript"></script>
+	-->
+	<%= javascript_include_tag "/assets/jquery.colorbox-min" %>
+	<%= javascript_include_tag "/assets/jquery.validate.min" %>
+	<%= javascript_include_tag "/assets/script" %>
+	<% end %>
+
+	<script type="text/javascript" charset="utf-8">
+		function fullscreen() {
+		    $('a').live("click",  function() {
+		        if(!$(this).hasClass('noeffect')) {
+		            window.location = $(this).attr('href');
+		            return false;
+		        }
+		    });
+		}
+
+		<% if @partner_script_and_css %>
+			$(".btnAbreListaProdutos").colorbox({
+				inline:true,
+				width:"680px",
+				maxHeight:"800px",
+			});
+
+			$(window).bind('scroll', function() {
+				var pos = $(window).scrollTop();
+				if(pos>138){
+					$('.boxControleScroll').css({
+						'position':'fixed',
+						'top':'0'
+					});
+				}else{
+					$('.boxControleScroll').css({
+						'position':'relative',
+						'top':'0'
+					});
+				}
+			});
+		<% else %>
+			var myScroll;
+			function loaded() {
+				myScroll = new iScroll('main-container',{ fixedScrollbar:true, bounce:true});
+			}
+			//loaded()
+			fullscreen();
+
+			//saber se é Android
+			var ua = navigator.userAgent.toLowerCase();
+			var isAndroid = ua.indexOf("android") > -1;
+			if(isAndroid) {
+				var myScroll;
+				function loaded() {
+					myScroll = new iScroll('main-container');
+				}
+
+				document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+				/* * * * * * * *
+				 *
+				 * Use this for high compatibility (iDevice + Android)
+				 *
+				 */
+				document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+
+				  $('#boxes .window .content-container').css("overflow", "hidden");
+				  $('#boxes .window .content').touchScroll();
+			}
+
+		<% end %>
+
+<%end%>
+	</script>

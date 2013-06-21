@@ -1,0 +1,22 @@
+<% if @now_offers.next_page %>
+  $('.offers-items').append('<%= j render "use_now" %> ');
+  $('.pagination_now_offers').replaceWith('<%= j will_paginate(@now_offers, :param_name => "now_offers", :class => "pagination_now_offers") %>');
+<% else %>
+  $('.pagination_now_offers').remove();
+  $('.load-more').remove();
+<% end %>
+
+<% unless @now_offers.next_page %>
+  <% if @not_now_offers.next_page %>
+    $('.offers-items').append('<%= j render "not_use_now" %> ');
+    $('.pagination_not_now_offers').replaceWith('<%= j will_paginate(@not_now_offers, :param_name => "not_now_offers", :class => "pagination_not_now_offers") %>');
+  <% else %>
+    $('.pagination_not_now_offers').remove();
+    $('.load-more').remove();
+  <% end %>
+<% end %>
+
+$(".pagination_now_offers").hide();
+$(".pagination_not_now_offers").hide();
+
+<% sleep 1 %>

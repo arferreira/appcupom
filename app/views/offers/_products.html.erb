@@ -1,0 +1,29 @@
+<a href="#listaProdutos" class="padraoBtn btnAbreListaProdutos">Adicionar Produto</a>
+<table class="tabelaNovaOferta" id="products_group">
+	<tr>
+		<th>Produtos</th>
+		<th class="preco-nova-oferta">Preço</th>
+		<th class="qtde-nova-oferta">Qtde</th>
+		<th>&nbsp;</th>
+	</tr>
+	<% unless @existing_products.nil? || @existing_products.empty? %>
+	<% @existing_products.each_with_index do |prod, index|%>
+		<tr class='itemProdutoTabela product_row'
+			data-nome-produto='<%= get_offer_product_selected_prod(@offer.id, prod.id, index) %>'
+			data-preco-unitario='<%= get_offer_product_selected_prod_price(@offer.id, prod.id, index) %>'
+			data-preco-total='"+precoNovoProdutoFloat+"'
+			data-unidades='<%= get_offer_product_qty(@offer.id, prod.id, index) %>'
+			data-id='<%= prod.id%>'>
+				<td><span class='nomeNovoProduto'><%= get_offer_product_selected_prod(@offer.id, prod.id, index) %></span></td>
+				<td><span class='precoNovoProduto prods_price'><%= number_to_currency get_offer_product_selected_prod_price(@offer.id, prod.id, index) %></span></td>
+				<td><%= select_tag "product_qty_input[#{prod.id}]",options_for_select((1..50).step(1), :selected => get_offer_product_qty(@offer.id, prod.id, index)), :id => "qtdProdutos", :class => "qtdProdutos offer_prod_count" %></td>
+				<td>
+					<a class='btnFalseNova excluirProduto' href='javascript:void(0);''>X</a>
+				</td>
+			</tr>
+	<% end %>
+	<% end %>
+<%= hidden_field_tag :selected_products %>
+<%= hidden_field_tag :selected_products_qty %>
+<%= hidden_field_tag :selected_products_price %>
+</table>

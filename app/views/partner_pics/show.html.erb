@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @partner_pic.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @partner_pic.description %>
+</p>
+
+<p>
+  <%= image_tag @partner_pic.image.url(:banner) %>
+</p>
+
+
+<%= link_to 'Edit', edit_partner_partner_pic_path(@partner, @partner_pic) %> |
+

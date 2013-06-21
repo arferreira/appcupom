@@ -1,14 +1,241 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Traz Cupom</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<% if request.xhr? %>
+	<script type="text/javascript">
+		$("#header-container").replaceWith("<%= escape_javascript render("layouts/header") unless @no_header%>");
+		$("#footer-partial").html("<%= escape_javascript render("layouts/footer")%>");
+	</script>
+	<% if params[:get_location] %>
+		<%= hidden_field_tag :request_location, @request_location %>
+		<%= hidden_field_tag :get_location_callback, @location_callback %>
+		<script type="text/javascript">
+			m_startDate = new Date().getTime();
+			m_watchId = navigator.geolocation.watchPosition(get_location_callback,
+				get_location_error,
+				{maximumAge:0, timeout:3000, enableHighAccuracy:true});
 
-<%= yield %>
+			m_interval = setTimeout(function(){clearWatch()},7000);
+		</script>
+	<% end %>
+	<% flash.each do |key, value| %>
+		<% vd('APP HTML', key, value, flash.count) %>
+		<% unless flash[key].blank? %>
+			<div class="flash <%= key %>">
+				<%= value %>
+			</div>
+		<% end %>
+	<% end %>
+	<%= yield %>
+	<script type="text/javascript">
+		<% if @dark %>
+			if(!$("body").hasClass("dark-background")){
+				$("body").addClass("dark-background");
+			}
+		<% else %>
+			if($("body").hasClass("dark-background")){
+				$("body").removeClass("dark-background");
+			}
+		<% end %>
+		<% if @menu %>
+			if(!$("body").hasClass("nowon-inner")){
+				$("body").addClass("nowon-inner");
+			}
+		<% else %>
+			if($("body").hasClass("nowon-inner")){
+				$("body").removeClass("nowon-inner");
+			}
+		<% end %>
+		if( $("#request_maps").val() == "partner" ){
+			loadGMaps_partnerShow();
+		}
 
-</body>
+		if ($("#cached_location").val() == "true") {
+			//navigator.geolocation.getCurrentPosition(get_cached_location_callback, get_location_error, {maximumAge:5000, enableHighAccuracy:true});
+			post_empty_location();
+		}
+
+		if ($("#print_this_page").val() == "true") {
+			window.print();
+		}
+		<%= yield(:extra_scripts) %>
+	</script>
+	<% begin %>
+		<%= render(:controller => params[:controller], :action => params[:action], :format => "js") %>
+	<% rescue %>
+	<% end %>
+<% else %>
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+	<head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <%= FacebookAPI.app_namespace %>: http://ogp.me/ns/fb/<%= FacebookAPI.app_namespace %>#">
+		<%= yield(:head) if content_for?(:head) %>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />-->
+		<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="description" content="NowOn: Colecione sabores. Ofertas exclusivas perto de você.">
+
+		<!-- Mobile -->
+			<!-- 57 x 57 Android and iPhone 3 icon ->
+			<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 163dpi)" href="/assets/apple-touch-icon-57x57-precomposed.png" />
+			<!-- 114 x 114 iPhone 4 icon ->
+			<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="icon57.png" />
+
+			<!-- IOS Settings -->
+			<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+			<!-- <link rel="apple-touch-startup-image" sizes="640x960" href="/assets/mobile/splash@2x.png" /> -->
+			<!-- <link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="/assets/mobile/splash460.jpg" /> -->
+			<!-- <link rel="apple-touch-startup-image" href="img/iphone.png" media="screen and (max-device-width: 320px)" /> -->
+
+			<link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon-114x114-precomposed.png" />
+
+			<link rel="apple-touch-startup-image" media="(device-width: 320px)" href="/assets/mobile/splash460.png">
+			<!-- iPhone (Retina) -->
+			<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="/assets/mobile/splash920.png">
+		<!-- / Mobile-->
+
+		<title>TrazCupon</title>
+
+		<%= stylesheet_link_tag "/assets/stylesheets/application", :media => "all" %>
+		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js' %>
+		<!-- jQuery ScrollTo Plugin -->
+		<script defer src="http://balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
+
+		<!-- History.js -->
+		<script defer src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+
+		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=<%= Google.key %>&sensor=true"></script>
+		<% if Rails.env.development? %>
+			<script type='text/javascript' src='https://desenvolvedor.moip.com.br/sandbox/transparente/MoipWidget-v2.js' charset='ISO-8859-1'></script>
+		<% else %>
+			<script type='text/javascript' src='https://www.moip.com.br/transparente/MoipWidget-v2.js' charset='ISO-8859-1'></script>
+		<% end %>
+
+
+		<script type="text/javascript" src="/assets/javascripts/modernizr-2.5.3-respond-1.1.0.min.js"></script>
+		<script type="text/javascript" src="/assets/javascripts/klass.min.js"></script>
+		<script type="text/javascript" src="/assets/javascripts/code.photoswipe-3.0.5.min.js"></script>
+		<script type="text/javascript" src="/assets/javascripts/iscroll.js"></script>
+		<script type="text/javascript" src="/assets/javascripts/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/jquery.maskedinput.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/jquery.placeholder.js"></script>
+
+
+		<!--%= javascript_include_tag "/assets/history-it" %-->
+		<% if @partner_script_and_css %>
+		<!--
+		<link rel="stylesheet" type="text/css" href="/css/colorbox.css">
+		<link rel="stylesheet" type="text/css" href="/css/styleParceiro.css">
+		-->
+		<%= stylesheet_link_tag "/assets/parceiros_stylesheets/colorbox" %>
+		<%= stylesheet_link_tag "/assets/parceiros_stylesheets/styleParceiro" %>
+
+		<% end %>
+		<%= javascript_include_tag "application" %>
+
+		<%= csrf_meta_tags %>
+
+	</head>
+	<body class="<%= "#{@dark ? "dark-background " : "" }#{@menu ? "nowon-inner " : ""}" %>">
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=199059563474840";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+
+		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<div id="global-container">
+
+		<% unless @no_header %>
+			<%= render "layouts/header"%>
+		<% end %>
+
+		<section class="round">
+			<% if flash[:notice] == 'Usuário criado com sucesso' %>
+				<%= google_adwords %>
+			<% end %>
+			<% if params[:get_location] %>
+				<%= hidden_field_tag :request_location, @request_location %>
+				<%= hidden_field_tag :get_location_callback, @location_callback %>
+			<% end %>
+			<% flash.each do |key, value| %>
+				<% vd('APP HTML', key, value, flash.count) %>
+				<% unless flash[key].blank? %>
+					<div class="flash <%= key %>">
+						<%= value %>
+					</div>
+					<script type="text/javascript">
+						$().ready(function(){
+							var flash = $('section.round .flash');
+							if (flash.length) {
+							    $(flash).prependTo('#main-container #main')
+							}
+						});
+					</script>
+				<% end %>
+			<% end %>
+
+
+			<%= yield %>
+		</section>
+
+		<!-- TODO Colocar esse trecho apenas nas páginas que tem versão mobile e que faz sentido -->
+		<% if false %>
+			<% if mobile_device? %>
+			<%= link_to "Full Site", :mobile => 0 %>
+			<% else %>
+			<%= link_to "Mobile Site", :mobile => 1 %>
+			<% end %>
+
+			<!-- TODO Remove-->
+<!--
+			<% debug(params) if Rails.env.development? %>
+			<% session.inspect if Rails.env.development? %>
+		-->
+		<% end %>
+
+		<div id="footer-partial">
+			<%= render "layouts/footer"%>
+		</div>
+		<!--
+			<% if signed_in? && Rails.env.development? %>
+	    	<h3>User: <%= current_user.name + " : " + user_type %></h3>
+				<h3><%= debug(params) if Rails.env.development? %></h3>
+        <h3><%= session.inspect if Rails.env.development? %></h3>
+        <h3><%= browser.meta if Rails.env.development? %></h3>
+        <h3><%= browser.name if Rails.env.development? %></h3>
+	    <% end %>
+-->
+		</div>
+
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('input[placeholder], textarea[placeholder]').placeholder();
+		});
+		</script>
+		<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-36381390-1']);
+		_gaq.push(['_setDomainName', 'nowon.com.br']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+		</script>
+		<div class="loading">
+		</div>
+	</body>
 </html>
+<% end %>

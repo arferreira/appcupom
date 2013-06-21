@@ -1,0 +1,189 @@
+<div id="header-container" ontouchmove="blockMove(event)">
+	<% unless @no_top_tool %>
+	<div class="top-tool">
+			<!--<div class="col-20 cell">
+				<%= select_tag :city, options_from_collection_for_select(get_cities, "id", "name", get_selected_city), :onchange => "root_city_change(this.value)" %>
+			</div>-->
+
+			<div class="col-80 top-right cell">
+				<% if signed_in? %>
+				<% if user_type == PARTNER_TYPE %>
+				<% name = current_user.company_name %>
+				<% else %>
+				<% name = current_user.name %>
+				<% end %>
+				<% if user_type == ADMIN_TYPE %>
+				<%= link_to name, "administrators/#{current_user.id}/dashboard", :class => "top-login" %>
+				<% else %>
+				<%= link_to name, {:controller => get_controller(user_type), :action => "show", :id => current_user.id}, :class => "top-login" %>
+				<% end %>
+				<% else %>
+				<%= link_to "Login", "/signin", :class => "top-login" %>
+				<% end %>
+				
+				<%= form_tag url_for(:controller => "partners", :action => "index"), :id => "search-form", :method => "get" do %>
+				<!--<label for="search">Pesquisar</label>-->
+				<%= text_field_tag :search, nil, :placeholder => "BUSCA", :id => "search", :class => "search-input" %>
+				<% end %>
+			</div>
+		</div>
+		<% end %>
+		<header>
+			<%= link_to "Home", root_path, :class => "top-home web" %>
+			<% unless @no_back %>
+			<% if @partner_show_back %>
+			<%= link_to content_tag(:span, "Parceiro"), partners_path, :class => "button back" %>
+			<% elsif @user_show_back %>
+			<%= link_to content_tag(:span, "Usuario"), offers_path, :class => "button back" %>
+			<% elsif @offer_show_back %>
+			<%= link_to content_tag(:span, "Ofertas"), offers_path, :class => "button back" %>
+			<% else %>
+			<%= back_button %>
+			<% end %>
+			<% end %>
+			<% if @share_cupon %>
+			<%= link_to "Compartilhar", n_rec_offer_path(@partner, @offer), :class => "button share"  %>
+			<% end %>
+			
+
+			<% if @search %>
+			<%= search_button %>
+			<div class="search-mobile mobile">
+				<%= form_tag url_for(:controller => "partners", :action => "index"), :method => "get", :id => "search_form" do %>
+				<%= text_field_tag :search, "", :placeholder => "BUSCA", :id => "search", :class => "search-input" %>
+				<% end %>
+			</div>
+			<% end %>
+
+			<% if @config %>
+			<%= link_to "Configurações", edit_user_path(@user), :class => "button config" %>
+			<% end %>
+
+			<% if @credit %>
+			<%= credit_button %>
+			<% end %>
+
+			<% if @title %>
+			<h1 id="title"><%= @title %></h1>
+			<% else %>
+			<a href="<%= root_path %>"><h1 id="title" class="nowOn">1</h1></a>
+			<% end %>
+
+			<% if @share %>
+			<a class="button share" href="share-cupom.php">Compartilhar</a>
+			<% end %>
+			
+			<% if signed_in? %>
+			<% if @partner_menu %>
+			<% if user_type == PARTNER_TYPE %>
+			<ul class="web-menu">
+				<li class="mn-item"><%= link_to "Painel", {:controller => get_controller(user_type), :action => "dashboard", :id => current_user.id}, :class => "bt-web-menu parceiros" %></li>
+				<li class="mn-item"><%= link_to "Ofertas", {:controller => "offers", :action => "index", :partner_id => current_user.id}, :class => "bt-web-menu ofertas" %></li>
+				<li class="mn-item"><%= link_to "Cardápio", {:controller => "products", :action => "index", :partner_id => current_user.id}, :class => "bt-web-menu cardapio" %></li>
+				<li class="mn-item"><%= link_to current_user.company_name, current_user, :class => "bt-web-menu perfil" %>
+					<ul class="web-sub-menu">
+						<li><%= link_to "Editar Perfil", {:controller => get_controller(user_type), :action => "edit", :id => current_user.id} %></li>
+									<!--<li><%= link_to "Ofertas", {:controller => "offers", :action => "index", :partner_id => current_user.id} %></li>
+									<li><%= link_to "Dashboard", "/partners/#{@current_user.id}/dashboard" %></li>-->
+									<li><%= link_to "Sair", "/signout" %></li>							
+								</ul>
+							</li>
+						</ul>
+						<% end %>
+						<% end %>
+						<% end %>	
+						<% if @menu %>
+
+						<ul class="web-menu">
+							<li class="mn-item">
+								<a class="bt-web-menu how-works" href="/comofunciona">Como funciona</a>
+							</li>
+							<li class="mn-item"><%= link_to "Ofertas", root_path, :class => "bt-web-menu offers" %></li>
+							<li class="mn-item"><%= link_to "Explorar", {:controller => "partners", :action => "index"}, :class => "bt-web-menu explore" %></li>
+							<li class="mn-item">
+								<% if signed_in? %>
+								<% if user_type == USER_TYPE%>
+								<%= link_to "Meu Perfil", {:controller => get_controller(user_type), :action => "show", :id => current_user.id}, :class => "bt-web-menu register" %>
+								<ul class="web-sub-menu">
+									<li><%= link_to "Acontece", {:controller => "users", :action => "timeline", :id => current_user.id} %></li>
+									<li><%= link_to "Compras", {:controller => "cupons", :action => "index", :user_id => current_user.id} %></li>
+									<li><%= link_to "Créditos", "/users/#{@current_user.id}/credits" %></li>
+									<li><%= link_to "Configurações", edit_user_path(:id => current_user.id)%></li>
+									<li><%= link_to "Sair", "/signout" %></li>
+								</ul>
+								<% elsif user_type == PARTNER_TYPE %>
+								<%= link_to "Meu Perfil", {:controller => get_controller(user_type), :action => "show", :id => current_user.id}, :class => "bt-web-menu register" %>
+								<ul class="web-sub-menu">
+									<li><%= link_to "Editar Perfil", {:controller => get_controller(user_type), :action => "edit", :id => current_user.id} %></li>
+									<li><%= link_to "Ofertas", {:controller => "offers", :action => "index", :partner_id => current_user.id} %></li>
+									<li><%= link_to "Cardápio", {:controller => "products", :action => "index", :partner_id => current_user.id} %></li>
+									<li><%= link_to "Dashboard", "/partners/#{@current_user.id}/dashboard" %></li>
+									<li><%= link_to "Sair", "/signout" %></li>
+								</ul>
+								<% end %>
+								<% end %>
+							</li>
+						</ul>
+						
+						<% end %>
+
+					</header>
+
+
+					<% if @menu || @partner_menu %>
+					<div class="breadCrumb">
+						<!-- dbug('header! whats in session bc?', session[:bc]) -->
+						<% if @breadcrumbs %>
+						<% @breadcrumbs[0..-2].each do |txt, path| %>
+						<%= link_to txt, path, :class => "migalha" %> 
+						<% end %>
+						<a href="#" class="migalha migalha-active"> <%= h(@breadcrumbs.last.first) %></a>
+						<% end %>
+					</div>
+					<% end %>
+
+					<% if @submenu %>
+					<% if @offer_list %>
+					<nav class="sub-menu mn-filter">
+						<ul>
+							<li>
+								<%= link_to "Perto de Mim", (has_location? ? {:controller => "offers", :action => "near_me"} : get_location_before_link({:controller => "offers", :action => "near_me", :params => params})), :class => @near_me ? "active" : ""  %>
+							</li>
+							<li>
+								<%= link_to "Populares", {:controller => "offers", :action => "nowon"}, :class => @nowon ? "active" : ""  %>
+							</li>
+							<li>
+								<%= link_to "Categorias", {:controller => "offers", :action => "category"}, :class => @category ? "active" : ""  %>
+							</li>
+						</ul>
+					</nav>
+					<% elsif @partner_list %>
+					<%= hidden_field_tag :search_string, params[:search] %>
+					<nav class="sub-menu mn-filter">
+						<ul>
+							<li>
+								<%= link_to "Perto de Mim", (has_location? ? {:controller => "partners", :action => "near_me", :search => params[:search]} : get_location_before_link({:controller => "partners", :action => "near_me", :search => params[:search] })), :class => @near_me ? "active" : ""  %>
+							</li>
+							<li>
+								<%= link_to "Populares", {:controller => "partners", :action => "index", :search => params[:search]}, :class => @pop ? "active" : ""  %>
+							</li>
+							<li>
+								<%= link_to "Categorias", {:controller => "partners", :action => "category", :search => params[:search]}, :class => @category ? "active" : ""  %>
+							</li>
+						</ul>
+					</nav>
+					<% elsif @cupons_list%>
+					<nav class="sub-menu mn-shopping">
+						<ul>
+							<li>
+								<%= link_to "Histórico", {:controller => "cupons", :action => "old_ones"}, :class => @old ? "active" : ""  %>
+							</li>
+							<li>
+								<%= link_to "Novos Vouchers", {:controller => "cupons", :action => "index"}, :class => @actual ? "active" : ""  %>
+							</li>
+						</ul>
+					</nav>
+					<% end %>
+					<% end %>
+
+				</div>

@@ -1,0 +1,216 @@
+<div id="main-container" class="scrollable view-profile">
+		<div id="main" class="clearfix">
+			<header class="wrapper">
+				<section id="profile-image">
+					<%= image_tag @user.pic(:original) %>
+				</section>
+				<section id="personal-data">
+					<p class="name"><%= @user.name %></p>
+					<!-- <% if @user == current_user %>
+						<%= link_to "Trocar imagem do profile", edit_user_path(:id => @user.id), :class => "change-image" %>
+					<% else #TODO espaço em branco 
+					 %> 
+						<p class=""></p>
+					<% end %> -->
+					<ul class="actions-list">
+						<li class="actions">
+							<a href="#friends" name="modal" class="friends link-actions">
+								<span class="number"><%=@user.how_many_friends.to_s%></span> amigos
+							</a>
+						</li>
+						
+						<% if @user != current_user %>
+							<% if current_user.is_my_friend?(@user) and current_user.am_i_a_friend?(@user) %>
+							<li class="actions">
+								<%= link_to "Remover amigo", end_friendhip_user_path(:id => @user.id), :class => "remove-friends link-actions" %>
+							</li>
+							<% elsif current_user.is_my_friend?(@user) and !current_user.am_i_a_friend?(@user) %>
+							<div>
+								<p class="sent-invitation">Solicitação de amizade enviada!</p>
+							</div>
+							<% elsif !current_user.is_my_friend?(@user) and current_user.am_i_a_friend?(@user) %>
+							<div>
+								<i><b><%= @user.name %></b></i> quer ser seu amigo! <%= link_to "Aprovar!", :controller => "users", :action => "start_friendship", :id => @user.id %>  
+								<%= link_to "Negar!", :controller => "users", :action => "deny_friendhip", :id => @user.id %>
+							</div>
+							<% else %>
+							<li class="actions">
+								<%= link_to "Adicionar amigo", start_friendship_user_path(:id => @user.id), :class => "add-friends link-actions" %>
+							</li>
+							<% end %>
+						<% end %>
+					</ul>
+				</section>
+			</header> 
+ 			<section class="wrapper">
+				<ul class="sections-list">
+					<li class="sections">
+						<a href="#badges" name="modal" class="badges items">Badges</a>
+					</li>
+					<li class="sections">
+						<a href="#recommend" name="modal" class="establishments items">Estabelecimentos</a>
+					</li>
+					<li class="sections">
+						<a href="#cardapio" name="modal" class="menu items">Cardápio</a>
+					</li>
+					<li class="sections">
+						<a href="#desejos" name="modal" class="desires items">Desejos</a>
+					</li>
+				</ul>
+			</section>
+ 		</div> <!-- #main -->
+</div> <!-- #main-container -->
+ 		
+<div id="boxes">
+	
+
+	<div id="friends" class="window">
+		<div class="wrapper">
+			<h2>Meus amigos</h2>
+		
+			<!-- Botão para fechar a janela tem class="close" -->
+			<a href="#" class="close">Fechar [X]</a>
+		
+			<div class="content-container">
+				<div class="content">
+					<% if current_user.name == @user.name %>
+						<% if @friend_requests.count > 0 %>
+							<h3 class="title-request" >Solicitações de amizade</h3>
+							<ul id="friends-request" class="friend-list">
+								<%= render 'friend_requests' %>
+							</ul>
+						<% end %>
+	
+						<h3 class="title-request">Amigos do Facebook</h3>
+						<ul id="friends-fadebook" class="friend-list">
+							<% unless @facebook_friends.nil? %>
+							
+								<% @facebook_friends.each do |friend| %>
+									<li>
+										<div class="avatar">
+											<%= image_tag friend.pic(:small) %>
+										</div>
+										<p> <%= link_to friend.name, friend %> </p>
+										<%= link_to "Recusar", {:controller => "users", :action => "deny_friendhip", :id => friend.id}, :class => "refuse" %>
+										<%= link_to "Aceitar", {:controller => "users", :action => "start_friendship", :id => friend.id}, :class => "accept" %>  
+									</li>
+								<% end %>
+
+							<% end %>
+						</ul>
+					<% end %>
+					<h3>Meus amigos</h3>
+					<ul id="friends-added" class="friend-list">
+						<%= render 'friends' %>					
+					</ul>
+
+					<script type="text/javascript">initFriendRequest()</script>
+				</div>
+			</div>
+		</div>	
+	</div>
+ 		
+	<!-- Cardápio -->
+	<div id="cardapio" class="window">
+		<div class="wrapper">
+			<h2>Ver recomendações</h2>
+		
+			<!-- Botão para fechar a janela tem class="close" -->
+			<a href="#" class="close">Fechar [X]</a>
+		
+			<div class="content-container">
+				<div class="content">
+					<ul class="list-users wishes">
+						<%= render 'recommend_products' %>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<!-- Desejos -->
+	<div id="desejos" class="window">
+		<div class="wrapper">
+			<h2>Ver desejos</h2>
+		
+			<!-- Botão para fechar a janela tem class="close" -->
+			<a href="#" class="close">Fechar [X]</a>
+		
+			<div class="content-container">
+				<div class="content">
+					<ul class="list-users wishes">
+						<%= render 'wish_products' %>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<!-- Estabelecimentos -->
+	<div id="recommend" class="window">
+		<div class="wrapper">
+			<h2>Ver recomendações</h2>
+		
+			<!-- Botão para fechar a janela tem class="close" -->
+			<a href="#" class="close">Fechar [X]</a>
+		
+			<div class="content-container">
+				<div class="content">
+					<ul class="list-users wishes">
+						<%= render 'recommend_partners' %>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<!-- Badges -->
+	<div id="badges" class="window">
+		<div class="wrapper">
+			<h2 class="badge-info">
+				Ver badges
+			</h2>
+
+			<a href="javascript:;" class="bt-back-modal">
+				<span></span> Voltar
+			</a>
+		
+			<!-- Botão para fechar a janela tem class="close" -->
+			<a href="#" class="close">Fechar [X]</a>
+		
+			<div class="content-container">
+				<div class="content">
+					<ul class="list-badge">
+						<% @badges.each do |badge| %>
+						<li>
+							<a href="javascript:;" class="<%= badge.has_badge(@user) %>" rel="<%=badge.id%>"></a>
+							<span class="text-badge-on"><%= badge.name %></span>
+						</li>
+						<% end %>
+					</ul>
+					
+					<% @mybadges.each do |mb| %>
+					<div class="info-badge badge<%=mb.id%>">
+						<div class="info-badge-image">
+							<span class="<%= mb.has_badge(@user) %>"></span>
+							<%= mb.name %>
+						</div>
+						<span class="info-badge-text">
+							<%= mb.description %>
+						</span>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+
+	<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
+	<div id="mask" ontouchmove="blockMove(event)"></div>
+</div>
+
+
+	
+
+

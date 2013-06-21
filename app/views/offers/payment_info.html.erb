@@ -1,0 +1,119 @@
+<div id="main-container" class="scrollable clear-padding view-purchase view-cupom">
+	<div id="main" class="clearfix clear-padding">
+			<section class="opened-cupom">
+				<header>
+					<div class="thumb">
+						<%= image_tag @offer.pic1.image.url(:banner_big) unless @offer.partner_pic1_id.nil? %>
+					</div>
+				</header>
+				
+				<div class="wrapper">
+					<h3><%= @partner.name %></h3>
+					
+					<p><b><%= @offer.resume %></b></p>
+
+					<ul class="cupom-info">
+						<li><%= @offer.next_ocurrency %></li>
+					</ul>
+
+				</div>
+			</section>
+				
+			<ul class="values-list">
+				<% unless @user_credits.empty? %>
+				<li class="value-credit">
+					<%= link_to "/users/#{@current_user.id}/credits" do %>
+					<div class="local col-50">
+						<p>Crédito</p>
+					</div>
+					<div class="value">
+						<span><%= number_to_currency @credit_value %></span>
+					</div>
+					<% end %>
+				</li>
+				<% end %>
+				<li class="value-nowon">
+					<div class="local col-50">
+						<p>Pague agora ao NowOn</p>
+					</div>
+					<div class="value">
+						<span class="ticket"><%= number_to_currency @nowon_value %></span>
+					</div>
+				</li>
+				<li class="value-establishment">
+					<div class="local col-50">
+						<p>Pague depois ao <%= @offer.partner.company_name %></p>
+					</div>
+					<div class="value col-50">
+						<span><%= number_to_currency @offer.partner_price %></span>
+					</div>
+				</li>
+				<li class="value-total">
+					<div class="local col-50">
+						<p>Total</p>
+					</div>
+					<div class="value col-50">
+						<span><%= number_to_currency @offer.price %></span>
+					</div>
+				</li>
+			</ul>
+			
+			<% if @user_card && @nowon_value != 0 %>
+				<ul class="values-list">
+					<li class="value-number-credit">
+						<div class="local col-25">
+							<p><%= link_to @user_card.card_flag.flag, :controller => "users", :action => "remove_card", :callback => "/offers/#{@offer.id}/payment_info", :user_id => @current_user.id %></p>
+						</div>
+						<div class="value col-65">
+							<input type="text" name="number-credit" id="number-credit" placeholder="XXXX-XXXX-XXXX-<%= @user_card.card_number%>">
+						</div>
+					</li>
+					<li class="value-security-code">
+						<div class="local col-40">
+							<p>Código de segurança</p>
+						</div>
+						<div class="value col-60">
+							<input type="text" name="security-code" id="security-code">
+						</div>
+					</li>
+				</ul>
+			<% end %>
+
+	</div> <!-- #main -->
+</div> <!-- #main-container -->
+
+<div id="bottom-bar" class="dark-background small">
+	<div class="wrapper">
+		<% if @nowon_value == 0 %>
+			<%= form_tag :controller => "cupons", :action => "confirm_with_credit_only" do %>
+		  		<%= hidden_field_tag :offer_id, @offer.id %>
+		  		<%= hidden_field_tag :user_id, @current_user.id %>
+		  		<%= link_to_submit content_tag(:span, "Confirmar a compra"), :class => "std-button bt-bigsize" %>
+		  	<% end %>
+		<% elsif @user_card %>
+			<div id="MoipWidget" 
+			 data-token="<%= @token %>"
+			 callback-method-success="onSuccess" 
+			 callback-method-error="onFailed"></div>
+						 
+						 
+			<%= hidden_field_tag :card_flag_id, @user_card.card_flag.code %>
+			<%= hidden_field_tag :key, @user_card.key  %>
+			<%= hidden_field_tag :transaction_id, @transaction_id %>
+			<%= hidden_field_tag :cupon_id, @cupon.nil? ? "" : @cupon.id %>
+			<%= hidden_field_tag :DataNascimento2, @user_birthdate %>
+			<%= hidden_field_tag :Numero, @user_card.card_number %>
+			<%= hidden_field_tag :Identidade2, @user_cpf %>
+			<%= hidden_field_tag :save_card, "do" %>
+	
+			<%= link_to content_tag(:span, "Confirmar a compra"), "#", :onclick => "processaPagtoCofre();", :class => "std-button bt-bigsize" %>
+		<% else %>
+			<%= form_tag :controller => "cupons", :action => "buy" do %>
+		  		<%= hidden_field_tag :offer_id, @offer.id %>
+		  		<%= hidden_field_tag :user_id, @current_user.id %>
+		  		<%= link_to_submit content_tag(:span, "Confirmar a compra"), :class => "std-button bt-bigsize" %>
+		  	<% end %>
+		<% end %>
+		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
+	</div>
+</div>

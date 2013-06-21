@@ -1,0 +1,27 @@
+<h1>Listing wish_products</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Product</th>
+    <th>Opinion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wish_products.each do |wish_product| %>
+  <tr>
+    <td><%= wish_product.user %></td>
+    <td><%= wish_product.product %></td>
+    <td><%= wish_product.opinion %></td>
+    <td><%= link_to 'Show', wish_product %></td>
+    <td><%= link_to 'Edit', edit_wish_product_path(wish_product) %></td>
+    <td><%= link_to 'Destroy', wish_product, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wish product', new_wish_product_path %>

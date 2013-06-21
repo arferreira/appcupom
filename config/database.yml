@@ -15,7 +15,7 @@ development:
   database: appcupom_development
   pool: 5
   username: root
-  password: rub32912289
+  password: #rub32912289
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test:
   database: appcupom_test
   pool: 5
   username: root
-  password: rub32912289
+  password: #rub32912289
   socket: /var/run/mysqld/mysqld.sock
 
 production:
@@ -38,5 +38,5 @@ production:
   database: appcupom_production
   pool: 5
   username: root
-  password: rub32912289
+  password: #rub32912289
   socket: /var/run/mysqld/mysqld.sock

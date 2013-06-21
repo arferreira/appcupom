@@ -1,0 +1,20 @@
+$("#MoipWidget").attr("data-token", "<%= @token %>")
+
+<% unless @token.nil? %>
+
+$("#card_fields").show();
+$("#submit_card_data").hide();
+$("#cupon_id").val("<%= @cupon.id %>");
+$("#transaction_id").val("<%= @transaction_id %>");
+$("#DataNascimento2").val("<%= @user_birthdate %>");
+$("#Identidade2").val("<%= @user_cpf %>");
+$("#name2").val("<%= @user_card_name %>");
+$("#pre_payment").hide();
+$("#payment").show();
+
+
+<% end %>
+
+<% if @moip_error %>
+alert("Os dados enviados ao Moip não foram aceitos!\n Favor verificar os dados do seu cartão.")
+<% end %>

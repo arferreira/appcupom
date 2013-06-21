@@ -1,0 +1,8 @@
+<%= hidden_field_tag :get_location_callback, @location_callback %>
+<%= hidden_field_tag :request_location, @request_location %>
+
+<% if @gps %>
+<%= render :partial => @offers, :locals => { :list => true } %>
+<% else %>
+<h4>Buscando Localização...</h4>
+<% end %>

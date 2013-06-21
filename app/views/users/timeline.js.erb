@@ -1,0 +1,8 @@
+$('.timeline-items').append('<%= j render :partial => @timeline_items, :locals => { :list => true } %> ');
+<% if @timeline_items.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@timeline_items) %>');
+<% else %>
+  $('.pagination').remove();
+  $('.load-more').remove();
+<% end %>
+<% sleep 1 %>

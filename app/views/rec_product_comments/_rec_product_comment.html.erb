@@ -1,0 +1,17 @@
+<%= div_for rec_product_comment do %>
+
+  <span class="comments-user-date">
+  	<b> <%= link_to rec_product_comment.user.name, rec_product_comment.user %> </b> 
+    a <%=time_ago_in_words(rec_product_comment.created_at)%> atrás disse: 
+  </span>
+  	<% if !signed_in? PARTNER_TYPE %>
+		<% if rec_product_comment.user == current_user or signed_in? ADMIN_TYPE %>
+			<%= link_to 'X', rec_product_comment_path(rec_product_comment), :method => :delete, :class => "delete", :remote => true  %>
+		<% end %>
+	 <% end %>
+  	 <%= content_tag(:div, rec_product_comment.opinion, :class => "comment-body") %>
+	<hr />
+	
+<% end %>
+
+

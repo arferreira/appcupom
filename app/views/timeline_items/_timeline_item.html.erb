@@ -1,0 +1,13 @@
+<% p timeline_item %>
+<% p get_locals_by_type(timeline_item) %>
+<% locals = get_locals_by_type(timeline_item) %>
+<% if locals %>
+<div class="items">
+	<div class="feed wrapper overflow">
+		<div class="picture to-left">
+			<%= image_tag timeline_item.user.pic(:small), :class => "border", :style => "height:41px; width:41px;" unless timeline_item.user.nil? %>
+		</div>
+		<%= render :partial => get_layout_by_type(timeline_item), :locals => locals %>
+	</div>
+</div>
+<% end %>

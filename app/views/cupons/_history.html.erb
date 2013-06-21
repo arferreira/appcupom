@@ -1,0 +1,32 @@
+<% offer = cupon.offer %>
+<section class="cupom">
+	<div class="info-group">
+		<%= link_to "/partners/#{offer.partner.id}" do %>
+			<h3><%= offer.partner.company_name %></h3>
+
+			<div class="to-left">
+				<div class="cupom-code"><span>#<%= cupon.code_or_status %></span></div>
+			</div>
+	
+			<div class="to-left valign">
+				<span class="use-time dark">
+					<%= cupon.formatted_date %>
+				</span>
+			</div>
+		<% end %>
+	</div>
+
+
+	<ul class="horizontal-menu">
+		<li>
+			<%= form_tag url_for(:controller => "cupons", :action => "validate_user_cupon", :user_id => cupon.user.id), :id => "validate_form_" + cupon.id.to_s, :remote => true  do %>
+				<%= hidden_field_tag :partner_id, offer.partner.id %>
+				<%= hidden_field_tag :cupon_code, cupon.cupon_code %>
+				<% if cupon.validated %>
+					<span class="validated"> Voucher validado com sucesso </span>
+				<% end %>
+			<% end %>
+		</li>
+		
+	</ul>
+</section>

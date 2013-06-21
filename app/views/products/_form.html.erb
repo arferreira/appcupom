@@ -1,0 +1,79 @@
+<div id="main-container">	
+		<div class="areaTitulo">
+			<h1>Novo Produto</h1>				
+		</div>
+		<div class="boxPadrao">
+			<div class="containerBoxPadrao">
+				<%= form_for([@partner, @product], :html => { :class => "formNovoProduto", :id => "form_products"}) do |f| %>
+					<% if @product.errors.any? %>
+						<div id="error_explanation">
+						<h2><%= pluralize(@product.errors.count, "error") %> impediram que o produto fosse salvo:</h2>
+
+						<ul>
+							<% @product.errors.full_messages.each do |msg| %>
+								<li><%= msg %></li>
+	 						<% end %>
+		 				</ul>
+					</div>
+					<% end %>
+					
+						<div class="itemCadastroNovoProduto">
+							<label for="familia">Família</label>
+							<%= collection_select(:product, :product_family_id, @product_families, :id, :name, {:include_blank => 'Por favor selecione'}) %>
+							<%= link_to "Nova família", new_partner_product_family_path, :class => "padraoBtn btnAddItem" %>
+						</div>
+
+						<div class="itemCadastroNovoProduto" id="SelecionaProduto">
+							<label for="categorias"><%= t("product.product_type") %></label>
+							<%= collection_select(:product, :product_type_id, @product_types, :id, :name, :prompt => true) %>
+							<%= link_to "Nova categoria", {:controller => "product_types", :action => "new", :source => "prod"}, :class => "padraoBtn btnAddItem" %>
+						</div>
+
+						<div class="itemCadastroNovoProduto">
+							<label for="nomeProduto"><%= t("product.name")%></label>
+						    <%= f.text_field :name, :id => "nomeProduto" %>
+						</div>
+
+						<div class="itemCadastroNovoProduto">
+							<label for="precoCardapio">Preço Cardápio</label>
+						    <%= f.text_field :price, :id => "precoCardapio" %>
+						</div>
+
+						<div class="itemCadastroNovoProduto">
+							<label for="descricaoCardapio">Descrição Cardápio</label>
+						    <%= f.text_area :description, :id => "descricaoCardapio" %>
+						</div>
+
+					<div class="itemCadastroNovoProduto">
+						<%= link_to_submit_id "#form_products", content_tag(:span, "Salvar"), :class => "padraoBtn btnSalvarNovoProduto" %>
+					</div>
+					
+				<% end %>
+			</div>
+		</div>
+		<p class="introNovoProduto">
+			<b>Os dados fornecidos devem reproduzir as informações repassadas aos clientes pelo seu cardápio físico.</b>
+			<br></br>
+			<b>Categoria</b> de produtos corresponde a classe ou gênero a que pertence cada produto, como “entrada”, “prato principal”, “sobremesa”, etc... Caso seu produto ainda não tenha uma categoria correspondente, crie uma nova categoria.
+			<br/ ><br/ >
+			<b>Família</b> é um agrupador de produtos iguais mas que possuem pequenas variações como  vários preços, tamanhos ou quantidades. Se o novo produto não possuí variações selecione a opção “nenhuma”.
+			Se o novo produto possuir variações crie uma nova família com o nome mais genérico do produto como no exemplo a seguir:
+			<br/ >
+			Ex: Uma pizza marguerita possuí os tamanhos pequeno e grande. Crie uma família chamada "Pizza Marguerita" e em seguida crie os produtos "Pizza Marguerita Pequena" e "Pizza Marguerita Grande".
+			<br/ ><br/ >
+			<b>Nome</b> deve ser o mais completo possível. Ex: Pizza Marguerita Grande
+			<br/ ><br/ >
+			<b>Preço Cardápio</b> deve ser exatamente o mesmo do seu cardápio físico.
+			<br/ ><br/ >
+			<b>Descrição Cardápio</b> deve conter a descrição do produto, ou seja, os principais ingredientes utilizados em seu preparo, aqueles itens que atribuiem uma identidade própria ao produto.
+			<br/ ><br/ >
+
+
+		</p>
+
+
+
+
+</div><!-- #main-container -->
+
+	

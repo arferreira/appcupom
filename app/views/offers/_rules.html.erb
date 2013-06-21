@@ -1,0 +1,21 @@
+<label for="cupon_counter">Número de vouchers por dia</label>
+<%= f.number_field :cupon_counter, :min => MIN_CUPON, :max => MAX_CUPON %>
+<div id="product_rules">
+<% unless @products_rules.nil? %>
+	<% @products_rules.each do |rule| %>
+		<label for="rules"><%= rule.description %></label>
+		<%= options_quali_quant rule.ttype, "rule_#{rule.id}", (offer_rule_value (@offer.id.nil? ? nil : @offer), rule) %>
+		<%= hidden_field_tag :rule_text, rule.description %>
+	<% end %>
+<% end %>
+</div>
+
+<div id="credit_rules">
+<% unless @credit_rules.nil? %>
+	<% @credit_rules.each do |rule| %>
+		<label for="rules"><%= rule.description %></label>
+		<%= options_quali_quant rule.ttype, "rule_#{rule.id}", (offer_rule_value (@offer.id.nil? ? nil : @offer), rule) %>
+		<%= hidden_field_tag :rule_text, rule.description %>
+	<% end %>
+<% end %>
+</div>

@@ -1,0 +1,40 @@
+
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+<div id="main-container">	
+	
+	<div class="areaTitulo">
+		<h1>Nova Categoria de Produto</h1>			
+		<p class="introNovaCategoria">
+			Categoria de produtos corresponde a classe ou gênero a que pertence cada produto, como “entrada”, “prato principal”, “sobremesa”, “petiscos”, “grelhados”, “bebidas sem alcool”, “vinho tinto”, etc...				
+		<br /> 
+		</p>	
+	</div>
+	<div class="boxPadrao">
+		<div class="containerBoxPadrao">
+			<%= form_for([@partner, @product_type], :html => { :class => "formNovoProduto"}) do |f| %>
+				<% if @product_type.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@product_type.errors.count, "error") %>:</h2>
+	
+					<ul>
+						<% @product_type.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+						<% end %>
+	 				</ul>
+				</div>
+				<% end %>
+					<% vd('VIEW PT FORM', @partner.company_name, @product_type.name) %>
+					<div class="itemCadastroNovoProduto">
+						<label for="nomeProduto"><%= t("product.name")%></label>
+					    <%= f.text_field :name %>
+					</div>
+	
+				<div class="itemCadastroNovoProduto">
+					<%= link_to_submit content_tag(:span, "Salvar"), :class => "padraoBtn btnSalvarNovoProduto" %>
+				</div>
+				
+			<% end %>
+		</div>
+	</div>
+
+</div><!-- #main-container -->

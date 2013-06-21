@@ -1,0 +1,23 @@
+<%= f.hidden_field :recurrence %>
+
+<div class="boxdataInicioOferta">
+	<h4 class="subTituloBoxPadrao">Oferta inicia em</h4>
+	<%= f.date_select :start_date %>							
+</div>
+
+<div class="boxHorarioOferta">
+	<h4 class="subTituloBoxPadrao">Horário</h4>		
+	<%= f.time_select :time_starts, :minute_step => 15 %>
+	<span>às</span>
+	<%= f.time_select :time_ends, :minute_step => 15 %>
+</div>
+
+<div class="boxDiasSemanaOferta">
+	<h4 class="subTituloBoxPadrao">Dias da Semana</h4>
+	
+	<% unless @days.nil? %>
+		<%@days.each_with_index do |choise, index| %>
+			<%= check_box_tag "selected_days[]", index+1, (checked = true if choise != '0') %><%= t("form.abbr_day_names.day#{index+1}") %>
+		<% end %>
+	<% end %>
+</div>

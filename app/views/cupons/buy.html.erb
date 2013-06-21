@@ -1,0 +1,83 @@
+<% if @offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@offer.errors.count, "erro") %> impediram que a oferta fosse salva:</h2>
+
+      <ul>
+      <% @offer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>
+
+<div id="main-container" class="scrollable clear-padding view-purchase">
+	<div id="main" class="clearfix">
+
+			<div class="wrapper">
+
+					<% if !@current_user.nil? && @offer.is_today? %>
+
+					<div id="MoipWidget"
+						 data-token="<%= @token unless @show_payment_fields %>"
+						 callback-method-success="onSuccess"
+						 callback-method-error="onFailed"></div>
+
+						<% if @show_payment_fields %>
+							<%= form_tag url_for(:controller => "cupons", :action => "buy_cupon"), :remote => true, :id => "main_form" do %>
+								<%= render :partial => 'payment_address', :locals => {:offer => @offer, :current_user => @current_user}%>
+							<% end %>
+						<% else %>
+							<%= link_to "Alterar endereço de cobrança", {:controller => "users", :action => "remove_card", :callback => "/offers/#{@offer.id}/payment_info", :user_id => @current_user.id}, :class => "link_dev" %>
+							<%= hidden_field_tag :secure_code, '' %>
+
+							<%= hidden_field_tag :name, @user_card.name %>
+							<%= hidden_field_tag :telefone, @user_card.telefone %>
+
+							<% if @user_card.has_key? %>
+								<%= hidden_field_tag :card_flag_code, @user_card.card_flag.code %>
+								<%= hidden_field_tag :key, @user_card.key %>
+								<input id="SendPaymentWithKey" type="button" value="Comprar" onclick="processaPagtoCofre();" />
+							<% end %>
+
+						<% end %>
+
+						<% unless @moip_error %>
+							<%= render :partial => 'card_data', :locals => { :show_payment_fields => @show_payment_fields,
+																			 :user_card => @user_card,
+																			 :transaction_id => @transaction_id,
+																			 :cupon => @cupon,
+																			 :user_birthdate => @user_birthdate,
+																			 :user_cpf => @user_cpf,
+																			 :user_card_name => @user_card_name,
+																			 :card_flags => @card_flags
+																			}
+							%>
+
+						<% else %>
+							Error on Moip
+						<% end %>
+
+
+					<% end %>
+
+		</div>
+		<p class="smallText centered">Dados enviados através de conexão segura do MOIP.</p>
+	</div> <!-- #main -->
+</div> <!-- #main-container -->
+
+<div id="bottom-bar" class="dark-background small">
+	<div class="wrapper">
+		<div id="pre_payment" style="display: <%= 'none' unless @show_payment_fields %>">
+			<%= link_to_submit_payment_id "#main_form", content_tag(:span, "Confirmar a compra"), :class => "std-button bt-bigsize" %>
+		</div>
+		<div id="payment" style="display: <%= 'none' if @show_payment_fields || (!@user_card.nil? && @user_card.has_key?) %>">
+			<%= link_to content_tag(:span, "Confirmar a compra"), "#", :onclick => "processaPagtoCredito();", :class => "std-button bt-bigsize" %>
+		</div>
+
+		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
+	</div>
+</div>
+<!-- <script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/js/jquery.placeholder.js"></script>
+-->

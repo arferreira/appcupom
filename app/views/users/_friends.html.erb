@@ -1,0 +1,24 @@
+<% @friends.each do |friend| %>
+	
+	<li>
+	<div class="avatar">
+		<%= image_tag friend.pic(:small) %>
+	</div>
+
+	<p class="friend-name"> 
+		<%= link_to friend.name, friend %> 
+	</p>
+
+	<% if current_user.id == @user.id %>
+		<%= link_to "Recusar", {:controller => "users", :action => "end_friendhip", :id => friend.id}, :class => "refuse", :remote => true %>
+	<% end %>
+	</li>
+<% end %>
+
+
+<!-- <li>
+	<div class="avatar"><a href="#"><img src="/assets/trash/avatar-user-modal.jpg" alt=""></a></div>
+	<p><a href="#" class="linkAmigo">Liliana Carvalho</a></p>
+	<a href="#" class="refuse">Recusar</a>							
+	<a href="#" class="accept">Aceitar</a>
+</li> -->

@@ -1,0 +1,27 @@
+<h1>Listing recommend_partners</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Partner</th>
+    <th>Opinion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @recommend_partners.each do |recommend_partner| %>
+  <tr>
+    <td><%= recommend_partner.user %></td>
+    <td><%= recommend_partner.partner %></td>
+    <td><%= recommend_partner.opinion %></td>
+    <td><%= link_to 'Show', recommend_partner %></td>
+    <td><%= link_to 'Edit', edit_recommend_partner_path(recommend_partner) %></td>
+    <td><%= link_to 'Destroy', recommend_partner, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recommend partner', new_recommend_partner_path %>

@@ -1,0 +1,46 @@
+<?php
+$title = "Recomendar";
+$back = true;
+$menu = false;
+$submenu = false;
+$search = false;
+
+include 'includes/includes.php';
+include 'includes/header.php';
+?>
+<%= form_for [@partner, @product, @wish_product] do |f| %>
+  <% if @wish_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wish_product.errors.count, "error") %> prohibited this wish_product from being saved:</h2>
+
+      <ul>
+      <% @wish_product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div id="main-container" class="scrollable">
+		<div id="main" class="clearfix view-share">
+						
+				<section class="share-section ">
+						<div class="info-group">
+							<div class="icon <%= get_category_icon @partner %>"></div>
+							<h3><%= @product.name %></h3>
+						</div>
+					
+					<div class="share-field ">
+						<%= f.text_area :opinion, :placeholder => "Por que deseja esse produto?" %>
+					</div>
+
+					<%= link_to_submit content_tag(:span, "Desejar"), :class => "std-button bt-bigsize" %>
+				</section>
+
+			
+		</div> <!-- #main -->
+	</div> <!-- #main-container -->
+<% end %>
+<?php
+include 'includes/footer.php'
+?>

@@ -1,0 +1,16 @@
+<% @products_wish.each do |wish| %>
+	
+<li>
+	<div class="user-data">
+		<%= image_tag @user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
+		<p><span><%= @user.name %></span> desejou <span><%= wish.product.name %></span> no estabelecimento de <span><%= wish.product.partner.company_name %></span></p>
+	</div>
+
+	<% if wish.opinion != ""%>
+		<div class="user-comment-data">
+			<%= wish.opinion %>
+		</div>
+	<% end %>
+	
+</li>
+<% end %>

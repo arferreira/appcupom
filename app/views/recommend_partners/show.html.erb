@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= @recommend_partner.user.name %> recomendou <%= @recommend_partner.partner.company_name %>
+</p>
+
+<p>
+  <b>Opinião:</b>
+  <%= @recommend_partner.opinion %>
+</p>
+
+
+<div >Comentários: </div>
+<div> <%= render 'comments' %> </div>
+
+
+<%= link_to 'Back', partner_url(@partner) %>

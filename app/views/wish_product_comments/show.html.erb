@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @wish_product_comment.user %>
+</p>
+
+<p>
+  <b>Wish product:</b>
+  <%= @wish_product_comment.wish_product %>
+</p>
+
+<p>
+  <b>Opinion:</b>
+  <%= @wish_product_comment.opinion %>
+</p>
+
+
+<%= link_to 'Edit', edit_wish_product_comment_path(@wish_product_comment) %> |
+<%= link_to 'Back', wish_product_comments_path %>

@@ -1,0 +1,29 @@
+<section id="form_pics_body" class="_group_hidden">
+	<table>
+		<tr>
+			<th>Produto</th>
+			<th>Preço</th>
+		</tr>
+			
+	<% unless @products.nil? %>
+		<% @products.each do |prod|%>
+			<tr id="id_<%= prod.id%>" class="select_product">
+				<td><%= prod.name %></td>
+				<td><%= prod.price %></td>
+			</tr>
+		<% end %>
+	<% end %>
+	
+	
+	<% unless @products.nil?%>
+		<%= form_tag (url_for :controller => "products", :action => "select_products" ), :multipart => true do%>
+			<%= hidden_field_tag :selected_prods, "", :id => "selected_prods_input" %>
+			<%= hidden_field_tag :num_select, @num_select, :id => "num_select_input" %>
+			<%= hidden_field_tag :select_callback, @select_callback, :id => "select_callback"  %>
+			<%= submit_tag "Escolher" %>
+		<% end %>
+	<% end %>
+
+	</table>
+</section>
+

@@ -1,27 +1,61 @@
 source 'https://rubygems.org'
 
+##rails
 gem 'rails', '3.2.13'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+##Database
 gem 'mysql2'
 
+##External Integration
+#twitter
+gem 'oauth'
+gem 'twitter'
 
+#facebook
+gem 'oauth2'
+gem "koala"
 
+##Javascript
+gem 'jquery-rails'
+gem 'json'
 
+#Image upload
+gem 'paperclip'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+#Searching
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'progress_bar' # for sunspot:solr:reindex
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+group :development do
+  gem 'sunspot_solr'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+#Dev and test only
+#group :development, :test do
+  #bundle exec annotate
+  #gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+#end
 
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'multi_json', '1.3.6'
 
-# To use debugger
-# gem 'debugger'
+#Decorator Design Pattern
+gem 'draper'
+
+gem 'nokogiri'
+
+gem 'httparty'
+
+gem 'uglifier'
+
+gem 'execjs'
+
+gem 'will_paginate'
+# gem 'best_in_place'
+
+# gem 'therubyracer'
+
+gem 'font_assets'
+
+#Detect Browser
+gem 'browser'

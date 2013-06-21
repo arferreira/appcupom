@@ -1,0 +1,26 @@
+<div class="info ui-box to-left">
+	<div class="comment">
+		<p class="user-comment wish">
+			<%= wish_product_comment.timeline_resume%>: <%= wish_product.opinion %>
+		</p>
+	</div>
+
+	<div class="row answer">
+		<div class="overflow">
+			<%= image_tag last_comment.user.pic(:small), :class => "border to-left", :style => "height:23px; width:23px;" unless last_comment.nil? %>
+			<p class="to-left act answer-comment">
+				<%= "#{last_comment.opinion}" unless last_comment.nil? %>
+			</p>
+		</div>
+		<% if comments_count > 0 %>
+			<%= link_to prod_wished_path(wish_product.product.partner, wish_product.product, wish_product), :class => "ver-comentarios" do %>
+				Ver todos os <b><%= comments_count %> comentários</b>
+			<% end %>
+		<% end %>
+	</div>
+
+	<%= link_to prod_wished_path(wish_product.product.partner, wish_product.product, wish_product), :class => "row see-comments" do %>
+		Comentar <span class="push-tab to-right"></span>
+	<% end %>
+</div>
+

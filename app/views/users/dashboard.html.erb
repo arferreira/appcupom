@@ -1,0 +1,57 @@
+<h1>DASHBOARD - <%= @user.name %></h1>
+<%= link_to 'Editar', edit_user_path(@user) %> | <%= link_to 'Cupons', user_cupons_path(@user) %> | 
+<%= link_to 'Badges', :controller => "users", :action => "badges", :id => current_user.id %>  <br />
+<%= link_to 'Amigos', :controller => "users", :action => "friends", :id => current_user.id %> | 
+<%= link_to 'Solicitações de Amizade', :controller => "users", :action => "friend_requests", :id => current_user.id %>
+<% unless facebook_logged? %>
+| <%= link_to 'Integrar Facebook', '/facebook/login' %>
+<% end %>
+<br />
+
+<br />
+    
+<br />
+
+<table>
+	<tr>
+		<td align="right">
+			<%= t("user.name")%>:
+		</td>
+		<td align="left"> 
+			<%= @user.name %> 
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<%= t("user.email")%>:
+		</td>
+		<td align="left">
+			<%= @user.email %>
+		</td>
+	</tr>
+</table>
+
+<table>
+	<tr>
+		<td>
+			Quantidade de Cupons: <%= @numCupons %>
+			<br />
+			Dinheiro gasto: <%= @moneySpent %>
+		</td>
+		<td style="padding: 20px"></td>
+		<td>
+			Cupons Adiquiridos:
+			<br />
+			<% @cupons.each do |cupon| %>
+			------------------------------------------------------------------<br />
+			  Estabelecimento: <%= cupon.offer.partner.company_name %><br />
+			  Preço: R$<%= cupon.price %><br />
+			  Codigo: <%= cupon.cupon_code %><br />
+			<% end %>
+		</td>
+	</tr>
+	
+</table>
+
+<br />
+<br />

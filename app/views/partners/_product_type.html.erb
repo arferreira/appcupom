@@ -1,0 +1,96 @@
+<% unless @product_types.nil? %>
+<% @product_types.each do |product_type| %>
+<li class="toggle-item">
+  <h4 class="toggle-title"><%= product_type.name %></h4>
+  <ul class="toggle-list">
+    <% product_type.product_families.each do |product_family|%>
+    <% product = product_family.expensive_product %>
+    <% unless product.nil? %>
+    <li class="ui-box content-toggle-item">
+      <div class="group-content">
+        <h5><%= product_family.name %></h5>
+        <span class="price"><%= number_to_currency product.price.round(3) %></span>
+        <p>
+          <%= product.description %>
+        </p>
+      </div>
+      <div class="col-100 row to-left" >
+        <div class="group-content">
+          <ul class="box-share-bar to-left">
+            <li>
+              <% if signed_in? USER_TYPE and product.not_recommended?(current_user) and product.not_wished?(current_user) %>
+              <%= link_to "Recomendar", n_rec_prod_path(@partner, product)  %>
+              <% elsif signed_in? USER_TYPE and product.recommended?(current_user) %>
+              <%= link_to 'Deixar de recomendar', "/partners/#{@partner.id}/products/#{product.id}/recommend_products/#{product.recommended?(current_user).id}/unrecommend" %>
+              <% end %>
+            </li>
+            <li>
+              <% if signed_in? USER_TYPE and product.not_wished?(current_user) and product.not_recommended?(current_user) %>
+              <%= link_to "Desejar", n_wish_prod_path(@partner, product)  %>
+              <% elsif signed_in? USER_TYPE and product.wished?(current_user) %>
+              <%= link_to 'Deixar de desejar', "/partners/#{@partner.id}/products/#{product.id}/wish_products/#{product.wished?(current_user).id}/unwish" %>
+              <% end %>
+            </li>
+          </ul>
+
+          <ul class="box-share-bar to-right">
+            <li>
+              <a href="#recommend-prod" name="modal" class="count recommend recommended_products" id="pv_product_<%= product.id %>"><%=product.recommend_products.count%></a>
+            </li>
+            <li>
+              <a href="#wish" name="modal" class="count wish recommended_products" id="pv_product_<%= product.id %>"><%=product.wish_products.count%></a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </li>
+    <% end %>
+    <% end %>
+    <% product_type.get_active_prods_with_n_fam(@partner).each do |prod|%>
+
+    <li class="ui-box content-toggle-item">
+      <div class="group-content">
+        <h5><%= prod.name %></h5>
+        <span class="price"><%= number_to_currency prod.price.round(2) %></span>
+        <p>
+          <%= prod.description %>
+        </p>
+      </div>
+      <div class="col-100 row to-left" >
+        <div class="group-content">
+          <ul class="box-share-bar to-left">
+            <li>
+              <% if signed_in? USER_TYPE and prod.not_recommended?(current_user) and prod.not_wished?(current_user) %>
+              <%= link_to "Recomendar", n_rec_prod_path(@partner, prod)  %>
+              <% elsif signed_in? USER_TYPE and prod.recommended?(current_user) %>
+              <%= link_to 'Deixar de recomendar', "/partners/#{@partner.id}/products/#{prod.id}/recommend_products/#{prod.recommended?(current_user).id}/unrecommend" %>
+              <% end %>
+            </li>
+            <li>
+              <% if signed_in? USER_TYPE and prod.not_wished?(current_user) and prod.not_recommended?(current_user) %>
+              <%= link_to "Desejar", n_wish_prod_path(@partner, prod)  %>
+              <% elsif signed_in? USER_TYPE and prod.wished?(current_user) %>
+              <%= link_to 'Deixar de desejar', "/partners/#{@partner.id}/products/#{prod.id}/wish_products/#{prod.wished?(current_user).id}/unwish" %>
+              <% end %>
+            </li>
+          </ul>
+
+          <ul class="box-share-bar to-right">
+            <li>
+              <a href="#recommend-prod" name="modal" class="count recommend recommended_products" id="pv_product_<%= prod.id %>"><%=prod.recommend_products.count%></a>
+            </li>
+            <li>
+              <a href="#wish" name="modal" class="count wish recommended_products" id="pv_product_<%= prod.id %>"><%=prod.wish_products.count%></a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </li>
+
+    <% end %>
+  </ul>
+</li>
+<% end %>
+<% end %>

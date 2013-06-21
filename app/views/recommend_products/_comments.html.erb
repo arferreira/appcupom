@@ -1,0 +1,26 @@
+<div id="comment-chat-body" >
+	
+	<div id="comment-chat-tx-area" <% if signed_in? USER_TYPE %>>
+	<%= form_for RecProductComment.new, :remote => true do |f| %>
+		<%= f.text_area :opinion, :rows => 4, :cols => 30 	 	%><br />
+		<%= f.hidden_field :product_id, :value => @product.id %>
+		<%= f.hidden_field :recommend_product_id, :value => @recommend_product.id %>
+		<div class="but-submit">
+		<%= f.submit "Enviar", :class => "title-box-shadow" %>
+		</div>
+	<% end %>
+	</div>
+	<% end %>
+	
+	<div id="comment-notice"></div>
+	
+	<span id="comments_count">
+		<%= pluralize(@product_comments.count, "Comentário") %>
+	</span>
+	<hr />
+
+	<div id="comments" class="content-box-back-grey">
+	  <%= render :partial => @product_comments, :locals => { :list => true }  %>
+	</div>
+	
+</div>

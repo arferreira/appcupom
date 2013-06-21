@@ -1,0 +1,66 @@
+<%= hidden_field_tag :print_this_page, @print %>
+
+<div align="center">
+  <table border="0" cellpadding="0" cellspacing="0" width="650" >
+    <tr>
+      <td height="90">
+        <img style="float:left;" width="200" src="https://lh4.googleusercontent.com/-7Loaw9MgAsY/UJj2NHpwADI/AAAAAAAABBE/LyRWP2EUUkM/s409/logo_offers.png" style="display: block;" border="0" alt="">
+        <h1 style="display: block;float: right;">#<%= @cupon.cupon_code %> </h1>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        <table border="0" cellpadding="0" cellspacing="0" width="620" align="center" style="font:14px Arial, sans-serif">
+          <tr>
+            <td>
+
+              <h4><%= @cupon.offer.partner.company_name %></h4>
+
+              <h4><%= @cupon.offer.resume %></h4>
+              <!--<div style="width:50%;float:left;margin-top:15px;">-->
+
+              <strong>Horário:</strong> <span><%= @cupon.offer.next_ocurrency %></span>
+              <br />
+
+              <strong>Regras:</strong>
+              <div>
+                <ul>
+                  <% @rules.each do |rule| %>
+                  <li><%= rule.resume_text @cupon.offer %></li>
+                  <% end %>
+                  <li>A oferta não inclui taxa de serviço.</li>
+                  <li>O voucher deverá ser utilizado hoje, no horário indicado acima.</li>
+                  <li>Não haverá o reembolso do valor pago ao site em caso de não utilização do voucher.</li>
+                  <li>Foto meramente ilustrativa.</li>
+                  <li>Não é permitido cumular este desconto com outros descontos em uma mesma visita ao estabelecimento;</li>
+                  <li>Os produtos ou o crédito ofertado deverão ser consumidos em uma única visita ao estabelecimento;</li>
+                  <li>Não haverá a devolução de valores em caso de não consumação de todos os produtos ou crédito ofertado;</li>
+                </ul>
+              </div>
+              <!-- </div>-->
+              <!--<div style="width:50%;float:left;margin-top:15px;">-->
+
+              <strong>Endereço:</strong> <span><%= @cupon.offer.partner.address %></span>
+              <br />
+
+              <strong>Código:</strong> <span><%= @cupon.cupon_code %></span>
+              <br />
+
+              <strong>Dia da compra:</strong> <span><%=l @cupon.good_date, :format => :default %></span>
+              <br />
+              <br />
+              <br />
+              <small>Ao chegar ao estabelecimento, apresente este voucher impresso ou clique no botão "Cheguei! Usar voucher!", localizado no voucher eletrônico armazenado no menu Compras do NowOn no seu celular. Ao utilizar o voucher pelo celular, identifique-se ao garçon pelo nome e sobrenome para que ele possa validar o seu voucher! Se por qualquer motivo não for possível utilizar o seu voucher pelo celular ou apresentar o voucher impresso, informe ao garçon o código indicado acima para que o seu voucher possa ser validado!</small>
+              <!-- </div>-->
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+    </tr>   
+
+  </table>
+</div>

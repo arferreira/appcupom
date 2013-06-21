@@ -1,0 +1,8 @@
+$('.explore-list').append('<%= j render @partners, :locals => { :list => true } %> ');
+<% if @partners.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@partners) %>');
+<% else %>
+  $('.pagination').remove();
+  $('.load-more').remove();
+<% end %>
+<% sleep 1 %>

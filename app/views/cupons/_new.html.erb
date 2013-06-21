@@ -1,0 +1,42 @@
+<% offer = cupon.offer %>
+<section class="cupom">
+	<div class="info-group">
+		<%= link_to "/offers/#{cupon.offer.id}" do %>
+			<h3><%= offer.partner.company_name %></h3>
+			<p><%= offer.resume %></p>
+			
+			<div class="to-left">
+				<div class="cupom-code"><span>#<%= cupon.code_or_status %></span></div>
+			</div>
+	
+			<div class="to-left valign">
+				<span class="use-time dark">
+					<%= offer.period %>
+				</span>
+			</div>
+
+		<% end %>
+	</div>
+
+
+	<ul class="horizontal-menu">
+		<li>
+			<%= form_tag url_for(:controller => "cupons", :action => "validate_user_cupon", :user_id => cupon.user.id), :id => "validate_form_" + cupon.id.to_s, :remote => true  do %>
+				<%= hidden_field_tag :partner_id, offer.partner.id %>
+				<%= hidden_field_tag :cupon_code, cupon.cupon_code %>
+				<% if cupon.validated %>
+					<span class="validated"> Voucher validado com sucesso </span>
+				<% else %>		
+					<span class="validated">
+						<%= "Você já pagou #{number_to_currency cupon.price.to_f} ao Nowon e deverá pagar #{number_to_currency (offer.price - cupon.price)} ao #{offer.partner.company_name}" %>
+					</span>
+					<!--<li class="mobile"><%= link_to_submit_id "#validate_form_" + cupon.id.to_s, "Cheguei! Usar voucher!" , :class => "std-button" %>
+					</li>-->
+				<% end %>
+				<%= link_to "Compartilhar", "/cupons/#{cupon.id}/share_cupon", :class => "std-button share" %>
+				<li class="web"><%= link_to "Imprimir", "cupons/#{cupon.id}/printed", :class => "std-button print"%></li>
+			<% end %>
+		</li>
+		
+	</ul>
+</section>

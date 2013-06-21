@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @badge.name %>
+</p>
+
+<p>
+  <b>Chave Primária*:</b>
+  <%= @badge.id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @badge.description %>
+</p>
+
+<p>
+  <b>Icone:</b>
+  <%= @badge.icon %>
+</p>
+
+* A Chave Primária da Badge não pode ser modificada! <br /><br />
+
+<%= link_to 'Edit', edit_badge_path(@badge) %> |
+<%= link_to 'Back', badges_path %>

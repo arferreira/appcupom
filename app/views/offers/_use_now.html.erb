@@ -1,0 +1,11 @@
+<script type="text/javascript">
+  $().ready(function(){
+    if(!$('.use-now').length > 0){
+      $('.container-title-use').html('<h4 class="section-title use-now">Use agora</h4>')
+    }
+  })
+</script>
+<div class="container-title-use"></div>
+<ul class="cupons">
+  <%= render @now_offers, :locals => { :list => true }  %>
+</ul>

@@ -1,0 +1,26 @@
+<%= hidden_field_tag :user_latlong, @user_latlong %>
+<%= hidden_field_tag :get_location_callback, @location_callback %>
+<%= hidden_field_tag :request_location, @request_location %>
+<div id="main-container" class="scrollable internal view-nowon">
+	<div id="main" class="clearfix">
+		
+		<article>
+			<p class="select-category select-block">
+				<%= select_tag :category, options_from_collection_for_select(@categories, "id", "name", @selected_category),:prompt => "Todas as Categorias", :onchange => "select_offer_category(this.value)" %>
+			</p>
+			<ul class="cupons">
+				<%= render @offers, :locals => { :list => true }  %>
+			</ul>
+		</article>
+		
+	</div> <!-- #main -->
+</div> <!-- #main-container -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('.pagination_now_offers').hide();
+		$('.pagination_not_now_offers').hide();
+	})
+	</script>
+
+	<% content_for :extra_scripts do %>
+	<% end %>

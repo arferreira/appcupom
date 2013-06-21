@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @rule.description %>
+</p>
+
+<p>
+  <b>Offer type:</b>
+  <%= @rule.offer_type %>
+</p>
+
+<p>
+  <b>Ttype:</b>
+  <%= @rule.ttype %>
+</p>
+
+<p>
+  <b>Default:</b>
+  <%= @rule.default %>
+</p>
+
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>

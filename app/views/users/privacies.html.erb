@@ -1,0 +1,64 @@
+<script type="text/javascript">
+	$().ready(function(){
+		initToggleList('.facebook-privacies', 'li');
+		initToggleList('.notifications-privacies', 'li');
+		initToggleList();
+		$(".toggle-item .toggle-list").hide();
+	});
+</script>
+<% content_for :extra_scripts do %>
+initToggleList('.facebook-privacies', 'li');
+initToggleList('.notifications-privacies', 'li');
+initToggleList();
+$(".toggle-item .toggle-list").hide();
+<% end %>
+<div id="main-container" class="scrollable view-internal">
+	<div id="main" class="clearfix">
+		<%= form_tag("/users/#{@user.id}/edit_privacies", :id => 'edit_privacies_form') do %> 
+		<ul class="config-list">
+			<% if @social %>
+			<li>
+				<!--<%= link_to "Desconectar", "/users/#{@user.id}/remove_facebook", :class => "bt-clean to-left"%>-->
+				<span class="bt-clean to-left">Conectado</span>
+				<div class="user-info to-left">
+					<%= image_tag @social.image_url %>
+					<span><%= @social.username%></span>
+				</div>
+					
+				<ul class="config-option-list toggle-item facebook-privacies">
+					<h3 class="toggle-title">Integração com o Facebook</h3>
+					<% @user_privacies.each do |u_priv|%>
+					<li class="toggle-list">
+						<%= check_box_tag "user_priv[#{u_priv.id}]", "true", u_priv.facebook, :class => "checkbox" %>
+						<label for="user_priv_<%= u_priv.id %>"><%= u_priv.privacy.description%></label>
+					</li>
+					<% end %>
+				</ul>
+			</li>
+			<% else %>
+				<li>
+				<%= link_to "Conectar facebook", "/facebook/login", :class => "bt-clean to-left" %>
+				</li>
+			<% end %>
+
+			<li>
+				<ul class="config-option-list toggle-item notifications-privacies">
+					<h3 class="toggle-title">Notificações</h3>
+					<% @user_mail_privacies.each do |m_priv| %>
+					<li class="toggle-list">
+						<%= check_box_tag "mail_priv[#{m_priv.id}]", "true", m_priv.choice, :class => "checkbox" %>
+						<label for="mail_priv_<%= m_priv.id %>"><%= m_priv.mail_privacy.description%></label>
+					</li>
+					<% end %>
+				</ul>
+			</li>
+		</ul>
+		<br>
+		<br>
+		<div class="wrapper">
+			<%= link_to_submit_id "#edit_privacies_form", content_tag(:span, "Salvar"), :class => "std-button bt-bigsize" %>
+		</div>
+
+		<% end %>
+	</div> <!-- #main -->
+</div> <!-- #main-container -->

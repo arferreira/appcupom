@@ -1,0 +1,40 @@
+<div id="global-container" class="dark-background">
+<div id="login-container">
+		<div id="main" class="clearfix">
+			<header>
+				<h1><span>Now On</span></h1>
+			</header>
+			
+			<article>
+				
+
+				<div class="wrapper">
+					<section>	
+						<hr />					
+						<p class="centered"><strong>Altere a sua senha!</strong></p>
+						<%= form_for(@partner, :url => partner_password_reset_path(params[:id]), :id => "loginform") do |f| %>
+						<% if @partner.errors.any? %>
+							<div class="error_messages">
+								<h2>Form is invalid</h2>
+							      <ul>
+							        <% for message in @partner.errors.full_messages %>
+							          <li><%= message %></li>
+							        <% end %>
+							      </ul>
+							</div>
+						<% end %>
+						<fieldset>
+					    	<%= f.label :password %>
+					    	<%= f.password_field :password, :placeholder => "Nova senha" %>
+					    	
+							<%= f.label :password_confirmation %>
+					    	<%= f.password_field :password_confirmation, :placeholder => "Repetir senha" %>
+					  	</fieldset>
+					  	<p class="centered"><%= link_to_submit content_tag(:span, "Alterar Senha"), :class => "std-button size2c" %></p>
+					  	</section>
+					<% end %>
+				</div>
+			</article>
+		</div> <!-- #main -->
+	</div> <!-- #main-container -->
+</div>

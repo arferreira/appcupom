@@ -1,0 +1,29 @@
+<h1>Listing offer_comments</h1>
+
+<table>
+  <tr>
+    <th>Offer</th>
+    <th>User</th>
+    <th>Comment</th>
+    <th>Approved</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @offer_comments.each do |offer_comment| %>
+  <tr>
+    <td><%= offer_comment.offer %></td>
+    <td><%= offer_comment.user %></td>
+    <td><%= offer_comment.comment %></td>
+    <td><%= offer_comment.approved %></td>
+    <td><%= link_to 'Show', offer_comment %></td>
+    <td><%= link_to 'Edit', edit_offer_comment_path(offer_comment) %></td>
+    <td><%= link_to 'Destroy', offer_comment, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Offer comment', new_offer_comment_path %>

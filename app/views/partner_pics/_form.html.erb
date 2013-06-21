@@ -1,0 +1,31 @@
+<div id="main-container">
+
+<%= form_for [@partner, @partner_pic], :html => { :multipart => true } do |f| %>
+  <div class="field">
+    <%= f.label :image %><br />
+  	<%= f.file_field :image %>
+  </div>	
+  <div class="field">
+	<label>Tipo de Foto - </label> 
+	<%= select_tag :pic_type, options_for_select([["Foto de Oferta", "O"], ["Foto do Parceiro", "P"]], @partner_pic.pic_type) %>
+  </div>
+  
+  
+  <div class="actions">
+    <%= f.submit "Salvar Imagem", :class => "padraoBtn submitDadosPerfil" %>
+  </div>
+<% end %>
+<ul class="listaFotos">
+<% unless @partner_pics.nil? %>
+<% @partner_pics.each do |partner_pic| %>
+	<li>
+		<div class="boxFotosPerfilBanner">
+		    <%= image_tag partner_pic.image.url(:banner), :class => "partner_select_pic", :id => "id_#{partner_pic.id}" %>
+		</div> 
+    </li>
+<% end %>
+<% end %>
+</ul>
+
+</div>
+

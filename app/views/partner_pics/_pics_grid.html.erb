@@ -1,0 +1,7 @@
+<%= hidden_field_tag :selected_pics, @pics_list %>
+	
+<!--<h4 class="subTituloBoxPadrao">Adicione uma foto</h4>-->
+<span class="falsoUpload padraoBtn">Adicionar Foto</span>
+<%= submit_tag "Adicione uma foto", :name => "select_pics", :id => "addFoto", :onclick => "set_selected_prods()" %>
+<div id="select_offer_pics"></div>
+

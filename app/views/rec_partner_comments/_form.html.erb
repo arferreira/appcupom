@@ -1,0 +1,25 @@
+<%= form_for [@partner, @recommend_partner, @rec_partner_comment]  do |f| %>
+  <% if @rec_partner_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rec_partner_comment.errors.count, "error") %> prohibited this rec_partner_comment from being saved:</h2>
+
+      <ul>
+      <% @rec_partner_comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<%= @recommend_partner.user.name %> <b>recomendeu</b> <%= @recommend_partner.partner.company_name %>: 
+	<%= @recommend_partner.opinion %>
+  </div>
+  <div class="field">
+    <%= f.label :opinion %><br />
+    <%= f.text_area :opinion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<%= div_for offer do %>
+
+<section class="cupom">
+	<%= link_to '', cupon %>
+	<!-- TODO pegar icone por categoria -->
+	<div class="icon arabe"><span>Sanduiche</span></div>
+	<header>
+		<div class="trend"><%= offer.next_ocurrency %></div>
+		<div class="thumb">
+			<%= image_tag offer.pic1.image.url(:banner) unless offer.partner_pic1_id.nil? %>
+		</div>
+	</header>
+	<div class="info-group">
+	<h3><%= offer.partner.name%></h3>
+	<p><%= offer.resume %></p>
+	
+	<ul class="cupom-info">
+		<li><%= offer.next_ocurrency %></li>
+		<li>999km</li>
+		<li><%= cupons_last offer %></li>
+	</ul>
+	</div>
+	</a>
+</section>
+	
+<% end %>

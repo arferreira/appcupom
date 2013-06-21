@@ -1,0 +1,48 @@
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+<div id="main-container">	
+		
+	<div class="areaTitulo">
+		<h1>Nova Familia de Produto</h1>	
+		<p class="introNovaCategoria">
+			Família é um agrupador de produtos iguais mas que possuem pequenas variações como  vários preços, tamanhos ou quantidades. Se o novo produto possuir variações, crie uma nova família com o nome mais genérico do produto como no exemplo a seguir:
+		<br/ ><br />
+		Ex: Uma pizza marguerita possuí os tamanhos pequeno e grande. Crie uma família chamada "Pizza Marguerita" e em seguida crie os produtos "Pizza Marguerita Pequena" e "Pizza Marguerita Grande".
+		</p>				
+	</div>
+	<div class="boxPadrao">
+		<div class="containerBoxPadrao">
+			<%= form_for([@partner, @product_family], :html => { :class => "formNovoProduto"}) do |f| %>
+				<% vd('VIEW', @partner, @product_family) %>
+				<% if @product_family.errors.any? %>
+				<div id="error_explanation">
+					<h2><%= pluralize(@product_family.errors.count, "error") %>: Impediram que a familia de produto fosse criada.</h2>
+	
+					<ul>
+						<% @product_family.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+						<% end %>
+	 				</ul>
+				</div>
+				<% end %>
+				
+					<div class="itemCadastroNovoProduto">
+						<label for="nomeProduto"><%= t("product.name")%></label>
+					    <%= f.text_field :name %>
+					</div>
+	
+					<div class="itemCadastroNovoProduto">
+						<label for="categorias"><%= t("product.product_type") %></label>
+						<%= collection_select(:product_family, :product_type_id, @product_types, :id, :name, :prompt => true) %>
+						<%= link_to "Nova categoria", {:controller => "product_types", :action => "new", :source => "fam"}, :class => "padraoBtn btnAddItem" %>			
+					</div>
+	
+				<div class="itemCadastroNovoProduto">
+					<%= link_to_submit content_tag(:span, "Salvar"), :class => "padraoBtn btnSalvarNovoProduto" %>
+				</div>
+				
+			<% end %>
+		</div>
+	</div>
+
+</div><!-- #main-container -->
+

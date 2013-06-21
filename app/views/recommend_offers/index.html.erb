@@ -1,0 +1,27 @@
+<h1>Listing recommend_offers</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Offer</th>
+    <th>Opinion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @recommend_offers.each do |recommend_offer| %>
+  <tr>
+    <td><%= recommend_offer.user %></td>
+    <td><%= recommend_offer.offer %></td>
+    <td><%= recommend_offer.opinion %></td>
+    <td><%= link_to 'Show', recommend_offer %></td>
+    <td><%= link_to 'Edit', edit_recommend_offer_path(recommend_offer) %></td>
+    <td><%= link_to 'Destroy', recommend_offer, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recommend offer', new_recommend_offer_path %>

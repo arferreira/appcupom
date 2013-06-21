@@ -1,0 +1,12 @@
+$('#toggle-menu').append('<%= j render("product_type") %> ');
+<% if @product_types.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate(@product_types) %>');
+<% else %>
+  $('.pagination').remove();
+  $('.load-more').remove();
+<% end %>
+
+$('.pagination').hide();
+initToggleList();
+$(".toggle-item").not(".opened").find(".toggle-list").hide();
+<% sleep 1 %>

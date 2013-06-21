@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @recommend_offer.user %>
+</p>
+
+<p>
+  <b>Offer:</b>
+  <%= @recommend_offer.offer %>
+</p>
+
+<p>
+  <b>Opinion:</b>
+  <%= @recommend_offer.opinion %>
+</p>
+
+
+<%= link_to 'Edit', edit_recommend_offer_path(@recommend_offer) %> |
+<%= link_to 'Back', recommend_offers_path %>

@@ -1,0 +1,75 @@
+<div id="global-container" class="home-login">
+	<div id="login-container">
+		<div id="main" class="clearfix">
+			<div id="homescreen" class="mobile">
+			<!--	<img src="/assets/mobile/homescreen-logo.png" alt="NowOn" class="logo-homescreen">
+				<p class="text-homescreen">
+					CUPONS EXCLUSIVOS PARA USAR AGORA
+				</p> -->
+			</div>
+			
+			<div id="index">
+				<header>
+						<%= link_to "/offers", :class => "no-decoration" do %>
+							<h1>
+								<span>Now On</span>
+							</h1>
+						<% end %>
+				</header>
+
+				<article>
+					<% if @access_type == USER_TYPE %>
+					<div class="wrapper">
+						<%= link_to content_tag(:span, "Conecte-se com o Facebook"), '/facebook/login', :class => "facebookConnect"  %>
+					</div>
+					<% end %>
+
+					<hr>
+
+					<div class="wrapper">
+						<section>
+
+							<p class="centered">
+								<% flash.each do |key, value| %>
+									<% vd('APP HTML', key, value, flash.count) %>
+									<% if value.to_s == "Usuário ou Senha inválida!" && flash.count == 1 %>
+										<strong><%= value %></strong>
+									<% elsif value.to_s == "Favor logar no sistema" %>
+										<strong>Ou faça login com seu e-mail.</strong>
+									<% else %>
+										<strong>Ou faça login com seu e-mail.</strong>
+									<% end %>
+								<% end %>
+							</p>
+							<%= form_for(:session, :url => sessions_path, :id => "loginform") do |f| %>
+							<fieldset>
+
+								<%= f.text_field :email, :placeholder => "E-mail" %>
+
+								<%= f.password_field :password, :placeholder => "Senha" %>
+
+								<%= hidden_field_tag :access_type, @access_type %>
+							</fieldset>
+							<% if @access_type == USER_TYPE %>
+							<%= link_to content_tag(:span, "Nova conta"), "/#{@access_type||'u'}/signup", :class => "std-button size2c" %>
+							<% end %>
+							
+							<%= link_to_submit content_tag(:span, "Login"), {:class => "std-button size2c"}, false %>
+							<!-- <a class="std-button size2c" href="nowon.php"><span>Login</span></a> -->
+							<% end %>
+							
+							<% if @access_type == PARTNER_TYPE %>
+								<%= link_to "Esqueci minha senha", new_partner_password_reset_path, :class => "push-tab small-text" %>
+							<% elsif @access_type == USER_TYPE %>
+								<%= link_to "Esqueci minha senha", new_password_reset_path, :class => "push-tab small-text" %>
+							<% end %>
+						</section>
+					</div>
+				</article>
+
+			</div>
+			<!-- #main -->
+		</div>
+	</div>
+	<!-- #main-container -->
+</div>

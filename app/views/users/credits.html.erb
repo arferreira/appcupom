@@ -1,0 +1,42 @@
+<div id="main-container" class="scrollable clear-padding credit-detail">
+	<div id="main" class="clearfix">
+
+		<section class="opened-cupom">
+			<div class="wrapper">
+				<h3>O que são créditos no sistema?</h3>
+
+				<p>
+					 Ao comprar vouchers ou compartilhar as boas experiências gastronômicas conosco, você ganha créditos para economizar ainda mais ao adquirir novos vouchers. Os créditos disponíveis são utilizados nas suas próximas compras e os valores gastos são debitados da relação de créditos e saldo acumulado indicado abaixo.
+				</p>
+			</div>
+		</section>
+		<ul class="values-list">
+			<li class="value-nowon">
+				<div class="local col-50">
+					<p>
+						Saldo de créditos
+					</p>
+				</div>
+				<div class="value col-50">
+					<span class="ticket"><%= number_to_currency @total_value %></span>
+				</div>
+			</li>
+			<% @user_credits.each do |credit| %>
+			<li class="value-establishment credit-description">
+				<div class="local col-50">
+					<p>
+						<%= credit.reason %>
+						<br>
+						<%=l credit.created_at.to_date, :format => :default %>
+					</p>
+				</div>
+				<div class="value col-50">
+					<span><%= number_to_currency(credit.current_value.round(2)) %></span>
+				</div>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<!-- #main -->
+</div>
+<!-- #main-container -->

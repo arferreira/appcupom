@@ -1,0 +1,53 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  
+  <ul>
+  	<li id="form_change_password" class="form_action_link"><%= t("form.change_password") if edit? @user %></li>
+	  	<div id="<%= "form_password_fields_hide" if edit? @user %>" >
+		  <div class="field">
+		    <%= f.label :password %><br />
+		    <%= f.password_field :password %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :password_confirmation %><br />
+		    <%= f.password_field :password_confirmation %>
+		  </div>
+	   </div>
+  	<li id="form_show_optional" class="form_action_link"><%= t('form.optional')%></li>
+  		<div id="form_optional_fields">
+		  <div class="field">
+		    <%= f.label :dob %><br />
+		    <%= f.date_select :dob , :start_year => 1900, :end_year => Time.now.year %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :gender %><br />
+		    <%= f.select :gender, options_for_select([[t('gender.male'), "M"], [t('gender.female'), "F"]]) %>
+		  </div>
+        </div>
+
+  </ul>
+  
+    
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

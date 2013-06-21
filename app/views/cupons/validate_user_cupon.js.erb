@@ -1,0 +1,16 @@
+<% if !@cupon.nil? && (@dist.nil? || @dist <= 0.050) %>
+	
+	alert("<%= "Voucher #{@cupon.cupon_code} aprovado!"%>");
+	
+<% elsif @dist.nil? %>
+
+	alert("Seu dispositivo não forneceu localização!")
+	
+<% elsif @dist > 0.050%>
+
+	alert("Distância mínima para validar voucher é de 50 metros! \n Sua distância atual é de <%= @dist.round(2) %> km")
+	
+<% else %>
+	alert("<%= "Voucher não validado"%>");
+
+<% end %>

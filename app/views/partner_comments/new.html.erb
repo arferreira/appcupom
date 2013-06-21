@@ -1,0 +1,29 @@
+<h1>New partner_comment</h1>
+
+
+<%= form_for(@partner_comment) do |f| %>
+  <% if @partner_comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@partner_comment.errors.count, "error") %> prohibited this partner_comment from being saved:</h2>
+
+      <ul>
+      <% @partner_comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<h3>Comentar para <%= @partner.company_name%></h3>
+
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

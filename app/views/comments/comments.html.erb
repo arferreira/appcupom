@@ -1,0 +1,55 @@
+<div id="main-container" class="scrollable">
+	<div id="main" class="clearfix view-feed feed-internal">
+
+		<ul class="feed-comment-list">
+			<li class="items items-top">
+				<div class="feed wrapper overflow">
+
+					<div class="picture-top to-left">
+						<%= image_tag @object.user.pic(:small), :alt => @object.user.name, :width => "41", :height => "41", :class => "border" %>
+					</div>
+
+					<div class="info-top ui-box to-left attach-icon buy-ticket">
+
+
+						<div class="comment">
+							<p class="user-comment-all">
+								<%= @object.timeline_resume %>
+							</p>
+						</div>
+					</div>
+
+				</div>
+			</li>
+			<% @comments.each do |comment| %>
+				<li class="items items-all">
+					<div class="feed wrapper overflow">
+						<div class="picture to-left">
+							<%= image_tag comment.user.pic(:small), :alt => comment.user.name, :width => "41", :height => "41", :class => "border" %>
+						</div>
+						<div class="info ui-box to-left">
+							<div class="comment">
+								<p class="user-comment-all chat">
+									<%= comment.opinion %>
+								</p>
+							</div>
+						</div>
+					</div>
+				</li>
+			<% end %>
+		</ul>
+
+
+		<div id="bottom-bar" class="dark-background small comment-all-box">
+			<%= form_for @form_object, :html => {:id => 'comments_form' }  do |f| %>
+				<fieldset class="to-left fit-form col-70">
+					<%= hidden_field_tag :object_id, @object.id %>
+					<%= f.text_field :opinion, :placeholder => "Escreva seu comentário", :class => "to-left", :onclick => "if(this.value=='Escreva seu comentário'){this.value='';}", :onblur => "if(this.value==''){this.value='Escreva seu comentário';}", :value => 'Escreva seu comentário', :html => {:id => 'comments_input' } %>
+				</fieldset>
+				
+				<%= link_to_submit_comment_id "#comments_form", content_tag(:span, "Enviar"), :class => "std-button fit to-right" %>
+			<% end %>			
+		</div>
+
+	</div> <!-- #main -->
+</div> <!-- #main-container -->

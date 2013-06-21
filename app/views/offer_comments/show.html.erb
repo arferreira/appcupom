@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Offer:</b>
+  <%= @offer_comment.offer %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @offer_comment.user %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @offer_comment.comment %>
+</p>
+
+<p>
+  <b>Approved:</b>
+  <%= @offer_comment.approved %>
+</p>
+
+
+<%= link_to 'Edit', edit_offer_comment_path(@offer_comment) %> |
+<%= link_to 'Back', offer_comments_path %>

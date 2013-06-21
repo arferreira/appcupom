@@ -1,0 +1,20 @@
+<% @partners_rec.each do |rec| %>
+	
+<li>
+	<div class="user-data">
+		<%= image_tag @user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
+		<p><span><%= @user.name %></span> recomendou o estabelecimento <span><%= rec.partner.company_name %></span></p>
+	</div>
+	
+	<% if rec.opinion != ""%>
+		<div class="user-comment-data">
+			<%= rec.opinion %> 
+		</div>
+	<% end %>
+	
+</li>
+<% end %>
+
+
+
+

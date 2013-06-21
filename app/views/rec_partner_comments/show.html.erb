@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Recommend partner:</b>
+  <%= @rec_partner_comment.recommend_partner %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @rec_partner_comment.user %>
+</p>
+
+<p>
+  <b>Opinion:</b>
+  <%= @rec_partner_comment.opinion %>
+</p>
+
+
+<%= link_to 'Edit', edit_rec_partner_comment_path(@rec_partner_comment) %> |
+<%= link_to 'Back', rec_partner_comments_path %>

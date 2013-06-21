@@ -1,0 +1,2 @@
+module PartnerCommentsHelper
+end

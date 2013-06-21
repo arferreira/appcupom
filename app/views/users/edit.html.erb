@@ -1,0 +1,109 @@
+<div id="main-container" class="scrollable clear-padding">
+	<div id="main" class="clearfix">
+			<%= form_for(@user) do |f| %>
+			<section class="config-section">
+				<% if @user.errors.any? %>
+				    <div id="error_explanation">
+				      <ul>
+				      <% @user.errors.full_messages.each do |msg| %>
+				        <li><%= msg %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				<% end %>
+				<ul id="toggle-menu" class="clear-list toggle-list">
+					<li class="toggle-item">
+						<h4 class="toggle-title">
+							<a href="#" id="info-pessoais-toggle">Perfil</a>
+						</h4>
+						
+						<div class="wrapper" id="info-pessoais-form">
+								<section>
+										<fieldset>
+											<%= f.label :name %><%= f.text_field :name, :placeholder => "Nome" %>
+											<%= f.label :email %><%= f.text_field :email, :placeholder => "E-mail" %>
+											<% if  @user.dob.nil? %>
+												<%= f.label :dob %><%= f.text_field :dob, :placeholder => "Nascimento", :value => @user.dob %>
+											<% else %>
+												<%= f.label :dob %><%= f.text_field :dob, :placeholder => "Nascimento", :value => @user.dob.strftime("%d/%m/%Y") %>
+											<% end %>
+											<%= f.label :gender %><%= f.select :gender, options_for_select([ ['Sexo'], [t('gender.male'), "M"], [t('gender.female'), "F"]], :selected => @user.gender, :disabled => "Sexo") %>
+										</fieldset>
+								</section>
+						</div>
+						
+						
+					</li>
+
+					<li class="toggle-item">
+						<h4 class="toggle-title">
+							<%= link_to "Facebook e notificações", "/users/#{@user.id}/privacies" %>
+						</h4>
+					</li>
+
+					<li class="toggle-item">
+						<h4 class="toggle-title">
+							<a href="#" id="info-password-toggle">Alterar senha</a>
+						</h4>
+						
+						<div class="wrapper" id="info-password-form">
+								<section>
+										<fieldset>
+											 <%= f.label :password %><%= f.password_field :password, :placeholder => "Senha" %>
+											 <!--<%= f.label :password_confirmation %><%= f.password_field :password_confirmation, :placeholder => "Repetir senha" %>-->
+										</fieldset>
+								</section>
+						</div>
+						
+					</li>
+
+					<li class="toggle-item">
+						<h4 class="toggle-title">
+							<a href="#" id="info-pic-toggle">Alterar foto</a>
+						</h4>
+						
+						<div class="wrapper" id="info-pic-form">
+								<section>
+										<fieldset>
+											<%= f.file_field :avatar %>
+										</fieldset>
+								</section>
+						</div>
+					</li>
+
+					<li class="toggle-item">
+						<h4 class="toggle-title">
+							<%= link_to "Logout", "/signout"%>
+						</h4>
+					</li>
+				</ul>
+			</section>
+			<% end %>
+			<div class="wrapper">
+				<%= link_to_submit_id "#edit_user_"+@user.id.to_s , content_tag(:span, "Salvar"), :class => "std-button bt-bigsize" %>
+			</div>
+			<br />
+			<br />
+			<br />
+			<br />
+	</div> <!-- #main -->
+</div> <!-- #main-container -->
+
+
+<!--
+<script type="text/javascript" src="/js/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.min.js"></script>
+-->
+<%= javascript_include_tag "/assets/jquery.maskedinput" %>
+<%= javascript_include_tag "/assets/jquery.validate.min" %>
+<script type="text/javascript">
+(function($) {
+	$(document).ready(function() {
+		$('#user_dob').focus(function() {
+			$(this).mask('99/99/9999');
+		}).blur(function() {
+			$(this).unmask();
+		});
+	});
+})(jQuery);
+</script>

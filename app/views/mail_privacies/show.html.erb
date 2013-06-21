@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Description:</b>
+  <%= @mail_privacy.description %>
+</p>
+
+<p>
+  <b>Default:</b>
+  <%= @mail_privacy.default %>
+</p>
+
+<p>
+  <b>User type:</b>
+  <%= @mail_privacy.user_type %>
+</p>
+
+
+<%= link_to 'Edit', edit_mail_privacy_path(@mail_privacy) %> |
+<%= link_to 'Back', mail_privacies_path %>

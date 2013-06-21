@@ -1,0 +1,23 @@
+<h1>Listing partners</h1>
+
+<table>
+  <tr>
+    <th>usuario</th>
+    <th>estabelecimento</th>
+    <th>comentario</th>
+  </tr>
+  
+
+<% @partner_comments.each do |comment| %>
+  <tr>
+    <td><%= comment.user.name %></td>
+    <td><%= comment.partner.company_name %></td>
+    <td><%= comment.comment %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br />
+
+<%= link_to 'Comentar', new_partner_comment_path %>

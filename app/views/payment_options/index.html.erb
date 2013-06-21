@@ -1,0 +1,24 @@
+<h1>Listing payment_options</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @payment_options.each do |payment_option| %>
+  <tr>
+  	<td><%= payment_option.name %></td>
+    <td><%= link_to 'Show', payment_option %></td>
+    <td><%= link_to 'Edit', edit_payment_option_path(payment_option) %></td>
+    <td><%= link_to 'Destroy', payment_option, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Payment option', new_payment_option_path %>
+

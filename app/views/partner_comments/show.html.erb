@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Partner:</b>
+  <%= @partner_comment.partner %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @partner_comment.user %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @partner_comment.comment %>
+</p>
+
+<p>
+  <b>Approved:</b>
+  <%= @partner_comment.approved %>
+</p>
+
+
+<%= link_to 'Edit', edit_partner_comment_path(@partner_comment) %> |
+<%= link_to 'Back', partner_comments_path %>

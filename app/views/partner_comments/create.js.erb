@@ -1,0 +1,10 @@
+/* Insert a notice between the last comment and the comment form */
+
+/* Replace the count of comments */
+$("#comments_count").html("<%= pluralize(@comments_num, 'Comentário') %>");
+
+/* Add the new comment to the bottom of the comments list */
+$("#comments").prepend("<%= escape_javascript(render(@comment)) %>");
+
+/* Reset the comment form */
+$("#partner_comment_comment").val('');

@@ -1,0 +1,46 @@
+<?php
+$title = "Recomendar";
+$back = true;
+$menu = false;
+$submenu = false;
+$search = false;
+
+include 'includes/includes.php';
+include 'includes/header.php';
+?>
+<br /><%= form_for [@partner, @offer, @recommend_offer] do |f| %>
+  <% if @recommend_offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@recommend_offer.errors.count, "error") %> prohibited this recommend_offer from being saved:</h2>
+
+      <ul>
+      <% @recommend_offer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div id="main-container" class="scrollable">
+		<div id="main" class="clearfix view-share">
+						
+				<section class="share-section ">
+						<div class="info-group">
+							<div class="icon <%= get_category_icon @partner %>"></div>
+							<h3><%= @offer.partner.company_name %></h3>
+							<p><%= @offer.resume%></p>
+						</div>
+					
+					<div class="share-field ">
+						<%= f.text_area :opinion, :placeholder => "Por que recomenda essa oferta?" %>
+					</div>
+
+					<%= link_to_submit content_tag(:span, "Recomendar"), :class => "std-button bt-bigsize" %>
+				</section>
+
+			
+		</div> <!-- #main -->
+	</div> <!-- #main-container -->
+<% end %>
+<?php
+include 'includes/footer.php'
+?>

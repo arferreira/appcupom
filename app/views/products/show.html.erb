@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+  <% if signed_in? USER_TYPE and @product.not_recommended?(current_user) %>
+  <div> 
+  	<%= link_to "Recomendar " + h(@product.name), n_rec_prod_path(@partner, @product)  %>
+  </div>
+  <% elsif signed_in? USER_TYPE and @product.recommended?(current_user) %>
+  <div>
+  	<%= link_to 'Deixar de Recomendar', [@partner, @product.recommended?(current_user)], confirm: 'Tem certeza?', method: :delete %>
+  </div>
+  <% end %>
+
+  <% if signed_in? USER_TYPE and @product.not_wished?(current_user) %>
+  <div> 
+  	<%= link_to "Desejar " + h(@product.name), n_wish_prod_path(@partner, @product)  %>
+  </div>
+  <% elsif signed_in? USER_TYPE and @product.wished?(current_user) %>
+  <div>
+  	<%= link_to 'Não Desejar!', [@partner, @product.wished?(current_user)], confirm: 'Tem certeza?', method: :delete %>
+  </div>
+  <% end %>
+
+<table>
+	<tr>
+		<td>
+			<p>
+			  <b><%= t("product.name")%>:</b>
+			  <%= @product.name %>
+			</p>
+			
+			<p>
+			  <b><%= t("product.description")%>:</b>
+			  <%= @product.description %>
+			</p>
+			
+			<p>
+			  <b><%= t("product.price")%>:</b>
+			  <%= @product.price %>
+			</p>
+			
+			<p>
+			  <b><%= t("product.product_type")%>:</b>
+			  <%= @product.product_type.name %>
+			</p>
+		</td>
+		<td valign ="top" style="padding-left: 100px">
+			
+			<div >Recomendações: </div>
+			<div> <%= render 'recommendations' %> </div>
+		</td>
+	</tr>
+</table>

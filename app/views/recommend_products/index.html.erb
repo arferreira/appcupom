@@ -1,0 +1,27 @@
+<h1>Listing recommend_products</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Product</th>
+    <th>Opinion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @recommend_products.each do |recommend_product| %>
+  <tr>
+    <td><%= recommend_product.user %></td>
+    <td><%= recommend_product.product %></td>
+    <td><%= recommend_product.opinion %></td>
+    <td><%= link_to 'Show', recommend_product %></td>
+    <td><%= link_to 'Edit', edit_recommend_product_path(recommend_product) %></td>
+    <td><%= link_to 'Destroy', recommend_product, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recommend product', new_recommend_product_path %>

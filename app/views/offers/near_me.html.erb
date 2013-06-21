@@ -1,0 +1,43 @@
+<!--
+<%= form_tag  @offer, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :description => nil %>
+  </p>
+<% end %>
+-->
+<div id="main-container" class="scrollable internal view-nowon">
+		<div id="main" class="clearfix">
+			
+			<article>
+				<% unless @gps %>
+					<%= link_to root_path, :class => "no-decoration" do %>
+					<div id="warning-home-show">
+						Para atualizar sua localização clique aqui.
+					</div>
+					<% end %>
+				<% end %>
+				
+				<%= hidden_field_tag :user_latlong, @user_latlong %>
+				<div class="offers-items">
+					<% if @searched_offers %>
+						<%= render @searched_offers, :locals => { :list => true }  %>
+					<% else %>
+
+						<!-- User Agora -->
+						<%= render "use_now" %>
+
+						<!-- Use Mais Tarde -->
+						<% unless @now_offers.next_page %>
+							<h4 class="section-title not-use-now">Use mais tarde</h4>		
+							<%= render "not_use_now" %>
+						<% end %>
+					<% end %>
+				</div>
+				<%= will_paginate @now_offers, :param_name => 'now_offers', :class => 'pagination_now_offers'%>
+				<%= will_paginate @not_now_offers, :param_name => 'not_now_offers', :class => 'pagination_not_now_offers' %>
+				<div class="clearfix"></div>
+			</article>
+			
+		</div> <!-- #main -->
+	</div> <!-- #main-container -->

@@ -1,0 +1,67 @@
+<div id="main-container" class="scrollable internal">
+	<div id="main" class="clearfix">
+		<% if params[:no_location] || !@gps %>
+			<%= link_to get_location_before_link({controller: "partners", action: (params[:no_location] ? "near_me" : "index_posts")}), :class => "no-decoration" do %>
+			<div id="warning-home-show">
+				<%= params[:no_location] ? "Desculpe, não temos como encontrar os parceiros mais próximos sem saber onde você está. Atualize sua localização clicando aqui!" : "Clique aqui para atualizar sua localização!" %>
+			</div>
+			<% end %>
+		<% end %>
+		<% unless params[:search].blank? %>
+			<%= link_to url_for(:controller => "partners", :action => params[:action]), :class => "no-decoration" do %>
+				<div id="warning-home-show">
+					Você está buscando por <strong><%=params[:search]%></strong>. Para exibir todos os restaurantes, clique aqui.
+				</div>
+			<% end %>
+		<% end %>
+
+		<ul class="explore-list">
+			<%= render @partners, :locals => { :list => true }  %>
+		</ul>
+		
+		<div style="padding:20px 0;">
+			<%= will_paginate @partners %>
+		</div>
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('.pagination').hide();
+			})
+		</script>
+		<% content_for :extra_scripts do %>
+		$('.pagination').hide();
+		var paginating = false;
+		$(window).unbind("scroll");
+		if ($('.pagination').length) {
+    		$(window).bind("scroll", function() {
+	      		var url;
+	      		url = $('.pagination .next_page').attr('data-href');
+	      		if(url === undefined){
+		      		url = $('.pagination .next_page').attr('href')
+		      	}
+	      		console.log("---------------=====================---------------")
+	      		console.log("!paginating: " + !paginating)
+	      		console.log("url:" + url)
+	      		console.log("window: " + $(window).scrollTop() > $(document).height() - $(window).height() - 380)
+	      		console.log(!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 380)
+	      		if (!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 380 || false) {
+	      			paginating = true;
+	      			console.log("ENTROU EM: " + url);
+					$('.pagination').show().html("<div class='loader-products'></div>");
+					$.ajaxSetup({ cache: true });
+					return $.getScript(url, function(){
+						$('.pagination').hide();
+	      				paginating = false;
+	      				$("#header-container a, .round a").each(function(i){
+	      					ajaxlinkbuilder($(this));
+	      				})
+	        		});
+	      		}
+	    	});
+	    }
+		<% end %>
+
+	</div>
+	<!-- #main -->
+</div>
+<!-- #main-container -->

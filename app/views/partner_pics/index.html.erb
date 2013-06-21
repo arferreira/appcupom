@@ -1,0 +1,31 @@
+<div id="main-container">
+	
+<ul class="listaFotos">
+<% if @partner_pics.nil? || @partner_pics.empty? %>
+	<h2>Nenhuma imagem cadastrada</h2>
+<% else %>
+<% @partner_pics.each do |partner_pic| %>
+	<li>
+		<div class="boxFotosPerfilBanner" onmouseover="preventDoubleClick = true;">
+		    <%= image_tag partner_pic.image.url(:banner), :class => "partner_select_pic", :id => "id_#{partner_pic.id}" %>
+		</div> 
+    </li>
+<% end %>
+<% end %>
+</ul>
+
+
+<div>
+<% if !@partner_pics.nil? && !@partner_pics.empty? %>
+	<%= form_tag (url_for :controller => "partner_pics", :action => "select_partner_pics" ), :multipart => true, :id => "form_select_pics" do%>
+		<%= hidden_field_tag :num_select, @num_select, :id => "num_select_input" %>
+		<%= hidden_field_tag :selected_pics, "", :id => "selected_pics_input" %>
+		<%= hidden_field_tag :select_callback, @select_callback, :id => "select_callback"  %>
+		
+		<%= link_to_submit_pics_id "#form_select_pics", content_tag(:span, "Escolher"), :class => "padraoBtn" %>
+	<% end %>
+<% end %>
+</div>
+
+</div>
+

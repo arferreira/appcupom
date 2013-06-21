@@ -1,0 +1,27 @@
+<h1>Listing wish_product_comments</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Wish product</th>
+    <th>Opinion</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @wish_product_comments.each do |wish_product_comment| %>
+  <tr>
+    <td><%= wish_product_comment.user %></td>
+    <td><%= wish_product_comment.wish_product %></td>
+    <td><%= wish_product_comment.opinion %></td>
+    <td><%= link_to 'Show', wish_product_comment %></td>
+    <td><%= link_to 'Edit', edit_wish_product_comment_path(wish_product_comment) %></td>
+    <td><%= link_to 'Destroy', wish_product_comment, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Wish product comment', new_wish_product_comment_path %>

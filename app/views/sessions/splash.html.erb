@@ -1,0 +1,25 @@
+<div id="global-container" class="home-login">
+	<div class="web">
+		<br />
+		<br />
+		<br />
+		<br />
+	</div>
+	<div id="homescreen" class="homescreen-web">
+		<!-- <div id="homescreen" class="mobile"> -->
+		<img src="/assets/mobile/homescreen-logo.png" alt="NowOn" class="logo-homescreen">
+		<br />
+		<br />
+		<p class="text-homescreen">
+			CUPONS EXCLUSIVOS PARA USAR AGORA
+		</p>
+		<br />
+		<p style="text-align: center">
+			RECEBENDO LOCALIZAÇÃO
+		</p>
+	</div>
+</div>
+
+<% if flash[:notice] == 'Usuário criado com sucesso' %>
+	<%= google_adwords %>
+<% end %>

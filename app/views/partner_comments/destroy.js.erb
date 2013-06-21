@@ -1,0 +1,4 @@
+/* Eliminate the comment by fading it out */
+$('#partner_comment_<%= @comment.id %>').slideUp('fast');
+/* Replace the count of comments */
+$("#comments_count").html("<%= pluralize(@comments_num, 'Comentario') %>");

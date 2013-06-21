@@ -1,0 +1,218 @@
+	<div id="main-container">
+	  <%= form_for(@partner, :html => { :class => "formCadastroPerfil2"}) do |f| %>
+	  <div class="formCadastroPerfil">
+		<div class="areaTitulo">				
+			<div class="limitadorTitulo">
+				<% if @partner %>
+					<h1 class="titEstabelecimento"> 	<span class="establishment-icon brasileira"></span>Cadastro</h1>
+				<% else %>
+					<h1 class="titEstabelecimento"> 	<span class="establishment-icon <%= @partner.category.icon %>"></span><%= @partner.company_name %></h1>
+				<% end %>
+			</div>
+			<%= f.submit "Salvar alterações", :class => "padraoBtn submitDadosPerfil" %>
+		</div>		
+		<div class="boxPadrao">
+			<h3 class="titBoxPadrao">Perfil</h3>					
+			
+		<!--	<form action="" name="" class="formCadastroPerfil">  -->
+				<% if @partner.errors.any? %>
+					<div id="error_explanation">
+						<h2><%= pluralize(@partner.errors.count, "erro") %> impediram que o parceiro fosse salvo:</h2>
+						<ul>
+							<% @partner.errors.full_messages.each do |msg| %>
+							<li>
+								<%= msg %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+				<div class="col1CadPerfil">
+					<div class="itemcadastro">
+						<label for="nomeFantasia">Logo</label>
+						<div class="containerLogoPerfil">
+							<div class="boxLogoPerfil">
+								<%= image_tag @partner.pic(:perfil) %>
+							</div>	 								
+<!-- 							<span class="falsoUpload padraoBtn">Enviar Foto</span> -->
+							
+							<%= f.file_field :avatar, :id => "file2" %>
+																	
+						</div>	
+					</div>
+					<div class="itemcadastro">
+						<label for="nomeFantasia"><%= t("partner.company_name")%></label>
+						<%= f.text_field :company_name, :id => "nomeFantasia" %>
+					</div>
+					<div class="itemcadastro">
+						<label for=""><%= t("partner.trade_name")%></label>
+						<%= f.text_field :trade_name, :id => "razaoSocial" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="cnpj"><%= t("partner.cnpj")%></label>
+						<%= f.text_field :cnpj, :id => "cnpj", :maxlength => "18" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="categoria">Categoria</label>
+						<%= collection_select(:partner, :category_id, Category.all, :id, :name, :prompt => true) %>			
+					</div>
+					<div class="itemcadastro">
+						<label for="anoDeInauguracao"><%= t("partner.foundation")%></label>
+						<%= f.date_select :foundation, {:start_year => Date.current.year, :end_year => 1920, :discard_day => true, :discard_month => true}, :selected => @partner.foundation, :id => "anoDeInauguracao" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="capacidade"><%= t("partner.capacity")%></label>
+						<%= f.number_field :capacity, :id => "capacidade" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="nomeContato"><%= t("partner.contact_name")%></label>
+						<%= f.text_field :contact_name, :id => "nomeContato" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="telefone"><%= t("partner.primary_phone")%></label>
+						<%= f.text_field :primary_phone, :id => "telefone", :maxlength => "14" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="telefone"><%= t("partner.secondary_phone")%></label>
+						<%= f.text_field :secondary_phone, :id => "celular", :maxlength => "14" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="email"><%= t("partner.email")%></label>
+						<%= f.text_field :email, :id => "email", :type => "email" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="site"><%= t("partner.site")%></label>
+						<%= f.text_field :site, :id => "site" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="site"><%= t("partner.facebook")%></label>
+						<%= f.text_field :facebook_link, :id => "nomeRedeSocial" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="site"><%= t("partner.twitter")%></label>
+						<%= f.text_field :twitter_link, :id => "nomeRedeSocial" %>
+					</div>
+				</div>
+				<div class="col2CadPerfil">
+					<div class="itemcadastro">
+						<label for="descricao">Descrição</label>
+						<%= f.text_area :description, :id => "descricao" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="horarios">Horários de Funcionamento</label>
+						<%= f.text_area :working_schedule, :id => "horarios" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="cep">CEP</label>
+						<%= f.text_field :cep, :id => "cep", :maxlength => 9 %>
+					</div>
+					<div class="itemcadastro">
+						<label for="logradouro">Logradouro</label>
+						<%= f.text_field :address, :id => "logradouro" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="numero">Número</label>
+						<%= f.text_field :add_number, :id => "numero" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="complemento">Complemento</label>
+						<%= f.text_field :add_complement, :id => "complemento" %>
+					</div>
+						<div class="itemcadastro">
+							<label for="bairro">Bairro</label>
+							<%= f.text_field :add_county, :id => "bairro" %>
+						</div>
+					<div class="itemcadastro">
+						<label for="cidade">Cidade</label>
+						<%= collection_select(:partner, :city_id, City.all, :id, :name, :prompt => true) %>
+					</div>
+					<div class="itemcadastro">
+						<label for="estado">Estado</label>
+						<%= f.text_field :add_state, :id => "estado" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="latitude"><%= t("partner.latitude")%></label>
+						<%= f.text_field :latitude, :id => "latitude" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="longitude"><%= t("partner.longitude")%></label>
+						<%= f.text_field :longitude, :id => "longitude" %>
+					</div>
+					<div class="itemcadastro">
+						<label for="longitude"><%= t("partner.password")%></label>
+						<%= f.password_field :password %>
+					</div>
+					<div class="itemcadastro">
+						<label for="longitude"><%= t("partner.password_confirmation") %></label>
+						<%= f.password_field :password_confirmation %>
+					</div>
+				</div>
+		<!--	</form>  -->
+			
+		</div>
+		
+		</div>
+		<% unless @partner.id.nil? %>
+		<div class="boxPadrao">
+			<h3 class="titBoxPadrao">Fotos</h3>					
+			<div class="containerBoxPadrao">
+				<%= link_to 'Adicionar Fotos', "/partners/#{@partner.id}/partner_pics/new", :class => "padraoBtn" %>
+				<ul class="listaFotos">
+					<% @partner.partner_pics.each do |pic| %>
+					<li>
+						<div class="boxFotosPerfil">
+							<%= image_tag pic.image.url(:small) %> 
+						</div> 
+						<%= link_to "X", "/partners/#{@partner.id}/partner_pics/#{pic.id}/destroy", {:class => "btnFalse"} %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+			
+		</div>
+		<% end %>
+		
+		<div class="col1Perfil">
+			<div class="boxPadrao facilidades">
+				<h3 class="titBoxPadrao"><%= t("partner.facilities") %></h3>					
+					<table class="padraoTabela tabelaPerfil">
+						<tr>
+							<%= hidden_field_tag "partner[facility_ids][]", nil %>
+							<% Facility.all.each_with_index do |facility, index| %>
+							<td>
+								<%= check_box_tag "partner[facility_ids][]", facility.id, @partner.facility_ids.include?(facility.id), id: dom_id(facility) %>
+								<%= label_tag dom_id(facility), facility.name %>
+							</td>
+								<% if index.odd? %>
+									</tr> <tr>
+								<% end %>
+							
+							<% end %>
+						</tr>
+					</table>		
+			</div>
+
+		</div>
+		<div class="col2Perfil">
+			<div class="boxPadrao">
+				<h3 class="titBoxPadrao"><%= t("partner.payment_option") %></h3>		
+				<table class="padraoTabela tabelaPerfil">
+					<tr>
+						<%= hidden_field_tag "partner[payment_option_ids][]",nil %>
+						<% PaymentOption.all.each_with_index do |payment_option, index| %>
+							<td>
+								<%= check_box_tag "partner[payment_option_ids][]", payment_option.id, @partner.payment_option_ids.include?(payment_option.id), id: dom_id(payment_option) %>
+								<%= label_tag dom_id(payment_option), payment_option.name %>
+							</td>
+								<% if index.odd? %>
+									</tr> <tr>
+								<% end %>
+						<% end %>
+					</tr>
+				</table>	
+			</div>
+		</div>
+	<% end %>
+
+</div><!-- #main-container -->
+

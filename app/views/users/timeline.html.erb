@@ -1,0 +1,43 @@
+<div id="main-container" class="scrollable">
+	<div id="main" class="clearfix view-feed">
+		<div class="timeline-items">
+			<% if @timeline_items.nil?%>
+			Sua timeline está vazia.
+			<% else %>
+			<%= render :partial => @timeline_items, :locals => { :list => true } %>
+			<% end %>
+		</div>
+		<div style="padding:20px 0;">
+			<%= will_paginate @timeline_items %>
+		</div>
+	</div>
+	<!-- #main -->
+</div>
+<!-- #main-container -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.pagination').hide();
+	})
+</script>
+<% content_for :extra_scripts do %>
+  if ($('.timeline-items').length) {
+    var paginating = false;
+    if ($('.pagination').length) {
+      $(window).bind("scroll", function() {
+        var url;
+        url = $('.pagination .next_page').attr('data-href');
+        if(url === undefined) url = $('.pagination .next_page').attr('href');
+        if (!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 380) {
+          paginating = true
+          $('.pagination').show().html("<div class='loader-products'></div>");
+          $.ajaxSetup({ cache: true });
+          return $.getScript(url, function(){
+            $('.pagination').hide();
+            paginating = false;
+          });
+        }
+      });
+      $(window).trigger("scroll");
+    }
+  };
+<%end %>

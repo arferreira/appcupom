@@ -1,0 +1,12 @@
+<div id="comment-chat-body" >
+	
+	<% @recommend_products.each do |rec| %>
+		<p>
+		  <b>Opinião do <%= link_to rec.user.name, rec.user %>:</b>  <br />
+		  - <%= rec.opinion %>
+		</p>
+		<%= link_to 'Comentar', prod_rec_path(@partner, @product, rec)  %>
+	
+	<% end %>
+	
+</div>

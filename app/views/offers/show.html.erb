@@ -1,0 +1,247 @@
+<%= content_for :head do %>
+	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" /> 
+	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:offer" /> 
+	<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" /> 
+	<meta property="og:title"  content="<%= @offer.company_name %>" /> 
+	<meta property="og:description"   content="<%= @offer.resume %>" /> 
+	<meta property="og:image"  content="http://dev.nowon.com.br/assets/mobile/homescreen-logo.png" />
+<%- end %>
+<%= hidden_field_tag :get_location_callback, @location_callback %>
+<%= hidden_field_tag :cached_location, @cached_location %>
+
+<%= hidden_field_tag :partner_latlong, @partner.latitude.to_s + "|" + @partner.longitude.to_s %>
+<%= hidden_field_tag :partner_name, @partner.name %>
+<%= hidden_field_tag :user_latlong %>
+
+<div id="main-container" class="scrollable clear-padding view-cupom">
+	<div id="main" class="clearfix">
+		
+			<section class="opened-cupom">
+				<div>
+					<header>
+						<div class="trend">
+							<%= @offer.next_ocurrency %>
+						</div>
+						<div class="thumb">
+							<%= image_tag @offer.pic1.image.url(:banner_big) unless @offer.partner_pic1_id.nil? %>
+						</div>
+					</header>
+					<div class="wrapper">
+						<h3><%= @offer.resume %></h3>
+						</a>
+
+						<ul class="cupom-info">
+							<li><%= @offer.next_ocurrency %>&nbsp;</li>
+							<li><span id="distance"></span></li>
+							<!--<li><%= cupons_last @offer%></li>-->
+						</ul>
+
+						<ul>
+							<% if !@offer.description.nil? && @offer.description != "" %>
+							<li>
+								<%= @offer.description %>
+							</li>
+							<% end %>
+							<% @rules.each do |rule| %>
+								<li>
+									<%= rule.resume_text @offer unless (rule.get_offer_rule @offer) == nil %>
+									<!-- rule.description %> |
+									< text_rule_value rule.ttype, (offer_rule_value (@offer.id.nil? ? nil : @offer), rule) -->
+								</li>
+							<% end %>
+							<li>A oferta não inclui taxa de serviço.</li>
+							<li>O voucher deverá ser utilizado hoje, no horário indicado acima.</li>
+							<!--<li>Não haverá o reembolso do valor pago ao site em caso de não utilização do voucher.</li>-->
+							<li>Foto meramente ilustrativa.</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="wrapper">
+				<div>
+					<div class="box">
+						<div>
+							<!--<a href="#recommends" name="modal">-->
+							<span class="recommend-menu"><%= @recommend_products_count %></span></br>
+							recomendaram o cardápio
+							<!--</a>-->
+						</div>
+					</div>
+
+					<div class="box">
+						<div>
+							<!--<a href="#recommend-establishment" name="modal">-->
+							<span class="recommend-establishment"><%= @recommend_partners_count %></span></br>
+							recomendaram o estabelecimento
+							<!--</a>-->
+						</div>
+					</div>
+
+					<div class="box">
+						<div>
+							<!--<a href="#wish" name="modal">-->
+								<span class="wish-menu"><%= @wish_products_count %></span></br>
+								desejaram o cardápio
+							<!--</a>-->
+						</div>
+					</div>
+				</div>
+				</div>
+			</section>
+			
+			<% unless @offer.is_credit_offer? %>
+				<section class="group">
+					<div class="wrapper">
+						<h4>Cardápio</h4>
+						<% @products.each do |product| %>
+							<h5><%= product.name %></h5>
+							<p class="sub-text"><%= product.description %></p>
+						<% end %>
+					</div>
+				</section>
+			<% end %>
+			
+			<section class="group">
+				<div class="wrapper">
+					<h4>Endereço</h4>
+					<div class="to-left col-66">
+						<p class="address to-left"><%= @partner.get_address %></p>
+					</div>
+					<div class="to-right col-34">
+						<%= link_to "Ver perfil", partner_path(@partner), :class => "button-info to-right" %>
+					</div>
+					<div id="map_canvas">
+						<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@partner.latitude.to_s},#{@partner.longitude.to_s}&zoom=15&size=597x102&sensor=false&markers=#{@partner.latitude.to_s},#{@partner.longitude.to_s}"
+							%>
+					</div>
+				</div>
+			</section>
+
+			<section class="group">
+				<div class="wrapper">
+					<h4>Pagamento</h4>
+					<p><%= @partner.payment_option_text %></p>
+				</div>
+			</section>
+			<br /><br /><br />
+	</div> <!-- #main -->
+</div> <!-- #main-container -->
+
+<div id="bottom-bar" class="dark-background">
+	<div class="wrapper">
+		<% unless mobile_device? %>
+			<p class="highlights">
+				<%= @offer.resume %>
+			</p>
+		<% end %>
+		<% if @offer.is_today? && !@offer.is_full? && !@offer.paused && (user_type == USER_TYPE || current_user.nil? ) && @offer.active %>
+	  		<%= link_to content_tag(:span, "Comprar voucher"), {:controller => "offers", :action => "payment_info"}, :class => "std-button bt-bigsize" %>
+	  	<% elsif @partner_user &&  !@offer.active %>
+	  		<%= link_to content_tag(:span, "Editar oferta"), [:edit, @partner_user, @offer], :class => "padraoBtn", :title => "Editar oferta", :class => "std-button bt-bigsize" %>
+	  	<% end %>
+	  	
+		
+		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
+	</div>
+</div>
+
+
+
+<div id="boxes">
+
+	<div id="recommends" class="window">
+		<div class="wrapper">
+			<h2>Ver recomendações</h2>
+		
+			<!-- Botão para fechar a janela tem class="close" -->
+			<a href="#" class="close">Fechar [X]</a>
+		
+			<div class="content-container">
+				<div class="content">
+					<ul class="list-users wishes">
+						<% @recommend_products.each do |recom|%>
+						<li>
+							<div class="user-data">
+								<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
+								<p><span><%= recom.user.name %></span> recomendou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
+							</div>
+
+							<% if recom.opinion != ""%>
+							<div class="user-comment-data">
+								<%= recom.opinion %>
+							</div>
+							<% end %>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+
+	<div id="recommend-establishment" class="window">
+		<div class="wrapper">
+			<h2>Ver recomendações</h2>
+		
+			<!-- Botão para fechar a janela tem class="close" -->
+			<a href="#" class="close">Fechar [X]</a>
+		
+			<div class="content-container">
+				<div class="content">
+					<ul class="list-users wishes">
+						<% @recommend_partners.each do |recom|%>
+						<li>
+							<div class="user-data">
+								<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
+								<p><span><%= recom.user.name %></span> recomendou o estabelecimento <span><%= recom.partner.company_name %></span></p>
+							</div>
+
+							<% if recom.opinion != ""%>
+							<div class="user-comment-data">
+								<%= recom.opinion %>
+							</div>
+							<% end %>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<div id="wish" class="window">
+		<div class="wrapper">
+			<h2>Ver desejos</h2>
+		
+			<!-- Botão para fechar a janela tem class="close" -->
+			<a href="#" class="close">Fechar [X]</a>
+		
+			<div class="content-container">
+				<div class="content">
+					<ul class="list-users wishes">
+						<% @wish_products.each do |recom|%>
+						<li>
+							<div class="user-data">
+								<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
+								<p><span><%= recom.user.name %></span> desejou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
+								
+							</div>
+
+							<% if recom.opinion != ""%>
+							<div class="user-comment-data">
+								<%= recom.opinion %>
+							</div>
+							<% end %>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
+	<div id="mask" ontouchmove="blockMove(event)"></div>
+	
+</div>

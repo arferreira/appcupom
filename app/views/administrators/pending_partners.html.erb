@@ -1,0 +1,33 @@
+<h1>Listing partners</h1>
+
+<table>
+  <tr>
+    <th><%= t("partner.company_name")%></th>
+    <th><%= t("partner.contact_name")%></th>
+    <th><%= t("partner.category")%></th>
+    <th><%= t("partner.site")%></th>
+    <th><%= t("partner.email")%></th>
+    <th><%= t("partner.primary_phone")%></th>
+    <th><%= t("partner.approved")%></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @partners.each do |partner| %>
+  <tr>
+    <td><%= partner.company_name %></td>
+    <td><%= partner.contact_name %></td>
+    <td><%= partner.category.name unless partner.category.nil? %></td>
+    <td><%= partner.site %></td>
+    <td><%= partner.email %></td>
+    <td><%= partner.primary_phone %></td>
+    <td><%= partner.approved ? "Sim" : "Não" %> <% partner.approved  %></td>
+    <td><%= link_to 'Mostrar', partner %></td>
+    <% if signed_in? ADMIN_TYPE %>
+    <td><%= link_to 'Aprovar', :controller => "partners", :action => "approve", :id => partner.id, :source => 'ppp' %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />

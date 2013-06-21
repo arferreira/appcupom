@@ -1,0 +1,378 @@
+<% if signed_in? ADMIN_TYPE %>
+<% if !@partner.approved?%>
+<h3><%= link_to 'Aprovar este parceiro!', :controller => "partners", :action => "approve", :id => @partner.id, :source => 'pshow' %></h3>
+<% else %>
+<h3>Parceiro aprovado!</h3>
+<% end %>
+<% end %>
+
+<%= content_for :head do %>
+	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" /> 
+	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:partner" /> 
+	<meta property="og:url"    content="<%= "#{root_url}partners/#{@partner.id}" %>" /> 
+	<meta property="og:title"  content="<%= @partner.company_name %>" /> 
+	<meta property="og:description"   content="<%= @partner.company_name %>" /> 
+	<meta property="og:image"  content="<%= "#{root_url}#{@partner.pic(:perfil)}" %>" />
+<%- end %>
+
+<%= hidden_field_tag :get_location_callback, @location_callback %>
+<%= hidden_field_tag :cached_location, @cached_location %>
+
+<%= hidden_field_tag :partner_latlong, @partner.latitude.to_s + "|" + @partner.longitude.to_s %>
+<%= hidden_field_tag :partner_name, @partner.name %>
+<%= hidden_field_tag :user_latlong %>
+
+<div id="main-container" class="scrollable view-profile-establishment">
+	<div id="main" class="clearfix">
+		<header class="wrapper">
+			<div id="profile-image">
+				<%= image_tag @partner.pic(:perfil) %>
+			</div>
+			<section id="personal-data">
+				<p class="name">
+					<%= @partner.company_name %>
+				</p>
+				<ul class="counter medium">
+					<li class="count <%= get_category_icon(@partner) %>">
+						<%= @partner.category.name %>
+					</li>
+					<li id="distance"></li>
+      <!--<li class="count recommend">
+						<%= @partner.recommendations_count %>
+					</li>-->
+				</ul>
+
+			</section>
+		</header>
+		<div class="wrapper">
+			<p>
+				<%= @partner.description %>
+			</p>
+		</div>
+
+		<ul class="profile-group">
+			<li>
+				<div class="wrapper">
+
+					<div class="ui-box">
+						<div class="col-10 to-left">
+							<a href="#recommend" name="modal" class="recommend-link">
+								<span class="recommend-menu"><%= @recommenders.count %></span>
+							</a>
+						</div>
+						<div class="col-90 to-left">
+							<a href="#recommend" name="modal">
+								<ul class="users-pic-list push-tab">
+									<% @recommenders.each do |recommend|%>
+									<li>
+										<%= image_tag recommend.user.pic(:thumb), :style => "height:29px; width:29px;" %>
+									</li>
+									<% end %>
+								</ul> </a>
+							</div>
+
+							<div class="col-100 row to-left" >
+								<div class="wrapper">
+									<% if signed_in? USER_TYPE and @partner.not_recommended?(current_user) %>
+									<%= link_to "Recomendar", n_rec_part_path(@partner), :class => "to-right"  %>
+									<% elsif signed_in? USER_TYPE and @partner.recommended?(current_user) %>
+									<%= link_to 'Deixar de Recomendar', "/partners/#{@partner.id}/recommend_partners/#{@partner.recommended?(current_user).id}/unrecommend", :class => "to-right" %>
+									<% end %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</li>
+				<!--#Ofertas-->
+				<li>
+					<div class="wrapper">
+						<h3 class="custom-title ic-cupom"><%= @offers.count.to_s + (@offers.count > 1 ? " ofertas ativas" : " oferta ativa" )%></h3>
+						<ul class="clear-list ">
+
+							<% @offers.each do |offer| %>
+							<li class="ui-box ticket-box">
+								<%= link_to "/offers/#{offer.id}", :class => "push-tab full" do %>
+								<div class="col-95">
+									<div class="wrapper medium-pad">
+										<h3><%= @partner.company_name%></h3>
+										<p>
+											<%= offer.resume %>
+										</p>
+									</div>
+								</div>
+								<% end %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</li>
+				<!-- Fim #Ofertas-->
+
+				<!-- #Fotos -->
+				<li>
+					<div class="clear-box">
+						<h3 class="custom-title ic-pics">Fotos</h3>
+
+						<ul id="Gallery" class="pic-gallery">
+							<% @partner_partner_pics.each do |partner_pic|%>
+							<li>
+								<%= link_to (image_tag partner_pic.image.url(:thumb), :alt => partner_pic.image.name), partner_pic.image.url(:original) ,:class => "noeffect", :rel => "lightbox" %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</li>
+				<!-- Fim #Fotos -->
+
+				<!-- #Funcionamento -->
+				<li>
+					<div class="clear-box">
+						<h4>Horário de funcionamento</h4>
+						<p>
+							<%= @partner.working_schedule %>
+						</p>
+						<h4>Contato</h4>
+						<p>
+							<%= @partner.primary_phone + (@partner.secondary_phone != '' ? " - #{@partner.secondary_phone}" : '') %>
+						</p>
+						<p class="address">
+							<%= @partner.site %> 
+						</p>
+						<h4>Endereço</h4>
+						<div class="to-left col-66">
+							<p class="address to-left">
+								<%= @partner.get_address %>
+							</p>
+						</div>
+						<div id="map_canvas">
+							<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@partner.latitude.to_s},#{@partner.longitude.to_s}&zoom=15&size=597x102&sensor=false&markers=#{@partner.latitude.to_s},#{@partner.longitude.to_s}"
+							%>
+						</div>
+					</div>
+				</li>
+				<!-- Fim #Funcionamento -->
+
+				<!--#Cardapio -->
+				<li>
+					<div class="wrapper">
+						<h3 class="custom-title ic-menu">Cardápio</h3>
+
+						<ul id="toggle-menu" class="clear-list toggle-list">
+
+							<%= render "product_type" %>
+
+						</ul>
+						<%= will_paginate @product_types %>
+						<% if @product_types.total_entries > 3 %>
+						<div class="load-more">
+							<ul class="horizontal-menu">
+								<li class="web">
+									<div class="std-button">
+										Ver Mais
+									</div>
+								</li>
+							</ul>
+						</div>
+						<% end  %>
+
+
+						<script type="text/javascript">
+						$(document).ready(function(){
+							$('.pagination').hide();
+							initToggleList();
+							$(".toggle-item .toggle-list").hide();
+						})
+						var flag = false;
+						var click = true;
+						$(document).on("click", ".toggle-item", function(){
+							$(this).find(".toggle-list").slideToggle();
+							if($(this).hasClass("opened")){
+								$(this).removeClass("opened");
+							}else{
+								$(this).addClass("opened");
+							}
+						});
+						$(document).on("touchstart", ".toggle-item", function(){
+						    click = true;
+						})
+						$(document).on("touchmove", ".toggle-item", function(){
+						    click = false;
+						})
+						$(document).on("touchend", ".toggle-item", function(){
+						    if(click){
+						    	$(this).find(".toggle-list").slideToggle();
+						    	if($(this).hasClass("opened")){
+						    		$(this).removeClass("opened");
+						    	}else{
+						    		$(this).addClass("opened");
+						    	}
+						    }
+						});
+						document.addEventListener('DOMContentLoaded', function(){
+
+							var myPhotoSwipe = Code.PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), { enableMouseWheel: false , enableKeyboard: false } );
+
+						}, false);
+						</script>
+
+						<% content_for(:extra_scripts) do %>
+						$('.pagination').hide();
+						initToggleList();
+						$(".toggle-item .toggle-list").hide();
+						var flag = false;
+						var click = true;
+						$(document).off("click", ".toggle-item");
+						$(document).off("touchstart", ".toggle-item");
+						$(document).off("touchmove", ".toggle-item");
+						$(document).off("touchend", ".toggle-item");
+						$(document).on("click", ".toggle-item", function(){
+							$(this).find(".toggle-list").slideToggle();
+							if($(this).hasClass("opened")){
+								$(this).removeClass("opened");
+							}else{
+								$(this).addClass("opened");
+							}
+						});
+						$(document).on("touchstart", ".toggle-item", function(){
+						    click = true;
+						})
+						$(document).on("touchmove", ".toggle-item", function(){
+						    click = false;
+						})
+						$(document).on("touchend", ".toggle-item", function(){
+						    if(click){
+						    	$(this).find(".toggle-list").slideToggle();
+						    	if($(this).hasClass("opened")){
+						    		$(this).removeClass("opened");
+						    	}else{
+						    		$(this).addClass("opened");
+						    	}
+						    }
+						});
+						document.addEventListener('DOMContentLoaded', function(){
+
+							var myPhotoSwipe = Code.PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), { enableMouseWheel: false , enableKeyboard: false } );
+
+						}, false);
+						endlessPage();
+						var myPhotoSwipe = Code.PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), { enableMouseWheel: false , enableKeyboard: false } );
+						<% end %>
+
+					</div>
+				</li>
+				<!-- Fim #Cardapio -->
+
+			</ul>
+
+			<div>
+
+			</div>
+
+		</div>
+		<!-- #main -->
+	</div>
+	<!-- #main-container -->
+
+	<div id="boxes">
+
+		<!-- #personalize sua janela modal aqui -->
+		<div id="recommend" class="window">
+			<div class="wrapper">
+				<h2>Ver recomendações</h2>
+
+				<!-- Botão para fechar a janela tem class="close" -->
+				<a href="#" class="close">Fechar [X]</a>
+
+				<div class="content-container">
+					<div class="content">
+						<ul class="list-users wishes">
+							<% @recommenders.each do |recom|%>
+							<li>
+								<div class="user-data">
+									<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
+									<p><span><%= recom.user.name %></span> recomendou o estabelecimento <span><%= @partner.company_name %></span></p>
+								</div>
+
+								<% if recom.opinion != ""%>
+								<div class="user-comment-data">
+									<%= recom.opinion %>
+								</div>
+								<% end %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="recommend-prod" class="window">
+			<div class="wrapper">
+				<h2>Ver recomendações</h2>
+
+				<!-- Botão para fechar a janela tem class="close" -->
+				<a href="#" class="close">Fechar [X]</a>
+
+				<div class="content-container">
+					<div class="content">
+						<ul class="list-users wishes">
+							<% @recommend_products.each do |recom|%>
+							<li class="pv_class pv_<%= recom.product.id %>">
+								<div class="user-data">
+									<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
+									<p><span><%= recom.user.name %></span> recomendou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
+								</div>
+								<% if recom.opinion != ""%>
+								<div class="user-comment-data">
+									<%= recom.opinion %>
+								</div>
+								<% end %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+
+		<!-- #personalize sua janela modal aqui -->
+		<div id="wish" class="window">
+			<div class="wrapper">
+				<h2>Ver desejos</h2>
+
+				<!-- Botão para fechar a janela tem class="close" -->
+				<a href="#" class="close">Fechar [X]</a>
+
+				<div class="content-container">
+					<div class="content">
+						<ul class="list-users wishes">
+							<% @product_wishes.each do |recom|%>
+							<li class="pv_class pv_<%= recom.product.id %>">
+								<div class="user-data">
+									<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
+									<p><span><%= recom.user.name %></span> desejou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
+								</div>
+
+								<% if recom.opinion != ""%>
+								<div class="user-comment-data">
+									<%= recom.opinion %>
+								</div>
+								<% end %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
+		<div id="mask" ontouchmove="blockMove(event)"></div>
+	</div>
+

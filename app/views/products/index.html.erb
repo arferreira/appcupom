@@ -1,0 +1,104 @@
+
+	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<div id="main-container">
+			<div class="areaTitulo">				
+				<div class="limitadorTitulo">
+					<h1 class="titEstabelecimento"> 	<span class="establishment-icon <%= get_category_icon @partner %>"></span><%= @partner.company_name %></h1>
+				</div>
+				<%= link_to 'Novo Produto', new_partner_product_path, :class => "padraoBtn btnsCardapio" %>
+			</div>
+
+				
+					<% @categories.each do |category| %>
+					 <% vd('categoria => ', category) %>
+					<div class="grupoItemCarpadio">
+						
+							<div class="itemCardapio">
+								<span class="nomeItemCardapio"><%= category.name %></span>
+								<span class="setaDrop">Seta Drop</span>	
+								<div class="controleGeralCardapio">
+								<% if category.active? %>
+									<% if category.ok_to_destroy? %>
+									<%= link_to 'Desativar', partner_product_type_deactivate_path(@partner, category), confirm: 'Tem certeza que deseja desativar essa categoria?', :class => "padraoBtn controleItemCardapio 2" %>
+									<% end %>
+									<%= link_to 'Editar', edit_partner_product_type_path(@partner, category), :class => "padraoBtn controleItemCardapio" %>
+								<% else %>	
+									<% if category.ok_to_destroy? %>
+										<%= link_to 'Remover', partner_product_type_path(@partner, category), confirm: 'Tem certeza que deseja remover essa categoria?', method: :delete, :class => "button-info" %>
+									<% end %>
+									<%= link_to 'Ativar', partner_product_type_activate_path(@partner, category), :class => "button-info" %>
+								<% end %>
+								</div>
+							</div>
+							
+							<% vd('view cardapio familias', category.get_fam(category.partner)) %>							
+							<% category.get_fam(category.partner).each do |fam| %>
+							
+								<div class="subItemCardapio" id="f_<%= fam.id %>">
+									<span class="nomeItemCardapio"><%= fam.name %></span>
+									<span class="setaDrop">Seta Drop</span>	
+									<div class="controleGeralCardapio">
+									<% if category.active? %>
+										<% if fam.active? %>
+											<% if fam.ok_to_destroy? %>
+												<%= link_to 'Desativar', partner_product_family_deactivate_path(@partner, fam), confirm: 'Tem certeza?', :class => "padraoBtn controleItemCardapio" %>
+											<% end %>
+											<%= link_to 'Editar', edit_partner_product_family_path(@partner, fam), :class => "padraoBtn controleItemCardapio" %>
+										<% else %>
+											<%= link_to 'Ativar', partner_product_family_activate_path(@partner, fam), :class => "button-info" %>
+										<% end %>
+									<% end %>
+									</div>
+								</div> 
+								<% vd('view cardapio produtos com familia', fam.get_prods(category.partner, category)) %>
+								<% fam.get_prods(category.partner, category).each do |prod| %>
+
+									<div class="infoItemCardapio" id="pv_<%= fam.id %>">
+										<span class="nomeItemCardapioInterno"><%= prod.name %></span>
+										<span class="valorItemCardapio"><%= number_to_currency prod.price %></span>					
+										<p class="txtitemCardapio"><%= prod.description %></p>
+										<div class="controleGeralCardapio">			<!-- deactivate -->	
+										<% if fam.active? %>
+											<% if prod.active? %>
+												<%= link_to 'Desativar', partner_product_deactivate_path(@partner, prod), confirm: 'Tem certeza que deseja desativar o produto?', :class => "padraoBtn" %>
+												<%= link_to 'Editar', edit_partner_product_path(@partner, prod), :class => "padraoBtn" %>
+											<% else %>
+												<%= link_to 'Ativar', partner_product_activate_path(@partner, prod), :class => "button-info" %>
+											<% end %>
+										<% end %>
+										</div>
+									</div>
+								<% end %>
+							
+							<% end %>
+							<% category.get_prods_with_n_fam(category.partner).each do |p| %>
+								<div class="subItemCardapio">
+									<span class="nomeItemCardapioInterno"><%= p.name %></span>
+									<span class="valorItemCardapio"><%= number_to_currency p.price %></span>					
+									<p class="txtitemCardapio"><%= p.description %></p>
+									<div class="controleGeralCardapio">			<!-- deactivate -->	
+									<% if category.active? %>
+										<% if p.active? %>
+											<%= link_to 'Desativar', partner_product_deactivate_path(@partner, p), confirm: 'Tem certeza que deseja desativar o produto?', :class => "padraoBtn" %>
+											<%= link_to 'Editar', edit_partner_product_path(@partner, p), :class => "padraoBtn" %>
+										<% else %>
+											<%= link_to 'Ativar', partner_product_activate_path(@partner, p), :class => "button-info" %>
+										<% end %>
+									<% end %>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+				
+				<% if @categories == nil %>
+					<div id="main-container">
+						<div class="areaTitulo">				
+							<div class="limitadorTitulo">
+								<h1 class="titEstabelecimento">Nenhum Produto cadastrado</h1>
+							</div>
+						</div>
+					</div>
+				<% end %>
+
+			</div><!-- #main-container -->

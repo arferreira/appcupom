@@ -1,0 +1,27 @@
+<table class="tabelaResumoOferta opcaoProduto">
+	<tr>
+		<th>Valor da Oferta</th>
+		<td>R$ <%= text_field_tag :original_price, @original_price,:id => "price_field", :size => 10 %></td>
+		<!-- <td>R$<span id="valoDaOferta">0</span></td> -->
+	</tr>
+	<tr>
+		<th>Desconto</th>
+		<td>
+			<%= select_tag :discount, options_for_select(get_discount_options, @offer.discount) %>
+		</td>
+	</tr>
+	<tr style="display: none">
+		<th>Valor Final</th>
+		<td>
+			R$  <%= f.text_field :price, :id => "offer_value_field", :size => 10 %> 
+		</td>
+	</tr>
+	<tr>
+		<th>Sua parte</th>
+		<td><span id="partner_value_field">0</span></td>
+	</tr>
+	<tr style="display: none">
+		<th>Parte do Nowon</th>
+		<td><span id="nowon_value_field">0</span></td>
+	</tr>
+</table>

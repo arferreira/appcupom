@@ -1,0 +1,156 @@
+<div id="main-container">	
+	<div class="areaTitulo">				
+		<div class="limitadorTitulo">
+			<h1 class="titEstabelecimento"> 	
+				<span class="establishment-icon <%= get_category_icon @partner %> "></span>
+				<%= @partner.company_name %>
+			</h1>
+		</div>
+	</div>
+	<div class="col1Parceiro">
+		<div class="boxPadrao">
+			<h3 class="titBoxPadrao">Validar Vouchers</h3>					
+			<% unless @cupons.nil? %>
+			
+				<%= form_tag url_for(:controller => "cupons", :action => "validate") do %>
+					<%= hidden_field_tag :partner_id, @partner.id %>
+					<%= hidden_field_tag :bill_value %>
+					<%= text_field_tag :cupon_code, nil, :class => "validarCupons", :id => "validateCupons",:placeholder => "Insira a lista de vouchers..."  %>
+						
+					<%= submit_tag "X", :name => "cancel", :class => "btnFalseAlwaysOn" %>
+					<%= submit_tag "V", :name => "validate", :class => "btnTrueAlwaysOn" %>	
+				<% end %>
+
+<!-- 			<input class="validarCupons" id="validateCupons" type="text" value="Insira a lista de cupons..." onclick="if(this.value=='Insira a lista de cupons...'){this.value='';}" onblur="if(this.value==''){this.value='Insira a lista de cupons...';}"> -->
+			<% @cupons.each do |cupon| %>
+				<div class="itemCupom <%= "itemCupomValidado" if cupon.validated %>">
+					<span class="idCupom descPrograma" id="cupon_code_<%= cupon.id %>">#<%= cupon.cupon_code %></span>
+					<span class="nome"><%= cupon.user.name %></span>
+					<input type="text" class="valorCupom" id="bill_<%= cupon.id %>" placeholder="Valor da Conta" value="<%= cupon.bill_value.nil? ? "Valor da Conta" : "#{number_to_currency(cupon.bill_value).to_s.gsub('.',',')} "  %>">
+					<% if cupon.validated %>
+						<div class="btnFalse select_cupon" id="<%= cupon.id %>">X</div>	
+						<div class="btnTrue select_cupon" id="<%= cupon.id %>">V</div>
+						<p class="infoCupom">Validado. Parceiro recebe <%= number_to_currency(cupon.offer.partner_price) %></p>
+					<% else %>
+						<div class="btnTrue select_cupon" id="<%= cupon.id %>">V</div>
+					<% end %>
+					<p class="infoCupom"><%= cupon.offer.resume %> Parceiro recebe <%= number_to_currency cupon.offer.partner_price%></p>
+				</div>
+			<% end %>
+			<% end %>
+		</div>
+		<!--<div class="boxPadrao">
+			<h3 class="titBoxPadrao">Notícias</h3>
+			<div class="containerBoxPadrao">
+				<div class="itemNoticia">
+					<div class="metaDadosNoticias">
+						<span class="dataNoticia">12/03/13</span>
+						<div class="horarioNoticia">13:40</div>
+					</div>
+					<div class="txtNoticia">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+					</div>
+				</div>
+				<div class="itemNoticia">
+					<div class="metaDadosNoticias">
+						<span class="dataNoticia">12/03/13</span>
+						<div class="horarioNoticia">13:40</div>
+					</div>
+					<div class="txtNoticia">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
+					</div>
+				</div>
+
+			</div>
+		</div>-->
+		<div class="boxPadrao">
+			<h3 class="titBoxPadrao">Estatísticas Gerais</h3>
+			<table class="padraoTabela">
+				<tr>
+					<td class=""><strong>Ofertas Cadastrados</strong></td>
+					<td><%= @offers_count %></td>
+					<td><strong>Cupons Vendidos</strong></td>
+					<td><%= @cupons_count %></td>
+				</tr>
+				<tr>
+					<td><strong>Ofertas Compartilhadas</strong></td>
+					<td><%= @offers_rec_count %></td>
+					<td><strong>Recomendacao do Estabelecimento</strong></td>
+					<td><%= @partner_rec_count %></td>
+				</tr>
+				<tr>
+					<td><strong>Produtos Cadastrados</strong></td>
+					<td><%= @products_count %></td>
+					<td><strong>Produtos Recomendados</strong></td>
+					<td><%= @products_rec_count %></td>
+				</tr>
+				<tr>
+					<td><strong>Investimento</strong></td>
+					<td><%= number_to_currency @partner.investiment%></td>
+					<td><strong>Total Faturado</strong></td>
+					<td><%= number_to_currency @partner.profit %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="col2Parceiro">
+		<div class="boxPadrao">
+			<h3 class="titBoxPadrao">Programação do Dia</h3>
+			
+			<% @today_offers.each do |offer| %>
+				<div class="programa">
+					<div class="boxDataPrograma">
+						<div class="data hoje">
+							<% next_date = offer.next_date %>
+							<p class="diaSemana"><%= t("form.abbr_day_names.day#{next_date.wday + 1}") %></p>
+							<p class="diaMes"><%= next_date.day %></p>
+						</div>
+					</div>
+					<div class="boxInfoPrograma">
+						<p class="descPrograma"><%= offer.resume %></p>
+						<p class="horarioPrograma"><%= offer.period %></p>
+						<p class="programasVendidos"><%= offer.daily_cupons - offer.cupon_counter %> / <%= offer.daily_cupons %> Vendidos</p>
+					</div>
+	
+					<div class="btnsPrograma">
+						<% if !offer.paused %>
+						<%= link_to 'Interromper Oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/pause", :class => "padraoBtn", :title => "Desativar oferta" %>
+						<% else %>
+						<%= link_to 'Ativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/restart", :class => "padraoBtn", :title => "Ativar oferta" %>
+						<% end %>
+					</div>
+				</div>
+			<% end %>
+			
+			
+<!-- 			<div class="programa">
+				<div class="boxDataPrograma">
+					<div class="data">
+						<p class="diaSemana">sex</p>
+						<p class="diaMes">2</p>
+					</div>
+				</div>
+				<div class="confirmacaoPrograma">
+					<span class="textoConfirmacao">Feriado: Confirma funcionamento?</span>	
+					<a href="javascript:void(0);" class="padraoBtn">Não</a>
+					<a href="javascript:void(0);" class="padraoBtn">Sim</a>
+				</div>
+				<div class="boxInfoPrograma">							
+					<p class="descPrograma descProgramaDesativada">Descrição da Oferta</p>
+					<p class="horarioPrograma">De 14:00 às 15:00</p>
+					<p class="programasVendidos">2 / 5 Vendidos</p>							
+				</div>
+				<div class="btnsPrograma">
+					<a href="javascript:void(0);" class="padraoBtn">Interromper Oferta</a>
+				</div>
+			</div> -->
+		</div>				
+	</div>			
+</div><!-- #main-container -->

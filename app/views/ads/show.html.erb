@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @ad.name %>
+</p>
+
+<p>
+  <b>Date starts:</b>
+  <%= @ad.date_starts %>
+</p>
+
+<p>
+  <b>Date ends:</b>
+  <%= @ad.date_ends %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @ad.client.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_ad_path(@ad) %> |
+<%= link_to 'Back', ads_path %>

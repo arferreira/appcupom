@@ -1,0 +1,89 @@
+<div id="main-container">
+
+	<div class="areaTitulo">
+		<div class="limitadorTitulo">
+			<h1 class="titEstabelecimento"><span class="establishment-icon <%= get_category_icon @partner %>"></span><%= @partner.company_name%></h1>
+		</div>
+		<%= link_to 'Criar nova oferta', new_partner_offer_path, :class => "padraoBtn" %>
+	</div>
+
+	<% @offers.each do |offer| %>
+		<div class="col1Parceiro col1Oferta">
+			<div class="boxPadrao">
+				<div class="itemCupom noBorderPadding">
+					<% if offer.pic1.nil?%>
+						<div class="boxImagemVazia"></div>
+					<% else %>
+						<%= image_tag offer.pic1.image.url(:banner), :class => "fotoOferta" %>
+					<% end %>
+					<p class="infoCupom infoOferta">
+						<%= link_to offer.resume, [offer.partner, offer]%>
+						<span class="iconTempo"><%= "#{offer.days} #{offer.period}" %></span>
+					</p>
+				</div>
+			</div>
+		</div>
+	
+		<div class="col2Parceiro col2Oferta">
+			<div class="boxPadrao">
+				<ul class="listOfertaInfo">
+					<li>
+						<span>Status</span>
+						<% if offer.active %>
+						<span class="ofertaAtivadaStatus">Ativada</span>
+						<% else %>
+						<span class="ofertaDesativadaStatus">Desativada</span>
+						<% end %>
+					</li>
+	
+					<li>
+						<span>Qtde de vouchers por dia</span>
+						<%= offer.daily_cupons %>
+					</li>
+	
+					<li>
+						<span>Início em</span>
+						<%=l offer.start_date.to_date, :format => :default %>
+					</li>
+	
+					<li>
+						<span>Total de cupons vendidos</span>
+						<%= offer.cupons_count %>
+					</li>
+	
+					<li>
+						<span>Parceiro recebe</span>
+						<%= number_to_currency offer.partner_price %>
+					</li>
+	
+					<li>
+						<span>Investimento</span>
+						<%= number_to_currency offer.total_investiment %>
+					</li>
+	
+					<li>
+						<span>Total recebido</span>
+						<%= number_to_currency offer.partner_profit %>
+					</li>
+	
+					<li>
+						<span>Compartilhamentos</span>
+						<%= offer.timeline_items.count %>
+					</li>
+				</ul>
+				<% if !offer.active and !(offer.is_now? && offer.cupon_counter != offer.daily_cupons) %>
+					<td><%= link_to 'Editar oferta', [:edit, offer.partner, offer], :class => "padraoBtn", :title => "Editar oferta" %></td>
+					<td><%= link_to 'Remover oferta', [offer.partner, offer], :class => "padraoBtn", :title => "Remover oferta", :method => :delete, :confirm => "Você quer mesmo apagar esta oferta?" %></td>
+				<% end %>
+				<% if offer.active %>
+					<td><%= link_to 'Desativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/stop", :class => "padraoBtn", :title => "Desativar oferta" %></td>
+				<% else %>
+					<td><%= link_to 'Ativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/start", :class => "padraoBtn", :title => "Ativar oferta" %></td>
+				<% end %>
+				
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	<% end %>
+
+</div><!-- #main-container -->
