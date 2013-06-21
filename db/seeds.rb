@@ -8,3 +8,4 @@
 User.create :name => "Paulo Henrique Pires", :email => "taralloqueiroiz@gmail.com", :gender => "Masculino", :password => "123123123"
 User.create :name => "Antonio Ricardo", :email => "antonioricardo@ifollowagencia.com.br", :gender => "Masculino", :password => "123123123"
 Administrator.create :name => "Paulo Henrique", :email => "taralloqueiroiz@gmail.com", :admin_role_id => 1, :password => "123123123"
+Partner.create :company_name => "Mixido", :trade_name => "Mixido de Minas", :email => "mixido@gmail.com", :primary_phone => "95210999", :cnpj => 51737393000151, :description => "oioioioioioioioioi", :latitude => 0, :longitude => 0, :password => "123123123"
