@@ -2,7 +2,7 @@
 <table style="padding:5px;">
 	<tr>
 		<td>
-			<%= link_to 'Admins', administrators_path %> 
+			<%= link_to 'Admins', administrators_path %>
 		</td>
 		<td></td>
 		<td>
@@ -10,7 +10,7 @@
 		</td>
 		<td></td>
 		<td>
-			<%= link_to 'Privacidade de Correio', mail_privacies_path %> 
+			<%= link_to 'Privacidade de Correio', mail_privacies_path %>
 		</td>
 	</tr>
 	<tr>
@@ -19,7 +19,7 @@
 		</td>
 		<td></td>
 		<td>
-			<%= link_to 'Categorias', categories_path %> 
+			<%= link_to 'Categorias', categories_path %>
 		</td>
 		<td></td>
 		<td>
@@ -62,7 +62,7 @@
 			</td>
 		</tr>
 </table>
-<!-- 
+<!--
 tem que ter link pra index de privacies
 mail_privacies
 pra index de city
@@ -77,7 +77,7 @@ pra index de city
 		<td align="left">
 			<%= t("administrator.name")%>:
 		</td>
-		<td align="left"> 
+		<td align="left">
 			<%= @administrator.name %>  <%= link_to 'Edit', edit_administrator_path(@administrator) %>
 		</td>
 	</tr>
@@ -96,20 +96,20 @@ pra index de city
 		<td align="left">
 			Quantidade de Cupons:
 		</td>
-		<td align="left"> 
+		<td align="left">
 			<%= @numCupons %>
 		</td>
 	</tr>
 	<tr>
 		<td align="left">
-			Lucro: 
+			Lucro:
 		</td>
-		<td align="left"> 
+		<td align="left">
 			<%= number_to_currency @money %>
 		</td>
 	</tr>
 
 </table>
-
+<%= link_to "Sair", "/signout" %>
 <br />
 <br />
