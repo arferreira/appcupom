@@ -20,7 +20,7 @@
 				<% else %>
 				<%= link_to "Login", "/signin", :class => "top-login" %>
 				<% end %>
-				
+
 				<%= form_tag url_for(:controller => "partners", :action => "index"), :id => "search-form", :method => "get" do %>
 				<!--<label for="search">Pesquisar</label>-->
 				<%= text_field_tag :search, nil, :placeholder => "BUSCA", :id => "search", :class => "search-input" %>
@@ -44,7 +44,7 @@
 			<% if @share_cupon %>
 			<%= link_to "Compartilhar", n_rec_offer_path(@partner, @offer), :class => "button share"  %>
 			<% end %>
-			
+
 
 			<% if @search %>
 			<%= search_button %>
@@ -72,7 +72,7 @@
 			<% if @share %>
 			<a class="button share" href="share-cupom.php">Compartilhar</a>
 			<% end %>
-			
+
 			<% if signed_in? %>
 			<% if @partner_menu %>
 			<% if user_type == PARTNER_TYPE %>
@@ -85,13 +85,13 @@
 						<li><%= link_to "Editar Perfil", {:controller => get_controller(user_type), :action => "edit", :id => current_user.id} %></li>
 									<!--<li><%= link_to "Ofertas", {:controller => "offers", :action => "index", :partner_id => current_user.id} %></li>
 									<li><%= link_to "Dashboard", "/partners/#{@current_user.id}/dashboard" %></li>-->
-									<li><%= link_to "Sair", "/signout" %></li>							
+									<li><%= link_to "Sair", "/signout" %></li>
 								</ul>
 							</li>
 						</ul>
 						<% end %>
 						<% end %>
-						<% end %>	
+						<% end %>
 						<% if @menu %>
 
 						<ul class="web-menu">
@@ -124,7 +124,7 @@
 								<% end %>
 							</li>
 						</ul>
-						
+
 						<% end %>
 
 					</header>
@@ -135,7 +135,7 @@
 						<!-- dbug('header! whats in session bc?', session[:bc]) -->
 						<% if @breadcrumbs %>
 						<% @breadcrumbs[0..-2].each do |txt, path| %>
-						<%= link_to txt, path, :class => "migalha" %> 
+						<%= link_to txt, path, :class => "migalha" %>
 						<% end %>
 						<a href="#" class="migalha migalha-active"> <%= h(@breadcrumbs.last.first) %></a>
 						<% end %>
