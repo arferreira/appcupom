@@ -10,4 +10,5 @@
 #
 
 class CardFlag < ActiveRecord::Base
+  attr_accessible :flag, :code
 end

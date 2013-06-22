@@ -12,3 +12,9 @@ Partner.create :company_name => "Mixido", :trade_name => "Mixido de Minas", :ema
 AdminRole.create :name => "Administrator", :description => "Admin de nos todos"
 City.create :name => "Betim", :latitude => 195804, :longitude => 441154, :radius => 50
 Category.create :name => "Sanduíche", :icon => "sanduiche"
+
+CardFlag.create :flag => "Mastercard", :code => "Mastercard"
+CardFlag.create :flag => "Visa", :code => "Visa"
+CardFlag.create :flag => "American Express", :code => "AmericanExpress"
+CardFlag.create :flag => "Diners", :code => "Diners"
+CardFlag.create :flag => "Hipercard", :code => "Hipercard"
