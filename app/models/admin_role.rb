@@ -12,4 +12,5 @@
 class AdminRole < ActiveRecord::Base
   #relations
   has_many :administrators
+  attr_accessible :name, :description
 end
