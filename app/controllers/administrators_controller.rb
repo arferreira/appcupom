@@ -1,6 +1,6 @@
 # encoding: utf-8
 class AdministratorsController < ApplicationController
-  before_filter :authenticate, :only => [:edit, :update, :destroy, :index, :pending_partners, :list_partners, :offers_date]
+ # before_filter :authenticate, :only => [:edit, :update, :destroy, :index, :pending_partners, :list_partners, :offers_date]
   before_filter :correct_user, :only => [:edit, :update, :destroy]
   
   # GET /administrators

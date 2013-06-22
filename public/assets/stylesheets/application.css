@@ -483,8 +483,8 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         .dark-background{
-          background:url("/assets/images/mobile/bg-login.jpg") center top;
-          color:#fff;
+          background:#45a4dc;
+          color:#000;
         }
 
         .centered{ text-align: center;}
@@ -2062,39 +2062,8 @@ table{border-collapse:collapse;border-spacing:0}
         display:block;
         text-align: center;
 
-        /* Safari 4-5, Chrome 1-9 */
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffb248), to(#ff871a));
-
-        /* Safari 5.1, Chrome 10+ */
-        background: -webkit-linear-gradient(top, #ffb248, #ff871a);
-
-        /* Firefox 3.6+ */
-        background: -moz-linear-gradient(top, #ffb248, #ff871a);
-
-        /* IE 10 */
-        background: -ms-linear-gradient(top, #ffb248, #ff871a);
-
-        /* Opera 11.10+ */
-        background: -o-linear-gradient(top, #ffb248, #ff871a);
-
-        /*For IE7-8-9*/
-        filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffb248', endColorstr='#ff871a');
-
-        -webkit-border-radius:  5px;
-        -moz-border-radius:   5px;
-        border-radius:      5px;
-
-        -webkit-box-shadow: inset 0px -3px 1px 0px #ff640c,
-        inset 0px -3px 0px 0px rgba(255, 115, 20, 1),
-        0px  2px 3px 0px rgba(0, 0, 0, .3);
-
-        -moz-box-shadow:  inset 0px -3px 1px 0px #ff640c,
-        inset 0px -3px 0px 0px rgba(255, 115, 20, 1),
-        0px  2px 3px 0px rgba(0, 0, 0, .3);
-
-        box-shadow:     inset 0px -3px 1px 0px #ff640c,
-        inset 0px -3px 0px 0px rgba(255, 115, 20, 1),
-        0px  2px 3px 0px rgba(0, 0, 0, .3);
+        background: #000;
+        color: #45a4dc;
 
         padding:10px;
         margin:7px;
@@ -4894,19 +4863,8 @@ table{border-collapse:collapse;border-spacing:0}
         #header-container header{
           height: 84px;
           position: relative;
-          /*border-bottom: 4px solid #003979;*/
-
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0070ec), to(#005bc1));
-          /* Safari 5.1, Chrome 10+ */
-          background: -webkit-linear-gradient(top, #0070ec, #005bc1);
-          /* Firefox 3.6+ */
-          background: -moz-linear-gradient(top, #0070ec, #005bc1);
-          /* IE 10 */
-          background: -ms-linear-gradient(top, #0070ec, #005bc1);
-          /* Opera 11.10+ */
-          background: -o-linear-gradient(top, #0070ec, #005bc1);
-          /*IE7-8-9*/
-          filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#0070ec', endColorstr='#005bc1');
+          border-bottom: 4px solid #000;
+          background: #45a4dc;
         }
 
         header.wrapper{
@@ -5142,8 +5100,8 @@ table{border-collapse:collapse;border-spacing:0}
           clear: both;
           display: table;
           width: 100%;
-          border-bottom: 4px solid #003979;
-          background: #0054b3;
+          border-bottom: 4px solid #45a4dc;
+          background: #000;
           text-align: left;
           color:#fff;
 
@@ -5167,7 +5125,7 @@ table{border-collapse:collapse;border-spacing:0}
 
         .top-tool .search-input
         {
-          background-color: #004696;
+          background-color: #45a4dc;
           background-position: 10px center;
           background-repeat: no-repeat;
 
