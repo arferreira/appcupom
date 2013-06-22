@@ -12,4 +12,5 @@
 #
 
 class City < ActiveRecord::Base
+  attr_accessible :name, :latitude, :longitude, :radius
 end

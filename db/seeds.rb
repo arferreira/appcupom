@@ -10,3 +10,5 @@ User.create :name => "Antonio Ricardo", :email => "antonioricardo@ifollowagencia
 Administrator.create :name => "Paulo Henrique", :email => "taralloqueiroiz@gmail.com", :admin_role_id => 1, :password => "123123123"
 Partner.create :company_name => "Mixido", :trade_name => "Mixido de Minas", :email => "mixido@gmail.com", :primary_phone => "95210999", :cnpj => 51737393000151, :description => "oioioioioioioioioi", :latitude => 0, :longitude => 0, :password => "123123123"
 AdminRole.create :name => "Administrator", :description => "Admin de nos todos"
+City.create :name => "Betim", :latitude => 195804, :longitude => 441154, :radius => 50
+Category.create :name => "Sanduíche", :icon => "sanduiche"
