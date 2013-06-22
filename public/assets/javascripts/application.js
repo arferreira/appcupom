@@ -1,4 +1,3 @@
-
 var preventDoubleClick = false;
 
 function setOnClickSelectHandler(parent_class, output_id, max_select_input_id, toogle_class_id) {
@@ -358,89 +357,546 @@ $(document).on("focus", '#Expiracao', function(){
 }).blur(function(){
   $(this).unmask();
 });
-$('input[placeholder], textarea[placeholder]').placeholder();
+
+
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
+var map = null;
+function loadGMaps_partnerShow() {
+    var canvas = $("#map_canvas");
+    var img = $(canvas).find("img");
+    var src = $(img).attr("src");
+    $(canvas).attr("style", "background: url("+src+") center center;");
+    $(img).replaceWith("");
+  /*var latLong = $("#partner_latlong").val().split("|");
+  var map_img = "http://maps.googleapis.com/maps/api/staticmap?center="+latLong[0]+","+latLong[1]+"&zoom=13&size=500x102&sensor=false&markers="+latLong[0]+","+latLong[1];
+  alert(map_img);
+  var partnerName = $("#partner_name").val();
+  var gLatLong = new google.maps.LatLng(latLong[0], latLong[1])
+  var myOptions = {
+    center : gLatLong,
+    zoom : 15,
+    mapTypeId : google.maps.MapTypeId.ROADMAP,
+    mapTypeControl: false,
+    navigationControl: false,
+    streetViewControl: true,
+    scrollwheel: false
+
+  };
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+  var mapPin = new google.maps.MarkerImage('/assets/pin.png',
+    new google.maps.Size(28,41),
+    new google.maps.Point(0,0),
+    new google.maps.Point(14,41)
+    );
+
+  var marker = new google.maps.Marker({
+    position : gLatLong,
+    title : partnerName,
+    icon : mapPin,
+    zIndex:4,
+    animation : google.maps.Animation.DROP
+  });
+  marker.setMap(map);
+
+  var userLatLong = $("#user_latlong").val().split("|");
+  var gUserLatLong = new google.maps.LatLng(userLatLong[0], userLatLong[1])
+  if (userLatLong != null) {
+    var user_marker = new google.maps.Marker({
+      position : gUserLatLong,
+      title : "Eu",
+      animation : google.maps.Animation.DROP
+    });
+    user_marker.setMap(map);
+  }*/
+}
+
+
+function select_partner_category(category_id){
+  var token = $('meta[name="csrf-token"]').attr('content');
+  var params = {}
+  if($("#search_string").val()){
+    params = {
+      category: category_id,
+      search: $("#search_string").val(),
+      authenticity_token: token
+    }
+  }
+  else{
+    params = {
+      category: category_id,
+      authenticity_token: token
+    }
+  }
+
+  return ajaxnav("/partners_category", params, "POST");
+}
+function abre_modal(){
+  //seleciona os elementos a com atributo name="modal"
+  $('a[name=modal]').live("click",  function(e) {
+    //cancela o comportamento padrão do link
+    e.preventDefault();
+
+    //armazena o atributo href do link
+    var id = $(this).attr('href');
+
+    //armazena a largura e a altura da tela
+    var maskHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
+    var maskWidth = $(window).width();
+
+    //Define largura e altura do div#mask iguais ás dimensões da tela
+    $('#mask').css({
+      'width' : maskWidth,
+      'height' : maskHeight
+    });
+
+    //efeito de transição
+    $('#mask').fadeIn(500);
+    $('#mask').fadeTo(.4, 0.8);
+
+    //armazena a largura e a altura da janela
+    var winH = $(window).height();
+    var winW = $(window).width();
+    //centraliza na tela a janela popup
+    $(id).css('top', winH / 2 - $(id).height() / 2);
+    $(id).css('left', winW / 2 - $(id).width() / 2);
+    //efeito de transição
+    $(id).fadeIn(500);
+  });
+
+  //se o botãoo fechar for clicado
+  $('.window .close').live("click",  function(e) {
+    //cancela o comportamento padrão do link
+    e.preventDefault();
+    $('#mask, .window').hide();
+  });
+
+  //se div#mask for clicado
+  $('#mask').live("click",  function() {
+    $(this).hide();
+    $('.window').hide();
+  });
+}
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
+
+function set_offer_price(){
+  var price_array = $(".prods_price");
+  var count_array = $(".offer_prod_count");
+  var price = 0;
+
+  for( var i = 0 ; i < price_array.length ; i++ ){
+    price += parseFloat(price_array[i].firstChild.nodeValue.substr(3).replace(",", ".")) * count_array[i].value;
+  }
+
+  return price;
+}
+
+function set_discount(){
+  var total_value = $("#price_field").val();
+  if(total_value != ""){
+    total_value = parseFloat(total_value.replace(",", "."));
+    var now_discount = Math.ceil(total_value/10);
+    var partner_discount = $("#discount").val()/100.0;
+
+    var partner_value = total_value * (1-partner_discount);
+    var offer_value = partner_value + now_discount;
+
+    $("#offer_value_field").val( Math.round(offer_value*100)/100 );
+    $("#partner_value_field").html( "R$ " + Math.round(partner_value*100)/100 );
+    $("#nowon_value_field").html( "R$ " + now_discount );
+    atualizaPreview();
+  }
+}
+
+function select_offer_category(category_id){
+  var token = $('meta[name="csrf-token"]').attr('content');
+  params = {
+    category: category_id,
+    authenticity_token: token
+  }
+  return ajaxnav("/category", params, "POST");
+}
+
+function set_selected_prods(){
+  var counter = 0;
+  var ids = "";
+  var qty = "";
+  var price = "";
+  var qty_list = $('.offer_prod_count');
+  $('.product_row').each(function(){
+    ids += "," + $(this).attr("data-id");
+    price +="," + $(this).attr("data-preco-unitario");
+    qty += "," + qty_list[counter++].value;
+  });
+
+  $("#selected_products").val(ids.substr(1));
+  $("#selected_products_qty").val(qty.substr(1));
+  $("#selected_products_price").val(price.substr(1));
+}
+
+function toggle_value(text_field, bill_field, value, bill_value){
+  var text = text_field.val();
+  var bill = bill_field.val();
+
+  if(text.trim() == "" || text == "Insira a lista de cupons..."){
+    text = value;
+    bill = bill_value;
+  }
+  else if(text.indexOf(value) == -1){
+    text += ", " + value;
+    bill += "| " + bill_value;
+  }
+  else{
+    text = text.replace(", " + value, "");
+    text = text.replace(value, "");
+
+    bill = bill.replace("| " + bill_value, "");
+    bill = bill.replace(bill_value, "");
+  }
+
+  text_field.val(text);
+  bill_field.val(bill);
+}
+
+function change_offer_type(obj){
+  if( obj.getAttribute("id") == "offer_ttype_po" && obj.checked){
+    $("#products_group").slideDown("fast");
+    $(".areaProdutos").show();
+    $(".tabelaResumoOferta").show();
+    $("#product_rules").show();
+    $("#product_rules_resume").show();
+      $("#credit_rules").hide();
+      $("#credit_rules_resume").hide();
+      $("#price_field").prop('readonly', true);
+      atualizaListaProdutos();
+  }
+  else if( obj.getAttribute("id") == "offer_ttype_co" && obj.checked){
+    $("#products_group").slideUp("fast");
+    $(".tabelaResumoOferta").show();
+      $("#credit_rules").show();
+      $("#credit_rules_resume").show();
+    $("#product_rules").hide();
+    $("#product_rules_resume").hide();
+    $("#price_field").prop('readonly', false);
+  }
+}
+
+function set_rule(rule_component){
+  var rule_id = rule_component.attr("id").substr(5);
+  var val = rule_component.val()
+
+  //Is qualitative
+  if(rule_component.is("select")){
+    if(val == 1){
+        $("#rule_resume_"+rule_id).show();
+    }
+    else{
+        $("#rule_resume_"+rule_id).hide();
+    }
+  }
+  else{
+    var text = $("#rule_resume_"+rule_id).html();
+    var charInitPos = text.indexOf("#");
+    var charEndPos = text.substr(charInitPos).indexOf(" ");
+
+    var replaceText = text.substr(charInitPos, charEndPos);
+      var text = text.replace(replaceText, "#" + val);
+      $("#rule_resume_"+rule_id).html(text)
+      $("#rule_resume_"+rule_id).show();
+  }
+}
+
+function set_rules(){
+  $(".select_rule").each(function(){
+    set_rule($(this));
+  });
+}
+
+$(document).ready(function(){
+  $(".tabelaResumoOferta").hide();
+
+    if( $(".itemProdutoTabela").length > 0 ){
+      $("#price_field").val( set_offer_price() );
+    }
+
+    if( $("#price_field").length > 0 && $("#price_field").val != null ) set_discount();
+
+    if($(".offer_ttype").length != 0){
+      change_offer_type($(".offer_ttype")[0]);
+      change_offer_type($(".offer_ttype")[1]);
+    }
+
+  $(".offer_ttype").change(function(){
+    change_offer_type(this);
+  });
+
+  $(".select_cupon").live("click",  function(){
+    var cupon_id = $(this).attr("id");
+    var cupon_code = $("#cupon_code_" + cupon_id);
+    var bill_value = $("#bill_" + cupon_id);
+    toggle_value($("#validateCupons"), $("#bill_value"), cupon_code.html(), bill_value.val());
+
+    $(this).toggleClass("btnTrueOn");
+
+    e.stopPropagation();
+  });
+
+    if( $("#price_field").length > 0 && $("#price_field").val != null ) set_discount();
+
+
+    //Rules
+
+    $(".rules_resume").hide();
+    $(".select_rule").change(function(){
+      set_rule($(this));
+    });
+
+    if($(".select_rule").length > 0){
+      set_rules();
+    }
+
+});
+
+//Função que faz o endless page
+//@author Paulo Henrique
+function endlessPage(){
+  jQuery(function() {
+    var paginating = false;
+    $(window).unbind("scroll");
+    if($('#toggle-menu').length){
+      if ($('.pagination').length) {
+        /**
+        * Aqui faz o carregamento no mobile, usando o final da pagina para carragar mais itens do cardapio
+        *
+        */
+        $(window).bind("scroll", function() {
+          var url;
+          url = $('.pagination .next_page').attr('data-href');
+          if(url === undefined) url = $('.pagination .next_page').attr('href');
+          if($('.load-more .web').is(':hidden') ) {
+            if (!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 75) {
+              $('.pagination').show().html("<div class='loader-products'></div>");
+              ret = $.getScript(url, function(){
+              });
+              return ret;
+            }
+          }
+        });
+        /**
+        * Aqui adiciona o ver mais no desktop(webapp)
+        * @author Paulo Henrique
+        */
+        $('.load-more .web .std-button').live('click',function(){
+          var url;
+          url = $('.pagination .next_page').attr('data-href');
+          if(url === undefined) url = $('.pagination .next_page').attr('href');
+          $('.pagination').show().html("<div class='loader-products'></div>");
+          ret = $.getScript(url, function(){
+          });
+          return ret;
+        });
+        $(window).trigger("scroll");
+      }
+    }
+    if ($('.explore-list').length) {
+      if ($('.pagination').length) {
+          $(window).bind("scroll", function() {
+            var url;
+        url = $('.pagination .next_page').attr('data-href');
+        if(url === undefined) url = $('.pagination .next_page').attr('href');
+            if (!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 380) {
+                paginating = true
+            $('.pagination').show().html("<div class='loader-products'></div>");
+            $.ajaxSetup({ cache: true });
+            ret = $.getScript(url, function(){
+              $('.pagination').hide();
+              paginating = false
+              $("#header-container a, .round a").each(function(i){
+                ajaxlinkbuilder($(this));
+              })
+                });
+            return ret;
+              }
+          });
+          $(window).trigger("scroll");
+        }
+    };
+  });
+}
+endlessPage();
+
+// Place all the behaviors and hooks related to the matching controller here.
+// All this logic will automatically be available in application.js.
+var map = null;
+function loadGMaps_partnerShow() {
+    var canvas = $("#map_canvas");
+    var img = $(canvas).find("img");
+    var src = $(img).attr("src");
+    $(canvas).attr("style", "background: url("+src+") center center;");
+    $(img).replaceWith("");
+  /*var latLong = $("#partner_latlong").val().split("|");
+  var map_img = "http://maps.googleapis.com/maps/api/staticmap?center="+latLong[0]+","+latLong[1]+"&zoom=13&size=500x102&sensor=false&markers="+latLong[0]+","+latLong[1];
+  alert(map_img);
+  var partnerName = $("#partner_name").val();
+  var gLatLong = new google.maps.LatLng(latLong[0], latLong[1])
+  var myOptions = {
+    center : gLatLong,
+    zoom : 15,
+    mapTypeId : google.maps.MapTypeId.ROADMAP,
+    mapTypeControl: false,
+    navigationControl: false,
+    streetViewControl: true,
+    scrollwheel: false
+
+  };
+  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+  var mapPin = new google.maps.MarkerImage('/assets/pin.png',
+    new google.maps.Size(28,41),
+    new google.maps.Point(0,0),
+    new google.maps.Point(14,41)
+    );
+
+  var marker = new google.maps.Marker({
+    position : gLatLong,
+    title : partnerName,
+    icon : mapPin,
+    zIndex:4,
+    animation : google.maps.Animation.DROP
+  });
+  marker.setMap(map);
+
+  var userLatLong = $("#user_latlong").val().split("|");
+  var gUserLatLong = new google.maps.LatLng(userLatLong[0], userLatLong[1])
+  if (userLatLong != null) {
+    var user_marker = new google.maps.Marker({
+      position : gUserLatLong,
+      title : "Eu",
+      animation : google.maps.Animation.DROP
+    });
+    user_marker.setMap(map);
+  }*/
+}
+
+
+function select_partner_category(category_id){
+  var token = $('meta[name="csrf-token"]').attr('content');
+  var params = {}
+  if($("#search_string").val()){
+    params = {
+      category: category_id,
+      search: $("#search_string").val(),
+      authenticity_token: token
+    }
+  }
+  else{
+    params = {
+      category: category_id,
+      authenticity_token: token
+    }
+  }
+
+  return ajaxnav("/partners_category", params, "POST");
+}
+function abre_modal(){
+  //seleciona os elementos a com atributo name="modal"
+  $('a[name=modal]').live("click",  function(e) {
+    //cancela o comportamento padrão do link
+    e.preventDefault();
+
+    //armazena o atributo href do link
+    var id = $(this).attr('href');
+
+    //armazena a largura e a altura da tela
+    var maskHeight = (document.height !== undefined) ? document.height : document.body.offsetHeight;
+    var maskWidth = $(window).width();
+
+    //Define largura e altura do div#mask iguais ás dimensões da tela
+    $('#mask').css({
+      'width' : maskWidth,
+      'height' : maskHeight
+    });
+
+    //efeito de transição
+    $('#mask').fadeIn(500);
+    $('#mask').fadeTo(.4, 0.8);
+
+    //armazena a largura e a altura da janela
+    var winH = $(window).height();
+    var winW = $(window).width();
+    //centraliza na tela a janela popup
+    $(id).css('top', winH / 2 - $(id).height() / 2);
+    $(id).css('left', winW / 2 - $(id).width() / 2);
+    //efeito de transição
+    $(id).fadeIn(500);
+  });
+
+  //se o botãoo fechar for clicado
+  $('.window .close').live("click",  function(e) {
+    //cancela o comportamento padrão do link
+    e.preventDefault();
+    $('#mask, .window').hide();
+  });
+
+  //se div#mask for clicado
+  $('#mask').live("click",  function() {
+    $(this).hide();
+    $('.window').hide();
+  });
+}
 
 $(document).ready(function() {
 
-/**
-* Validação
-* @author Paulo
-* plugin jquery validates
-*/
-$('#main_form').validate({
-  rules:{
-    logradouro:{
-      required: true,
-      minlength: 3
-    },
-    numero:{
-      required: true,
-      number: true
-    },
-    bairro:{
-      required:true
-    },
-    cidade:{
-      required:true
-    },
-    estado:{
-      required:true,
-      maxlength: 2,
-      minlength:2
-    },
-    cep:{
-      required:true
-    },
-    telefone:{
-      required:true
-    },
-    name:{
-      required:true
-    },
-    DataNascimento:{
-      required:true
-    },
-    Identidade:{
-      required:true
+  //setOnClickSelectProductsHandler( );
+
+  $("#product_product_family_id").change(function(){
+    if($(this).val() == ""){
+      $("#SelecionaProduto").show();
     }
-  },
-  messages:{
-    logradouro:{
-      required: "O campo endereço é obrigatorio.",
-      minlength: "O campo endereço deve conter no mínimo 3 caracteres."
-    },
-    numero:{
-      required:"O campo numero é obrigatorio.",
-      number:"Esse campo deve ser preenchido somente com numeros"
-    },
-    bairro:{
-      required:"O campo bairro é obrigatorio."
-    },
-    cidade:{
-      required:"O campo cidade é obrigatorio."
-    },
-    estado:{
-      required:"O campo estado é obrigatorio.",
-      maxlength:"O padrão de estado são 2 letras maiúsculas, por exemplo: MG",
-      minlength:"O padrão de estado são 2 letras maiúsculas, por exemplo: MG"
-    },
-    cep:{
-      required:"O campo CEP é obrigatorio."
-    },
-    telefone:{
-      required:"O campo telefone é obrigatorio."
-    },
-    name:{
-      required:"O campo nome é obrigatorio."
-    },
-    DataNascimento:{
-      required:"O campo data de nascimento é obrigatorio."
-    },
-    Identidade:{
-      required:"O campo CPF é obrigatorio."
+    else{
+      $("#SelecionaProduto").hide();
     }
-  },
-  errorElement: "span",
-  errorClass: "alert alert-error"
-});
+
+  });
+
+  if($("#product_product_family_id").val() != ""){
+    $("#SelecionaProduto").hide();
+  }
+
+  $("#info-pessoais-toggle").live("click",  function(){
+    $("#info-pessoais-form").slideToggle("fast");
+    e.stopPropagation()
+  });
+
+  $("#info-password-toggle").live("click",  function(){
+    $("#info-password-form").slideToggle("fast");
+    e.stopPropagation()
+  });
+
+  $("#info-pic-toggle").live("click",  function(){
+    $("#info-pic-form").slideToggle("fast");
+    e.stopPropagation()
+  });
+  if ($('.timeline-items').length) {
+    var paginating = false;
+    if ($('.pagination').length) {
+      $(window).bind("scroll", function() {
+        var url;
+        url = $('.pagination .next_page').attr('data-href');
+        if(url === undefined) url = $('.pagination .next_page').attr('href');
+        if (!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 380) {
+          paginating = true
+          $('.pagination').show().html("<div class='loader-products'></div>");
+          $.ajaxSetup({ cache: true });
+          return $.getScript(url, function(){
+            $('.pagination').hide();
+            paginating = false;
+          });
+        }
+      });
+      $(window).trigger("scroll");
+    }
+  };
 });

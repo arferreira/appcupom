@@ -63,10 +63,7 @@
 	<% end %>
 <% else %>
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
 	<head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <%= FacebookAPI.app_namespace %>: http://ogp.me/ns/fb/<%= FacebookAPI.app_namespace %>#">
 		<%= yield(:head) if content_for?(:head) %>
 		<meta charset="utf-8">
@@ -100,7 +97,6 @@
 		<%= stylesheet_link_tag "/assets/stylesheets/application", :media => "all" %>
 		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js' %>
 		<!-- jQuery ScrollTo Plugin -->
-		<script defer src="http://balupton.github.com/jquery-scrollto/scripts/jquery.scrollto.min.js"></script>
 
 		<!-- History.js -->
 		<script defer src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
@@ -120,7 +116,7 @@
     <script type="text/javascript" src="/assets/javascripts/jquery.maskedinput.js"></script>
     <script type="text/javascript" src="/assets/javascripts/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/assets/javascripts/jquery.placeholder.js"></script>
-    <script src="/assets/javascripts/application.js"></script>
+    <script type="text/javascript" src="/assets/javascripts/application.js"></script>
 
 		<!--%= javascript_include_tag "/assets/history-it" %-->
 		<% if @partner_script_and_css %>
