@@ -64,15 +64,15 @@ class OffersController < ApplicationController
           long = user_latlong.split('|')[1]
         else
           city = City.first
-          #lat = city.latitude.to_s
-          #long = city.longitude.to_s
+          lat = city.latitude.to_s
+          long = city.longitude.to_s
         end
       end
 
     end
 
-    #@user_latlong = lat + "|" + long
-    #session[:user_latlong] = @user_latlong
+    @user_latlong = lat + "|" + long
+    session[:user_latlong] = @user_latlong
 
 =begin
     if params[:search]
@@ -92,11 +92,9 @@ class OffersController < ApplicationController
 =end
       @now_offers = Offer.now_offers session[:city]
       @now_offers.collect { |item| item[:temp_distance] = (item.distance lat.to_f, long.to_f).round(2) }
-      @now_offers = @now_offers.paginate(:page => params[:now_offers], :per_page => 5)
 
       @not_now_offers = Offer.not_now_offers session[:city]
       @not_now_offers.collect { |item| item[:temp_distance] = (item.distance lat.to_f, long.to_f).round(2) }
-      @not_now_offers = @not_now_offers.paginate(:page => params[:not_now_offers], :per_page => 5)
     #end
 
     #@bc = ["Nowon",'offers']
@@ -111,7 +109,6 @@ class OffersController < ApplicationController
       @search = true
 
       format.html
-      format.js{ render :status => 250}
     end
   end
 

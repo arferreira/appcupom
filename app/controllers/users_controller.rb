@@ -22,19 +22,19 @@ class UsersController < ApplicationController
   def show
     #@user = User.find(params[:id])
     #Decorator
-    @user = UserDecorator.find(params[:id])
-    
+    @user = User.find(params[:id])
+
     @friend_requests = @user.friend_requests
     @facebook_friends = @user.facebook_friends
-                                         
-    #@friends = User.find       
-    @friends = @user.all_friends  
+
+    #@friends = User.find
+    @friends = @user.all_friends
     @badges = Badge.all
     @mybadges = @user.badges
     @products_rec  = @user.products_recommended
     @products_wish = @user.products_wished
     @partners_rec  = @user.partners_recommended
-    
+
     add_breadcrumb @user.name, "users/#{@user.id}"
 
 
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       @config = true
       @no_back = true
       #@user_show_back = @user
-      
+
       format.html # show.html.erb
     end
   end
@@ -61,12 +61,12 @@ class UsersController < ApplicationController
     o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
     @random_password = (0...8).map{ o[rand(o.length)] }.join
     @user = User.new
-    
+
     respond_to do |format|
       @title = "Criar conta"
       @menu = true
       @submenu = false
-      
+
       format.html # new.html.erb
     end
   end
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
     @user = current_user
     @title = "Configurações"
     @menu = true
-    
+
     add_breadcrumb "Configurações", "users/#{@user.id}/edit"
   end
 
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
         #social
         @social = SocialLink.create_from_facebook(session[:facebook_user], @user) unless session[:facebook_user].nil?
         UserMailer.registration_confirmation(@user, password).deliver
-        
+
         #badge:
         @user.new_badge session
         sign_in @user
@@ -148,22 +148,22 @@ class UsersController < ApplicationController
     social_links = @user.social_links
     @social = social_links.first unless social_links.empty?
     @menu = true
-    @title = "Facebook e notificações"    
-    
+    @title = "Facebook e notificações"
+
     add_breadcrumb "Configurações", "edit"
     add_breadcrumb "Privacidades", "users/#{@user.id}/privacies"
   end
-  
+
   def remove_facebook
     user = current_user
     user.social_links.first.destroy
-    
+
     redirect_to "/users/#{user.id}/privacies"
   end
 
   def edit_privacies
     save_user_privacies(params[:user_priv])
-    
+
     save_mail_privacies(params[:mail_priv])
 
     respond_to do |format|
@@ -213,16 +213,16 @@ class UsersController < ApplicationController
   def start_friendship
     @user = User.find(params[:id])
     @me = current_user
-    
+
     ok = Friendship.friend @me, @user, false
 
     respond_to do |format|
       if ok
         if @me.is_my_friend?(@user) && @me.am_i_a_friend?(@user)
           @me.share TimelineType.friend, {:friend_id => @user.id}
-          
+
           @me.share_social @me.friend_facebook_resume(@me.name, @user.name), PrivacyType.friend
-        end 
+        end
         format.html { redirect_to user_path, notice: 'Solicitação de amizade enviada!' }
       else
         format.html { redirect_to user_path, notice: 'Erro! Solicitação não enviada.' }
@@ -248,7 +248,7 @@ class UsersController < ApplicationController
   def deny_friendhip
     @user = User.find(params[:id])
     @me = current_user
-    
+
     if @me.is_my_friend?(@user) == nil and @user.is_my_friend?(@me)
       d("#{@user.name}.unfriend!(#{@me.name})")
         @user.unfriend!(@me)
@@ -273,16 +273,16 @@ class UsersController < ApplicationController
   def timeline
     @user = current_user
     @timeline_items = @user.timeline_items.order("created_at desc").page(params[:page]).per_page(3)
-    
+
     add_breadcrumb "Acontece", "users/#{@user.id}/timeline"
-    
+
     respond_to do |format|
       @title = "Acontece"
       @menu = true
       #@config = true BUG 13
       @feed = true
       @no_back = true
-      
+
       format.html
       format.js{ render :status => 250 }
     end
@@ -296,14 +296,14 @@ class UsersController < ApplicationController
       format.html
     end
   end
-  
+
   def credits
     @user = current_user
     @user_credits = @user.user_credits
     @total_value = @user.total_credit_value
-    
+
     add_breadcrumb "Creditos", "users/#{@user.id}/credits"
-    
+
     respond_to do |format|
       @menu = true
       @config = false
@@ -311,11 +311,11 @@ class UsersController < ApplicationController
       format.html
     end
   end
-  
+
   def profile
     if current_user != nil
       @user = current_user
-      
+
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
       end
@@ -367,7 +367,7 @@ class UsersController < ApplicationController
 
   def save_user_privacies privacies
     u_privacies = current_user.user_privacies
-    
+
     if !u_privacies.empty? and !privacies.nil?
       u_privacies.each do |u_privacy|
         priv = privacies["#{u_privacy.id}"]
@@ -379,24 +379,24 @@ class UsersController < ApplicationController
         u_privacy[:facebook] = false
         u_privacy.save
       end
-    end 
+    end
   end
 
   def save_mail_privacies privacies
     u_privacies = current_user.user_mail_privacies
-    
+
     if !u_privacies.empty? and !privacies.nil?
       u_privacies.each do |u_privacy|
-        priv = privacies["#{u_privacy.id}"]   
+        priv = privacies["#{u_privacy.id}"]
         u_privacy[:choice] = priv.nil? ? false : priv
         u_privacy.save
       end
     elsif privacies.nil?
-      u_privacies.each do |u_privacy| 
+      u_privacies.each do |u_privacy|
         u_privacy[:choice] = false
         u_privacy.save
       end
-    end 
+    end
   end
 
   def userCupons (user)
@@ -419,25 +419,25 @@ class UsersController < ApplicationController
         :graph => client
       }
       session.delete :facebook_client
-      
+
       soc_link = SocialLink.find_by_social_id_and_social_type(credentials["id"], FacebookAPI.social_type)
       if soc_link.nil?
         #If user is logging from inside de app
         if signed_in?
           if current_user.social_links.empty?
             soc_link = SocialLink.create_from_facebook(session[:facebook_user], current_user) unless session[:facebook_user].nil?
-            
+
             soc_link[:access_token] = social_link.access_token
             soc_link.save
           end
-          
+
           FacebookGraph.create_relationships(client, current_user)
-          
+
         end
       else
         current_user = soc_link.user
         sign_in current_user
-        
+
         soc_link[:access_token] = social_link.access_token
         soc_link.save
         FacebookGraph.create_relationships(client, current_user)

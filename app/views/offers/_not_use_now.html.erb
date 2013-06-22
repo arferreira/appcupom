@@ -1,31 +1,4 @@
-<script type="text/javascript">
-  $().ready(function(){
-    if(!$('.not-use-now').length > 0){
-      $('.container-title-not-use').html('<h4 class="section-title not-use-now">Use mais tarde</h4>')
-    }
-    
-    if ($('.pagination_not_now_offers').length) {
-      $(window).bind("scroll", function() {
-          var url;
-          url = $('.pagination_not_now_offers .next_page').attr('data-href');
-          if(url === undefined) url = $('.pagination_not_now_offers .next_page').attr('href');
-          if (url && $(window).scrollTop() > $(document).height() - $(window).height() - 380) {
-            $('.pagination_not_now_offers').show().html("<div class='loader-products'></div>");
-            $.ajaxSetup({ cache: true });
-            ret = $.getScript(url, function(){
-              console.log(url)
-                $('.pagination_not_now_offers').hide();
-              $("#header-container a, .round a").each(function(i){
-                ajaxlinkbuilder($(this));
-              })
-            });
-            return ret;
-          }
-      });
-  }
-  })
-</script>
-<div class="container-title-not-use"></div>
-<ul class="cupons">     
+<h4 class="section-title not-use-now">Use mais tarde</h4>
+<ul class="cupons">
   <%= render @not_now_offers, :locals => { :list => true }  %>
 </ul>

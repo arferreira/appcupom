@@ -1,5 +1,46 @@
-var preventDoubleClick = false;
+// Friends
 
+function initFriendRequest() {
+
+  $('.friend-list .refuse').bind('click', function() {
+    //frRefuse($(this))
+    $(this).addClass('active').parent().delay(800).slideToggle('slow', function() {
+      $(this).remove();
+    });
+  });
+
+  $('.friend-list .accept').bind('click', function() {
+    $(this).addClass('active').parent().delay(800).slideToggle('slow', function() {
+      $(this).remove();
+    });
+    frAdd($(this))
+  });
+}
+
+function frRefuse(e) {
+  e.addClass('active').parent().delay(800).slideToggle('slow', function() {
+    e.remove();
+  });
+
+}
+
+function frAdd(e) {
+  var friend_target = '<li>' + e.parent().html() + '</li>';
+
+  $('#friends-added').prepend(friend_target);
+  $('#friends-added li:eq(0)').hide();
+  $('#friends-added li:eq(0) .refuse').bind('click', function() {
+    $(this).addClass('active').parent().delay(800).slideToggle('slow', function() {
+      $(this).remove();
+    });
+  });
+  $('#friends-added li:eq(0)').delay(800).slideToggle('slow');
+}
+
+function frRemove(e) {
+  e.remove();
+}
+var preventDoubleClick = false;
 function setOnClickSelectHandler(parent_class, output_id, max_select_input_id, toogle_class_id) {
 
   $(parent_class).live("click",  function() {
@@ -173,70 +214,6 @@ function submit_payment_form(finder){
 
 }
 
-$(document).ready(function() {
-  if ($("#request_location").val() == "true") {
-    // navigator.geolocation.getCurrentPosition(get_location_callback, get_location_error, {maximumAge:10000, enableHighAccuracy:true});
-    m_startDate = new Date().getTime();
-    m_watchId = navigator.geolocation.watchPosition(get_location_callback,
-      get_location_error,
-      {maximumAge:0, timeout:3000, enableHighAccuracy:true});
-
-    m_interval = setTimeout(function(){clearWatch()},7000);
-  }
-
-  if( $("#request_maps").val() == "partner" ){
-    loadGMaps_partnerShow();
-  }
-
-  if ($("#cached_location").val() == "true") {
-    //navigator.geolocation.getCurrentPosition(get_cached_location_callback, get_location_error, {maximumAge:5000, enableHighAccuracy:true});
-    post_empty_location();
-  }
-
-  if ($("#print_this_page").val() == "true") {
-    window.print();
-  }
-
-
-  $(".recommended_products").live("click",  function(){
-    var prod_id = $(this).attr("id").substr(11);
-    $(".pv_class").hide();
-
-    $(".pv_"+prod_id).show();
-  });
-
-  $(".nowon-inner a").each(function(i){
-    ajaxlinkbuilder($(this));
-  })
-
-/*
-  $("a").live("click",  function(){
-    e.stopImmediatePropagation();
-    var href = $(this).attr("href");
-      var matched = href.match(/^https?:\/\//i);
-      if(matched == null){
-        $.ajax({
-          url: href,
-          success: function(data){
-            $(".main").html(data);
-          },
-          error: function(data){
-            $(".main").html(data.responseText);
-          }
-        })
-        return false;
-      }else{
-        return true;
-      }
-  })*/
-/*
-  $("#search-form, #search_form").live("submit", function(){
-    var action = $(this).attr("action").replace("/#", "");
-    var search = $(this).find("input[name=search]").val();
-    return ajaxnav(action, {search: search});
-  })*/
-});
-
 $(window).bind("statechange", function(){
   if(ajaxnavchange == true){
     ajaxnavchange = false;
@@ -283,13 +260,7 @@ function ajaxnav(href, params, meth){
     return false;
 }
 
-function ajaxlinkbuilder(elmn){
-  var href = $(elmn).attr("href");
-  if(href.match(/^https?:\/\//i) == null && href.match(/facebook\//i) == null && href.match(/\.(jpg|jpeg|png|gif)/i) == null && href.match(/^javascript/i) == null && href.match(/^#/i) == null && href.match(/comofunciona|sign/i) == null && href.match(/print/i) == null){
-    $(elmn).attr("data-href", href);
-    $(elmn).attr("href", "javascript:void(0)");
-  }
-}
+
 
 function ajax_submit(form){
   //$(form).submit();
@@ -311,9 +282,7 @@ function showSearch(){
   }
 }
 
-$(document).on("click", ".nowon-inner a[data-href*='/']", function(){
-  return ajaxnav($(this).attr("data-href"));
-})
+
 
 function get_location_and_redirect(href){
   $("body").append("<input type='hidden' name='request_location' id='request_location' value='true' /><input type='hidden' name='get_location_callback' id='get_location_callback' value='"+href+"' />")
@@ -659,73 +628,6 @@ $(document).ready(function(){
 
 });
 
-//Função que faz o endless page
-//@author Paulo Henrique
-function endlessPage(){
-  jQuery(function() {
-    var paginating = false;
-    $(window).unbind("scroll");
-    if($('#toggle-menu').length){
-      if ($('.pagination').length) {
-        /**
-        * Aqui faz o carregamento no mobile, usando o final da pagina para carragar mais itens do cardapio
-        *
-        */
-        $(window).bind("scroll", function() {
-          var url;
-          url = $('.pagination .next_page').attr('data-href');
-          if(url === undefined) url = $('.pagination .next_page').attr('href');
-          if($('.load-more .web').is(':hidden') ) {
-            if (!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 75) {
-              $('.pagination').show().html("<div class='loader-products'></div>");
-              ret = $.getScript(url, function(){
-              });
-              return ret;
-            }
-          }
-        });
-        /**
-        * Aqui adiciona o ver mais no desktop(webapp)
-        * @author Paulo Henrique
-        */
-        $('.load-more .web .std-button').live('click',function(){
-          var url;
-          url = $('.pagination .next_page').attr('data-href');
-          if(url === undefined) url = $('.pagination .next_page').attr('href');
-          $('.pagination').show().html("<div class='loader-products'></div>");
-          ret = $.getScript(url, function(){
-          });
-          return ret;
-        });
-        $(window).trigger("scroll");
-      }
-    }
-    if ($('.explore-list').length) {
-      if ($('.pagination').length) {
-          $(window).bind("scroll", function() {
-            var url;
-        url = $('.pagination .next_page').attr('data-href');
-        if(url === undefined) url = $('.pagination .next_page').attr('href');
-            if (!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 380) {
-                paginating = true
-            $('.pagination').show().html("<div class='loader-products'></div>");
-            $.ajaxSetup({ cache: true });
-            ret = $.getScript(url, function(){
-              $('.pagination').hide();
-              paginating = false
-              $("#header-container a, .round a").each(function(i){
-                ajaxlinkbuilder($(this));
-              })
-                });
-            return ret;
-              }
-          });
-          $(window).trigger("scroll");
-        }
-    };
-  });
-}
-endlessPage();
 
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
@@ -848,7 +750,64 @@ function abre_modal(){
 }
 
 $(document).ready(function() {
+if ($("#request_location").val() == "true") {
+    // navigator.geolocation.getCurrentPosition(get_location_callback, get_location_error, {maximumAge:10000, enableHighAccuracy:true});
+    m_startDate = new Date().getTime();
+    m_watchId = navigator.geolocation.watchPosition(get_location_callback,
+      get_location_error,
+      {maximumAge:0, timeout:3000, enableHighAccuracy:true});
 
+    m_interval = setTimeout(function(){clearWatch()},7000);
+  }
+
+  if( $("#request_maps").val() == "partner" ){
+    loadGMaps_partnerShow();
+  }
+
+  if ($("#cached_location").val() == "true") {
+    //navigator.geolocation.getCurrentPosition(get_cached_location_callback, get_location_error, {maximumAge:5000, enableHighAccuracy:true});
+    post_empty_location();
+  }
+
+  if ($("#print_this_page").val() == "true") {
+    window.print();
+  }
+
+
+  $(".recommended_products").live("click",  function(){
+    var prod_id = $(this).attr("id").substr(11);
+    $(".pv_class").hide();
+
+    $(".pv_"+prod_id).show();
+  });
+
+
+/*
+  $("a").live("click",  function(){
+    e.stopImmediatePropagation();
+    var href = $(this).attr("href");
+      var matched = href.match(/^https?:\/\//i);
+      if(matched == null){
+        $.ajax({
+          url: href,
+          success: function(data){
+            $(".main").html(data);
+          },
+          error: function(data){
+            $(".main").html(data.responseText);
+          }
+        })
+        return false;
+      }else{
+        return true;
+      }
+  })*/
+/*
+  $("#search-form, #search_form").live("submit", function(){
+    var action = $(this).attr("action").replace("/#", "");
+    var search = $(this).find("input[name=search]").val();
+    return ajaxnav(action, {search: search});
+  })*/
   //setOnClickSelectProductsHandler( );
 
   $("#product_product_family_id").change(function(){
