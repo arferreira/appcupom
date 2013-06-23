@@ -24,11 +24,10 @@ gem 'paperclip'
 
 #Searching
 gem 'sunspot_rails'
-gem 'sunspot_solr'
 gem 'progress_bar' # for sunspot:solr:reindex
 
 group :development do
-  gem 'sunspot_solr'
+  gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
 end
 
 #Dev and test only
