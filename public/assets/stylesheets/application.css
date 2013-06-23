@@ -5674,7 +5674,7 @@ table{border-collapse:collapse;border-spacing:0}
        }
     @media only screen and (max-height: 960px){
       body{
-        background:#45A4DC;
+        background:#DFDFDF;
       }
       #header-container{
         width:960px;
@@ -5689,5 +5689,13 @@ table{border-collapse:collapse;border-spacing:0}
         background: white;
         width: 960px;
         padding:0 15px;
+      }
+      .web-menu .mn-item .web-sub-menu::after,
+      .web-menu .mn-item .bt-web-menu:hover{
+        border-top: 4px black solid;
+      }
+      #header-container .migalha-active,
+      #header-container .migalha:hover{
+        color:#000;
       }
     }
