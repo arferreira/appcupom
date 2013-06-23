@@ -212,13 +212,13 @@ class CuponsController < ApplicationController
 
   def confirm_printed
     @current_user = current_user
-    @offer = Offer.find params[:offer_id]
+    @offer = Offer.find(params[:id])
     @transaction_id = Random.rand 00001..99999
 
     dt = DateTime.now.to_i
     unique_key = "Traz#{Random.new(dt.hash + @current_user.hash).rand(10000)}"
 
-    Cupon.create :user_id => @current_user.id,
+    @cupon = Cupon.create :user_id => @current_user.id,
                  :offer_id => @offer.id,
                  :price => @offer.price,
                  :credit_discount => 10,
