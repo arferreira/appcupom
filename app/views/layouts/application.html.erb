@@ -57,10 +57,7 @@
 		}
 		<%= yield(:extra_scripts) %>
 	</script>
-	<% begin %>
-		<%= render(:controller => params[:controller], :action => params[:action], :format => "js") %>
-	<% rescue %>
-	<% end %>
+
 <% else %>
 <!doctype html>
 
@@ -102,11 +99,6 @@
 		<script defer src="http://balupton.github.com/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 
 		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=<%= Google.key %>&sensor=true"></script>
-		<% if Rails.env.development? %>
-			<script type='text/javascript' src='https://desenvolvedor.moip.com.br/sandbox/transparente/MoipWidget-v2.js' charset='ISO-8859-1'></script>
-		<% else %>
-			<script type='text/javascript' src='https://www.moip.com.br/transparente/MoipWidget-v2.js' charset='ISO-8859-1'></script>
-		<% end %>
 
 		<script type="text/javascript" src="/assets/javascripts/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 		<script type="text/javascript" src="/assets/javascripts/klass.min.js"></script>
