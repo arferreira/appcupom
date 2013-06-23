@@ -1,7 +1,7 @@
 # encoding: utf-8
 class CuponsController < ApplicationController
   before_filter :authenticate,          :except => [:confirmation,:receive_key, :validate_cupons,:validate]
-  before_filter :correct_user,          :except => [:confirmation,:receive_key, :validate_cupons,:validate,:share_cupon]
+  before_filter :correct_user,          :except => [:confirmation,:receive_key, :validate_cupons,:validate,:share_cupon, :confirm_printed]
   before_filter :authenticate_partner,  :only => [:validate_cupons,:validate]
   before_filter :correct_partner,       :only => [:validate_cupons,:validate]
   before_filter :require_moip,          :only => [:buy, :buy_cupon, :confirmation, :receive_key]
@@ -162,8 +162,7 @@ class CuponsController < ApplicationController
       @moip_error = true
       @moip_return = moip_return
     end
-    #TODO se moip n retornar?
-    #raise "AQUI".inspect
+
     respond_to do |format|
       if @moip_error
         flash[:notice] = "O contato com o Moip foi falhou, tente novamente.";
@@ -210,19 +209,36 @@ class CuponsController < ApplicationController
       }
     end
   end
+
   def confirm_printed
     @current_user = current_user
     @offer = Offer.find params[:offer_id]
+    @transaction_id = Random.rand 00001..99999
 
     dt = DateTime.now.to_i
     unique_key = "Traz#{Random.new(dt.hash + @current_user.hash).rand(10000)}"
 
     Cupon.create :user_id => @current_user.id,
-                 :offer_id => @offer.id, :price => @offer.price, :credit_discount => 10,
-                 :good_date => Time.now, :cupon_code => "",
+                 :offer_id => @offer.id,
+                 :price => @offer.price,
+                 :credit_discount => 10,
+                 :good_date => Time.now,
+                 :cupon_code => "",
                  :monthly_cupon_accounting_id => 0,
-                 :transaction_id => 3655454, :nasp_key => "asdsd45",
-                 :approved => true, :moip_status => "Aprovado"
+                 :transaction_id => @transaction_id,
+                 :nasp_key => "asdsd45",
+                 :approved => true,
+                 :moip_status => "Aprovado"
+
+    success_message = "Sua transação está #{@cupon.moip_status} e o código  é #{ @cupon.transaction_id }.
+    Caso tenha alguma dúvida referente a transação, entre em contato."
+
+    respond_to do |format|
+      format.html {
+        flash[:notice] = success_message
+        redirect_to :controller => "cupons", :action => "index", :user_id => current_user.id
+      }
+    end
 
   end
 

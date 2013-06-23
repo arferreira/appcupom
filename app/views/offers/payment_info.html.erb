@@ -63,36 +63,11 @@
 
 <div id="bottom-bar" class="dark-background small">
 	<div class="wrapper">
-		<% if @nowon_value == 0 %>
-			<%= form_tag :controller => "cupons", :action => "confirm_with_credit_only" do %>
-		  		<%= hidden_field_tag :offer_id, @offer.id %>
-		  		<%= hidden_field_tag :user_id, @current_user.id %>
-		  		<%= link_to_submit content_tag(:span, "Confirmar a compra"), :class => "std-button bt-bigsize" %>
-		  	<% end %>
-		<% elsif @user_card %>
-			<div id="MoipWidget"
-			 data-token="<%= @token %>"
-			 callback-method-success="onSuccess"
-			 callback-method-error="onFailed"></div>
-
-
-			<%= hidden_field_tag :card_flag_id, @user_card.card_flag.code %>
-			<%= hidden_field_tag :key, @user_card.key  %>
-			<%= hidden_field_tag :transaction_id, @transaction_id %>
-			<%= hidden_field_tag :cupon_id, @cupon.nil? ? "" : @cupon.id %>
-			<%= hidden_field_tag :DataNascimento2, @user_birthdate %>
-			<%= hidden_field_tag :Numero, @user_card.card_number %>
-			<%= hidden_field_tag :Identidade2, @user_cpf %>
-			<%= hidden_field_tag :save_card, "do" %>
-
-			<%= link_to content_tag(:span, "Confirmar a compra"), "#", :onclick => "processaPagtoCofre();", :class => "std-button bt-bigsize" %>
-		<% else %>
-			<%= form_tag :controller => "cupons", :action => "buy" do %>
-		  		<%= hidden_field_tag :offer_id, @offer.id %>
-		  		<%= hidden_field_tag :user_id, @current_user.id %>
-		  		<%= link_to_submit content_tag(:span, "Confirmar a compra"), :class => "std-button bt-bigsize" %>
-		  	<% end %>
-		<% end %>
+			<%= form_tag :controller => "cupons", :action => "confirm_printed" do %>
+		  	<%= hidden_field_tag :offer_id, @offer.id %>
+		  	<%= hidden_field_tag :user_id, @current_user.id %>
+		  	<%= link_to_submit content_tag(:span, "Confirmar a compra"), :class => "std-button bt-bigsize" %>
+		  <% end %>
 		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
 	</div>
 </div>

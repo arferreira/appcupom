@@ -161,6 +161,7 @@ Appcupom::Application.routes.draw do
 
   match '/offers/:id', :to => 'offers#show'
   match '/offers/:id/buy', :to => 'cupons#buy'
+  match '/offers/:id/confirm_printed', :to => 'cupons#confirm_printed'
   match '/offers/:id/buy_cupon', :to => 'cupons#buy_cupon'
   match '/offers/:id/payment_info', :to => 'offers#payment_info'
   match '/cupons/:id/confirmation', :to => 'cupons#confirmation'
