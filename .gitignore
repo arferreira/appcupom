@@ -13,5 +13,25 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
-# Ignore database.yml
+
+
+#ignore database file
 /config/database.yml
+
+#igone sunspot file
+/config/sunspot.yml
+
+#ignore schema
+/db/schema.rb
+
+/.svn
+*svn*
+
+#ignore solr cache and pid
+/solr/pids
+/solr/data
+
+config/sunspot.yml
+
+*DS_Store*
+.DS_Store
