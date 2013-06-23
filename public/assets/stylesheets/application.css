@@ -5672,3 +5672,22 @@ table{border-collapse:collapse;border-spacing:0}
         p, h2, h3 { orphans: 3; widows: 3; }
         h2, h3 { page-break-after: avoid; }
        }
+    @media only screen and (max-height: 960px){
+      body{
+        background:#45A4DC;
+      }
+      #header-container{
+        width:960px;
+      }
+      .breadCrumb{
+        background:#45A4DC;
+      }
+      .sub-menu a.active{
+        background:black;
+      }
+      #global-container{
+        background: white;
+        width: 960px;
+        padding:0 15px;
+      }
+    }
