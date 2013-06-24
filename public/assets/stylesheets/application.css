@@ -174,7 +174,7 @@ table{border-collapse:collapse;border-spacing:0}
         .cupom header .count span,
         #main aside
         {
-          background-color:#0070ed;
+          background-color:#45a4dc;
         }
 
         a,
@@ -195,8 +195,8 @@ table{border-collapse:collapse;border-spacing:0}
 
         #title{ color:white; }
 
-        ::-moz-selection { background: #f16529; color: #fff; text-shadow: none; }
-        ::selection      { background: #f16529; color: #fff; text-shadow: none; }
+        ::-moz-selection { background: #000; color: #fff; text-shadow: none; }
+        ::selection      { background: #000; color: #fff; text-shadow: none; }
 
     /* ==============
         MOBILE: Menu
@@ -789,18 +789,9 @@ table{border-collapse:collapse;border-spacing:0}
 
         .sub-menu a.active{
           color:        #fff;
-          background-color: #ff6c00;
+          background-color: #000;
 
-          /* Safari 4-5, Chrome 1-9 */
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffab2b), to(#ff851d));
-          /* Safari 5.1, Chrome 10+ */
-          background: -webkit-linear-gradient(top, #ffab2b, #ff851d);
-          /* Firefox 3.6+ */
-          background: -moz-linear-gradient(top, #ffab2b, #ff851d);
-          /* IE 10 */
-          background: -ms-linear-gradient(top, #ffab2b, #ff851d);
-          /* Opera 11.10+ */
-          background: -o-linear-gradient(top, #ffab2b, #ff851d);
+          
 
           -moz-border-radius-bottomleft:  2px;
           -moz-border-radius-bottomright: 2px;
@@ -825,7 +816,7 @@ table{border-collapse:collapse;border-spacing:0}
           margin-left:-3.5px;
           content:"";
           background-repeat: no-repeat;
-          background-position: -253px 0px;
+         
 
         }
 
@@ -979,7 +970,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         h3{
-          color:#0070ed;
+          color:#45a4dc;
           font-size:1.6em;
           font-weight: bold;
           padding:6px 0px 3px 0px;
@@ -2235,7 +2226,7 @@ table{border-collapse:collapse;border-spacing:0}
       TITULOS ESTÁTICOS
       ==================== */
       .static-title{
-        color: #ff9933;
+        color: #000;
         font-size: 22px;
         font-weight: bold;
         text-decoration: none;

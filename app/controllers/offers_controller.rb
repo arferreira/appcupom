@@ -51,11 +51,11 @@ class OffersController < ApplicationController
       if params[:city_id]
         @gps = nil
         session[:city] = params[:city_id]
-        city = City.find params[:city_id]
-        city ||= City.first
+        @city = City.find params[:city_id]
+        @city ||= City.first
 
-        lat = city.latitude.to_s
-        long = city.longitude.to_s
+        lat = @city.latitude.to_s
+        long = @city.longitude.to_s
       else
         @gps = session[:gps]
         if session[:user_latlong]
@@ -64,15 +64,15 @@ class OffersController < ApplicationController
           long = user_latlong.split('|')[1]
         else
           city = City.first
-          lat = city.latitude.to_s
-          long = city.longitude.to_s
+          #lat = city.latitude.to_s
+          #long = city.longitude.to_s
         end
       end
 
     end
 
-    @user_latlong = lat + "|" + long
-    session[:user_latlong] = @user_latlong
+    #@user_latlong = lat + "|" + long
+    #session[:user_latlong] = @user_latlong
 
 =begin
     if params[:search]
