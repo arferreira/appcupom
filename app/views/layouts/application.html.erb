@@ -192,13 +192,7 @@
 			<%= render "layouts/footer"%>
 		</div>
 
-			<% if signed_in? && Rails.env.development? %>
-	    	<h3>User: <%= current_user.name + " : " + user_type %></h3>
-				<h3><%= debug(params) if Rails.env.development? %></h3>
-        <h3><%= session.inspect if Rails.env.development? %></h3>
-        <h3><%= browser.meta if Rails.env.development? %></h3>
-        <h3><%= browser.name if Rails.env.development? %></h3>
-	    <% end %>
+
 
 		</div>
 
