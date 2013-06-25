@@ -584,6 +584,7 @@ function set_rules(){
 }
 
 $(document).ready(function(){
+  setOnClickSelectHandler( ".partner_select_pic", "#selected_pics_input", "#num_select_input", "border_selected" );
   $(".tabelaResumoOferta").hide();
 
     if( $(".itemProdutoTabela").length > 0 ){

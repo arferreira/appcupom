@@ -81,7 +81,7 @@ body{
 
 
 body{
-	background:url("/assets/images/pattern2.png") top left;
+	background:url("/assets/images/simple_dashed.png") top left;
 }
 
 #title{ color:white; }
@@ -194,15 +194,15 @@ table.padraoTabela td{
 	height: 84px;
 	position: relative;
 	/*border-bottom: 4px solid #003979;*/
-
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0070ec), to(#005bc1));
-	/* Safari 5.1, Chrome 10+ */
+  background: #45A4DC;
+	/*background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0070ec), to(#005bc1));
+	/* Safari 5.1, Chrome 10+
 	background: -webkit-linear-gradient(top, #0070ec, #005bc1);
-	/* Firefox 3.6+ */
+	/* Firefox 3.6+
 	background: -moz-linear-gradient(top, #0070ec, #005bc1);
-	/* IE 10 */
+	/* IE 10
 	background: -ms-linear-gradient(top, #0070ec, #005bc1);
-	/* Opera 11.10+ */
+	/* Opera 11.10+
 	background: -o-linear-gradient(top, #0070ec, #005bc1);
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#0070ec', endColorstr='#005bc1');/*For IE7-8-9*/
 }
@@ -213,15 +213,16 @@ table.padraoTabela td{
 	padding: 8px 15px;
 	border-top: solid 1px #66b2e8;
 	border-left: solid 1px #66b2e8;
-	/*border-bottom: 4px solid #003979;	*/
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0070ec), to(#005bc1));
-	/* Safari 5.1, Chrome 10+ */
+  background: #45A4DC;
+	/*border-bottom: 4px solid #003979;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0070ec), to(#005bc1));*/
+	/* Safari 5.1, Chrome 10+
 	background: -webkit-linear-gradient(top, #0070ec, #005bc1);
-	/* Firefox 3.6+ */
+	/* Firefox 3.6+
 	background: -moz-linear-gradient(top, #0070ec, #005bc1);
-	/* IE 10 */
+	/* IE 10
 	background: -ms-linear-gradient(top, #0070ec, #005bc1);
-	/* Opera 11.10+ */
+	/* Opera 11.10+
 	background: -o-linear-gradient(top, #0070ec, #005bc1);
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#0070ec', endColorstr='#005bc1');/*For IE7-8-9*/
 }
