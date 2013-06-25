@@ -146,7 +146,7 @@ table{border-collapse:collapse;border-spacing:0}
        }
 
        .items-top, #main-container, #main, #register-container{
-        background:url("/assets/images/pattern.png") top left;
+        background:url("/assets/images/bg_prin.png") top left;
        }
 
        #login-container #main{
@@ -791,7 +791,7 @@ table{border-collapse:collapse;border-spacing:0}
           color:        #fff;
           background-color: #000;
 
-          
+
 
           -moz-border-radius-bottomleft:  2px;
           -moz-border-radius-bottomright: 2px;
@@ -816,7 +816,7 @@ table{border-collapse:collapse;border-spacing:0}
           margin-left:-3.5px;
           content:"";
           background-repeat: no-repeat;
-         
+
 
         }
 
@@ -1002,23 +1002,23 @@ table{border-collapse:collapse;border-spacing:0}
         .opened-cupom .trend{
           position: absolute;
 
-          padding:3px 10px;
+          padding:6px 20px;
           margin:0;
           color:#fff;
-          font-size:1em;
-
-          /* IE7-8-9 */
+          font-size:1.35em;
+          background: black;
+          /* IE7-8-9
           background: #ffaf2c;
-          /* Safari 4-5, Chrome 1-9 */
+          /* Safari 4-5, Chrome 1-9
           background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffaf2c), to(#ff881e));
-          /* Safari 5.1, Chrome 10+ */
+          /* Safari 5.1, Chrome 10+
           background: -webkit-linear-gradient(top, #ffaf2c, #ff881e);
-          /* Firefox 3.6+ */
+          /* Firefox 3.6+
           background: -moz-linear-gradient(top, #ffaf2c, #ff881e);
-          /* IE 10 */
+          /* IE 10
           background: -ms-linear-gradient(top, #ffaf2c, #ff881e);
-          /* Opera 11.10+ */
-          background: -o-linear-gradient(top, #ffaf2c, #ff881e);
+          /* Opera 11.10+
+          background: -o-linear-gradient(top, #ffaf2c, #ff881e);*/
         }
 
         .cupom .trend {
@@ -2822,6 +2822,7 @@ table{border-collapse:collapse;border-spacing:0}
       {
         margin:   0px;
         padding:  0px;
+        list-style: none outside none;
       }
 
       .explore-list .establishment-item{
@@ -5095,10 +5096,8 @@ table{border-collapse:collapse;border-spacing:0}
           background: #000;
           text-align: left;
           color:#fff;
-
           height: 52px;
-          padding:0px 10px;
-
+          padding:0px 0px;
           text-transform: uppercase;
         }
         .top-tool .cell{
