@@ -1,9 +1,9 @@
 <%= content_for :head do %>
-	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" /> 
-	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:offer" /> 
-	<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" /> 
-	<meta property="og:title"  content="<%= @offer.company_name %>" /> 
-	<meta property="og:description"   content="<%= @offer.resume %>" /> 
+	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" />
+	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:offer" />
+	<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" />
+	<meta property="og:title"  content="<%= @offer.company_name %>" />
+	<meta property="og:description"   content="<%= @offer.resume %>" />
 	<meta property="og:image"  content="http://dev.nowon.com.br/assets/mobile/homescreen-logo.png" />
 <%- end %>
 <%= hidden_field_tag :get_location_callback, @location_callback %>
@@ -15,7 +15,7 @@
 
 <div id="main-container" class="scrollable clear-padding view-cupom">
 	<div id="main" class="clearfix">
-		
+
 			<section class="opened-cupom">
 				<div>
 					<header>
@@ -88,7 +88,7 @@
 				</div>
 				</div>
 			</section>
-			
+
 			<% unless @offer.is_credit_offer? %>
 				<section class="group">
 					<div class="wrapper">
@@ -100,7 +100,7 @@
 					</div>
 				</section>
 			<% end %>
-			
+
 			<section class="group">
 				<div class="wrapper">
 					<h4>Endereço</h4>
@@ -139,8 +139,8 @@
 	  	<% elsif @partner_user &&  !@offer.active %>
 	  		<%= link_to content_tag(:span, "Editar oferta"), [:edit, @partner_user, @offer], :class => "padraoBtn", :title => "Editar oferta", :class => "std-button bt-bigsize" %>
 	  	<% end %>
-	  	
-		
+
+
 		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
 	</div>
 </div>
@@ -152,10 +152,10 @@
 	<div id="recommends" class="window">
 		<div class="wrapper">
 			<h2>Ver recomendações</h2>
-		
+
 			<!-- Botão para fechar a janela tem class="close" -->
 			<a href="#" class="close">Fechar [X]</a>
-		
+
 			<div class="content-container">
 				<div class="content">
 					<ul class="list-users wishes">
@@ -176,17 +176,17 @@
 					</ul>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 
 	<div id="recommend-establishment" class="window">
 		<div class="wrapper">
 			<h2>Ver recomendações</h2>
-		
+
 			<!-- Botão para fechar a janela tem class="close" -->
 			<a href="#" class="close">Fechar [X]</a>
-		
+
 			<div class="content-container">
 				<div class="content">
 					<ul class="list-users wishes">
@@ -207,16 +207,16 @@
 					</ul>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 	<div id="wish" class="window">
 		<div class="wrapper">
 			<h2>Ver desejos</h2>
-		
+
 			<!-- Botão para fechar a janela tem class="close" -->
 			<a href="#" class="close">Fechar [X]</a>
-		
+
 			<div class="content-container">
 				<div class="content">
 					<ul class="list-users wishes">
@@ -225,7 +225,7 @@
 							<div class="user-data">
 								<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
 								<p><span><%= recom.user.name %></span> desejou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
-								
+
 							</div>
 
 							<% if recom.opinion != ""%>
@@ -238,10 +238,10 @@
 					</ul>
 				</div>
 			</div>
-		</div>	
+		</div>
 	</div>
 
 	<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
 	<div id="mask" ontouchmove="blockMove(event)"></div>
-	
+
 </div>

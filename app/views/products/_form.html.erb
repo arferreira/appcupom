@@ -1,6 +1,6 @@
-<div id="main-container">	
+<div id="main-container">
 		<div class="areaTitulo">
-			<h1>Novo Produto</h1>				
+			<h1>Novo Produto</h1>
 		</div>
 		<div class="boxPadrao">
 			<div class="containerBoxPadrao">
@@ -16,8 +16,8 @@
 		 				</ul>
 					</div>
 					<% end %>
-					
-						<div class="itemCadastroNovoProduto">
+
+						<div class="itemCadastroNovoProduto" id="hide">
 							<label for="familia">Família</label>
 							<%= collection_select(:product, :product_family_id, @product_families, :id, :name, {:include_blank => 'Por favor selecione'}) %>
 							<%= link_to "Nova família", new_partner_product_family_path, :class => "padraoBtn btnAddItem" %>
@@ -47,7 +47,7 @@
 					<div class="itemCadastroNovoProduto">
 						<%= link_to_submit_id "#form_products", content_tag(:span, "Salvar"), :class => "padraoBtn btnSalvarNovoProduto" %>
 					</div>
-					
+
 				<% end %>
 			</div>
 		</div>
@@ -76,4 +76,3 @@
 
 </div><!-- #main-container -->
 
-	

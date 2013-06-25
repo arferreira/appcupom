@@ -20,25 +20,26 @@ class Product < ActiveRecord::Base
   belongs_to :partner
   belongs_to :product_type # Change da reuinão 27/08/2012
   belongs_to :product_family # Change da reuinão 27/08/2012
+  belongs_to :offer
   has_many :offer_products
   has_many :offers, :through => :offer_products
   has_many :recommend_products, :dependent => :destroy
   has_many :wish_products, :dependent => :destroy
-  
+
   validates :name,          :presence   => true
   #?validates :description,   :presence   => true ????????
   validates :price,         :presence   => true
   validate :or_category_family, :has_active_offer_on_price_change
 
   @has_active_offer = false
-  
+
   def or_category_family
     if (product_family_id.blank? && product_type_id.blank?)
         errors[:base] << "Categoria e Familia de produtos não podem ser vazios ao mesmo tempo"
     end
   end
-  
-  
+
+
   def self.calculate_price prods_id_list
     unless prods_id_list.nil?
        #Product.where("id in (#{prods_id_list.to_s[1..-2]})").sum(:price)
@@ -47,29 +48,29 @@ class Product < ActiveRecord::Base
        0
     end
   end
-  
+
   #verify if partner is alredy recommended
   #sprint003
   def recommended? (user)
     RecommendProduct.find_by_user_id_and_product_id(user.id,self.id)
   end
-  
+
   def not_recommended? (user)
     !self.recommended?(user)
   end
-  
+
   def wished? (user)
     WishProduct.find_by_user_id_and_product_id(user.id,self.id)
   end
-  
+
   def not_wished? (user)
     !self.wished?(user)
   end
- 
+
  def recommends_count
    self.recommend_products.count
  end
- 
+
  def active?
    Product.find(self.id).active
  end

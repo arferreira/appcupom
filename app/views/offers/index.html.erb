@@ -23,7 +23,7 @@
 				</div>
 			</div>
 		</div>
-	
+
 		<div class="col2Parceiro col2Oferta">
 			<div class="boxPadrao">
 				<ul class="listOfertaInfo">
@@ -35,37 +35,37 @@
 						<span class="ofertaDesativadaStatus">Desativada</span>
 						<% end %>
 					</li>
-	
+
 					<li>
 						<span>Qtde de vouchers por dia</span>
 						<%= offer.daily_cupons %>
 					</li>
-	
+
 					<li>
 						<span>Início em</span>
 						<%=l offer.start_date.to_date, :format => :default %>
 					</li>
-	
+
 					<li>
 						<span>Total de cupons vendidos</span>
 						<%= offer.cupons_count %>
 					</li>
-	
+
 					<li>
 						<span>Parceiro recebe</span>
 						<%= number_to_currency offer.partner_price %>
 					</li>
-	
+
 					<li>
 						<span>Investimento</span>
 						<%= number_to_currency offer.total_investiment %>
 					</li>
-	
+
 					<li>
 						<span>Total recebido</span>
 						<%= number_to_currency offer.partner_profit %>
 					</li>
-	
+
 					<li>
 						<span>Compartilhamentos</span>
 						<%= offer.timeline_items.count %>
@@ -80,7 +80,7 @@
 				<% else %>
 					<td><%= link_to 'Ativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/start", :class => "padraoBtn", :title => "Ativar oferta" %></td>
 				<% end %>
-				
+
 			</div>
 		</div>
 		<div class="clearfix"></div>
