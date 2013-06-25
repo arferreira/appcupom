@@ -12,7 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: nowon_dev
+  database: appcupom_development
   pool: 5
   username: root
   password:

@@ -72,8 +72,8 @@ class Offer < ActiveRecord::Base
 
 
   validate :cupon_limit
-  #validate :min_time
-  #validate :initial_date, :on => :create
+  validate :min_time
+  validate :initial_date, :on => :create
   validate :one_day
 
   has_attached_file :pic, :styles => {
