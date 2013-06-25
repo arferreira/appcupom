@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111142242) do
+ActiveRecord::Schema.define(:version => 20130625011445) do
 
   create_table "admin_roles", :force => true do |t|
     t.string   "name",        :null => false
@@ -177,16 +177,16 @@ ActiveRecord::Schema.define(:version => 20130111142242) do
   add_index "offer_rules", ["offer_id"], :name => "index_offer_rules_on_offer_id"
 
   create_table "offers", :force => true do |t|
-    t.integer  "partner_id",                                                       :null => false
+    t.integer  "partner_id",                                                           :null => false
     t.string   "description"
     t.integer  "discount"
-    t.decimal  "price",           :precision => 8, :scale => 2
+    t.decimal  "price",               :precision => 8, :scale => 2
     t.time     "time_starts"
     t.time     "time_ends"
     t.string   "recurrence"
-    t.boolean  "active",                                        :default => true
-    t.datetime "created_at",                                                       :null => false
-    t.datetime "updated_at",                                                       :null => false
+    t.boolean  "active",                                            :default => true
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
     t.datetime "start_date"
     t.string   "ttype"
     t.integer  "partner_pic1_id"
@@ -197,10 +197,14 @@ ActiveRecord::Schema.define(:version => 20130111142242) do
     t.string   "temp_distance"
     t.integer  "city_id"
     t.integer  "daily_cupons"
-    t.decimal  "original_price",  :precision => 8, :scale => 2
+    t.decimal  "original_price",      :precision => 8, :scale => 2
     t.boolean  "paused"
     t.string   "company_name"
-    t.boolean  "deleted",                                       :default => false, :null => false
+    t.boolean  "deleted",                                           :default => false, :null => false
+    t.string   "attach_file_name"
+    t.string   "attach_content_type"
+    t.integer  "attach_file_size"
+    t.datetime "attach_updated_at"
   end
 
   add_index "offers", ["partner_id"], :name => "index_offers_on_partner_id"
@@ -612,6 +616,10 @@ ActiveRecord::Schema.define(:version => 20130111142242) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   create_table "wish_product_comments", :force => true do |t|

@@ -2,7 +2,7 @@
 
 <%= hidden_field_tag :partner_name, @partner.company_name %>
 
-<%= f.hidden_field :partner_id, :value => @partner.id %>		
+<%= f.hidden_field :partner_id, :value => @partner.id %>
 
 <% if @offer.errors.any? %>
 <div id="error_explanation">
@@ -17,20 +17,20 @@
 <% end %>
 <div class="col1NovaOferta">
 	<div class="boxPadrao boxNovaOferta">
-		<h3 class="titBoxPadrao"> <%= @offer.new_record? ? "Crie sua nova Oferta" : "Edite sua Oferta" %></h3>					
+		<h3 class="titBoxPadrao"> <%= @offer.new_record? ? "Crie sua nova Oferta" : "Edite sua Oferta" %></h3>
 		<div class="containerBoxPadrao">
 			<h4 class="subTituloBoxPadrao">Tipo de Oferta</h4>
 			<div id="divErrorRadio" name="divErrorRadio"></div>
 			<%= f.radio_button :ttype, product_offer, :class => "offer_ttype tipoOferta", :disabled => !(@offer.new_record?) %>
-			<%= f.label t("offer.ttype.product") %> 
+			<%= f.label t("offer.ttype.product") %>
 			<%= f.radio_button :ttype, credit_offer, :class => "offer_ttype tipoOferta", :disabled => !(@offer.new_record?) %>
 			<%= f.label t("offer.ttype.credit") %>
 
 			<div>
-				<div class="areaProdutos">		
+				<div class="areaProdutos">
 					<p class="textoDescricao">
 						Esta opção oferece desconto em determinados produtos do cardápio. Procure oferecer combos de produtos que se harmonizam entre si para vender mais cupons e fazer mais sucesso. Defina o valor do crédito, adicione produtos a partir do cardápio, escolha o desconto e as regras que se aplicam a oferta, carregue uma foto destaque, defina o horário de validade da oferta e escolha os dias da semana em que deseja ativá-la.
-					</p>		
+					</p>
 					<%= render :partial => 'products'%>
 				</div>
 
@@ -38,36 +38,36 @@
 					<p class="textoDescricao">
 						Esta opção oferece desconto no valor total dos produtos a serem consumidos pelos clientes. As ofertas de crédito fazem sucesso porque permitem a escolha de produtos pelos clientes. Defina o valor do crédito, escolha o desconto e as regras que se aplicam a oferta, carregue uma foto, defina o horário de validade da oferta e os dias da semana em que deseja ativá-la.
 					</p>
-				</div>			
-				
+				</div>
+
 				<%= render :partial => 'price_and_discount', :locals => {:f => f}%>
 			</div>
 		</div>
 	</div>
 	<div class="boxPadrao boxcondicoes">
 		<h3 class="titBoxPadrao">Defina as condições</h3>
-		<div class="containerBoxPadrao">						
-			<h4 class="subTituloBoxPadrao">Descreva destaques e restrições da sua oferta</h4>	
-			
+		<div class="containerBoxPadrao">
+			<h4 class="subTituloBoxPadrao">Descreva destaques e restrições da sua oferta</h4>
+
 			<p class="introOferta">
 				Se houver, cite diferenciais dos produtos ofertados, como modo de preparo específico, fornecedor especial, etc.
-				Se não achar a regra desejada abaixo, informe a nova condição ou restrição. 
+				Se não achar a regra desejada abaixo, informe a nova condição ou restrição.
 				Destine uma linha para cada destaque ou restrição indicada.
 			</p>
-			
+
 			<%= f.text_area :description, :maxlength => "300", :id => "destaqueoferta", :class => "destaqueOferta" %>
-			
+
 			<%= render :partial => 'rules', :locals => {:f => f}%>
-			
+
 
 		</div>
-	</div> 
+	</div>
 
 	<div class="boxPadrao">
 		<h3 class="titBoxPadrao">Agende sua Oferta</h3>
 		<div class="containerBoxPadrao">
 			<p class="introOferta">
-				Defina uma data para o início da oferta, o horário e os dias da semana em que deseja divulgar a oferta.				
+				Defina uma data para o início da oferta, o horário e os dias da semana em que deseja divulgar a oferta.
 			</p>
 			<%= render :partial => 'program', :locals => {:f => f}%>
 		</div>
@@ -96,7 +96,7 @@
 				<p class="resultadoInfoOferta"></p>
 				<p class="resumoDataHorario iconTempo">
 					<span class="1">Dom,</span> <span class="2">Seg,</span> <span class="3">Ter,</span> <span class="4">Qua,</span> <span class="5">Qui,</span> <span class="6">Sex,</span> <span class="7">Sab,</span> de <span class="horaInicio">14:00</span> às <span class="horaFim">15:00</span>
-				</p>		
+				</p>
 				<ul>
 					<li id="txtdestaqueoferta"></li>
 					<div id="product_rules_resume">
@@ -106,7 +106,7 @@
 						<% end %>
 						<% end %>
 					</div>
-					
+
 					<div id="credit_rules_resume">
 						<% if @credit_rules %>
 						<% @credit_rules.each do |rule| %>
@@ -115,11 +115,11 @@
 						<% end %>
 					</div>
 				</ul>
-			</div>					
-		</div>	
+			</div>
+		</div>
 		<%= submit_offer_id ".new_offer", "Concluir Oferta", :class => "padraoBtn btnSalvarNovaOferta" %>
-	</div>				
-</div>	
+	</div>
+</div>
 <% end %>
 
 
@@ -127,9 +127,9 @@
 <div style="display:none;">
 	<div class="boxPadrao" id="listaProdutos">
 		<input type="hidden"  id="nomeLocal" value="Restaurante DNA"/>
-		<h3 class="titBoxPadrao">Escolha um item do cardápio que deseja adicionar a oferta</h3>	
-		<div class="adicaoSucesso">Incluido na pré visualização.</div>		
-		
+		<h3 class="titBoxPadrao">Escolha um item do cardápio que deseja adicionar a oferta</h3>
+		<div class="adicaoSucesso">Incluido na pré visualização.</div>
+
 		<% if @products.nil? || @products.empty? %>
 		<div>Nenhum produto cadastrado</div>
 		<% else %>
@@ -140,11 +140,11 @@
 				<p class="precoProduto" data-preco="<%= product.price %>" data-id="<%= product.id %>"><%= number_to_currency(product.price)%></p>
 			</div>
 			<a href="javascript:void(0);" class="padraoBtn btnAdicionarProduto">Adicionar</a>
-		</div>	
+		</div>
 		<% end %>
 		<% end %>
 
-	</div>	
+	</div>
 
 </div>
 
@@ -183,7 +183,7 @@ $().ready(function(){
 
 			return false;
 		}
-		document.new_offer.submit(); 
+		document.new_offer.submit();
 	});
 });
 </script>

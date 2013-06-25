@@ -30,7 +30,9 @@ class Offer < ActiveRecord::Base
   default_scope where(:deleted => 0)
   include ActionView::Helpers::NumberHelper
 
-  attr_accessible :product_id, :product_qty, :partner_id, :description, :discount, :price, :time_starts, :time_ends, :daily_cupons,:recurrence, :start_date, :ttype, :partner_pic1_id, :partner_pic2_id, :partner_pic3_id, :main_pic, :cupon_counter, :temp_distance, :city_id, :original_price, :paused, :deleted, :company_name
+  attr_accessible :product_id, :product_qty, :partner_id, :description, :discount, :price, :time_starts, :time_ends, :daily_cupons,:recurrence, :start_date, :ttype, :partner_pic1_id, :partner_pic2_id, :partner_pic3_id, :main_pic, :cupon_counter, :temp_distance, :city_id, :original_price, :paused, :deleted, :company_name,:pic,:attach_file_name, :attach_content_type, :attach_file_size, :attach_updated_at
+
+  attr_accessor :pic_file_name
 
   belongs_to :partner
   belongs_to :partner_pic1,
@@ -70,9 +72,34 @@ class Offer < ActiveRecord::Base
 
 
   validate :cupon_limit
-  validate :min_time
-  validate :initial_date, :on => :create
+  #validate :min_time
+  #validate :initial_date, :on => :create
   validate :one_day
+
+  has_attached_file :pic, :styles => {
+                            :banner => {
+                              :geometry => "273x65#",
+                              :quality => 60,
+                              :format => "jpg"
+                              },
+                            :banner_big => {
+                              :geometry => "640x222#",
+                              :quality => 60,
+                              :format => "jpg"
+                            },
+                            :small => {
+                              :geometry => "156x117#",
+                              :quality => 60,
+                              :format => "jpg"
+                            },
+                            :thumb => {
+                              :geometry => "72x72#",
+                              :quality => 60,
+                              :format => "jpg"
+                            }
+
+                          }
+  has_attached_file :attach
 
   def cupon_limit
     partner = Partner.find partner_id
@@ -122,16 +149,16 @@ class Offer < ActiveRecord::Base
   end
 
   #Search
-  searchable do
-    text :description
-    text :company_name
+  #searchable do
+    #text :description
+    #text :company_name
 
-    text :products do
-      products.map(&:name)
-    end
+    #text :products do
+      #products.map(&:name)
+    #end
 
-    text :description, :stored => true
-  end
+    #text :description, :stored => true
+  #end
 
   def is_product_offer?
     self.ttype == PRODUCT_OFFER
