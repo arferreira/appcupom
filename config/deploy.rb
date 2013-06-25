@@ -84,6 +84,10 @@ namespace :deploy do
     # starta o serviço
     start
   end
+  
+  task :setup_solr_data_dir do
+    run "mkdir -p #{shared_dir}/solr/data"
+  end
 
   # verifica as pasta necessarias para o envio, e inicialização do s serviços
   # para corrigir bug que aconteceu comigo, talvez ja tenham corrigido esse erro
@@ -108,6 +112,24 @@ namespace :ruby do
   end
 end
 
+namespace :solr do
+  desc "start solr"
+  task :start, :roles => :app, :except => { :no_release => true } do 
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+  end
+  desc "stop solr"
+  task :stop, :roles => :app, :except => { :no_release => true } do 
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
+  end
+  desc "reindex the whole database"
+  task :reindex, :roles => :app do
+    stop
+    run "rm -rf #{shared_path}/solr/data"
+    start
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex"
+  end
+end
+
 namespace :unicorn do
   desc "Show error log"
   task :error_log, :except => { :no_release => true } do
@@ -120,3 +142,4 @@ namespace :unicorn do
   end
 end
 
+after 'deploy:setup', 'deploy:setup_solr_data_dir'
