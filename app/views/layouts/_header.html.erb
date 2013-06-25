@@ -80,8 +80,8 @@
 			<% if user_type == PARTNER_TYPE %>
 			<ul class="web-menu">
 				<li class="mn-item"><%= link_to "Painel", {:controller => get_controller(user_type), :action => "dashboard", :id => current_user.id}, :class => "bt-web-menu parceiros" %></li>
-				<li class="mn-item"><%= link_to "Ofertas", {:controller => "offers", :action => "index", :partner_id => current_user.id}, :class => "bt-web-menu ofertas" %></li>
-				<li class="mn-item"><%= link_to "Cardápio", {:controller => "products", :action => "index", :partner_id => current_user.id}, :class => "bt-web-menu cardapio" %></li>
+				<li class="mn-item"><%= link_to "Cupons", {:controller => "offers", :action => "index", :partner_id => current_user.id}, :class => "bt-web-menu ofertas" %></li>
+				<li class="mn-item"><%= link_to "Produtos", {:controller => "products", :action => "index", :partner_id => current_user.id}, :class => "bt-web-menu cardapio" %></li>
 				<li class="mn-item"><%= link_to current_user.company_name, current_user, :class => "bt-web-menu perfil" %>
 					<ul class="web-sub-menu">
 						<li><%= link_to "Editar Perfil", {:controller => get_controller(user_type), :action => "edit", :id => current_user.id} %></li>
@@ -100,7 +100,7 @@
 							<li class="mn-item">
 								<a class="bt-web-menu how-works" href="/comofunciona">Como funciona</a>
 							</li>
-							<li class="mn-item"><%= link_to "Ofertas", root_path, :class => "bt-web-menu offers" %></li>
+							<li class="mn-item"><%= link_to "Cupons", root_path, :class => "bt-web-menu offers" %></li>
 							<li class="mn-item"><%= link_to "Explorar", {:controller => "partners", :action => "index"}, :class => "bt-web-menu explore" %></li>
 							<li class="mn-item">
 								<% if signed_in? %>
