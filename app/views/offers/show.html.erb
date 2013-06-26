@@ -92,13 +92,19 @@
 			<% unless @offer.is_credit_offer? %>
 				<section class="group">
 					<div class="wrapper">
-						<h4>Cardápio</h4>
+						<h4>Produtos inclusos</h4>
 						<% @products.each do |product| %>
 							<h5><%= product.name %></h5>
 							<p class="sub-text"><%= product.description %></p>
 						<% end %>
 					</div>
 				</section>
+      <% else %>
+        <section class="group">
+          <div class="wrapper">
+            <span>Essa é uma oferta de credito, não possui produtos.</span>
+          </div>
+        </section>
 			<% end %>
 
 			<section class="group">
