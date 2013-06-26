@@ -2228,7 +2228,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
         #personal-data .name{
           font-size: 2em;
-          color:#0070ed;
+          color:black;
           font-weight: bold;
           width: 100%;
         }
@@ -2394,9 +2394,8 @@ table{border-collapse:collapse;border-spacing:0}
 
         .custom-title{
           font-size:  1.6em;
-          color:    #ff9b25;
+          color:    #45A4DC;
           position:   relative;
-
           padding-left: 26px;
           margin-top:   7px;
           margin-left:  5px;

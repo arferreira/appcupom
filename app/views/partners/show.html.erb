@@ -86,7 +86,7 @@
 				<!--#Ofertas-->
 				<li>
 					<div class="wrapper">
-						<h3 class="custom-title ic-cupom"><%= @offers.count.to_s + (@offers.count > 1 ? " ofertas ativas" : " oferta ativa" )%></h3>
+						<h3 class="custom-title"><%= @offers.count.to_s + (@offers.count > 1 ? " ofertas ativas" : " oferta ativa" )%></h3>
 						<ul class="clear-list ">
 
 							<% @offers.each do |offer| %>
