@@ -69,7 +69,7 @@ namespace :deploy do
   task :stop, :roles => :app, :except => { :no_release => true } do
     # mata o serviço do unicorn passando o pid definido na linha 99
    # run "#{try_sudo} kill `cat #{unicorn_pid}`"
-    run "if [ -e /var/www/cupom/shared/pids/unicorn.pid ]; then kill `cat /var/www/cupom/shared/pids/unicorn.pid`; fi;"
+    run "if [ -e #{unicorn_pid} ]; then kill `cat #{unicorn_pid}`; fi;"
 
   end
 
