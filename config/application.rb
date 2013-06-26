@@ -58,8 +58,8 @@ module Appcupom
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     #config.active_record.whitelist_attributes = true
-    config.serve_static_assets = true
-    config.middleware.insert_before('Rack::Lock', '::API::Throttle')
-    config.middleware.insert_before(::Rack::Lock, ::ActionDispatch::Static, "#{root}/public")
+    # config.serve_static_assets = true
+    # config.middleware.insert_before('Rack::Lock', '::API::Throttle')
+    # config.middleware.insert_before(::Rack::Lock, ::ActionDispatch::Static, "#{root}/public")
   end
 end
