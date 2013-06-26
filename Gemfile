@@ -26,6 +26,15 @@ gem 'paperclip'
 gem 'sunspot_rails'
 gem 'progress_bar' # for sunspot:solr:reindex
 
+group :assets do
+  gem 'sass-rails'
+  gem 'compass-rails'
+  gem 'coffee-rails'
+  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
+  gem 'therubyracer', :platforms => :ruby
+  gem 'uglifier'
+end
+
 group :development do
   gem "capistrano"
   gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
