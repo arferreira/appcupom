@@ -21,16 +21,16 @@
 
 			<ul class="values-list">
 				<% unless @user_credits.empty? %>
-				<li class="value-credit">
-					<%= link_to "/users/#{@current_user.id}/credits" do %>
-					<div class="local col-50">
-						<p>Crédito</p>
-					</div>
-					<div class="value">
-						<span><%= number_to_currency @credit_value %></span>
-					</div>
-					<% end %>
-				</li>
+  				<li class="value-credit">
+  					<%= link_to "/users/#{@current_user.id}/credits" do %>
+    					<div class="local col-50">
+    						<p>Crédito</p>
+    					</div>
+    					<div class="value">
+    						<span><%= number_to_currency @credit_value %></span>
+    					</div>
+  					<% end %>
+  				</li>
 				<% end %>
 				<li class="value-nowon">
 					<div class="local col-50">
@@ -56,18 +56,16 @@
 						<span><%= number_to_currency @offer.price %></span>
 					</div>
 				</li>
-			</ul>
-
+		</ul>
 	</div> <!-- #main -->
 </div> <!-- #main-container -->
 
 <div id="bottom-bar" class="dark-background small">
 	<div class="wrapper">
-			<%= form_tag :controller => "cupons", :action => "confirm_printed" do %>
-		  	<%= hidden_field_tag :offer_id, @offer.id %>
-		  	<%= hidden_field_tag :user_id, @current_user.id %>
-		  	<%= link_to_submit content_tag(:span, "Confirmar a compra"), :class => "std-button bt-bigsize" %>
-		  <% end %>
-		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
+		<%= form_tag :controller => "cupons", :action => "confirm_printed" do %>
+	  	<%= hidden_field_tag :offer_id, @offer.id %>
+	  	<%= hidden_field_tag :user_id, @current_user.id %>
+	  	<%= link_to_submit content_tag(:span, "Confirmar"), :class => "std-button bt-bigsize" %>
+	  <% end %>
 	</div>
 </div>
