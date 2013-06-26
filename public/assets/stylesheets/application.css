@@ -2004,31 +2004,12 @@ table{border-collapse:collapse;border-spacing:0}
         font-weight: bold;
         font-size: 1.3em;
         text-decoration: none;
-        text-shadow: 0px 1px 0px rgba(0, 0, 0, .15);
-
-
-        -webkit-border-radius:  8px;
-        -moz-border-radius:   8px;
-        border-radius:      8px;
-
-        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, .1);
-        -moz-box-shadow:  inset 0px 0px 5px 0px rgba(0, 0, 0, .1);
-        box-shadow:     inset 0px 0px 5px 0px rgba(0, 0, 0, .1);
-
-        background-color:rgba(0, 0, 0, .03);
         margin-top:2px;
         margin-bottom:2px;
 
        }
 
-       .dark-background .std-button
-       {
-        background-color:rgba(0, 0, 0, .05);
-
-        -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, .3);
-        -moz-box-shadow:  inset 0px 0px 5px 0px rgba(0, 0, 0, .3);
-        box-shadow:     inset 0px 0px 5px 0px rgba(0, 0, 0, .3);
-       }
+       .dark-background .std-button{}
 
        .horizontal-menu .std-button,
        .std-button span
@@ -2037,7 +2018,7 @@ table{border-collapse:collapse;border-spacing:0}
         text-align: center;
 
         background: #000;
-        color: #45a4dc;
+        color: #FFF;
 
         padding:10px;
         margin:7px;
