@@ -1,6 +1,6 @@
 require 'bundler/capistrano'
 
- 
+
 set :default_environment, {
   :PATH => '/opt/local/bin:/opt/local/sbin:/opt/local/ruby/gems/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
   :GEM_HOME => '/opt/local/ruby/gems'
@@ -13,7 +13,7 @@ set :keep_releases, 3
 
 set :scm, :git
 
-set :repository, 'git@github.com:arferreira/appcupom.git'
+set :repository, 'https://github.com/arferreira/appcupom.git'
 
 set :branch, 'master'
 
@@ -32,7 +32,7 @@ role :app, application
 role :db,  application, primary: true
 
 
- 
+
 # Minhas configurações do Unicorn
 # comando para execução do unicorn
 # <optinal>
@@ -56,27 +56,27 @@ namespace :deploy do
 
   #starta a aplicação com o unicorn
   desc "Start Application"
-  task :start, :roles => :app, :except => { :no_release => true } do 
+  task :start, :roles => :app, :except => { :no_release => true } do
     # comando bash, navega ate a pasta da versao atual, e executa o unicorn
     run "cd #{current_path} && #{try_sudo} #{unicorn_binary} -c #{unicorn_config}" <<
         " -E #{rails_env} -D"
   end
-  
+
   # mata o serviço do unicorn
   desc "Stop Application"
-  task :stop, :roles => :app, :except => { :no_release => true } do 
+  task :stop, :roles => :app, :except => { :no_release => true } do
     # mata o serviço do unicorn passando o pid definido na linha 99
    # run "#{try_sudo} kill `cat #{unicorn_pid}`"
     run "if [ -e /var/www/cupom/shared/pids/unicorn.pid ]; then kill `cat /var/www/cupom/shared/pids/unicorn.pid`; fi;"
 
   end
-  
+
   # mata o serviço do unicorn apos axecuções atual
   desc "Graceful Stop Application"
   task :graceful_stop, :roles => :app, :except => { :no_release => true } do
     run "#{try_sudo} kill -s QUIT `cat #{unicorn_pid}`"
   end
-  
+
   # reinicia o serviço do unicorn
   task :restart, :roles => :app, :except => { :no_release => true } do
     # para o serviço
@@ -84,7 +84,7 @@ namespace :deploy do
     # starta o serviço
     start
   end
-  
+
   task :setup_solr_data_dir do
     run "mkdir -p #{shared_dir}/solr/data"
   end
@@ -114,11 +114,11 @@ end
 
 namespace :solr do
   desc "start solr"
-  task :start, :roles => :app, :except => { :no_release => true } do 
+  task :start, :roles => :app, :except => { :no_release => true } do
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
   end
   desc "stop solr"
-  task :stop, :roles => :app, :except => { :no_release => true } do 
+  task :stop, :roles => :app, :except => { :no_release => true } do
     run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/pids"
   end
   desc "reindex the whole database"
