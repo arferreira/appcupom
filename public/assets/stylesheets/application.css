@@ -877,11 +877,9 @@ table{border-collapse:collapse;border-spacing:0}
           color:#fff;
           font-weight: bold;
           font-size:1.2em;
-          background:rgba(0,0,0,.15);
+          background:black;
           padding:2px 14px;
           margin:0px;
-
-          text-shadow: 0px 1px 1px rgba(0,0,0,.5);
         }
 
         .use-time{
@@ -5664,12 +5662,5 @@ table{border-collapse:collapse;border-spacing:0}
       #header-container .migalha-active,
       #header-container .migalha:hover{
         color:#000;
-      }
-      .cupons{
-        display:table;
-      }
-      #main .cupom{
-        width: 30%;
-        float: left;
       }
     }
