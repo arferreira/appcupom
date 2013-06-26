@@ -155,7 +155,7 @@ table{border-collapse:collapse;border-spacing:0}
        }
 
        body{
-        background:url("/assets/images/mobile/bg-web.jpg") center top repeat-y;
+         background:#DFDFDF;
        }
 
 
@@ -930,6 +930,8 @@ table{border-collapse:collapse;border-spacing:0}
           overflow: hidden;
           position:relative;
           list-style: none;
+          width:100%;
+          float:none;
         }
 
         .cupom:after{
@@ -4869,18 +4871,7 @@ table{border-collapse:collapse;border-spacing:0}
           padding: 8px 15px;
           border-top: solid 1px #66b2e8;
           border-left: solid 1px #66b2e8;
-          /*border-bottom: 4px solid #003979; */
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0070ec), to(#005bc1));
-          /* Safari 5.1, Chrome 10+ */
-          background: -webkit-linear-gradient(top, #0070ec, #005bc1);
-          /* Firefox 3.6+ */
-          background: -moz-linear-gradient(top, #0070ec, #005bc1);
-          /* IE 10 */
-          background: -ms-linear-gradient(top, #0070ec, #005bc1);
-          /* Opera 11.10+ */
-          background: -o-linear-gradient(top, #0070ec, #005bc1);
-          /*IE7-8-9*/
-          filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#0070ec', endColorstr='#005bc1');
+          background:#45A4DC;
         }
 
 
@@ -5646,7 +5637,9 @@ table{border-collapse:collapse;border-spacing:0}
         p, h2, h3 { orphans: 3; widows: 3; }
         h2, h3 { page-break-after: avoid; }
        }
-    @media only screen and (max-height: 960px){
+
+    /*web screen*/
+    @media only screen and (min-width: 960px){
       body{
         background:#DFDFDF;
       }
@@ -5671,5 +5664,12 @@ table{border-collapse:collapse;border-spacing:0}
       #header-container .migalha-active,
       #header-container .migalha:hover{
         color:#000;
+      }
+      .cupons{
+        display:table;
+      }
+      #main .cupom{
+        width: 30%;
+        float: left;
       }
     }
