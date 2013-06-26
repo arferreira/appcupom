@@ -13,7 +13,7 @@ set :keep_releases, 3
 
 set :scm, :git
 
-set :repository, 'https://github.com/arferreira/appcupom.git'
+set :repository, 'git@github.com:arferreira/appcupom.git'
 
 set :branch, 'master'
 
@@ -26,6 +26,8 @@ set :use_sudo, false
 set :deploy_to, '/var/www/cupom'
 
 set :current, "#{deploy_to}/current"
+
+ssh_options[:forward_agent] = true
 
 role :web, application
 role :app, application

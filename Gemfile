@@ -27,6 +27,7 @@ gem 'sunspot_rails'
 gem 'progress_bar' # for sunspot:solr:reindex
 
 group :development do
+  gem "capistrano"
   gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
 end
 
