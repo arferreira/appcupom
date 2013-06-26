@@ -928,8 +928,6 @@ table{border-collapse:collapse;border-spacing:0}
           overflow: hidden;
           position:relative;
           list-style: none;
-          width:100%;
-          float:none;
         }
 
         .cupom:after{
