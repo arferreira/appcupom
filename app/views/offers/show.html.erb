@@ -135,7 +135,7 @@
 			</p>
 		<% end %>
 		<% if @offer.is_today? && !@offer.is_full? && !@offer.paused && (user_type == USER_TYPE || current_user.nil? ) && @offer.active %>
-	  		<%= link_to content_tag(:span, "Comprar voucher"), {:controller => "offers", :action => "payment_info"}, :class => "std-button bt-bigsize" %>
+	  		<%= link_to content_tag(:span, "Pegar cupom"), {:controller => "offers", :action => "payment_info"}, :class => "std-button bt-bigsize" %>
 	  	<% elsif @partner_user &&  !@offer.active %>
 	  		<%= link_to content_tag(:span, "Editar oferta"), [:edit, @partner_user, @offer], :class => "padraoBtn", :title => "Editar oferta", :class => "std-button bt-bigsize" %>
 	  	<% end %>
@@ -143,105 +143,4 @@
 
 		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
 	</div>
-</div>
-
-
-
-<div id="boxes">
-
-	<div id="recommends" class="window">
-		<div class="wrapper">
-			<h2>Ver recomendações</h2>
-
-			<!-- Botão para fechar a janela tem class="close" -->
-			<a href="#" class="close">Fechar [X]</a>
-
-			<div class="content-container">
-				<div class="content">
-					<ul class="list-users wishes">
-						<% @recommend_products.each do |recom|%>
-						<li>
-							<div class="user-data">
-								<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
-								<p><span><%= recom.user.name %></span> recomendou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
-							</div>
-
-							<% if recom.opinion != ""%>
-							<div class="user-comment-data">
-								<%= recom.opinion %>
-							</div>
-							<% end %>
-						</li>
-						<% end %>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div id="recommend-establishment" class="window">
-		<div class="wrapper">
-			<h2>Ver recomendações</h2>
-
-			<!-- Botão para fechar a janela tem class="close" -->
-			<a href="#" class="close">Fechar [X]</a>
-
-			<div class="content-container">
-				<div class="content">
-					<ul class="list-users wishes">
-						<% @recommend_partners.each do |recom|%>
-						<li>
-							<div class="user-data">
-								<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
-								<p><span><%= recom.user.name %></span> recomendou o estabelecimento <span><%= recom.partner.company_name %></span></p>
-							</div>
-
-							<% if recom.opinion != ""%>
-							<div class="user-comment-data">
-								<%= recom.opinion %>
-							</div>
-							<% end %>
-						</li>
-						<% end %>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="wish" class="window">
-		<div class="wrapper">
-			<h2>Ver desejos</h2>
-
-			<!-- Botão para fechar a janela tem class="close" -->
-			<a href="#" class="close">Fechar [X]</a>
-
-			<div class="content-container">
-				<div class="content">
-					<ul class="list-users wishes">
-						<% @wish_products.each do |recom|%>
-						<li>
-							<div class="user-data">
-								<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
-								<p><span><%= recom.user.name %></span> desejou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
-
-							</div>
-
-							<% if recom.opinion != ""%>
-							<div class="user-comment-data">
-								<%= recom.opinion %>
-							</div>
-							<% end %>
-						</li>
-						<% end %>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
-	<div id="mask" ontouchmove="blockMove(event)"></div>
-
 </div>

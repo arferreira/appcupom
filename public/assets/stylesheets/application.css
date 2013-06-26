@@ -4893,7 +4893,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
         .breadCrumb a:last-child:after {display: none;}
         #header-container .migalha-active, #header-container .migalha:hover{
-          color: #ffbe39;
+          color: #000;
         }
         .top-home{
           display: block;
