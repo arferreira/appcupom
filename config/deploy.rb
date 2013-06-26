@@ -65,13 +65,13 @@ namespace :deploy do
   end
 
   # mata o serviço do unicorn
-  desc "Stop Application"
-  task :stop, :roles => :app, :except => { :no_release => true } do
+  #desc "Stop Application"
+  #task :stop, :roles => :app, :except => { :no_release => true } do
     # mata o serviço do unicorn passando o pid definido na linha 99
    # run "#{try_sudo} kill `cat #{unicorn_pid}`"
-    run "if [ -e #{unicorn_pid} ]; then kill `cat #{unicorn_pid}`; fi;"
+    #run "if [ -e #{unicorn_pid} ]; then kill `cat #{unicorn_pid}`; fi;"
 
-  end
+  #end
 
   # mata o serviço do unicorn apos axecuções atual
   desc "Graceful Stop Application"
