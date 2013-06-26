@@ -1,4 +1,3 @@
-
 worker_processes 10
 
 working_directory "/var/www/cupom/current" # available in 0.94.0+
