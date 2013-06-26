@@ -57,36 +57,36 @@
 					</div>
 				</div>
 
-				<div class="wrapper">
+				<!--<div class="wrapper">
 				<div>
 					<div class="box">
 						<div>
-							<!--<a href="#recommends" name="modal">-->
+							<a href="#recommends" name="modal">
 							<span class="recommend-menu"><%= @recommend_products_count %></span></br>
 							recomendaram o cardápio
-							<!--</a>-->
+							</a>
 						</div>
 					</div>
 
 					<div class="box">
 						<div>
-							<!--<a href="#recommend-establishment" name="modal">-->
+							<a href="#recommend-establishment" name="modal">
 							<span class="recommend-establishment"><%= @recommend_partners_count %></span></br>
 							recomendaram o estabelecimento
-							<!--</a>-->
+							</a>
 						</div>
 					</div>
 
 					<div class="box">
 						<div>
-							<!--<a href="#wish" name="modal">-->
+							<a href="#wish" name="modal">
 								<span class="wish-menu"><%= @wish_products_count %></span></br>
 								desejaram o cardápio
-							<!--</a>-->
+							</a>
 						</div>
 					</div>
 				</div>
-				</div>
+				</div>-->
 			</section>
 
 			<% unless @offer.is_credit_offer? %>
@@ -137,8 +137,6 @@
 	  	<% elsif @partner_user &&  !@offer.active %>
 	  		<%= link_to content_tag(:span, "Editar oferta"), [:edit, @partner_user, @offer], :class => "padraoBtn", :title => "Editar oferta", :class => "std-button bt-bigsize" %>
 	  	<% end %>
-
-
 		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
 	</div>
 </div>

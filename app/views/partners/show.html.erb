@@ -7,11 +7,11 @@
 <% end %>
 
 <%= content_for :head do %>
-	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" /> 
-	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:partner" /> 
-	<meta property="og:url"    content="<%= "#{root_url}partners/#{@partner.id}" %>" /> 
-	<meta property="og:title"  content="<%= @partner.company_name %>" /> 
-	<meta property="og:description"   content="<%= @partner.company_name %>" /> 
+	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" />
+	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:partner" />
+	<meta property="og:url"    content="<%= "#{root_url}partners/#{@partner.id}" %>" />
+	<meta property="og:title"  content="<%= @partner.company_name %>" />
+	<meta property="og:description"   content="<%= @partner.company_name %>" />
 	<meta property="og:image"  content="<%= "#{root_url}#{@partner.pic(:perfil)}" %>" />
 <%- end %>
 
@@ -51,7 +51,7 @@
 		</div>
 
 		<ul class="profile-group">
-			<li>
+			<!--<li>
 				<div class="wrapper">
 
 					<div class="ui-box">
@@ -82,7 +82,7 @@
 							</div>
 						</div>
 					</div>
-				</li>
+				</li>-->
 				<!--#Ofertas-->
 				<li>
 					<div class="wrapper">
@@ -136,7 +136,7 @@
 							<%= @partner.primary_phone + (@partner.secondary_phone != '' ? " - #{@partner.secondary_phone}" : '') %>
 						</p>
 						<p class="address">
-							<%= @partner.site %> 
+							<%= @partner.site %>
 						</p>
 						<h4>Endereço</h4>
 						<div class="to-left col-66">
@@ -215,49 +215,6 @@
 						}, false);
 						</script>
 
-						<% content_for(:extra_scripts) do %>
-						$('.pagination').hide();
-						initToggleList();
-						$(".toggle-item .toggle-list").hide();
-						var flag = false;
-						var click = true;
-						$(document).off("click", ".toggle-item");
-						$(document).off("touchstart", ".toggle-item");
-						$(document).off("touchmove", ".toggle-item");
-						$(document).off("touchend", ".toggle-item");
-						$(document).on("click", ".toggle-item", function(){
-							$(this).find(".toggle-list").slideToggle();
-							if($(this).hasClass("opened")){
-								$(this).removeClass("opened");
-							}else{
-								$(this).addClass("opened");
-							}
-						});
-						$(document).on("touchstart", ".toggle-item", function(){
-						    click = true;
-						})
-						$(document).on("touchmove", ".toggle-item", function(){
-						    click = false;
-						})
-						$(document).on("touchend", ".toggle-item", function(){
-						    if(click){
-						    	$(this).find(".toggle-list").slideToggle();
-						    	if($(this).hasClass("opened")){
-						    		$(this).removeClass("opened");
-						    	}else{
-						    		$(this).addClass("opened");
-						    	}
-						    }
-						});
-						document.addEventListener('DOMContentLoaded', function(){
-
-							var myPhotoSwipe = Code.PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), { enableMouseWheel: false , enableKeyboard: false } );
-
-						}, false);
-						endlessPage();
-						var myPhotoSwipe = Code.PhotoSwipe.attach( window.document.querySelectorAll('#Gallery a'), { enableMouseWheel: false , enableKeyboard: false } );
-						<% end %>
-
 					</div>
 				</li>
 				<!-- Fim #Cardapio -->
@@ -272,107 +229,3 @@
 		<!-- #main -->
 	</div>
 	<!-- #main-container -->
-
-	<div id="boxes">
-
-		<!-- #personalize sua janela modal aqui -->
-		<div id="recommend" class="window">
-			<div class="wrapper">
-				<h2>Ver recomendações</h2>
-
-				<!-- Botão para fechar a janela tem class="close" -->
-				<a href="#" class="close">Fechar [X]</a>
-
-				<div class="content-container">
-					<div class="content">
-						<ul class="list-users wishes">
-							<% @recommenders.each do |recom|%>
-							<li>
-								<div class="user-data">
-									<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
-									<p><span><%= recom.user.name %></span> recomendou o estabelecimento <span><%= @partner.company_name %></span></p>
-								</div>
-
-								<% if recom.opinion != ""%>
-								<div class="user-comment-data">
-									<%= recom.opinion %>
-								</div>
-								<% end %>
-							</li>
-							<% end %>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<div id="recommend-prod" class="window">
-			<div class="wrapper">
-				<h2>Ver recomendações</h2>
-
-				<!-- Botão para fechar a janela tem class="close" -->
-				<a href="#" class="close">Fechar [X]</a>
-
-				<div class="content-container">
-					<div class="content">
-						<ul class="list-users wishes">
-							<% @recommend_products.each do |recom|%>
-							<li class="pv_class pv_<%= recom.product.id %>">
-								<div class="user-data">
-									<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
-									<p><span><%= recom.user.name %></span> recomendou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
-								</div>
-								<% if recom.opinion != ""%>
-								<div class="user-comment-data">
-									<%= recom.opinion %>
-								</div>
-								<% end %>
-							</li>
-							<% end %>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-
-
-		<!-- #personalize sua janela modal aqui -->
-		<div id="wish" class="window">
-			<div class="wrapper">
-				<h2>Ver desejos</h2>
-
-				<!-- Botão para fechar a janela tem class="close" -->
-				<a href="#" class="close">Fechar [X]</a>
-
-				<div class="content-container">
-					<div class="content">
-						<ul class="list-users wishes">
-							<% @product_wishes.each do |recom|%>
-							<li class="pv_class pv_<%= recom.product.id %>">
-								<div class="user-data">
-									<%= image_tag recom.user.pic(:small), :class => "avatar", :style => "height:41px; width:41px;" %>
-									<p><span><%= recom.user.name %></span> desejou <span><%= recom.product.name %></span> no estabelecimento de <span><%= recom.product.partner.company_name %></span></p>
-								</div>
-
-								<% if recom.opinion != ""%>
-								<div class="user-comment-data">
-									<%= recom.opinion %>
-								</div>
-								<% end %>
-							</li>
-							<% end %>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-
-		<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
-		<div id="mask" ontouchmove="blockMove(event)"></div>
-	</div>
-
