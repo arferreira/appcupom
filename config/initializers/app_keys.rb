@@ -45,3 +45,8 @@ class FacebookAPI
     end
   end
 end
+class Google
+  def self.key
+    "AIzaSyBgP69wSIFNJeEftRGV-_UnJYjYe1GwWCA"
+  end
+end
