@@ -38,7 +38,7 @@ end
 #end
 
 gem 'multi_json', '1.3.6'
-
+gem 'unicorn'
 #Decorator Design Pattern
 gem 'draper'
 

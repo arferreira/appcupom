@@ -28,7 +28,7 @@ set :deploy_to, '/var/www/cupom'
 set :current, "#{deploy_to}/current"
 
 ssh_options[:forward_agent] = true
-
+default_run_options[:pty] = true
 role :web, application
 role :app, application
 role :db,  application, primary: true
