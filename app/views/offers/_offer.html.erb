@@ -1,7 +1,6 @@
 <%= content_tag_for :li, offer, :class => "cupom" do %>
 
 	<%= link_to "/offers/#{offer.id}" do %>
-		<div class="icon <%= get_category_icon offer.partner %>"><span><%= get_category_icon offer.partner %></span></div>
 		<header>
 			<div class="trend"><%= offer.next_ocurrency %></div>
 			<div class="thumb">
