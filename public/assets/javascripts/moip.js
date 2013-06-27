@@ -8,16 +8,16 @@ var onSuccess = function(data){
 		secure_code = $("#security-code").val();
 	}
 	var transaction_id = $("#transaction_id").val();
-	
+
 	var card_flag_code = $('#card_flag_id').find(":selected").val();
 	if(card_flag_code == null){
 		card_flag_code = $("#card_flag_id").val();
 	}
-	
+
 	var part_card = $("#Numero").val();
 	part_card = part_card.substr(part_card.length - 4 , part_card.length);
 	//window.location.replace("/offers/" + offer_id + "/confirmation/" + data.CodigoMoIP);
-	
+
 	var save_card = $('#save_card').val();
 	if(save_card == null){
 		save_card = "dont";
@@ -27,8 +27,8 @@ var onSuccess = function(data){
 	}else{
 		save_card = "do";
 	}
-    
-  	$('<form action="/cupons/' + offer_id + '/confirmation" method="POST">' + 
+
+  	$('<form action="/cupons/' + offer_id + '/confirmation" method="POST">' +
   		'<input type="hidden" name="part_card" value="' + part_card + '">' +
     	'<input type="hidden" name="moip_id" value="' + data.CodigoMoIP + '">' +
     	'<input type="hidden" name="status" value="' + data.Status + '">' +
@@ -37,7 +37,7 @@ var onSuccess = function(data){
     	'<input type="hidden" name="save_card" value="' + save_card + '">' +
     	'<input type="hidden" name="card_flag_code" value="' + card_flag_code + '">' +
     	'</form>').appendTo("#appendable").submit();
-	    
+
 };
 
 var onFailed = function(data) {
@@ -48,15 +48,15 @@ var onFailed = function(data) {
 	else{
 		returned = data[0]
 	}
-	
+
 	if(returned != null && returned.Mensagem != null){
 	    alert('Falha no Moip: \n\n ' + returned.Mensagem);
 	}
 	else{
 		alert('Favor verificar os dados do cartão, dados incorretos');
 	}
-	
-    
+
+
 };
 
 processaPagtoCredito = function() {
@@ -77,7 +77,7 @@ processaPagtoCredito = function() {
             }
         }
     }
-    
+
     MoipWidget(settings);
     return settings;
 }
@@ -94,7 +94,7 @@ processaPagtoCofre = function() {
         }
     }
     MoipWidget(settings);
-    
+
     return settings;
 }
 

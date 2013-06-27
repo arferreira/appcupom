@@ -512,7 +512,7 @@ table{border-collapse:collapse;border-spacing:0}
           font-size: 10px;
           height: 44px;
           /* Safari 4-5, Chrome 1-9 */
-          background:#45A4DC;
+          background:#000;
           box-sizing: border-box;
           white-space: nowrap;
         }

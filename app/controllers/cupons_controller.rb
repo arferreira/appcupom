@@ -60,6 +60,7 @@ class CuponsController < ApplicationController
   end
 
   def confirm_printed
+
     @current_user = current_user
     @offer = Offer.find(params[:id])
     @transaction_id = Random.rand 00001..99999
