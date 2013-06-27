@@ -9,38 +9,38 @@ class FacebookAPI
 
   def self.app_namespace
     if Rails.env.production? #|| Rails.env.pre?
-      app_namespace = "nowon"
+      app_namespace = "trazcupomlogin"
     else
-      app_namespace = "nowon-dev"
+      app_namespace = "trazcupom-dev"
     end
   end
 
   def self.app_id
     # nowon
     if Rails.env.production? #|| Rails.env.pre?
-      app_id = "446094325449761"
+      app_id = "294633027349454"
     else
     # nowon-dev
-      app_id = "554176287943017"
+      app_id = "348626355240136"
     end
   end
 
   def self.app_secret
     # nowon
     if Rails.env.production? #|| Rails.env.pre?
-      app_secret = "3ed8c0f5493a317a8ce33ab8df8ed982"
+      app_secret = "acfbf26585c4be9163d38c0836611c2b"
     else
     # nowon-dev
-      app_secret = "f7ccc7dee495c4cd246f60f3771ac1ff"
+      app_secret = "d8a1be6f611f96893e798b2d2c010d3a"
     end
   end
 
   def self.oauth_callback_url
     if Rails.env.production? #|| Rails.env.pre?
       # oauth_callback_url = "http://nowon.com.br/facebook/terminate"
-      oauth_callback_url = "http://www.nowon.com.br/facebook/terminate"
+      oauth_callback_url = "http://www.trazcupom.com/facebook/terminate"
     else
-      oauth_callback_url = "http://pre.nowon.com.br/facebook/terminate"
+      oauth_callback_url = "http://localhost:3000/facebook/terminate"
       #oauth_callback_url = "http://lvh.me:3000/facebook/terminate"
     end
   end
