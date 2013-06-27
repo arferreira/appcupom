@@ -1,4 +1,5 @@
 require 'bundler/capistrano'
+require 'capistrano-unicorn'
 
 set :default_environment, {
   :PATH => '/opt/local/bin:/opt/local/sbin:/opt/local/ruby/gems/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
@@ -31,26 +32,7 @@ role :db,  application, primary: true
 
 
 namespace :deploy do
-  task :start do
-    %w(config/database.yml).each do |path|
-      from  = "#{deploy_to}/#{path}"
-      to    = "#{current}/#{path}"
-
-      run "if [ -f '#{to}' ]; then rm '#{to}'; fi; ln -s #{from} #{to}"
-    end
-
-    run "cd #{current} && RAILS_ENV=production && GEM_HOME=/opt/local/ruby/gems && bundle exec unicorn_rails -c #{deploy_to}/config/unicorn.rb -D"
-
-  end
-
-  task :stop do
-   
-    run "if [ -e /var/www/ifollow/shared/pids/unicorn.pid ]; then kill `cat /var/www/ifollow/shared/pids/unicorn.pid`; fi;"
-  end
-
-  task :restart do
-    stop
-    start
-  end
+  after 'deploy:restart', 'unicorn:reload' # app IS NOT preloaded
+  after 'deploy:restart', 'unicorn:restart'  # app preloaded
 end
 
