@@ -45,7 +45,7 @@ namespace :deploy do
   end
 
   task :stop do
-   
+
     run "if [ -e /var/www/ifollow/shared/pids/unicorn.pid ]; then kill `cat /var/www/ifollow/shared/pids/unicorn.pid`; fi;"
   end
 
