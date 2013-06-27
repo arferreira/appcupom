@@ -245,9 +245,7 @@ function ajaxnav(href, params, meth){
         eval(data);
       else{
             $(".round").html(data);
-        $("#header-container a, .round a, #main-menu a").each(function(i){
-          ajaxlinkbuilder($(this));
-        })
+
         ajaxnavchange = true;
         History.pushState(null, "NowOn", href);
       }
