@@ -23,7 +23,7 @@
 
 				<%= form_tag url_for(:controller => "partners", :action => "index"), :id => "search-form", :method => "get" do %>
 				<!--<label for="search">Pesquisar</label>-->
-				<%= text_field_tag :search, nil, :placeholder => "BUSCA", :id => "search", :class => "search-input" %>
+				<%= text_field_tag :search, nil, :placeholder => "Procure por cupons...", :id => "search", :class => "search-input" %>
 				<% end %>
 			</div>
 		</div>
@@ -101,7 +101,6 @@
 								<a class="bt-web-menu how-works" href="/comofunciona">Como funciona</a>
 							</li>
 							<li class="mn-item"><%= link_to "Cupons", root_path, :class => "bt-web-menu offers" %></li>
-							<li class="mn-item"><%= link_to "Explorar", {:controller => "partners", :action => "index"}, :class => "bt-web-menu explore" %></li>
 							<li class="mn-item">
 								<% if signed_in? %>
 								<% if user_type == USER_TYPE%>

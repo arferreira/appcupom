@@ -6,7 +6,7 @@ listen 5002, :tcp_nopush => true
 
 timeout 30
 
-pid "/var/www/cupom/current/tmp/pids/unicorn.pid"
+pid "/var/www/cupom/shared/pids/unicorn.pid"
 
 stderr_path "/var/www/cupom/shared/log/unicorn.stderr.log"
 stdout_path "/var/www/cupom/shared/log/unicorn.stdout.log"
