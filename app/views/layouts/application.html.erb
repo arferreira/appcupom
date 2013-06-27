@@ -1,64 +1,3 @@
-<% if request.xhr? %>
-	<script type="text/javascript">
-		$("#header-container").replaceWith("<%= escape_javascript render("layouts/header") unless @no_header%>");
-		$("#footer-partial").html("<%= escape_javascript render("layouts/footer")%>");
-	</script>
-	<% if params[:get_location] %>
-		<%= hidden_field_tag :request_location, @request_location %>
-		<%= hidden_field_tag :get_location_callback, @location_callback %>
-		<script type="text/javascript">
-			m_startDate = new Date().getTime();
-			m_watchId = navigator.geolocation.watchPosition(get_location_callback,
-				get_location_error,
-				{maximumAge:0, timeout:3000, enableHighAccuracy:true});
-
-			m_interval = setTimeout(function(){clearWatch()},7000);
-		</script>
-	<% end %>
-	<% flash.each do |key, value| %>
-		<% vd('APP HTML', key, value, flash.count) %>
-		<% unless flash[key].blank? %>
-			<div class="flash <%= key %>">
-				<%= value %>
-			</div>
-		<% end %>
-	<% end %>
-	<%= yield %>
-	<script type="text/javascript">
-		<% if @dark %>
-			if(!$("body").hasClass("dark-background")){
-				$("body").addClass("dark-background");
-			}
-		<% else %>
-			if($("body").hasClass("dark-background")){
-				$("body").removeClass("dark-background");
-			}
-		<% end %>
-		<% if @menu %>
-			if(!$("body").hasClass("nowon-inner")){
-				$("body").addClass("nowon-inner");
-			}
-		<% else %>
-			if($("body").hasClass("nowon-inner")){
-				$("body").removeClass("nowon-inner");
-			}
-		<% end %>
-		if( $("#request_maps").val() == "partner" ){
-			loadGMaps_partnerShow();
-		}
-
-		if ($("#cached_location").val() == "true") {
-			//navigator.geolocation.getCurrentPosition(get_cached_location_callback, get_location_error, {maximumAge:5000, enableHighAccuracy:true});
-			post_empty_location();
-		}
-
-		if ($("#print_this_page").val() == "true") {
-			window.print();
-		}
-		<%= yield(:extra_scripts) %>
-	</script>
-
-<% else %>
 <!doctype html>
 
 	<head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <%= FacebookAPI.app_namespace %>: http://ogp.me/ns/fb/<%= FacebookAPI.app_namespace %>#">
@@ -173,20 +112,6 @@
 			<%= yield %>
 		</section>
 
-		<!-- TODO Colocar esse trecho apenas nas páginas que tem versão mobile e que faz sentido -->
-		<% if false %>
-			<% if mobile_device? %>
-			<%= link_to "Full Site", :mobile => 0 %>
-			<% else %>
-			<%= link_to "Mobile Site", :mobile => 1 %>
-			<% end %>
-
-			<!-- TODO Remove-->
-<!--
-			<% debug(params) if Rails.env.development? %>
-			<% session.inspect if Rails.env.development? %>
-		-->
-		<% end %>
 
 		<div id="footer-partial">
 			<%= render "layouts/footer"%>
@@ -206,4 +131,3 @@
 		</div>
 	</body>
 </html>
-<% end %>
