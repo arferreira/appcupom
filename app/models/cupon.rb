@@ -1,26 +1,3 @@
-# == Schema Information
-#
-# Table name: cupons
-#
-#  user_id                     :integer(4)      not null
-#  offer_id                    :integer(4)      not null
-#  price                       :decimal(8, 2)   not null
-#  cupon_code                  :string(255)     not null
-#  monthly_cupon_accounting_id :integer(4)      not null
-#  created_at                  :datetime        not null
-#  updated_at                  :datetime        not null
-#  id                          :integer(4)      not null, primary key
-#  good_date                   :date
-#  transaction_id              :string(255)
-#  approved                    :boolean(1)
-#  moip_id                     :string(255)
-#  nasp_key                    :string(255)
-#  bill_value                  :decimal(8, 2)
-#  validated                   :boolean(1)
-#  validated_date              :datetime
-#  credit_discount             :integer(10)
-#
-
 class Cupon < ActiveRecord::Base
   include CuponsHelper
   after_create :gen_code
@@ -30,6 +7,7 @@ class Cupon < ActiveRecord::Base
   belongs_to :offer
   belongs_to :monthly_cupon_accounting
   attr_accessible :user_id, :offer_id, :price, :credit_discount, :good_date, :cupon_code, :monthly_cupon_accounting_id, :transaction_id, :nasp_key,:approved, :moip_status
+
   def gen_code
     unless self.offer.nil?
       self.cupon_code = genCuponCode(self.offer.partner.id, Time.now).upcase
