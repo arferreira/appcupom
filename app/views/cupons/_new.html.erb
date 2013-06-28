@@ -2,13 +2,14 @@
 <section class="cupom">
 	<div class="info-group">
 		<%= link_to "/offers/#{cupon.offer.id}" do %>
-			<h3><%= offer.partner.company_name %></h3>
+			<h3 style="float: left;"><%= offer.partner.company_name %></h3>
+      <h1 style="float: right;margin-top: 5px;">#<%= cupon.cupon_code %> </h1>
 			<p><%= offer.resume %></p>
-			
+
 			<div class="to-left">
 				<div class="cupom-code"><span>#<%= cupon.code_or_status %></span></div>
 			</div>
-	
+
 			<div class="to-left valign">
 				<span class="use-time dark">
 					<%= offer.period %>
@@ -26,7 +27,7 @@
 				<%= hidden_field_tag :cupon_code, cupon.cupon_code %>
 				<% if cupon.validated %>
 					<span class="validated"> Voucher validado com sucesso </span>
-				<% else %>		
+				<% else %>
 					<span class="validated">
 						<%= "Você já pagou #{number_to_currency cupon.price.to_f} ao Nowon e deverá pagar #{number_to_currency (offer.price - cupon.price)} ao #{offer.partner.company_name}" %>
 					</span>
@@ -37,6 +38,6 @@
 				<li class="web"><%= link_to "Imprimir", "cupons/#{cupon.id}/printed", :class => "std-button print"%></li>
 			<% end %>
 		</li>
-		
+
 	</ul>
 </section>

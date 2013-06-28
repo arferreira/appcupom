@@ -145,9 +145,6 @@
 		<% end %>
 
 		<section class="round">
-			<% if flash[:notice] == 'Usuário criado com sucesso' %>
-				<%= google_adwords %>
-			<% end %>
 			<% if params[:get_location] %>
 				<%= hidden_field_tag :request_location, @request_location %>
 				<%= hidden_field_tag :get_location_callback, @location_callback %>
@@ -155,7 +152,7 @@
 			<% flash.each do |key, value| %>
 				<% vd('APP HTML', key, value, flash.count) %>
 				<% unless flash[key].blank? %>
-					<div class="flash <%= key %>">
+					<div class="alert <%= key %>">
 						<%= value %>
 					</div>
 					<script type="text/javascript">
