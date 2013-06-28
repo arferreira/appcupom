@@ -3178,7 +3178,7 @@ table{border-collapse:collapse;border-spacing:0}
           font-size: 1.5em;
         }
         .values-list .value-nowon .local{
-          color: #ff9b25;
+          color: red;
         }
 
         .values-list .ticket{
@@ -3187,24 +3187,15 @@ table{border-collapse:collapse;border-spacing:0}
           margin: 4px 15px 0;
           padding: 10px 13px 0;
           position: relative;
-          -webkit-box-shadow:0 1px 0 #DE7616;
-          -moz-box-shadow:0 1px 0 #DE7616;
-          box-shadow:0 1px 0 #DE7616;
+          -webkit-box-shadow:0 1px 0 #45a4dc;
+          -moz-box-shadow:0 1px 0 #45a4dc;
+          box-shadow:0 1px 0 #45a4dc;
           /* Safari 4-5, Chrome 1-9 */
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffa529), to(#ff9121));
-          /* Safari 5.1, Chrome 10+ */
-          background: -webkit-linear-gradient(top, #ffa529, #ff9121);
-          /* Firefox 3.6+ */
-          background: -moz-linear-gradient(top, #ffa529, #ff9121);
-          /* IE 10 */
-          background: -ms-linear-gradient(top, #ffa529, #ff9121);
-          /* Opera 11.10+ */
-          background: -o-linear-gradient(top, #ffa529, #ff9121);
-          /*IE7-8-9*/
-          filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffa529', endColorstr='#ff9121');
-        }
+          background:#45a4dc;
+                  }
         .values-list .ticket:before{
           background-position: -295px -74px;
+          background: #45a4dc;
           content: "";
           display: block;
           height: 36px;
@@ -3215,6 +3206,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
         .values-list .ticket:after{
           background-position: -307px -74px;
+          background: #45a4dc;
           content: "";
           display: block;
           height: 36px;

@@ -26,10 +26,10 @@
 				<%= hidden_field_tag :partner_id, offer.partner.id %>
 				<%= hidden_field_tag :cupon_code, cupon.cupon_code %>
 				<% if cupon.validated %>
-					<span class="validated"> Voucher validado com sucesso </span>
+					<span class="validated"> Cupom validado com sucesso! </span>
 				<% else %>
 					<span class="validated">
-						<%= "Você já pagou #{number_to_currency cupon.price.to_f} ao Nowon e deverá pagar #{number_to_currency (offer.price - cupon.price)} ao #{offer.partner.company_name}" %>
+						<%= "Você deverá pagar #{number_to_currency (offer.price)} ao #{offer.partner.company_name}" %>
 					</span>
 					<!--<li class="mobile"><%= link_to_submit_id "#validate_form_" + cupon.id.to_s, "Cheguei! Usar voucher!" , :class => "std-button" %>
 					</li>-->
