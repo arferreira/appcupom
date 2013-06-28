@@ -32,12 +32,10 @@ test:
   socket: /var/run/mysqld/mysqld.sock
 
 production:
-  adapter: mysql2
+  adapter: postgresql
   encoding: utf8
-  reconnect: false
-  database: appcupom
-  pool: 5
-  username: root
-  password: rub32912289
-  socket: /var/run/mysqld/mysqld.sock
+  host: ec2-23-21-129-229.compute-1.amazonaws.com
+  database: df828gpva1djqp
+  username: qwjeqvcicktqqn
+  password: dwsW4M_OQ9e31j_EPNCcIC_cAs
 
