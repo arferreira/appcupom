@@ -63,10 +63,6 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    draper (1.2.1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      request_store (~> 1.0.3)
     erubis (2.7.0)
     escape (0.0.4)
     execjs (1.4.0)
@@ -164,7 +160,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
-    request_store (1.0.5)
     rsolr (1.0.9)
       builder (>= 2.1.2)
     sass (3.2.9)
@@ -214,7 +209,6 @@ DEPENDENCIES
   capistrano
   coffee-rails
   compass-rails
-  draper
   execjs
   font_assets
   httparty
