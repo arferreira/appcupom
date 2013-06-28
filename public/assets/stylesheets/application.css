@@ -2146,18 +2146,7 @@ table{border-collapse:collapse;border-spacing:0}
           width: 100%;
           cursor:pointer;
           background:none;
-
-        /*opacity:0;
-        -moz-opacity:0;
-        filter: alpha(opacity=0);*/
-      }
-
-
-
-      #main fieldset input:last-child
-      {
-        border:none;
-      }
+        }
 
       #main fieldset hr
       {
