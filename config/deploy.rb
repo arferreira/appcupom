@@ -1,9 +1,5 @@
 require 'bundler/capistrano'
 
-set :default_environment, {
-  :PATH => '/opt/local/bin:/opt/local/sbin:/opt/local/ruby/gems/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
-  :GEM_HOME => '/opt/local/ruby/gems'
-}
 
 set :application, '198.199.102.159'
 
@@ -16,6 +12,8 @@ ssh_options[:forward_agent] = true
 default_run_options[:pty] = true
 
 set :repository, 'git@github.com:arferreira/appcupom.git'
+
+set :rails_env, "production"
 
 set :branch, 'master'
 
@@ -42,3 +40,4 @@ namespace :deploy do
   end
 end
 
+after "deploy:update_code"
