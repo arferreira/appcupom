@@ -34,18 +34,10 @@
 				<% end %>
 				<li class="value-nowon">
 					<div class="local col-50">
-						<p>Pague agora ao NowOn</p>
+						<p>Pague no estabelecimento</p>
 					</div>
 					<div class="value">
-						<span class="ticket"><%= number_to_currency @nowon_value %></span>
-					</div>
-				</li>
-				<li class="value-establishment">
-					<div class="local col-50">
-						<p>Pague depois ao <%= @offer.partner.company_name %></p>
-					</div>
-					<div class="value col-50">
-						<span><%= number_to_currency @offer.partner_price %></span>
+						<span class="ticket"><%= number_to_currency @offer.price %></span>
 					</div>
 				</li>
 				<li class="value-total">
