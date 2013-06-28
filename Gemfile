@@ -30,15 +30,11 @@ group :assets do
   gem 'sass-rails'
   gem 'compass-rails'
   gem 'coffee-rails'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier'
 end
 
 
 group :development do
   gem "capistrano"
-  gem 'capistrano-unicorn', :require => false
   gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
 end
 
@@ -47,7 +43,9 @@ end
   #bundle exec annotate
   #gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 #end
-
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer', :platforms => :ruby
+gem 'uglifier'
 gem 'multi_json', '1.3.6'
 gem 'unicorn'
 #Decorator Design Pattern
