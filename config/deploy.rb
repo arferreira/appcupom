@@ -13,6 +13,10 @@ set :keep_releases, 3
 
 set :scm, :git
 
+ssh_options[:forward_agent] = true
+
+default_run_options[:pty] = true
+
 set :repository, 'git@github.com:arferreira/appcupom.git'
 
 set :branch, 'master'
