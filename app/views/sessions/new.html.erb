@@ -7,7 +7,7 @@
 					CUPONS EXCLUSIVOS PARA USAR AGORA
 				</p> -->
 			</div>
-			
+
 			<div id="index">
 				<header>
 						<img src="/assets/images/logo.png" width="350" height="250"/>
@@ -16,7 +16,7 @@
 				<article>
 					<% if @access_type == USER_TYPE %>
 					<div class="wrapper">
-						<%= link_to content_tag(:span, "Conecte-se com o Facebook"), '/facebook/login', :class => "facebookConnect"  %>
+						<%= link_to content_tag(:span, "Conecte-se"), '/facebook/login', :class => "facebookConnect"  %>
 					</div>
 					<% end %>
 
@@ -49,11 +49,11 @@
 							<% if @access_type == USER_TYPE %>
 							<%= link_to content_tag(:span, "Nova conta"), "/#{@access_type||'u'}/signup", :class => "std-button size2c" %>
 							<% end %>
-							
+
 							<%= link_to_submit content_tag(:span, "Login"), {:class => "std-button size2c"}, false %>
 							<!-- <a class="std-button size2c" href="nowon.php"><span>Login</span></a> -->
 							<% end %>
-							
+
 							<% if @access_type == PARTNER_TYPE %>
 								<%= link_to "Esqueci minha senha", new_partner_password_reset_path, :class => "push-tab small-text" %>
 							<% elsif @access_type == USER_TYPE %>

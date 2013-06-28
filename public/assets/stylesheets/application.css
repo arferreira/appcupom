@@ -2040,21 +2040,22 @@ table{border-collapse:collapse;border-spacing:0}
         /* FACEBOOK BT */
         #login-container .facebookConnect
         {
-          display: block;
-          width:  231px;
-          height: 40px;
-
-          background-position: 0px -47px;
-          background-repeat: no-repeat;
-
-          padding:23px 0px 0px 45px;
+          display: table;
+          width:  128px;
+          height: 113px;
+          background:url('/assets/images/facebook-icon.png');
           font-size: 1.4em;
           color:#fff;
           text-decoration: none;
           margin:0 auto 24px auto;
           font-weight: bold;
+          padding-bottom: 15px;
 
           text-shadow: 0px 2px 0px rgba(0, 0, 0, .15);
+        }
+        #login-container .facebookConnect span{
+          vertical-align: bottom;
+          display: table-cell;
         }
         /**/
 
@@ -4770,9 +4771,9 @@ table{border-collapse:collapse;border-spacing:0}
         padding-top:30px;
       }
 
-      #index{
+      /*#index{
         display: none;
-      }
+      }*/
 
       .logo-homescreen{
         margin-bottom: 30px;
