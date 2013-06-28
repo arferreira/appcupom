@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 
 ##Database
-gem 'mysql2'
+gem 'pg'
 
 ##External Integration
 #twitter
@@ -34,6 +34,7 @@ end
 
 
 group :development do
+  gem 'mysql2'
   gem "capistrano"
   gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
 end
