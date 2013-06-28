@@ -4,7 +4,7 @@
 		<%= link_to "/offers/#{cupon.offer.id}" do %>
 			<h3 style="float: left;"><%= offer.partner.company_name %></h3>
       <h1 style="float: right;margin-top: 5px;">#<%= cupon.cupon_code %> </h1>
-			<p><%= offer.resume %></p>
+			<p style="clear:both;"><%= offer.resume %></p>
 
 			<div class="to-left">
 				<div class="cupom-code"><span>#<%= cupon.code_or_status %></span></div>
