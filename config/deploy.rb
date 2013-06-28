@@ -17,7 +17,7 @@ set :repository, 'git@github.com:arferreira/appcupom.git'
 
 set :branch, 'master'
 
-set :deploy_via, :copy
+set :deploy_via, :checkout
 
 set :user, "root"
 
