@@ -60,6 +60,6 @@ module Appcupom
     #config.active_record.whitelist_attributes = true
     # config.serve_static_assets = true
     # config.middleware.insert_before('Rack::Lock', '::API::Throttle')
-    config.middleware.insert_before(::Rack::Lock, ::ActionDispatch::Static, "#{root}/public")
+    config.middleware.insert_before(::Rack::Lock, ::ActionDispatch::Static, "#{root}/public/assets")
   end
 end
