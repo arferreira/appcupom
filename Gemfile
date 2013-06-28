@@ -51,7 +51,7 @@ gem 'unicorn'
 #Decorator Design Pattern
 gem 'draper'
 
-gem 'nokogiri'
+# gem 'nokogiri'
 
 gem 'httparty'
 
