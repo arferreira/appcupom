@@ -15,16 +15,13 @@
 
 				<article>
 					<% if @access_type == USER_TYPE %>
-					<div class="wrapper">
-						<%= link_to content_tag(:span, "Conecte-se"), '/facebook/login', :class => "facebookConnect"  %>
-					</div>
+  					<div class="wrapper">
+  						<%= link_to content_tag(:span, "Conecte-se"), '/facebook/login', :class => "facebookConnect"  %>
+  					</div>
 					<% end %>
-
-					<hr>
 
 					<div class="wrapper">
 						<section>
-
 							<p class="centered">
 								<% flash.each do |key, value| %>
 									<% vd('APP HTML', key, value, flash.count) %>
@@ -51,7 +48,6 @@
 							<% end %>
 
 							<%= link_to_submit content_tag(:span, "Login"), {:class => "std-button size2c"}, false %>
-							<!-- <a class="std-button size2c" href="nowon.php"><span>Login</span></a> -->
 							<% end %>
 
 							<% if @access_type == PARTNER_TYPE %>
