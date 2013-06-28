@@ -252,7 +252,7 @@ DEPENDENCIES
   koala
   mailcatcher
   multi_json (= 1.3.6)
-  mysql2
+  mysql2 (= 0.3.11)
   nokogiri
   oauth
   oauth2
