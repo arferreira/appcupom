@@ -7,7 +7,7 @@ set :default_environment, {
 }
 
 
-set :application, 'www.trazcupom.com'
+set :application, '198.199.102.159'
 
 set :keep_releases, 3
 
