@@ -1,7 +1,7 @@
 require 'bundler/capistrano'
 
-
-set :application, '198.199.102.159'
+set :domain, 'www.trazcupom.com'
+set :application, "appcupom"
 
 set :keep_releases, 3
 
@@ -17,7 +17,6 @@ set :rails_env, "production"
 
 set :branch, 'master'
 
-set :deploy_via, :remote_cache
 
 set :user, "root"
 
@@ -27,9 +26,9 @@ set :deploy_to, '/var/www/cupom'
 
 set :current, "#{deploy_to}/current"
 
-role :web, application
-role :app, application
-role :db,  application, primary: true
+role :web, domain
+role :app, domain
+role :db,  domain, primary: true
 
 
 namespace :deploy do
