@@ -1163,7 +1163,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         h3{
-          color:#45a4dc;
+          color:#000;
           font-size:1.6em;
           font-weight: bold;
           padding:6px 0px 3px 0px;
@@ -5019,7 +5019,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         #header-container header{
-          height: 84px;
+          height: 140px;
           position: relative;
           border-bottom: 4px solid #000;
           background: #45a4dc;
@@ -5362,6 +5362,7 @@ table{border-collapse:collapse;border-spacing:0}
 
         .social-footer{
           padding:20px 29px 40px;
+          background: #000;
         }
 
         .access-link{
@@ -5389,6 +5390,7 @@ table{border-collapse:collapse;border-spacing:0}
         .menu-footer{
           overflow: hidden;
           padding:20px 29px;
+          background: #45a4dc;
         }
 
         .menu-footer ul{
@@ -5423,7 +5425,7 @@ table{border-collapse:collapse;border-spacing:0}
 
         .fb-button{
           padding: 5px;
-          background:#e9e9e9 url("/assets/images/mobile/sprite.png") -167px -200px;
+          background:#45a4dc url("/assets/images/mobile/sprite.png") -167px -200px;
           display: inline-block;
           text-indent: -9999px;
           width: 15px;
@@ -5432,7 +5434,7 @@ table{border-collapse:collapse;border-spacing:0}
 
         .tw-button{
           padding: 5px;
-          background:#e9e9e9 url("/assets/images/mobile/sprite.png") -148px -200px;
+          background:#45a4dc url("/assets/images/mobile/sprite.png") -148px -200px;
           display: inline-block;
           text-indent: -9999px;
           width: 15px;
