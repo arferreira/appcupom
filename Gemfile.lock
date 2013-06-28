@@ -222,7 +222,6 @@ DEPENDENCIES
   koala
   multi_json (= 1.3.6)
   mysql2
-  nokogiri
   oauth
   oauth2
   paperclip
