@@ -31,7 +31,7 @@
 		<header>
 			<div class="web" style="float:left; margin-top:-20px;padding:0px; height:100px;">
 			 <a href="http://www.trazcupom.com">
-        <img src="/assets/images/logo.png" width="200" height="120" style="margin: -15px 0 0 70px;" />
+        <img src="/assets/images/logo.png" width="200" height="120" />
        </a>
 			</div>
 			<% unless @no_back %>
@@ -70,7 +70,7 @@
 			<% if @title %>
 			 <h1 id="title"><%= @title %></h1>
 			<% else %>
-			 <img src="/assets/images/logo.png" width="200" height="120">
+			 <img class="mobile" style="margin: -15px 0 0 70px;" src="/assets/images/logo.png" width="100" height="55">
 			<% end %>
 
 			<% if @share %>

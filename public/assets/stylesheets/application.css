@@ -319,12 +319,14 @@ table{border-collapse:collapse;border-spacing:0}
 
 
        #main-menu .bt-nowon span:before,
-       #main-menu .bt-nowon span,
        #main-menu .bt-mainmenu:before
        {
         background-image:url("/assets/images/mobile/main-menu.png");
        }
-
+       #main-menu .bt-nowon span{
+          background:#45A4DC;
+          text-indent: 0!important;
+       }
        .sub-menu
        {
         background:url("/assets/images/mobile/bg-sub-menu.png") repeat-x top left;
@@ -454,7 +456,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         #bottom-bar{
-          padding-top:5px;
+          padding-top:15px;
           font-size: 1.2em;
 
           border-top:1px solid #4d92df;
