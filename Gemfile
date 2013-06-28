@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 
 ##Database
 gem 'pg'
-
+gem 'activerecord-postgres-hstore'
 ##External Integration
 #twitter
 gem 'oauth'

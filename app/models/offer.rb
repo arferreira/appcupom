@@ -27,6 +27,7 @@
 #
 
 class Offer < ActiveRecord::Base
+  serialize :data, ActiveRecord::Coders::Hstore
   default_scope where(:deleted => 0)
   include ActionView::Helpers::NumberHelper
 
