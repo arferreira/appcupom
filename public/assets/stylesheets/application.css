@@ -5853,4 +5853,8 @@ table{border-collapse:collapse;border-spacing:0}
       .opened-cupom section{
         clear:both;
       }
+      .group{
+        width:70%;
+        float:left;
+      }
     }

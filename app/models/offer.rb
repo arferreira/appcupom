@@ -117,6 +117,10 @@ class Offer < ActiveRecord::Base
     end
   end
 
+  def porcentagen_de_desconto
+      return 100 - (self.price.to_f / self.original_price.to_f * 100.0).round
+  end
+
   def initial_date
     if start_date.in_time_zone.beginning_of_day < Time.now.in_time_zone.beginning_of_day
       errors[:base] << "A oferta não pode iniciar no passado."

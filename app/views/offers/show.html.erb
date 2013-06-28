@@ -54,6 +54,7 @@
 							<!--<li>Não haverá o reembolso do valor pago ao site em caso de não utilização do voucher.</li>-->
 							<li>Foto meramente ilustrativa.</li>
 						</ul>
+            <span>Porcentagen de desconto: <%= @offer.porcentagen_de_desconto %> </span>
 					</div>
 				</div>
 
@@ -87,7 +88,7 @@
 					</div>
 				</div>
 				</div>-->
-			</section>
+
 
 			<% unless @offer.is_credit_offer? %>
 				<section class="group">
@@ -122,6 +123,7 @@
 					</div>
 				</div>
 			</section>
+    </section>
 	</div> <!-- #main -->
 </div> <!-- #main-container -->
 
