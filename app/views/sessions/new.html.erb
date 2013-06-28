@@ -43,11 +43,12 @@
 
 								<%= hidden_field_tag :access_type, @access_type %>
 							</fieldset>
-							<% if @access_type == USER_TYPE %>
-							<%= link_to content_tag(:span, "Nova conta"), "/#{@access_type||'u'}/signup", :class => "std-button size2c" %>
-							<% end %>
 
 							<%= link_to_submit content_tag(:span, "Login"), {:class => "std-button size2c"}, false %>
+              <% if @access_type == USER_TYPE %>
+              <%= link_to content_tag(:span, "Nova conta"), "/#{@access_type||'u'}/signup", :class => "std-button size2c" %>
+              <% end %>
+
 							<% end %>
 
 							<% if @access_type == PARTNER_TYPE %>

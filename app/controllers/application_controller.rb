@@ -107,12 +107,6 @@ class ApplicationController < ActionController::Base
   #  end
   #end
 
-  def authenticate_http
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "nowon" && password == "n0w0nDna"
-    end
-  end
-
   def add_breadcrumb name, url = ''
     @breadcrumbs ||= []
     url = eval(url) if url =~ /_path|_url|@/
@@ -146,5 +140,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  add_breadcrumb 'Nowon', '/'
+  add_breadcrumb 'TrazCupom', '/'
 end

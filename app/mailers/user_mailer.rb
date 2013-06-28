@@ -1,19 +1,19 @@
 # encoding: utf-8
 class UserMailer < ActionMailer::Base
-  default from: "NowOn <nowon@nowon.com.br>"
-  
+  default from: "TrazCupom <trazcupom@trazcupom.com.br>"
+
   def registration_confirmation(user, password)
     @user = user
     @password = password
     #attachments["rails.png"] = File.read("#{Rails.root}/public/images/rails.png")
-    mail(:to => "#{user.name} <#{user.email}>", :subject => "Seja bem vindo ao NowOn!")
+    mail(:to => "#{user.name} <#{user.email}>", :subject => "Seja bem vindo ao TrazCupom!")
   end
-  
+
   def password_reset(user)
     @user = user
-    mail :to => "#{user.name} <#{user.email}>", :subject => "Recupere sua senha do Nowon"
+    mail :to => "#{user.name} <#{user.email}>", :subject => "Recupere sua senha do TrazCupom"
   end
-  
+
   def send_new_badge (user, badge)
     @user = user
     @badge = badge
@@ -27,7 +27,7 @@ class UserMailer < ActionMailer::Base
   #Autor: Paulo Henrique
   def new_message(message)
     @message = message
-    mail(:to => "contato@nowon.com.br") do |format|
+    mail(:to => "contato@trazcupom.com.br") do |format|
       format.html
     end
     mail :subject => "[Fale Conosco] #{message.subject}"
@@ -40,7 +40,7 @@ class UserMailer < ActionMailer::Base
     mail(:to => @message.email) do |format|
       format.html
     end
-    mail :subject => "Fale Conosco NowOn"
+    mail :subject => "Fale Conosco TrazCupom"
   end
 
   #Metodo de envio de mensagem de email de confirmação de compra de cupom
@@ -57,11 +57,8 @@ class UserMailer < ActionMailer::Base
     ])
     mail :to => "#{user.name} <#{user.email}>" do |format|
       format.html
-    end 
+    end
     mail :subject => "Compra confirmada com sucesso! #{cupon.offer.resume}."
   end
-  
+
 end
-
-
-#contatonowon@dnalabs.com.br 

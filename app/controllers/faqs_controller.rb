@@ -1,5 +1,5 @@
 class FaqsController < ApplicationController
-  
+
   before_filter :authenticate, :except => [:index]
   # GET /faqs
   # GET /faqs.json
@@ -89,10 +89,4 @@ class FaqsController < ApplicationController
     end
   end
 
-  protected
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == "nowon" && password == "n0w0nDna"
-    end
-  end
 end
