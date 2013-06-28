@@ -1016,19 +1016,6 @@ table{border-collapse:collapse;border-spacing:0}
           text-shadow: none;
         }
 
-        .sub-menu a.active:after{
-          position: absolute;
-          width:7px;
-          height:4px;
-          left:50%;
-          bottom:-4px;
-          margin-left:-3.5px;
-          content:"";
-          background-repeat: no-repeat;
-
-
-        }
-
         .sub-menu .web-sub-menu{
           position: absolute;
           display:  none;
@@ -5209,20 +5196,15 @@ table{border-collapse:collapse;border-spacing:0}
           display: block;
           top:  12px;
           left: 50%;
-          width:  40px;
-          height: 40px;
+          width:  35px;
+          height: 35px;
           margin-left: -20px;
         }
 
-        .web-menu .how-works:after{   background-position:  -108px  -268px;}
-        .web-menu .offers:after{    background-position:  -166px  -268px;}
+        .web-menu .how-works:after{background:url('/assets/images/mobile/como-funciona.png');background-size:35px 35px ;}
+        .web-menu .offers:after{    background:url('/assets/images/mobile/ticket.png');background-size:35px 35px ;}
         .web-menu .explore:after{     background-position:  -226px  -268px;}
-        .web-menu .register:after{    background-position:  -288px  -268px;}
-
-        .web-menu .how-works:hover:after{     background-position:  -108px  -313px;}
-        .web-menu .offers:hover:after{      background-position:  -166px  -313px;}
-        .web-menu .explore:hover:after{     background-position:  -226px  -313px;}
-        .web-menu .register:hover:after{    background-position:  -288px  -313px;}
+        .web-menu .register:after{background:url('/assets/images/mobile/user.png');background-size:35px 35px ;}
 
 
         /*** FILTERS ***/

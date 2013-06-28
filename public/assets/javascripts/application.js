@@ -247,7 +247,7 @@ function ajaxnav(href, params, meth){
             $(".round").html(data);
 
         ajaxnavchange = true;
-        History.pushState(null, "NowOn", href);
+        History.pushState(null, "TrazCupom", href);
       }
       $(".loading").hide();
         },

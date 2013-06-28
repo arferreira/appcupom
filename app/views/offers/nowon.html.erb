@@ -6,11 +6,10 @@
   </p>
 <% end %>
 -->
-
+<script>alert("<%= @gps %>")</script>
 
 	<div id="main-container" class="scrollable internal view-nowon">
 		<div id="main" class="clearfix">
-
 			<article>
 				<% if params[:no_location] %>
 					<%= link_to get_location_before_link({controller: "offers", action: "nowon"}), :class => "no-decoration" do %>
