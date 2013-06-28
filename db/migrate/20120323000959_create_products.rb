@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name, :null => false
       t.text :description
       t.decimal :price, :null => false
-      t.boolean :active, :default => 1
+      t.boolean :active, :default => true
       t.references :partner, :null => false
       t.references :product_type, :null => false
 

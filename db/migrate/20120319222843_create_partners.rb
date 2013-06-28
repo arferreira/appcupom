@@ -15,7 +15,7 @@ class CreatePartners < ActiveRecord::Migration
       t.integer :latitude,     :null => false
       t.integer :longitude,     :null => false
       t.integer :capacity,     :null => false
-      t.boolean :active,     :default => 1
+      t.boolean :active,     :default => true
       t.boolean :approved,     :default => false
       t.references :administrator
       t.references :category, :null => false
