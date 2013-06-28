@@ -44,7 +44,7 @@ set :unicorn_binary,  "bundle exec unicorn"
 set :unicorn_config,  "#{current_path}/config/unicorn.rb"
 # onde será armazenado o pid do processo do unicorn
 # <optinal>
-set :unicorn_pid,     "#{current_path}/tmp/pids/unicorn.pid"
+set :unicorn_pid,     "/var/www/cupom/shared/pids/unicorn.pid"
 
 
 # executar antes do 'deploy:update_code' o comando 'deploy.check_folders'
@@ -68,8 +68,8 @@ namespace :deploy do
   desc "Stop Application"
   task :stop, :roles => :app, :except => { :no_release => true } do
     # mata o serviço do unicorn passando o pid definido na linha 99
-   # run "#{try_sudo} kill `cat #{unicorn_pid}`"
-    run "if [ -e /var/www/cupom/shared/pids/unicorn.pid ]; then kill `cat /var/www/cupom/shared/pids/unicorn.pid`; fi;"
+   run "#{try_sudo} kill `cat #{unicorn_pid}`"
+   # run "if [ -e /var/www/cupom/shared/pids/unicorn.pid ]; then kill `cat /var/www/cupom/shared/pids/unicorn.pid`; fi;"
 
   end
 

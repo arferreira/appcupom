@@ -27,6 +27,9 @@
 						</div>
 					</header>
 					<div class="wrapper">
+            <div class="desconto_porcentagem">
+              <span><%= @offer.porcentagen_de_desconto %>% OFF NA SUA CONTA </span>
+            </div>
 						<h3><%= @offer.resume %></h3>
 						</a>
 
@@ -54,7 +57,6 @@
 							<!--<li>Não haverá o reembolso do valor pago ao site em caso de não utilização do voucher.</li>-->
 							<li>Foto meramente ilustrativa.</li>
 						</ul>
-            <span>Porcentagen de desconto: <%= @offer.porcentagen_de_desconto %> </span>
 					</div>
 				</div>
 

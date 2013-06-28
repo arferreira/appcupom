@@ -40,7 +40,6 @@ group :development do
   gem "capistrano"
   gem 'capistrano-unicorn', :require => false
   gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
-  gem 'mailcatcher', :require => false
 end
 
 #Dev and test only

@@ -5857,4 +5857,17 @@ table{border-collapse:collapse;border-spacing:0}
         width:70%;
         float:left;
       }
+      .desconto_porcentagem{
+        padding: 20px;
+        background: #EFEFEF;
+        border-radius: 0 0 20px 20px;
+      }
+      .desconto_porcentagem span{
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        text-align: center;
+        color: grey;
+        font-size: 18px;
+      }
     }

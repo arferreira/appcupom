@@ -10,7 +10,6 @@ Appcupom::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = true
-  config.middleware.insert_before('Rack::Lock', '::API::Throttle')
   config.middleware.insert_before(::Rack::Lock, ::ActionDispatch::Static, "#{root}/public")
 
 
