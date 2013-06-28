@@ -1,5 +1,5 @@
 class AddChoiceToUserPrivacies < ActiveRecord::Migration
   def change
-    add_column :user_privacies, :choice, :boolean, :default => 0, :null => false
+    add_column :user_privacies, :choice, :boolean, :default => false, :null => false
   end
 end
