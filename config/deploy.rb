@@ -1,11 +1,11 @@
 require 'bundler/capistrano'
 
+
 set :default_environment, {
-    'PATH' => "/opt/local/bin/ruby",
-    'GEM_HOME' => '/opt/local/bin/gem',
-    'GEM_PATH' => '/opt/local/bin/gem',
-    'BUNDLE_PATH' => '/opt/local/ruby/gems/bin/bundle'  
+  :PATH => '/opt/local/bin:/opt/local/sbin:/opt/local/ruby/gems/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+  :GEM_HOME => '/opt/local/ruby/gems'
 }
+
 
 set :application, '198.199.102.159'
 
