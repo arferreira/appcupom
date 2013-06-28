@@ -25,6 +25,7 @@
 .alert-block p+p{margin-top:5px;}
 .close{float:right;font-size:20px;font-weight:bold;line-height:20px;color:#000000;text-shadow:0 1px 0 #ffffff;opacity:0.2;filter:alpha(opacity=20);}.close:hover,.close:focus{color:#000000;text-decoration:none;cursor:pointer;opacity:0.4;filter:alpha(opacity=40);}
 button.close{padding:0;cursor:pointer;background:transparent;border:0;-webkit-appearance:none;}
+/*campos*/
 .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";line-height:0;}
 .clearfix:after{clear:both;}
 .hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
@@ -5083,7 +5084,6 @@ table{border-collapse:collapse;border-spacing:0}
           height: 35px;
           position: absolute;
           top: 50%;
-          left: 30px;
           margin-top:-17px;
           text-indent: -9999px;
           background-image: url("/assets/images/logo.png");
@@ -5094,8 +5094,6 @@ table{border-collapse:collapse;border-spacing:0}
           background: #0070ed;
           display: none;
         }
-
-
         #header-container #title.nowOn{
           text-transform: uppercase;
         }
@@ -5839,5 +5837,20 @@ table{border-collapse:collapse;border-spacing:0}
       }
       .cupom::after{
         content:none;
+      }
+      .opened-cupom header{
+        width:70%;
+        float:left;
+      }
+      .opened-cupom .wrapper{
+        width: 28%;
+        float: left;
+        margin: 0 0 0 10px;
+      }
+      .opened-cupom .trend{
+        display:none;
+      }
+      .opened-cupom section{
+        clear:both;
       }
     }
