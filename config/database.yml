@@ -30,10 +30,11 @@ test:
   password: "9891284"
 
 production:
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
-  host: ec2-23-21-129-229.compute-1.amazonaws.com
-  database: df828gpva1djqp
-  username: qwjeqvcicktqqn
-  password: dwsW4M_OQ9e31j_EPNCcIC_cAs
+  host: localhost
+  port: 10000
+  database: d389c480add3e489f9858b831734ef9f7
+  username: uOX15OxGzferJ
+  password: pe9isJbbX2KGP
 
