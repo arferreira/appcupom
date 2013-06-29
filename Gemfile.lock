@@ -127,7 +127,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
-    pg (0.15.1)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
     progress_bar (1.0.0)
@@ -221,7 +220,6 @@ DEPENDENCIES
   oauth
   oauth2
   paperclip
-  pg
   progress_bar
   rails (= 3.2.13)
   sass-rails
