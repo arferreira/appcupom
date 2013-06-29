@@ -31,10 +31,6 @@ Appcupom::Application.routes.draw do
 
   match '/sub_categories/for_categoryid/:category_id', :to => 'sub_categories#for_categoryid'
 
-  #resources :product_types
-
-  #resources :product_families
-
   resources :offer_comments
 
   resources :recommendations
