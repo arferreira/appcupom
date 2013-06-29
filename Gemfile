@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
 ##rails
 gem 'rails', '3.2.13'
 
 ##Database
 gem 'pg'
-gem 'activerecord-postgres-hstore'
+gem 'mysql2'
+
 ##External Integration
 #twitter
 gem 'oauth'
@@ -34,7 +34,6 @@ end
 
 
 group :development do
-  gem 'mysql2'
   gem "capistrano"
   gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
 end

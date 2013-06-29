@@ -81,22 +81,22 @@ ActiveRecord::Schema.define(:version => 20130625011445) do
   end
 
   create_table "cupons", :force => true do |t|
-    t.integer  "user_id",                                                    :null => false
-    t.integer  "offer_id",                                                   :null => false
-    t.decimal  "price",                       :precision => 8,  :scale => 2, :null => false
-    t.string   "cupon_code",                                                 :null => false
-    t.integer  "monthly_cupon_accounting_id",                                :null => false
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.integer  "user_id",                                                   :null => false
+    t.integer  "offer_id",                                                  :null => false
+    t.decimal  "price",                       :precision => 8, :scale => 2, :null => false
+    t.string   "cupon_code",                                                :null => false
+    t.integer  "monthly_cupon_accounting_id",                               :null => false
+    t.datetime "created_at",                                                :null => false
+    t.datetime "updated_at",                                                :null => false
     t.date     "good_date"
     t.string   "transaction_id"
     t.boolean  "approved"
     t.string   "moip_id"
     t.string   "nasp_key"
-    t.decimal  "bill_value",                  :precision => 8,  :scale => 2
+    t.decimal  "bill_value",                  :precision => 8, :scale => 2
     t.boolean  "validated"
     t.datetime "validated_date"
-    t.decimal  "credit_discount",             :precision => 10, :scale => 0
+    t.decimal  "credit_discount"
     t.string   "moip_status"
   end
 
@@ -136,11 +136,11 @@ ActiveRecord::Schema.define(:version => 20130625011445) do
   end
 
   create_table "monthly_cupon_accountings", :force => true do |t|
-    t.string   "month_accounting",                                :null => false
-    t.decimal  "total_value",      :precision => 10, :scale => 0, :null => false
-    t.integer  "total_sold",                                      :null => false
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.string   "month_accounting", :null => false
+    t.decimal  "total_value",      :null => false
+    t.integer  "total_sold",       :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "offer_comments", :id => false, :force => true do |t|
@@ -181,8 +181,8 @@ ActiveRecord::Schema.define(:version => 20130625011445) do
     t.string   "description"
     t.integer  "discount"
     t.decimal  "price",               :precision => 8, :scale => 2
-    t.time     "time_starts"
-    t.time     "time_ends"
+    t.datetime "time_starts"
+    t.datetime "time_ends"
     t.string   "recurrence"
     t.boolean  "active",                                            :default => true
     t.datetime "created_at",                                                           :null => false
@@ -566,11 +566,11 @@ ActiveRecord::Schema.define(:version => 20130625011445) do
   create_table "user_credits", :force => true do |t|
     t.integer  "user_id"
     t.string   "reason"
-    t.decimal  "value",         :precision => 10, :scale => 0
-    t.decimal  "current_value", :precision => 10, :scale => 0
+    t.decimal  "value"
+    t.decimal  "current_value"
     t.boolean  "active"
-    t.datetime "created_at",                                   :null => false
-    t.datetime "updated_at",                                   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "user_credits", ["user_id"], :name => "index_user_credits_on_user_id"
