@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 
 ##Database
-gem 'pg'
+#gem 'pg'
 gem 'mysql2'
 
 ##External Integration
