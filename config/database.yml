@@ -15,13 +15,9 @@ development:
   database: appcupom_development
   pool: 5
   username: root
-<<<<<<< HEAD
   password: rub32912289
   host: localhost
 
-=======
-  password:
->>>>>>> ba34782511bc863d603c29008b24fde8d54ba3fa
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -34,10 +30,7 @@ test:
   pool: 5
   username: root
   password: rub32912289
-<<<<<<< HEAD
   host: 127.0.0.1
-=======
->>>>>>> ba34782511bc863d603c29008b24fde8d54ba3fa
 
 production:
   adapter: mysql2
