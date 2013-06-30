@@ -12,11 +12,11 @@
 				    </div>
 				<% end %>
 				<ul id="toggle-menu" class="clear-list toggle-list">
-					<li class="toggle-item">
+					<li>
 						<h4 class="toggle-title">
 							<a href="#" id="info-pessoais-toggle">Perfil</a>
 						</h4>
-						
+
 						<div class="wrapper" id="info-pessoais-form">
 								<section>
 										<fieldset>
@@ -31,21 +31,7 @@
 										</fieldset>
 								</section>
 						</div>
-						
-						
-					</li>
 
-					<li class="toggle-item">
-						<h4 class="toggle-title">
-							<%= link_to "Facebook e notificações", "/users/#{@user.id}/privacies" %>
-						</h4>
-					</li>
-
-					<li class="toggle-item">
-						<h4 class="toggle-title">
-							<a href="#" id="info-password-toggle">Alterar senha</a>
-						</h4>
-						
 						<div class="wrapper" id="info-password-form">
 								<section>
 										<fieldset>
@@ -54,14 +40,14 @@
 										</fieldset>
 								</section>
 						</div>
-						
+
 					</li>
 
-					<li class="toggle-item">
+					<li>
 						<h4 class="toggle-title">
 							<a href="#" id="info-pic-toggle">Alterar foto</a>
 						</h4>
-						
+
 						<div class="wrapper" id="info-pic-form">
 								<section>
 										<fieldset>
@@ -71,7 +57,13 @@
 						</div>
 					</li>
 
-					<li class="toggle-item">
+          <li>
+            <h4 class="toggle-title">
+              <%= link_to "Facebook e notificações", "/users/#{@user.id}/privacies" %>
+            </h4>
+          </li>
+
+					<li>
 						<h4 class="toggle-title">
 							<%= link_to "Logout", "/signout"%>
 						</h4>

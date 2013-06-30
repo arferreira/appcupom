@@ -2479,13 +2479,6 @@ table{border-collapse:collapse;border-spacing:0}
         .actions{
           list-style: none;
           float: left;
-          background-color:#FFF;
-          -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .4);
-          -moz-box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, .4);
-          box-shadow:     0px 1px 2px 0px rgba(0, 0, 0, .4);
-          border-radius:    2px;
-          -moz-border-radius:   2px;
-          -webkit-border-radius:  2px;
           margin-right: 3px;
         }
         .link-actions{
@@ -2496,7 +2489,7 @@ table{border-collapse:collapse;border-spacing:0}
           text-decoration: none;
         }
         .actions .friends{
-          color: #FF9B25;
+          color: grey;
           font-size: 1.2em;
           font-weight: bold;
           padding-left: 5px;
@@ -3280,19 +3273,7 @@ table{border-collapse:collapse;border-spacing:0}
           -moz-border-radius:   19px;
           -webkit-border-radius:  19px;
           border-radius:  20px;
-
-          /* IE7-8-9*/
-          background: #ffab2b;
-          /* Safari 4-5, Chrome 1-9 */
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffab2b), to(#ff851d));
-          /* Safari 5.1, Chrome 10+ */
-          background: -webkit-linear-gradient(top, #ffab2b, #ff851d);
-          /* Firefox 3.6+ */
-          background: -moz-linear-gradient(top, #ffab2b, #ff851d);
-          /* IE 10 */
-          background: -ms-linear-gradient(top, #ffab2b, #ff851d);
-          /* Opera 11.10+ */
-          background: -o-linear-gradient(top, #ffab2b, #ff851d);
+          background:black;
         }
 
         .user-comment:after{

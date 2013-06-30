@@ -61,8 +61,6 @@ gem 'will_paginate'
 # gem 'best_in_place'
 
 # gem 'therubyracer'
-
 gem 'font_assets'
-
 #Detect Browser
 gem 'browser'

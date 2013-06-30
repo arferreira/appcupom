@@ -276,9 +276,9 @@ class User < ActiveRecord::Base
     elsif !self.social_links.empty?
       self.social_links.first.image_url
     elsif self.gender == "F"
-      "/assets/avatar-feminino-nowon.jpg"
+      "/assets/images/avatar-feminino-nowon.jpg"
     else
-      "/assets/avatar-masculino-nowon.jpg"
+      "/assets/images/avatar-masculino-nowon.jpg"
     end
   end
 

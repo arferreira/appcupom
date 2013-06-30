@@ -6,7 +6,7 @@
 
 # Ignore bundler config
 /.bundle
-
+/vendor/cache
 # Ignore the default SQLite database.
 /db/*.sqlite3
 
@@ -14,6 +14,3 @@
 /log/*.log
 /tmp
 
-
-#ignore database file
-/config/database.ymld
