@@ -49,7 +49,7 @@ namespace :deploy do
 
   task :stop do
    
-    run "if [ -e /var/www/cupom/shared/pids/unicorn.pid ]; then kill `cat /var/www/cupom/shared/pids/unicorn.pid`; fi;"
+    run "if [ -e /tmp/pid/unicorn.pid ]; then kill `cat /tmp/pid/unicorn.pid`; fi;"
   end
 
   task :restart do
