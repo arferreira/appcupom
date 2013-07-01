@@ -129,8 +129,12 @@ Appcupom::Application.routes.draw do
   match 'partners_near_me', :to => 'partners#near_me'
   match 'partners_category', :to => 'partners#category'
 
+
+  get 'users', :to => 'offers#nowon'
+
   resources :users do
     #get 'dashboard', :on => :member
+    match '/users', :to => 'offers#nowon'
     get 'badges',    :on => :member
     #get "cupons/index"
     #get "cupons/show"

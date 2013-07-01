@@ -5,7 +5,7 @@ set :default_environment, {
   :GEM_HOME => '/opt/local/ruby/gems'
 }
 
-set :application, '198.199.86.139'
+set :application, 'www.trazcupom.com'
 
 set :keep_releases, 3
 

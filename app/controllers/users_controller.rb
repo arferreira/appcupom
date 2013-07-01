@@ -98,7 +98,7 @@ class UsersController < ApplicationController
 
         #social
         @social = SocialLink.create_from_facebook(session[:facebook_user], @user) unless session[:facebook_user].nil?
-        UserMailer.registration_confirmation(@user, password).deliver
+        #UserMailer.registration_confirmation(@user, password).deliver
 
         #badge:
         @user.new_badge session
