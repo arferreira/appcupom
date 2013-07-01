@@ -428,6 +428,7 @@ table{border-collapse:collapse;border-spacing:0}
         {
           color: #0070ed;
         }
+        a:hover{color:#45a4dc;}
         .boxPadrao a:visited,
         .boxPadrao a:active,
         a.padraoBtn:active,
@@ -5363,7 +5364,7 @@ table{border-collapse:collapse;border-spacing:0}
         .menu-footer{
           overflow: hidden;
           padding:20px 29px;
-          background: #45a4dc;
+          background: #dfdfdf;
         }
 
         .menu-footer ul{
@@ -5372,6 +5373,8 @@ table{border-collapse:collapse;border-spacing:0}
           padding: 0;
           margin: 0;
           line-height: 20px;
+          text-decoration: none;
+          list-style: none;
         }
 
         .menu-footer a{
