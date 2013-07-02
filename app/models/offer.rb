@@ -288,6 +288,15 @@ class Offer < ActiveRecord::Base
     return Time.now + diference.days
   end
 
+  def ja_comprou? user
+    user = user
+    if user.cupons.last.offer.id == self.id
+      false
+    else
+      true
+    end
+  end
+
   def next_date_old
     today_date = Time.now.wday
     index = 0

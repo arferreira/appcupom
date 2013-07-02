@@ -92,16 +92,6 @@ class CuponsController < ApplicationController
 
   end
 
-  def ja_comprou? offer
-    user = current_user
-    cupon = params[:cupon_id]
-    if user.cupons.offer.id == offer.id
-      false
-    else
-      true
-    end
-  end
-
   def validate_cupons
     @partner = Partner.find params[:partner_id]
     @today_cupons = Cupon.find_today_by_partner @partner.id

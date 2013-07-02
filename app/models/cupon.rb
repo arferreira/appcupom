@@ -37,6 +37,17 @@ class Cupon < ActiveRecord::Base
                   ORDER BY cupons.created_at", user_id, Time.now - 2.hour, Time.now - 2.hour])
   end
 
+  def self.find_on_time_spec user_id
+    find_by_sql(["SELECT cupons.*
+                  FROM cupons
+                  JOIN offers ON cupons.offer_id = offers.id
+                  WHERE cupons.user_id = ?
+                  AND cupons.good_date >= DATE(?)
+                  AND cupons.moip_status != 'Iniciado'
+                  and offers.time_ends > time(?)
+                  ORDER BY cupons.created_at", user_id, Time.now - 24.hour, Time.now - 24.hour])
+  end
+
   def self.find_old_ones user_id
     find_by_sql(["SELECT *
                   FROM cupons
