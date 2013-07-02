@@ -20,12 +20,12 @@
 					<%= hidden_field_tag :request_location, @request_location %>
 					<%= hidden_field_tag :get_location_callback, @location_callback %>
 					<script type="text/javascript">
-						m_startDate = new Date().getTime();
-						m_watchId = navigator.geolocation.watchPosition(get_location_callback,
-							get_location_error,
-							{maximumAge:0, timeout:3000, enableHighAccuracy:true});
+						//m_startDate = new Date().getTime();
+						//m_watchId = navigator.geolocation.watchPosition(get_location_callback,
+						//	get_location_error,
+						//	{maximumAge:0, timeout:3000, enableHighAccuracy:true});
 
-						m_interval = setTimeout(function(){clearWatch()},7000);
+						//m_interval = setTimeout(function(){clearWatch()},7000);
 					</script>
 				<% end %>
 				<%= hidden_field_tag :user_latlong, @user_latlong %>
