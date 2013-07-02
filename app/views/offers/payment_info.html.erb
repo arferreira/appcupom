@@ -57,7 +57,7 @@
 		<%= form_tag :controller => "cupons", :action => "confirm_printed" do %>
 	  	<%= hidden_field_tag :offer_id, @offer.id %>
 	  	<%= hidden_field_tag :user_id, @current_user.id %>
-	  	<%= link_to_submit content_tag(:span, "Baixar"), :class => "std-button bt-bigsize" %>
+	  	<%= link_to_submit content_tag(:span, "Baixar"), :class => "std-button bt-bigsize", false %>
 	  <% end %>
 	</div>
 </div>
