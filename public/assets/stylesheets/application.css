@@ -820,18 +820,30 @@ table{border-collapse:collapse;border-spacing:0}
           .bt-mainmenu:before {
             content: "";
             display:block;
-            width:28px;
-            height:28px;
+            width:24px;
+            height:24px;
             position: absolute;
             left:50%;
             top: 3px;
             margin-left: -13px;
           }
 
-          #main-menu .bt-happening:before {   background-position: center -22px;  }
-          #main-menu .bt-explore:before {     background-position: center -106px; }
-          #main-menu .bt-shopping:before {    background-position: center -199px; }
-          #main-menu .bt-profile:before {     background-position: center -287px; }
+          #main-menu .bt-happening:before {   
+          	background:url('/assets/images/mobile/happening.png'); 
+          	background-size: 24px 24px;
+          }
+          #main-menu .bt-explore:before {
+          	background:url('/assets/images/mobile/explorar.png'); 
+          	background-size: 24px 24px;
+          }
+          #main-menu .bt-shopping:before {
+          	background:url('/assets/images/mobile/ticket.png'); 
+          	background-size: 24px 24px;
+          }
+          #main-menu .bt-profile:before {
+          	background:url('/assets/images/mobile/user.png'); 
+          	background-size: 24px 24px;
+          }
 
           #main-menu .bt-mainmenu span
           {
@@ -853,7 +865,7 @@ table{border-collapse:collapse;border-spacing:0}
 
           #main-menu .bt-nowon span:before
           {
-            content:"";
+            /*content:"";*/
             position: absolute;
             display:block;
             width: 90px;
