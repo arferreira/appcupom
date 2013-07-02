@@ -40,12 +40,8 @@ module ApplicationHelper
     end
   end
   
-  def link_to_submit text, args, ajax = true
-    if ajax
-      link_to_function text, "ajax_submit($(this).closest('form'))", args
-    else
-      link_to_function text, "$(this).closest('form').submit()", args
-    end
+  def link_to_submit text, args
+    link_to_function text, "$(this).closest('form').submit()", args
   end
   
   def link_to_submit_id finder, text, args, ajax = true
