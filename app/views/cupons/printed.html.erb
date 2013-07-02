@@ -29,13 +29,12 @@
                   <% @rules.each do |rule| %>
                   <li><%= rule.resume_text @cupon.offer %></li>
                   <% end %>
-                  <li>A oferta não inclui taxa de serviço.</li>
-                  <li>O voucher deverá ser utilizado hoje, no horário indicado acima.</li>
-                  <li>Não haverá o reembolso do valor pago ao site em caso de não utilização do voucher.</li>
+                  <li>O Cupom não inclui taxa de serviço.</li>
+                  <li>O Cupom deverá ser utilizado no horário indicado pelo estabelecimento.</li>
                   <li>Foto meramente ilustrativa.</li>
-                  <li>Não é permitido cumular este desconto com outros descontos em uma mesma visita ao estabelecimento;</li>
-                  <li>Os produtos ou o crédito ofertado deverão ser consumidos em uma única visita ao estabelecimento;</li>
-                  <li>Não haverá a devolução de valores em caso de não consumação de todos os produtos ou crédito ofertado;</li>
+                  <li>Não é permitido acumular este desconto com outros descontos em uma mesma visita ao estabelecimento.</li>
+                  <li>Os produtos ou o crédito ofertado deverão ser consumidos em uma única visita ao estabelecimento.</li>
+                  <li>Não haverá a devolução de valores em caso de não consumação de todos os produtos ou crédito ofertado.</li>
                 </ul>
               </div>
               <!-- </div>-->
@@ -47,11 +46,11 @@
               <strong>Código:</strong> <span><%= @cupon.cupon_code %></span>
               <br />
 
-              <strong>Dia da compra:</strong> <span><%=l @cupon.good_date, :format => :default %></span>
+              <strong>Data de download:</strong> <span><%=l @cupon.good_date, :format => :default %></span>
               <br />
               <br />
               <br />
-              <small>Ao chegar ao estabelecimento, apresente este voucher impresso ou clique no botão "Cheguei! Usar voucher!", localizado no voucher eletrônico armazenado no menu Compras do NowOn no seu celular. Ao utilizar o voucher pelo celular, identifique-se ao garçon pelo nome e sobrenome para que ele possa validar o seu voucher! Se por qualquer motivo não for possível utilizar o seu voucher pelo celular ou apresentar o voucher impresso, informe ao garçon o código indicado acima para que o seu voucher possa ser validado!</small>
+              <small>Ao chegar ao estabelecimento, apresente este voucher impresso ou clique no botão "Cheguei! Usar cupom!", localizado no cupom eletrônico armazenado no menu Cupons do Traz Cupom no seu celular. Ao utilizar o cupom pelo celular, identifique-se para validar o seu cupom! Se por qualquer motivo não for possível utilizar o seu cupom pelo celular ou apresentar o cupom impresso, informe o código indicado acima para que o seu cupom possa ser validado!</small>
               <!-- </div>-->
             </td>
           </tr>

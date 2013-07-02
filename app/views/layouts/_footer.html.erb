@@ -8,7 +8,7 @@
 			<li>
         <a href="/" class="bt-nowon">
           <span>
-            <img class="mobile" style="margin: -5px 0;" src="/assets/images/logo.png" width="100" height="55">
+            <img class="mobile" style="margin: -15px 0;" src="/assets/images/logo.png" width="100" height="55">
           </span>
         </a>
       </li>
@@ -19,7 +19,7 @@
 	<% else  %>
 	<nav id="main-menu">
 		<ul>
-			<li><%= link_to content_tag(:span, "Acontece"), '/signin', :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
+			<li><%= link_to content_tag(:span, "Social"), '/signin', :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
 			<li><%= link_to content_tag(:span, "Explorar"), '/signin', :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%></li>
 			<li><%= link_to content_tag(:span, "TrazCupom"), root_path, :class => "bt-nowon" %></li>
 			<li><%= link_to content_tag(:span, "Cupons"), '/signin', :class => "bt-mainmenu bt-shopping"  %></li>
