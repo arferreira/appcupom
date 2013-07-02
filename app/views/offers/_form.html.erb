@@ -117,7 +117,7 @@
 				</ul>
 			</div>
 		</div>
-		<%= submit_offer_id ".new_offer", "Concluir Oferta", :class => "padraoBtn btnSalvarNovaOferta" %>
+		<%= submit_offer_id ".new_offer", "Cadastrar Oferta", :class => "padraoBtn btnSalvarNovaOferta" %>
 	</div>
 </div>
 <% end %>
@@ -127,7 +127,7 @@
 <div style="display:none;">
 	<div class="boxPadrao" id="listaProdutos">
 		<input type="hidden"  id="nomeLocal" value="Restaurante DNA"/>
-		<h3 class="titBoxPadrao">Escolha um item do cardápio que deseja adicionar a oferta</h3>
+		<h3 class="titBoxPadrao">Escolha um item dos Produtos que deseja adicionar a oferta</h3>
 		<div class="adicaoSucesso">Incluido na pré visualização.</div>
 
 		<% if @products.nil? || @products.empty? %>
