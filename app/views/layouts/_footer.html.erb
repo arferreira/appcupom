@@ -3,7 +3,7 @@
 	<% if signed_in? && !@no_mobile_header %>
 	<nav id="main-menu">
 		<ul>
-			<li><%= link_to content_tag(:span, "Acontece"), {:controller => "users", :action => "timeline", :id => current_user.id}, :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
+			<li><%= link_to content_tag(:span, "Cupons"), {:controller => "cupons", :action => "index", :user_id => current_user.id}, :class => "bt-mainmenu bt-shopping"  %></li>
 			<li><%= link_to content_tag(:span, "Explorar"), {:controller => "partners", :action => "index"}, :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%></li>
 			<li>
         <a href="/" class="bt-nowon">
@@ -12,17 +12,23 @@
           </span>
         </a>
       </li>
-			<li><%= link_to content_tag(:span, "Cupons"), {:controller => "cupons", :action => "index", :user_id => current_user.id}, :class => "bt-mainmenu bt-shopping"  %></li>
+			<li><%= link_to content_tag(:span, "Timeline"), {:controller => "users", :action => "timeline", :id => current_user.id}, :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
 			<li><%= link_to content_tag(:span, "Perfil"), {:controller => get_controller(user_type), :action => "show", :id => current_user.id}, :class => "bt-mainmenu bt-profile"+ (@profile ? "active" : "") %></li>
 		</ul>
 	</nav>
 	<% else  %>
 	<nav id="main-menu">
 		<ul>
-			<li><%= link_to content_tag(:span, "Social"), '/signin', :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
-			<li><%= link_to content_tag(:span, "Explorar"), '/signin', :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%></li>
-			<li><%= link_to content_tag(:span, "TrazCupom"), root_path, :class => "bt-nowon" %></li>
 			<li><%= link_to content_tag(:span, "Cupons"), '/signin', :class => "bt-mainmenu bt-shopping"  %></li>
+			<li><%= link_to content_tag(:span, "Explorar"), '/signin', :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%></li>
+			<li>
+				<a href="/" class="bt-nowon">
+          <span>
+            <img class="mobile" style="margin: -5px 0;" src="/assets/images/logo.png" width="100" height="55">
+          </span>
+        </a>
+		  </li>
+			<li><%= link_to content_tag(:span, "Timeline"), '/signin', :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
 			<li><%= link_to content_tag(:span, "Perfil"), '/signin', :class => "bt-mainmenu bt-profile"+ (@profile ? "active" : "") %></li>
 		</ul>
 	</nav>

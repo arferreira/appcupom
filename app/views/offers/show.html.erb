@@ -94,7 +94,7 @@
 
 			<% unless @offer.is_credit_offer? %>
 				<section class="group">
-					<div class="wrapper">
+					<div class="wrapper_ntr">
 						<h4>Produtos inclusos</h4>
 						<% @products.each do |product| %>
 							<h5><%= product.name %></h5>
@@ -104,14 +104,14 @@
 				</section>
       <% else %>
         <section class="group">
-          <div class="wrapper">
+          <div class="wrapper_ntr">
             <span>Essa é uma oferta de credito, não possui produtos.</span>
           </div>
         </section>
 			<% end %>
 
 			<section class="group">
-				<div class="wrapper">
+				<div class="wrapper_ntr">
 					<h4>Endereço</h4>
 					<div class="to-left col-66">
 						<p class="address to-left"><%= @partner.get_address %></p>
@@ -130,13 +130,13 @@
 </div> <!-- #main-container -->
 
 <div id="bottom-bar" class="dark-background">
-	<div class="wrapper">
+	<div class="wrapper_ntr">
 		<% unless mobile_device? %>
 			<p class="highlights">
 				<%= @offer.resume %>
 			</p>
 		<% end %>
-		<% if @offer.is_today? && !@offer.is_full? && !@offer.paused && (user_type == USER_TYPE || current_user.nil? ) && @offer.active %>
+		<% if @offer.is_today? && !@offer.is_full? && !@offer.paused && (user_type == USER_TYPE || current_user.nil? ) && @offer.active && @offer.ja_comprou?(current_user) %>
 	  		<%= link_to content_tag(:span, "Pegar cupom"), {:controller => "offers", :action => "payment_info"}, :class => "std-button bt-bigsize" %>
 	  	<% elsif @partner_user &&  !@offer.active %>
 	  		<%= link_to content_tag(:span, "Editar oferta"), [:edit, @partner_user, @offer], :class => "padraoBtn", :title => "Editar oferta", :class => "std-button bt-bigsize" %>

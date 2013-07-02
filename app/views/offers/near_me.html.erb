@@ -27,15 +27,12 @@
 						<!-- User Agora -->
 						<%= render "use_now" %>
 
-						<!-- Use Mais Tarde -->
-						<% unless @now_offers.next_page %>
-							<h4 class="section-title not-use-now">Use mais tarde</h4>		
-							<%= render "not_use_now" %>
-						<% end %>
+						<!-- Use Mais Tarde -->	
+						<%= render "not_use_now" %>
+						
 					<% end %>
 				</div>
-				<%= will_paginate @now_offers, :param_name => 'now_offers', :class => 'pagination_now_offers'%>
-				<%= will_paginate @not_now_offers, :param_name => 'not_now_offers', :class => 'pagination_not_now_offers' %>
+				
 				<div class="clearfix"></div>
 			</article>
 			

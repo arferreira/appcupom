@@ -274,10 +274,10 @@ class UsersController < ApplicationController
     @user = current_user
     @timeline_items = @user.timeline_items.order("created_at desc").page(params[:page]).per_page(3)
 
-    add_breadcrumb "Acontece", "users/#{@user.id}/timeline"
+    add_breadcrumb "timeline", "users/#{@user.id}/timeline"
 
     respond_to do |format|
-      @title = "Acontece"
+      @title = "timeline"
       @menu = true
       #@config = true BUG 13
       @feed = true
