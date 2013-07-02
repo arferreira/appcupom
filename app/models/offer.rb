@@ -289,11 +289,14 @@ class Offer < ActiveRecord::Base
   end
 
   def ja_comprou? user
-    user = user
-    if user.cupons.last.offer.id == self.id
-      false
-    else
-      true
+    _user = user.id
+    cupon = Cupon.find_on_time_spec user.id
+    offer = self
+
+    cupon.each do |comprados|
+      if offer.id == comprados.id
+        false
+      end
     end
   end
 

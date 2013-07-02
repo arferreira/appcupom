@@ -43,7 +43,7 @@ class Cupon < ActiveRecord::Base
                   JOIN offers ON cupons.offer_id = offers.id
                   WHERE cupons.user_id = ?
                   AND cupons.good_date >= DATE(?)
-                  AND cupons.moip_status != 'Iniciado'
+                  AND cupons.moip_status = 'Aprovado'
                   and offers.time_ends > time(?)
                   ORDER BY cupons.created_at", user_id, Time.now - 24.hour, Time.now - 24.hour])
   end
