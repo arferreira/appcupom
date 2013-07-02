@@ -4805,6 +4805,7 @@ table{border-collapse:collapse;border-spacing:0}
         left: 0px;
         right: 0px;
         z-index: 502;
+        min-height: 30px;
       }
 
       .scrollable
