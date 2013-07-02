@@ -293,9 +293,9 @@ class Offer < ActiveRecord::Base
     cupon = Cupon.find_on_time_spec user.id
     offer = self
 
-    cupon.each do |comprados|
-      if offer.id == comprados.id
-        false
+    cupon.map(&:offer_id).each do |comprado|
+      if comprado == offer.id
+        return false
       end
     end
   end
