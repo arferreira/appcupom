@@ -563,7 +563,7 @@ table{border-collapse:collapse;border-spacing:0}
        }
 
 
-       #main-menu .bt-nowon span:before,
+       
        #main-menu .bt-mainmenu:before
        {
         background-image:url("/assets/images/mobile/main-menu.png");
@@ -4983,7 +4983,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         #header-container header{
-          height: 140px;
+          height: 106px;
           position: relative;
           border-bottom: 4px solid #000;
           background: #45a4dc;
@@ -5614,7 +5614,6 @@ table{border-collapse:collapse;border-spacing:0}
           background-size:      700px 800px;
         }
 
-        #main-menu .bt-nowon span:before,
         #main-menu .bt-nowon span,
         #main-menu .bt-mainmenu:before
         {
