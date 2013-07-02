@@ -7,9 +7,9 @@
 			</h1>
 		</div>
 	</div>
-	<div class="col1Parceiro">
+	<div class="col1Parceiro" style="padding:30px;">
 		<div class="boxPadrao">
-			<h3 class="titBoxPadrao">Validar Vouchers</h3>					
+			<h3 class="titBoxPadrao">Validar Cupons</h3>					
 			<% unless @cupons.nil? %>
 			
 				<%= form_tag url_for(:controller => "cupons", :action => "validate") do %>

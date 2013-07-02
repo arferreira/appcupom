@@ -124,7 +124,7 @@ Appcupom::Application.routes.draw do
   resources :recommend_partners, :only => :destroy
   #resources :offers, :only => :all
   match 'offers', :to => 'offers#nowon'
-  match 'near_me', :to => 'offers#near_me'
+  match 'proximos', :to => 'offers#near_me'
   match 'category', :to => 'offers#category'
   match 'partners_near_me', :to => 'partners#near_me'
   match 'partners_category', :to => 'partners#category'

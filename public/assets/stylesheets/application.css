@@ -569,7 +569,7 @@ table{border-collapse:collapse;border-spacing:0}
         background-image:url("/assets/images/mobile/main-menu.png");
        }
        #main-menu .bt-nowon span{
-          background:#45A4DC;
+          background:#000;
           text-indent: 0!important;
        }
        .sub-menu
@@ -802,15 +802,8 @@ table{border-collapse:collapse;border-spacing:0}
             width: 28%;
             border:none;
             /* Safari 4-5, Chrome 1-9 */
-            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#dfdfdf));
-            /* Safari 5.1, Chrome 10+ */
-            background: -webkit-linear-gradient(top, #ffffff, #dfdfdf);
-            /* Firefox 3.6+ */
-            background: -moz-linear-gradient(top, #ffffff, #dfdfdf);
-            /* IE 10 */
-            background: -ms-linear-gradient(top, #ffffff, #dfdfdf);
-            /* Opera 11.10+ */
-            background: -o-linear-gradient(top, #ffffff, #dfdfdf);
+            background: #000;
+            
           }
 
           .bt-mainmenu{
