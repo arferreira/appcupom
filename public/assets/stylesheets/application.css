@@ -1725,6 +1725,10 @@ table{border-collapse:collapse;border-spacing:0}
           width:94%;
           margin:0 3%;
         }
+        .view-cupom .wrapper_ntr{
+          width:94%;
+          margin:0 3%;
+        }
 
         .opened-cupom .box{
           float:left;

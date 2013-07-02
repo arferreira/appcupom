@@ -94,7 +94,7 @@
 
 			<% unless @offer.is_credit_offer? %>
 				<section class="group">
-					<div class="wrapper">
+					<div class="wrapper_ntr">
 						<h4>Produtos inclusos</h4>
 						<% @products.each do |product| %>
 							<h5><%= product.name %></h5>
@@ -104,14 +104,14 @@
 				</section>
       <% else %>
         <section class="group">
-          <div class="wrapper">
+          <div class="wrapper_ntr">
             <span>Essa é uma oferta de credito, não possui produtos.</span>
           </div>
         </section>
 			<% end %>
 
 			<section class="group">
-				<div class="wrapper">
+				<div class="wrapper_ntr">
 					<h4>Endereço</h4>
 					<div class="to-left col-66">
 						<p class="address to-left"><%= @partner.get_address %></p>
@@ -130,7 +130,7 @@
 </div> <!-- #main-container -->
 
 <div id="bottom-bar" class="dark-background">
-	<div class="wrapper">
+	<div class="wrapper_ntr">
 		<% unless mobile_device? %>
 			<p class="highlights">
 				<%= @offer.resume %>
