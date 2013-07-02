@@ -2,7 +2,7 @@ worker_processes 10
 
 working_directory "/var/www/cupom/current" # available in 0.94.0+
 
-listen 5003, :tcp_nopush => true
+listen 5002, :tcp_nopush => true
 
 timeout 30
 
