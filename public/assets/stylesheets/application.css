@@ -569,7 +569,7 @@ table{border-collapse:collapse;border-spacing:0}
         background-image:url("/assets/images/mobile/main-menu.png");
        }
        #main-menu .bt-nowon span{
-          background:#000;
+          background:#45A4DC;
           text-indent: 0!important;
        }
        .sub-menu
@@ -802,7 +802,7 @@ table{border-collapse:collapse;border-spacing:0}
             width: 28%;
             border:none;
             /* Safari 4-5, Chrome 1-9 */
-            background: #000;
+            background: #45A4DC;
             
           }
 
@@ -5828,6 +5828,7 @@ table{border-collapse:collapse;border-spacing:0}
         padding: 20px;
         background: #EFEFEF;
         border-radius: 0 0 20px 20px;
+        margin-bottom: 10px;
       }
       .desconto_porcentagem span{
         display: block;
@@ -5836,5 +5837,6 @@ table{border-collapse:collapse;border-spacing:0}
         text-align: center;
         color: grey;
         font-size: 18px;
+        text-shadow: 1px 2px 1px #CCC;
       }
     }
