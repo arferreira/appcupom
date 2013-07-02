@@ -61,15 +61,13 @@ class Offer < ActiveRecord::Base
   validates :daily_cupons,      :presence   => true, :numericality => { :greater_than => 0 }
   validates :cupon_counter,     :presence   => true
 
-  validates :description,       :length     => { :maximum => 100 }
-
-  # validates :discount,          :numericality => { :greater_than => 0, :less_than_or_equal_to => 100 }
+  #validates :description,       :length     => { :maximum => 100 }
+  #validates :discount,         :numericality => { :greater_than => 0, :less_than_or_equal_to => 100 }
 
   validates :price,             :numericality => { :greater_than => 0 }
 
   validates :recurrence,        :format => { :with => days_regex },
                                 :length     => { :is => 7 }
-
 
   validate :cupon_limit
   validate :min_time
