@@ -64,15 +64,15 @@ class OffersController < ApplicationController
           long = user_latlong.split('|')[1]
         else
           city = City.first
-          #lat = city.latitude.to_s
-          #long = city.longitude.to_s
+          lat = city.latitude.to_s
+          long = city.longitude.to_s
         end
       end
 
     end
 
-    #@user_latlong = lat + "|" + long
-    #session[:user_latlong] = @user_latlong
+    @user_latlong = lat + "|" + long
+    session[:user_latlong] = @user_latlong
 
 =begin
     if params[:search]
@@ -149,8 +149,10 @@ class OffersController < ApplicationController
 
     if @gps
       @user_latlong = session[:user_latlong]
-      lat = @user_latlong.split('|')[0]
-      long = @user_latlong.split('|')[1]
+      begin
+        lat = @user_latlong.split('|')[0]
+        long = @user_latlong.split('|')[1]
+      end
 
       @now_offers = Offer.find_now_by_position lat, long, session[:city]
       @now_offers = @now_offers.paginate(:page => params[:now_offers], :per_page => 5)
