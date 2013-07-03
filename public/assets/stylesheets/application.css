@@ -41,6 +41,7 @@ sup{top:-0.5em;}
 sub{bottom:-0.25em;}
 img{max-width:100%;width:auto\9;height:auto;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;}
 #map_canvas img,.google-maps img{max-width:none;}
+#map_canvas iframe{height: 140px;}
 button,input,select,textarea{margin:0;font-size:100%;vertical-align:middle;}
 button,input{*overflow:visible;line-height:normal;}
 button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}
@@ -732,9 +733,10 @@ table{border-collapse:collapse;border-spacing:0}
         #map_canvas{
           border:1px solid #ccc;
           width:98%;
-          height: 100px;
+          height: 250px;
           overflow: hidden;
         }
+        #map_canvas iframe{ margin: 20px; width: 90%; height: 200px;}
 
     /* ====================
         WIDE: Footer
@@ -1858,7 +1860,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         .share-section h3{
-          color:  #ff9b25;
+          color:  #000;
           font-size:  1.6em;
         }
 
