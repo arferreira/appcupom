@@ -5676,7 +5676,7 @@ table{border-collapse:collapse;border-spacing:0}
 
     }
     .loader-products{
-      background: url("/assets/images/mobile/loading.gif");
+      background: url("/assets/images/mobile/loading.gif")no-repeat;
       width: 60px;
       height: 26px;
       margin: 0 auto;
