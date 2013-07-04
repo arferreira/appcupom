@@ -29,7 +29,7 @@
         if(url === undefined) url = $('.pagination .next_page').attr('href');
         if (!paginating && url && $(window).scrollTop() > $(document).height() - $(window).height() - 380) {
           paginating = true
-          $('.pagination').show().html("<div class='loader-products'></div>");
+          $('.pagination').show().html("<div class='loader-products'>Carregando ...</div>");
           $.ajaxSetup({ cache: true });
           return $.getScript(url, function(){
             $('.pagination').hide();
