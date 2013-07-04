@@ -80,7 +80,8 @@ class CuponsController < ApplicationController
                  :approved => true,
                  :moip_status => "Aprovado"
 
-    @offer.cupon_counter = @offer.cupon_counter - 1;
+    @offer.cupon_counter = @offer.cupon_counter - 1
+    @offer.save
 
     success_message = "Sua transação está #{@cupon.moip_status} e o código  é #{ @cupon.transaction_id }.
     Caso tenha alguma dúvida referente a transação, entre em contato."
