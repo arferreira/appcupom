@@ -4,7 +4,7 @@
 	<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" />
 	<meta property="og:title"  content="<%= @offer.company_name %>" />
 	<meta property="og:description"   content="<%= @offer.resume %>" />
-	<meta property="og:image"  content="http://dev.nowon.com.br/assets/mobile/homescreen-logo.png" />
+	<meta property="og:image"  content="http://www.trazcupom.com/assets/mobile/homescreen-logo.png" />
 <%- end %>
 <%= hidden_field_tag :get_location_callback, @location_callback %>
 <%= hidden_field_tag :cached_location, @cached_location %>
@@ -78,6 +78,14 @@
 
 			<section class="group">
 				<div class="wrapper_ntr">
+					<h3 class="title"><%= @partner.name %></h3>
+					
+
+						<div id="profile-image">
+						<%= image_tag @partner.pic(:perfil) %>
+						</div>
+
+					<br>
 					<h4>Endereço</h4>
 					<div class="to-left col-66">
 						<p class="address to-left"><%= @partner.get_address %></p>
