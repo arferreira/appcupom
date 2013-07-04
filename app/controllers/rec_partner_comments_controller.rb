@@ -20,7 +20,7 @@ class RecPartnerCommentsController < ApplicationController
     #timeline
     if @comment.save
       current_user.share TimelineType.rec_partner_comment, {:rec_partner_comment_id => @comment.id} unless @comment.nil?
-      #current_user.share_social @comment.facebook_resume , PrivacyType.rec_partner_comment
+      current_user.share_social @comment.facebook_resume , PrivacyType.rec_partner_comment
     end
     
     flash[:notice] = "Comentário enviado!"
