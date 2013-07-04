@@ -1042,7 +1042,7 @@ MENU
 	float: left;
 }
 .boxHorarioOferta select{
-	height: 22px;
+	height: 29px;
 	width: 60px;
 }
 .boxHorarioOferta span{
@@ -1571,3 +1571,4 @@ Non-Semantic Helper Classes
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
+.datepicker{width:170px;}

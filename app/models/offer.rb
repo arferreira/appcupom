@@ -30,7 +30,7 @@ class Offer < ActiveRecord::Base
   default_scope where(:deleted => 0)
   include ActionView::Helpers::NumberHelper
 
-  attr_accessible :product_id, :product_qty, :partner_id, :description, :discount, :price, :time_starts, :time_ends, :daily_cupons,:recurrence, :start_date, :ttype, :partner_pic1_id, :partner_pic2_id, :partner_pic3_id, :main_pic, :cupon_counter, :temp_distance, :city_id, :original_price, :paused, :deleted, :company_name,:pic,:attach_file_name, :attach_content_type, :attach_file_size, :attach_updated_at
+  attr_accessible :end_date,:product_id, :product_qty, :partner_id, :description, :discount, :price, :time_starts, :time_ends, :daily_cupons,:recurrence, :start_date, :ttype, :partner_pic1_id, :partner_pic2_id, :partner_pic3_id, :main_pic, :cupon_counter, :temp_distance, :city_id, :original_price, :paused, :deleted, :company_name,:pic,:attach_file_name, :attach_content_type, :attach_file_size, :attach_updated_at
 
   attr_accessor :pic_file_name
 
@@ -477,6 +477,7 @@ class Offer < ActiveRecord::Base
                           from offers
                           join partners on offers.partner_id = partners.id
                           where DATE(start_date) <= DATE(:now)
+                          and DATE(start_date) <= DATE(end_date)
                           and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_starts <= time(:now_utc)
                           and time_ends > time(date_add(:now_utc, interval 15 minute))
@@ -492,6 +493,7 @@ class Offer < ActiveRecord::Base
                           from offers
                           join partners on offers.partner_id = partners.id
                           where DATE(start_date) <= DATE(:now)
+                          and DATE(start_date) <= DATE(end_date)
                           and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_starts > time(:now_utc)
                           and time_ends > time(date_add(:now_utc, interval 15 minute))

@@ -1,8 +1,17 @@
 <%= f.hidden_field :recurrence %>
-
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+  $(function() {
+    $( ".datepicker" ).datepicker({ dateFormat: 'dd-mm-yy' });
+    $('.boxDiasSemanaOferta input').attr('checked', 'checked')
+  });
+  </script>
 <div class="boxdataInicioOferta">
 	<h4 class="subTituloBoxPadrao">Oferta inicia em</h4>
-	<%= f.date_select :start_date %>							
+	<%= f.text_field :start_date, :class =>"datepicker" %>
+	<h4 class="subTituloBoxPadrao">e oferta termina em</h4>
+	<%= f.text_field :end_date, :class =>"datepicker" %>							
 </div>
 
 <div class="boxHorarioOferta">
