@@ -22,7 +22,7 @@ class RecOfferCommentsController < ApplicationController
       #timeline
       if @comment.save
         current_user.share TimelineType.rec_offer_comment, {:rec_offer_comment_id => @comment.id} unless @comment.nil?
-        #current_user.share_social @comment.facebook_resume , PrivacyType.rec_offer_comment
+        current_user.share_social @comment.facebook_resume , PrivacyType.rec_offer_comment
       end
       flash[:notice] = "Comentário enviado!"
     
