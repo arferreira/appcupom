@@ -337,7 +337,11 @@ function atualizaPreview(){
 			
 	if($('.tipoOferta:checked').val()=='po'){		
 		var valorSemDesconto = $('#price_field').val();
-		var valorComconto = $('#offer_value_field').val();
+		
+		var discount = $("#discount").val();
+
+		var valorComconto = (valorSemDesconto * discount)/100;
+		valorComconto = valorSemDesconto - valorComconto;
 		var nomeRestaurante = $('#partner_name').val();
 		var nomesProdutos = '';
 		$('.tabelaNovaOferta .itemProdutoTabela').each(function() {

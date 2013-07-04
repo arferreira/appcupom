@@ -413,9 +413,12 @@ class OffersController < ApplicationController
         @existing_products = Product.find(@prods_list.split(","), :order => "field(id,#{@prods_list})")
       end
 
-      @offer_value = @offer.price * (1 - INITIAL_DISCOUNT/100.0)
+      @offer_value = (@offer.price * INITIAL_DISCOUNT)/100.0
       @offer[:price] = @offer_value
-      @partner_value = @offer_value * (1 - @partner.system_profit/100.0 )
+      @desc = (INITIAL_DISCOUNT / 100.0)
+      @v1 = @offer_value * @desc
+      @partner_value = @offer[:price] - @v1
+      # @partner_value = @offer_value * (1 - @partner.system_profit/100.0 )
       @nowon_value = @offer_value * (@partner.system_profit/100.0 )
     end
     @original_price = get_from_session(:original_price) || 0
