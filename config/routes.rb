@@ -1,5 +1,7 @@
 Appcupom::Application.routes.draw do
 
+  get "sales/index"
+
   resources :faqs
 
   match '/sobre', :to => 'static#sobre'

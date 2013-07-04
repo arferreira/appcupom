@@ -1,0 +1,17 @@
+<h1>Todos os downloads de cupons</h1>
+<p>Abaixo estão todos os cupons que ja foram baixados.</p>
+
+<ul>
+
+<% @cupons.each do |cupom| %>
+<% @user = User.find(cupom.user_id) %>
+<% @offer = Offer.find(cupom.offer_id) %>
+<% @empresa = Partner.find(@offer.partner_id) %>
+<li>Nome: <%= @user.name %></li>
+<li>Oferta:<%= @offer.description %></li>
+<li>Código do cupom:#<%= cupom.cupon_code %></li>
+<li>Estabelecimento: <%= @empresa.name %></li>
+<hr>
+<% end %>
+
+</ul>
