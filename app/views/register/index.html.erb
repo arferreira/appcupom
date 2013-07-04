@@ -1,0 +1,13 @@
+<h1>Usuários que se cadastraram</h1>
+<p>Listagem de todos os usuario que ja se cadastraram no trazcupom.com até: <%= Time.now %></p>
+
+<ul>
+
+<% @usuario.each do |user|%>
+
+<li><%= user.name %></li>
+<hr>
+
+<% end %>
+<p>Total: <%= @usuario.count %></p>
+</ul>

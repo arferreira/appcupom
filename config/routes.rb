@@ -1,5 +1,7 @@
 Appcupom::Application.routes.draw do
 
+  get "register/index"
+
   get "sales/index"
 
   resources :faqs
