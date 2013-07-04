@@ -194,7 +194,7 @@ module OffersHelper
   end
 
   def submit_offer_id finder, text, args
-    link_to_function text, "set_selected_prods(); if(!$('#selected_pics').val() == ''){ $('#{finder}').submit();}else{alert('Adicione uma imagem a oferta!')}", args
+    link_to_function text, "set_selected_prods();$('#{finder}').submit()", args
   end
 
 end
