@@ -470,7 +470,7 @@ function set_discount(){
     var partner_value = total_value * (1-partner_discount);
     var offer_value = partner_value + now_discount;
 
-    $("#offer_value_field").val( Math.round(offer_value*100)/100 );
+    $("#offer_value_field").val( Math.round(partner_value*100)/100 );
     $("#partner_value_field").html( "R$ " + Math.round(partner_value*100)/100 );
     $("#nowon_value_field").html( "R$ " + now_discount );
     atualizaPreview();
