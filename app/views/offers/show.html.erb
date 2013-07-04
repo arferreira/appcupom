@@ -17,7 +17,6 @@
 	<div id="main" class="clearfix">
 
 			<section class="opened-cupom">
-				<div>
 					<header>
 						<div class="trend">
 							<%= @offer.next_ocurrency %>
@@ -58,39 +57,6 @@
 							<li>Foto meramente ilustrativa.</li>
 						</ul>
 					</div>
-				</div>
-
-				<!--<div class="wrapper">
-				<div>
-					<div class="box">
-						<div>
-							<a href="#recommends" name="modal">
-							<span class="recommend-menu"><%= @recommend_products_count %></span></br>
-							recomendaram o cardápio
-							</a>
-						</div>
-					</div>
-
-					<div class="box">
-						<div>
-							<a href="#recommend-establishment" name="modal">
-							<span class="recommend-establishment"><%= @recommend_partners_count %></span></br>
-							recomendaram o estabelecimento
-							</a>
-						</div>
-					</div>
-
-					<div class="box">
-						<div>
-							<a href="#wish" name="modal">
-								<span class="wish-menu"><%= @wish_products_count %></span></br>
-								desejaram o cardápio
-							</a>
-						</div>
-					</div>
-				</div>
-				</div>-->
-
 
 			<% unless @offer.is_credit_offer? %>
 				<section class="group">

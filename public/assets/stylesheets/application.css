@@ -5813,14 +5813,14 @@ table{border-collapse:collapse;border-spacing:0}
       }
       .opened-cupom .wrapper{
         width: 28%;
-        float: left;
+        float: right;
         margin: 0 0 0 10px;
       }
       .opened-cupom .trend{
         display:none;
       }
       .opened-cupom section{
-        clear:both;
+        /*clear:both;*/
       }
       .group{
         width:70%;
