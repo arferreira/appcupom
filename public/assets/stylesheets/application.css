@@ -3327,7 +3327,8 @@ table{border-collapse:collapse;border-spacing:0}
 
         .feed .answer{
           background-color: #F5F5F5;
-          padding: 9px;
+          padding: 19px;
+          padding-left: 40px;
         }
         .feed .answer .ver-comentarios{
           color: #999999;
@@ -3344,8 +3345,10 @@ table{border-collapse:collapse;border-spacing:0}
           padding: 0;
         }
         .feed .see-comments{
-          padding: 9px 0 9px 34px;
+          padding: 9px 0 9px 40px;
           position: relative;
+          width: 94%;
+		  margin-left: 0;
         }
         .feed .see-comments:before{
           background-position: -155px -186px;
@@ -4346,7 +4349,7 @@ table{border-collapse:collapse;border-spacing:0}
          }
 
          .items .comment{
-
+         	padding-left: 10px;
          }
 
 
