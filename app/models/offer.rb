@@ -493,6 +493,8 @@ class Offer < ActiveRecord::Base
                           where DATE(start_date) <= DATE(:now)
                           and DATE(start_date) <= DATE(end_date)
                           and SUBSTRING(recurrence, :daynum, 1) = 1
+                          and time_starts > time(:now_utc)
+                          and time_ends > time(date_add(:now_utc, interval 15 minute))
                           and cupon_counter > 0
                           and offers.paused <> 1
                           and offers.active = 1"+
