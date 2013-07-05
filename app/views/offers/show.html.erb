@@ -1,11 +1,11 @@
-	<head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# nowonbrasil: http://ogp.me/ns/fb/nowonbrasil#">
-		
-	<meta property="fb:app_id" content="446094325449761" /> 
-	<meta property="og:type"   content="nowonbrasil:partner" /> 
-	<meta property="og:url"    content="http://www.nowon.com.br/parceiro/13-vitelo-s" /> 
-	<meta property="og:title"  content="Vitelo's" /> 
-	<meta property="og:description"   content="Para saber mais sobre este estabelecimento, conferir descontos e dicas acesse o NowOn!" /> 
-	<meta property="og:image"  content="http://www.nowon.com.br//system/avatars/13/perfil/vitelos.png?1352687414" />
+<%= content_for :head do %>
+	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" />
+	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:offer" />
+	<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" />
+	<meta property="og:title"  content="<%= @offer.company_name %>" />
+	<meta property="og:description"   content="<%= @offer.resume %>" />
+	<meta property="og:image"  content="<%= image_tag() %>" />
+<%- end %>
 <%= hidden_field_tag :get_location_callback, @location_callback %>
 <%= hidden_field_tag :cached_location, @cached_location %>
 
