@@ -62,7 +62,12 @@
 <!doctype html>
 
 	<head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <%= FacebookAPI.app_namespace %>: http://ogp.me/ns/fb/<%= FacebookAPI.app_namespace %>#">
-		<%= yield(:head) if content_for?(:head) %>
+		<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" />
+		<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:offer" />
+		<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" />
+		<meta property="og:title"  content="<%= @offer.company_name %>" />
+		<meta property="og:description"   content="<%= @offer.resume %>" />
+		<meta property="og:image"  content="http://imageshack.us/scaled/thumb/194/73uu.png" />
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />-->
