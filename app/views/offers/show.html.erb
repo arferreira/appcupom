@@ -1,6 +1,6 @@
 <%= content_for :head do %>
-	<meta property="fb:app_id" content="294633027349454	" />
-	<meta property="og:type"   content="trazcupomlogin" />
+	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" />
+	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:offer" />
 	<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" />
 	<meta property="og:title"  content="<%= @offer.company_name %>" />
 	<meta property="og:description"   content="<%= @offer.resume %>" />
