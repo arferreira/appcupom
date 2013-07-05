@@ -1,4 +1,5 @@
 <%= content_for :head do %>
+<head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# trazcupomlogin: http://ogp.me/ns/fb/trazcupomlogin#">
 	<meta property="fb:app_id" content="<%= FacebookAPI.app_id %>" />
 	<meta property="og:type"   content="<%= FacebookAPI.app_namespace %>:offer" />
 	<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" />
