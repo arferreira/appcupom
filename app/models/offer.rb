@@ -456,7 +456,6 @@ class Offer < ActiveRecord::Base
                           join partners on offers.partner_id = partners.id
                           where DATE(start_date) <= DATE(:now)
                           and DATE(:today) between DATE(start_date) and DATE(end_date)
-                          and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_starts <= time(:now_utc)
                           and time_ends > time(date_add(:now_utc, interval 15 minute))
                           and cupon_counter > 0
@@ -472,7 +471,6 @@ class Offer < ActiveRecord::Base
                           join partners on offers.partner_id = partners.id
                           where DATE(start_date) <= DATE(:now)
                           and DATE(:today) between DATE(start_date) and DATE(end_date)
-                          and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_starts > time(:now_utc)
                           and time_ends > time(date_add(:now_utc, interval 15 minute))
                           and cupon_counter > 0
@@ -487,7 +485,6 @@ class Offer < ActiveRecord::Base
                           from offers
                           join partners on offers.partner_id = partners.id
                           where DATE(start_date) <= DATE(:now)
-                          and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_ends > time(date_add(:now, interval 15 minute))
                           and cupon_counter > 0
                           and offers.paused <> 1
@@ -516,7 +513,6 @@ class Offer < ActiveRecord::Base
                           from offers
                           where partner_id = :partner_id
                           and DATE(start_date) <= DATE(:now)
-                          and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_starts <= time(:now_utc)
                           and cupon_counter > 0
                           and paused <> 1
@@ -529,7 +525,6 @@ class Offer < ActiveRecord::Base
                         from offers
                         where partner_id = :partner_id
                         and DATE(start_date) <= DATE(:now)
-                        and SUBSTRING(recurrence, :daynum, 1) = 1
                         and cupon_counter > 0
                         and time_ends > time(date_add(:now_utc, interval 15 minute))
                         and active = 1", {:partner_id => partner_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
@@ -540,7 +535,6 @@ class Offer < ActiveRecord::Base
                         from offers
                         where partner_id = :partner_id
                         and DATE(start_date) <= DATE(:now)
-                        and SUBSTRING(recurrence, :daynum, 1) = 1
                         and cupon_counter > 0
                         and paused <> 1
                         and time_ends > time(date_add(:now_utc, interval 15 minute))
@@ -549,22 +543,6 @@ class Offer < ActiveRecord::Base
 
 
   def self.week_offers_by_partner partner_id
-      # Offer.find_by_sql(["select *
-                          # from offers
-                          # where
-                          # partner_id = :partner_id
-                          # and start_date < :now
-                          # and (SUBSTRING(recurrence, :daynum + 1, 1) = 1
-                          # OR SUBSTRING(recurrence, :daynum + 2, 1) = 1
-                          # OR SUBSTRING(recurrence, :daynum + 3, 1) = 1
-                          # OR SUBSTRING(recurrence, :daynum + 4, 1) = 1
-                          # OR SUBSTRING(recurrence, :daynum + 5, 1) = 1
-                          # OR SUBSTRING(recurrence, :daynum + 6, 1) = 1
-                          # OR SUBSTRING(recurrence, :daynum + 7, 1) = 1)
-                          # and time_starts <= time(:now)
-                          # and time_ends > time(date_add(:now, interval 15 minute))
-                          # and active = 1" , {:partner_id => partner_id, :daynum => Time.now.wday + 1 }])
-
       Offer.find_by_sql(["select *
                           from offers
                           where
