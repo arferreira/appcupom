@@ -316,7 +316,7 @@ class Offer < ActiveRecord::Base
                                ROUND(SQRT(@x * @x + @y * @y) * 6371,2) as temp_distance
                         FROM offers o
                         JOIN partners p on o.partner_id = p.id
-                        WHERE SUBSTRING(recurrence, :daynum, 1) = 1 '+
+                        WHERE DATE(:today) between DATE(start_date) and DATE(end_date) '+
                         (city_id ? "and p.city_id = :city_id " : "") +
                          'and DATE(o.start_date) <= DATE(:now)
                           and o.time_ends > time(date_add(:now_utc, interval 15 minute))
@@ -324,7 +324,7 @@ class Offer < ActiveRecord::Base
                           and o.paused <> 1
                           and o.active = 1
                         ORDER BY temp_distance
-                        LIMIT :limit', {:limit => 50, :lat => lat, :long => long, :city_id => city_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                        LIMIT :limit', {:today => Date.today,:limit => 50, :lat => lat, :long => long, :city_id => city_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
   def self.find_now_by_position lat, long, city_id
@@ -334,7 +334,7 @@ class Offer < ActiveRecord::Base
                                ROUND(SQRT(@x * @x + @y * @y) * 6371,2) as temp_distance
                         FROM offers o
                         JOIN partners p on o.partner_id = p.id
-                        WHERE SUBSTRING(recurrence, :daynum, 1) = 1 '+
+                        WHERE DATE(:today) between DATE(start_date) and DATE(end_date) '+
                         (city_id ? "and p.city_id = :city_id " : "") +
                          'and DATE(o.start_date) <= DATE(:now)
                           and o.time_starts <= time(:now_utc)
@@ -343,7 +343,7 @@ class Offer < ActiveRecord::Base
                           and o.paused <> 1
                           and o.active = 1
                         ORDER BY temp_distance
-                        LIMIT :limit', {:limit => 50, :lat => lat, :long => long, :city_id => city_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                        LIMIT :limit', {:today => Date.today,:limit => 50, :lat => lat, :long => long, :city_id => city_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
     #Change limit to offset
   end
 
@@ -354,7 +354,7 @@ class Offer < ActiveRecord::Base
                                ROUND(SQRT(@x * @x + @y * @y) * 6371,2) as temp_distance
                         FROM offers o
                         JOIN partners p on o.partner_id = p.id
-                        WHERE SUBSTRING(recurrence, :daynum, 1) = 1 '+
+                        WHERE DATE(:today) between DATE(start_date) and DATE(end_date) '+
                         (city_id ? "and p.city_id = :city_id " : "") +
                          'and DATE(o.start_date) <= DATE(:now)
                           and o.time_starts > time(:now_utc)
@@ -363,7 +363,7 @@ class Offer < ActiveRecord::Base
                           and o.paused <> 1
                           and o.active = 1
                         ORDER BY temp_distance
-                        LIMIT :limit', {:limit => 50, :lat => lat, :long => long, :city_id => city_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                        LIMIT :limit', {:today => Date.today,:limit => 50, :lat => lat, :long => long, :city_id => city_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
     #Change limit to offset
   end
 
