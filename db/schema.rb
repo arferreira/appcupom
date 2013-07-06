@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704171651) do
+ActiveRecord::Schema.define(:version => 20130706150342) do
 
   create_table "admin_roles", :force => true do |t|
     t.string   "name",        :null => false
@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(:version => 20130704171651) do
     t.string   "attach_content_type"
     t.integer  "attach_file_size"
     t.datetime "attach_updated_at"
-    t.datetime "end_date"
+    t.date     "end_date"
   end
 
   add_index "offers", ["partner_id"], :name => "index_offers_on_partner_id"

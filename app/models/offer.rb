@@ -30,7 +30,7 @@ class Offer < ActiveRecord::Base
   default_scope where(:deleted => 0)
   include ActionView::Helpers::NumberHelper
 
-  attr_accessible :product_id, :product_qty, :partner_id, :description, :discount, :price, :time_starts, :time_ends, :daily_cupons,:recurrence, :start_date, :ttype, :partner_pic1_id, :partner_pic2_id, :partner_pic3_id, :main_pic, :cupon_counter, :temp_distance, :city_id, :original_price, :paused, :deleted, :company_name,:pic,:attach_file_name, :attach_content_type, :attach_file_size, :attach_updated_at
+  attr_accessible :end_date, :product_id, :product_qty, :partner_id, :description, :discount, :price, :time_starts, :time_ends, :daily_cupons,:recurrence, :start_date, :ttype, :partner_pic1_id, :partner_pic2_id, :partner_pic3_id, :main_pic, :cupon_counter, :temp_distance, :city_id, :original_price, :paused, :deleted, :company_name,:pic,:attach_file_name, :attach_content_type, :attach_file_size, :attach_updated_at
 
   attr_accessor :pic_file_name
 
@@ -180,26 +180,6 @@ class Offer < ActiveRecord::Base
       @resume
   end
 
-  # def original_price
-    # original_price = 0
-    # p '   -   '
-    # p '   -   '
-    # p '   -   '
-    # if self.is_product_offer?
-      # p 'go in PO'
-      # p '   -   '
-      # p 'products da offer'
-      # p self.products
-      # p '   -   '
-      # self.products.each do |offer_product|
-        # original_price += offer_product.price
-      # end
-    # #else
-#
-    # end
-    # original_price
-  # end
-
   def get_products_names
     productsNames = ""
     self.offer_products.each do |offer_product|
@@ -240,9 +220,7 @@ class Offer < ActiveRecord::Base
   end
 
   def is_today?
-    Time.now >= self.start_date &&
-    has_day(Time.now.wday) &&
-    time_before(Time.now, self.time_ends)
+    Time.now >= self.start_date
   end
 
   def is_full?
@@ -477,6 +455,7 @@ class Offer < ActiveRecord::Base
                           from offers
                           join partners on offers.partner_id = partners.id
                           where DATE(start_date) <= DATE(:now)
+                          and DATE(:today) between DATE(start_date) and DATE(end_date)
                           and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_starts <= time(:now_utc)
                           and time_ends > time(date_add(:now_utc, interval 15 minute))
@@ -484,7 +463,7 @@ class Offer < ActiveRecord::Base
                           and offers.paused <> 1
                           and offers.active = 1"+
                           (city_id ? " and partners.city_id = :city " : "" )+
-                          " order by count_cupons desc", {:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
   def self.not_now_offers city_id = nil
@@ -492,14 +471,15 @@ class Offer < ActiveRecord::Base
                           from offers
                           join partners on offers.partner_id = partners.id
                           where DATE(start_date) <= DATE(:now)
+                          and DATE(:today) between DATE(start_date) and DATE(end_date)
                           and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_starts > time(:now_utc)
-                          and time_ends > time(date_add(:now_utc, interval 50 minute))
+                          and time_ends > time(date_add(:now_utc, interval 15 minute))
                           and cupon_counter > 0
                           and offers.paused <> 1
                           and offers.active = 1"+
                           ( city_id ? " and partners.city_id = :city " : "") +
-                          " order by count_cupons desc", {:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
   def self.today_offers city_id = nil
