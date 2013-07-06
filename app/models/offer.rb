@@ -485,12 +485,13 @@ class Offer < ActiveRecord::Base
                           from offers
                           join partners on offers.partner_id = partners.id
                           where DATE(start_date) <= DATE(:now)
+                          and DATE(:today) between DATE(start_date) and DATE(end_date)
                           and time_ends > time(date_add(:now, interval 15 minute))
                           and cupon_counter > 0
                           and offers.paused <> 1
                           and offers.active = 1"+
                           ( city_id ? " and partners.city_id = :city " : "" )+
-                          " order by count_cupons desc", {:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now - 2.hour}])
+                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now - 2.hour}])
   end
 
   def self.find_by_partner_category city_id = nil, category_id
@@ -498,6 +499,7 @@ class Offer < ActiveRecord::Base
                           from offers
                           join partners on offers.partner_id = partners.id
                           where partners.category_id = :category_id
+                          and DATE(:today) between DATE(start_date) and DATE(end_date)
                           and DATE(start_date) < DATE(:now)
                           and SUBSTRING(recurrence, :daynum, 1) = 1
                           and time_ends > time(date_add(:now_utc, interval 15 minute))
@@ -505,7 +507,7 @@ class Offer < ActiveRecord::Base
                           and offers.paused <> 1
                           and offers.active = 1"+
                           ( city_id ? " and partners.city_id = :city " : "" )+
-                          " order by count_cupons desc", {:daynum => Time.now.wday + 1, :city => city_id, :category_id => category_id, :now => Time.now, :now_utc => Time.now - 2.hour }])
+                          " order by count_cupons desc", {:today => Date.today, :daynum => Time.now.wday + 1, :city => city_id, :category_id => category_id, :now => Time.now, :now_utc => Time.now - 2.hour }])
   end
 
   def self.now_offers_by_partner partner_id
@@ -513,32 +515,35 @@ class Offer < ActiveRecord::Base
                           from offers
                           where partner_id = :partner_id
                           and DATE(start_date) <= DATE(:now)
+                          and DATE(:today) between DATE(start_date) and DATE(end_date)
                           and time_starts <= time(:now_utc)
                           and cupon_counter > 0
                           and paused <> 1
                           and time_ends > time(date_add(:now_utc, interval 15 minute))
-                          and active = 1", {:daynum => Time.now.wday + 1, :partner_id => partner_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                          and active = 1", {:today => Date.today, :daynum => Time.now.wday + 1, :partner_id => partner_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
   def self.all_today_offers_by_partner partner_id
     Offer.find_by_sql(["select *
                         from offers
                         where partner_id = :partner_id
+                        and DATE(:today) between DATE(start_date) and DATE(end_date)
                         and DATE(start_date) <= DATE(:now)
                         and cupon_counter > 0
                         and time_ends > time(date_add(:now_utc, interval 15 minute))
-                        and active = 1", {:partner_id => partner_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                        and active = 1", {:today => Date.today, :partner_id => partner_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
   def self.today_offers_by_partner partner_id
     Offer.find_by_sql(["select *
                         from offers
                         where partner_id = :partner_id
+                        and DATE(:today) between DATE(start_date) and DATE(end_date)
                         and DATE(start_date) <= DATE(:now)
                         and cupon_counter > 0
                         and paused <> 1
                         and time_ends > time(date_add(:now_utc, interval 15 minute))
-                        and active = 1", {:partner_id => partner_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                        and active = 1", {:today => Date.today,:partner_id => partner_id, :daynum => Time.now.wday + 1, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
 
@@ -547,8 +552,9 @@ class Offer < ActiveRecord::Base
                           from offers
                           where
                           partner_id = :partner_id
+                          and DATE(:today) between DATE(start_date) and DATE(end_date)
                           and DATE(start_date) <= DATE(:now)
-                          and active = 1" , {:partner_id => partner_id, :daynum => Time.now.wday + 1, :now => Time.now }])
+                          and active = 1" , {:today => Date.today,:partner_id => partner_id, :daynum => Time.now.wday + 1, :now => Time.now }])
   end
 
   def recommends_count
