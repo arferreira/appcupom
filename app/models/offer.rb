@@ -483,7 +483,7 @@ class Offer < ActiveRecord::Base
                           and cupon_counter > 0
                           and offers.paused <> 1
                           and offers.active = 1"+
-                          ( city_id ? " and partners.city_id = :city " : "" )+
+                          (city_id ? " and partners.city_id = :city " : "" )+
                           " order by count_cupons desc", {:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
