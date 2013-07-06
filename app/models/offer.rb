@@ -60,19 +60,10 @@ class Offer < ActiveRecord::Base
   validates :partner_id,        :presence   => true
   validates :daily_cupons,      :presence   => true, :numericality => { :greater_than => 0 }
   validates :cupon_counter,     :presence   => true
-
-  #validates :description,       :length     => { :maximum => 100 }
-  #validates :discount,         :numericality => { :greater_than => 0, :less_than_or_equal_to => 100 }
-
   validates :price,             :numericality => { :greater_than => 0 }
-
-  validates :recurrence,        :format => { :with => days_regex },
-                                :length     => { :is => 7 }
-
   validate :cupon_limit
   validate :min_time
   validate :initial_date, :on => :create
-  validate :one_day
 
   has_attached_file :pic, :styles => {
                             :banner => {
@@ -122,12 +113,6 @@ class Offer < ActiveRecord::Base
   def initial_date
     if start_date.in_time_zone.beginning_of_day < Time.now.in_time_zone.beginning_of_day
       errors[:base] << "A oferta não pode iniciar no passado."
-    end
-  end
-
-  def one_day
-    if recurrence.index('1').nil?
-      errors[:base] << "Pelo menos um dia da semana."
     end
   end
 
