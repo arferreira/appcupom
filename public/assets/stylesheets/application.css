@@ -461,8 +461,11 @@ table{border-collapse:collapse;border-spacing:0}
         }
         #city{
           background: #45A4DC;
+          height: 40px;
+          margin-left: 5px;
           border: none;
         }
+        #city option{height: 40px;}
     /* ==============
         MOBILE: Main
         ============== */
