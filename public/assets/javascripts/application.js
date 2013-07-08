@@ -264,7 +264,7 @@ $(window).bind("statechange", function(){
 })
 
 function ajaxnav(href, params, meth){
-//  window.location = href;
+
   if(typeof params === "undefined"){
     params = {}
   }
@@ -300,7 +300,7 @@ function ajaxnav(href, params, meth){
 
 function ajax_submit(form){
   //$(form).submit();
-  var action = $(form).attr("action").replace("/#", "");
+  var action = $(form).attr("action")
   var values = {};
   $.each($(form).serializeArray(), function(i, field) {
       values[field.name] = field.value;
