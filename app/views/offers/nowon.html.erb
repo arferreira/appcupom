@@ -25,12 +25,15 @@
 					<% if @searched_offers %>
 						<%= render @searched_offers, :locals => { :list => true }  %>
 					<% else %>
-
-						<!-- User Agora -->
-						<%= render "use_now" %>
-
-
-						<%= render "not_use_now" %>
+						<% if @now_offers.size > 0 %>
+							<!-- User Agora -->
+							<%= render "use_now" %>
+							<%= render "not_use_now" %>
+						<% else %>
+							<span style="width: 95.8%;display: block;" id="warning-home-show">
+								Ainda não temos ofertas cadastradas para essa cidade.
+							</span>
+						<% end %>
 
 					<% end %>
 				</div>
