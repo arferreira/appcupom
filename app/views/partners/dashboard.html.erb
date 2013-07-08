@@ -121,9 +121,9 @@
 	
 					<div class="btnsPrograma">
 						<% if !offer.paused %>
-						<%= link_to 'Interromper Oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/pause", :class => "padraoBtn", :title => "Desativar oferta" %>
+						<%= link_to 'Interromper Oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/pause", :class => "btn btn-primary", :title => "Desativar oferta" %>
 						<% else %>
-						<%= link_to 'Ativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/restart", :class => "padraoBtn", :title => "Ativar oferta" %>
+						<%= link_to 'Ativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/restart", :class => "btn btn-primary", :title => "Ativar oferta" %>
 						<% end %>
 					</div>
 				</div>
@@ -139,8 +139,8 @@
 				</div>
 				<div class="confirmacaoPrograma">
 					<span class="textoConfirmacao">Feriado: Confirma funcionamento?</span>	
-					<a href="javascript:void(0);" class="padraoBtn">Não</a>
-					<a href="javascript:void(0);" class="padraoBtn">Sim</a>
+					<a href="javascript:void(0);" class="btn btn-primary">Não</a>
+					<a href="javascript:void(0);" class="btn btn-primary">Sim</a>
 				</div>
 				<div class="boxInfoPrograma">							
 					<p class="descPrograma descProgramaDesativada">Descrição da Oferta</p>
@@ -148,7 +148,7 @@
 					<p class="programasVendidos">2 / 5 Vendidos</p>							
 				</div>
 				<div class="btnsPrograma">
-					<a href="javascript:void(0);" class="padraoBtn">Interromper Oferta</a>
+					<a href="javascript:void(0);" class="btn btn-primary">Interromper Oferta</a>
 				</div>
 			</div> -->
 		</div>				

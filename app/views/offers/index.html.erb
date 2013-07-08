@@ -4,7 +4,7 @@
 		<div class="limitadorTitulo">
 			<h1 class="titEstabelecimento"><span class="establishment-icon <%= get_category_icon @partner %>"></span><%= @partner.company_name%></h1>
 		</div>
-		<%= link_to 'Criar nova oferta', new_partner_offer_path, :class => "padraoBtn" %>
+		<%= link_to 'Criar nova oferta', new_partner_offer_path, :class => "btn btn-primary", :style=>"float:right" %>
 	</div>
 
 	<% @offers.each do |offer| %>
@@ -76,13 +76,13 @@
 					</li>
 				</ul>
 				<% if !offer.active and !(offer.is_now? && offer.cupon_counter != offer.daily_cupons) %>
-					<td><%= link_to 'Editar oferta', [:edit, offer.partner, offer], :class => "padraoBtn", :title => "Editar oferta" %></td>
-					<td><%= link_to 'Remover oferta', [offer.partner, offer], :class => "padraoBtn", :title => "Remover oferta", :method => :delete, :confirm => "Você quer mesmo apagar esta oferta?" %></td>
+					<td><%= link_to 'Editar oferta', [:edit, offer.partner, offer], :class => "btn btn-primary", :title => "Editar oferta" %></td>
+					<td><%= link_to 'Remover oferta', [offer.partner, offer], :class => "btn btn-primary", :title => "Remover oferta", :method => :delete, :confirm => "Você quer mesmo apagar esta oferta?" %></td>
 				<% end %>
 				<% if offer.active %>
-					<td><%= link_to 'Desativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/stop", :class => "padraoBtn", :title => "Desativar oferta" %></td>
+					<td><%= link_to 'Desativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/stop", :class => "btn btn-primary", :title => "Desativar oferta" %></td>
 				<% else %>
-					<td><%= link_to 'Ativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/start", :class => "padraoBtn", :title => "Ativar oferta" %></td>
+					<td><%= link_to 'Ativar oferta', "/partners/#{offer.partner.id}/offers/#{offer.id}/start", :class => "btn btn-primary", :title => "Ativar oferta" %></td>
 				<% end %>
 
 			</div>
