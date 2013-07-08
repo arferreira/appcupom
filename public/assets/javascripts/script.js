@@ -375,6 +375,7 @@ function atualizaPreview(){
 		else
 			$('.resumoDataHorario').find('.'+valorInputCheck).hide();		
 	});
+	
  	var inicioHorarioOferta = $('#offer_time_starts_4i').val() + ":" + $('#offer_time_starts_5i').val();
  	var fimHorarioOferta = $('#offer_time_ends_4i').val() + ":" + $('#offer_time_ends_5i').val();
  	$('.resumoDataHorario .horaInicio').text(inicioHorarioOferta);

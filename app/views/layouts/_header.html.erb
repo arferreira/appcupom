@@ -1,9 +1,9 @@
 <div id="header-container" ontouchmove="blockMove(event)">
 	<% unless @no_top_tool %>
 	<div class="top-tool">
-			<!--<div class="col-20 cell">
+			<div class="col-20 cell">
 				<%= select_tag :city, options_from_collection_for_select(get_cities, "id", "name", get_selected_city), :onchange => "root_city_change(this.value)" %>
-			</div>-->
+			</div>
 
 			<div class="col-80 top-right cell">
 				<% if signed_in? %>
