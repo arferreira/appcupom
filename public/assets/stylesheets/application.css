@@ -651,11 +651,8 @@ table{border-collapse:collapse;border-spacing:0}
           margin: 0 auto;
         }
         p.text-homescreen{
-          text-indent: -9999px;
-          background: url("/assets/images/mobile/frase-homescreen-small.png") no-repeat;
-          width: 245px;
-          height: 35px;
-          text-align: left;
+          color: black;
+          text-align: center;
           margin: 0 auto;
         }
         #main-container, #register-container{

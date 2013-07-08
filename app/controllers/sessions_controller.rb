@@ -121,12 +121,10 @@ class SessionsController < ApplicationController
         @offer_list = true
         @search = true
 
-        if !(signed_in? || facebook_logged?)
-          format.html {redirect_to '/comofunciona'}
+        if session[:location_time].nil? || timeout || !session[:gps]
+          format.html
         else
-          redir_params = {}
-          redir_params[:status] = params[:status] if params[:status]
-          format.html {redirect_to offers_path}
+          format.html {redirect_to '/offers'}
         end
       end
     end
