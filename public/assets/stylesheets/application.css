@@ -439,7 +439,15 @@ table{border-collapse:collapse;border-spacing:0}
           color: #fffffe;
         }
 
-
+        #warning-home-show{
+          background-color: #faecad;
+          font-size: 12px;
+          padding: 10px 20px;
+          letter-spacing: 0;
+          line-height: 12px;
+          cursor: pointer;
+          color: #0070ed;
+        }
         #title{ color:white; }
 
         ::-moz-selection { background: #000; color: #fff; text-shadow: none; }
