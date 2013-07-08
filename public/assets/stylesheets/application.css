@@ -459,7 +459,10 @@ table{border-collapse:collapse;border-spacing:0}
           text-decoration:none;
           font-weight:bold;
         }
-
+        #city{
+          background: #45A4DC;
+          border: none;
+        }
     /* ==============
         MOBILE: Main
         ============== */
