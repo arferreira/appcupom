@@ -45,14 +45,13 @@ class FacebookAPI
     end
   end
 end
-class PagSeguro
-  def self.token
-    "FA1BF98EFCBB4A21B5E64A5131DA87E7"
-  end
-  
-end
 class Google
   def self.key
     "AIzaSyBgP69wSIFNJeEftRGV-_UnJYjYe1GwWCA"
+  end
+end
+class PagSeguroTok
+  def self.token
+    "FA1BF98EFCBB4A21B5E64A5131DA87E7"
   end
 end

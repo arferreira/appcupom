@@ -1283,20 +1283,7 @@ table{border-collapse:collapse;border-spacing:0}
           border-radius:      13px;
           -moz-border-radius:   13px;
           -webkit-border-radius:  13px;
-          /*For IE7-8-9*/
-          background: #ffab2b;
-          /* Safari 4-5, Chrome 1-9 */
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffab2b), to(#ff851d));
-          /* Safari 5.1, Chrome 10+ */
-          background: -webkit-linear-gradient(top, #ffab2b, #ff851d);
-          /* Firefox 3.6+ */
-          background: -moz-linear-gradient(top, #ffab2b, #ff851d);
-          /* IE 10 */
-          background: -ms-linear-gradient(top, #ffab2b, #ff851d);
-          /* Opera 11.10+ */
-          background: -o-linear-gradient(top, #ffab2b, #ff851d);
-
-
+          background: #000;
           z-index:  400;
         }
 
@@ -2569,12 +2556,10 @@ table{border-collapse:collapse;border-spacing:0}
           font-size:  1.6em;
           color:    #45A4DC;
           position:   relative;
-          padding-left: 26px;
           margin-top:   7px;
-          margin-left:  5px;
         }
 
-        .custom-title:before{
+        /*.custom-title:before{
           content:  "";
           display:  block;
           position: absolute;
@@ -2584,7 +2569,7 @@ table{border-collapse:collapse;border-spacing:0}
           width:    22px;
           height:   22px;
           margin-top: -14px;
-        }
+        }*/
 
         .custom-title.ic-cupom:before { background-position:  -60px -215px;}
         .custom-title.ic-menu:before  { background-position:  -38px -215px;}
