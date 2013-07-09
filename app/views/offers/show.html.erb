@@ -4,7 +4,7 @@
 	<meta property="og:url"    content="<%= "#{root_url}offers/#{@offer.id}" %>" />
 	<meta property="og:title"  content="<%= @offer.company_name %>" />
 	<meta property="og:description"   content="<%= @offer.resume %>" />
-	<meta property="og:image"  content="<%= "#{root_url}#{@offer.pic1.image.url(:banner_big)}" %>" />
+	<meta property="og:image"  content="<%= "#{root_url}#{@partner.pic(:perfil)}" %>" />
 <% end %>
 <%= hidden_field_tag :get_location_callback, @location_callback %>
 <%= hidden_field_tag :cached_location, @cached_location %>
