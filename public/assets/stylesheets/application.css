@@ -1145,7 +1145,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 	      #main .cupom:hover{
           box-shadow: 3px 3px 1px #888;
-          border: 1px solid #444;
+          border: 1px dashed #444;
         }
         .cupom:after{
           display: block;
@@ -1336,7 +1336,7 @@ table{border-collapse:collapse;border-spacing:0}
           font-size: 1.36em;
           vertical-align: middle;
           font-weight: bold;
-          color:#ff9b25;
+          color:#45A4DC;
           min-width: 75%;
         }
 
