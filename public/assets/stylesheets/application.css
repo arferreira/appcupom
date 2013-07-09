@@ -4635,7 +4635,21 @@ table{border-collapse:collapse;border-spacing:0}
 
     @media only screen and (min-width: 320px) and (max-width: 640px) {
 
-
+      .desconto_porcentagem{
+        padding: 20px;
+        background: #EFEFEF;
+        border-radius: 0 0 20px 20px;
+        margin-bottom: 10px;
+      }
+      .desconto_porcentagem span{
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        text-align: center;
+        color: grey;
+        font-size: 18px;
+        text-shadow: 1px 2px 1px #CCC;
+      }
       .loading{
         background: #f0f0f0 url("/assets/images/mobile/loading.gif") no-repeat center center;
         opacity: 0.9;

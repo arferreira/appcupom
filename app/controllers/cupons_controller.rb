@@ -28,10 +28,8 @@ class CuponsController < ApplicationController
 
     respond_to do |format|
       @title = "Compras"
-      @no_back = true
       @menu = true
       @submenu = true
-      @credit = true
       @actual = true
 
       format.html # index.html.erb
@@ -46,10 +44,8 @@ class CuponsController < ApplicationController
 
     respond_to do |format|
       @title = "Histórico de Compras"
-      @no_back = true
       @menu = true
       @submenu = true
-      @credit = true
       @old = true
 
       format.html { render "index"}
