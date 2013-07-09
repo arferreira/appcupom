@@ -162,6 +162,9 @@ class OffersController < ApplicationController
 
       @not_now_offers = Offer.find_not_now_by_position lat, long, session[:city]
       @not_now_offers = @not_now_offers.paginate(:page => params[:not_now_offers], :per_page => 5)
+
+      @sem_hora = Offer.fora_de_hora session[:city]
+      @sem_hora.collect { |item| item[:temp_distance] = (item.distance lat.to_f, long.to_f).round(2) }
     end
 
     respond_to do |format|
