@@ -45,9 +45,6 @@
  			<section class="wrapper">
 				<ul class="sections-list">
 					<li class="sections">
-						<a href="#badges" name="modal" class="badges items">Badges</a>
-					</li>
-					<li class="sections">
 						<a href="#recommend" name="modal" class="establishments items">Estabelecimentos</a>
 					</li>
 					<li class="sections">
@@ -163,49 +160,6 @@
 			</div>
 		</div>	
 	</div>
-
-	<!-- Badges -->
-	<div id="badges" class="window">
-		<div class="wrapper">
-			<h2 class="badge-info">
-				Ver badges
-			</h2>
-
-			<a href="javascript:;" class="bt-back-modal">
-				<span></span> Voltar
-			</a>
-		
-			<!-- Botão para fechar a janela tem class="close" -->
-			<a href="#" class="close">Fechar [X]</a>
-		
-			<div class="content-container">
-				<div class="content">
-					<ul class="list-badge">
-						<% @badges.each do |badge| %>
-						<li>
-							<a href="javascript:;" class="<%= badge.has_badge(@user) %>" rel="<%=badge.id%>"></a>
-							<span class="text-badge-on"><%= badge.name %></span>
-						</li>
-						<% end %>
-					</ul>
-					
-					<% @mybadges.each do |mb| %>
-					<div class="info-badge badge<%=mb.id%>">
-						<div class="info-badge-image">
-							<span class="<%= mb.has_badge(@user) %>"></span>
-							<%= mb.name %>
-						</div>
-						<span class="info-badge-text">
-							<%= mb.description %>
-						</span>
-					</div>
-					<% end %>
-				</div>
-			</div>
-		</div>	
-	</div>
-
-
 	<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
 	<div id="mask" ontouchmove="blockMove(event)"></div>
 </div>
