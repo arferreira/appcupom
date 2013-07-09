@@ -47,6 +47,10 @@ Appcupom::Application.routes.draw do
 
   resources :clients
 
+  resources :sales
+
+  resources :register
+
   resources :administrators do
     get 'dashboard', :on => :member
   end
