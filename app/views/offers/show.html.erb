@@ -90,6 +90,9 @@
 					<div class="to-left col-66">
 						<p class="address to-left"><%= @partner.get_address %></p>
 					</div>
+					<div class="to-right col-34">
+						<%= link_to "Ver perfil", partner_path(@partner), :class => "button-info to-right" %>
+					</div>
 
 					<div id="map_canvas">
 						<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@partner.latitude.to_s},#{@partner.longitude.to_s}&zoom=15&size=620x250&sensor=false&markers=#{@partner.latitude.to_s},#{@partner.longitude.to_s}"
