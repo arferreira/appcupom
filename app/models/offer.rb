@@ -447,7 +447,7 @@ class Offer < ActiveRecord::Base
                           and offers.paused <> 1
                           and offers.active = 1"+
                           (city_id ? " and partners.city_id = :city " : "" )+
-                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 3.hour}])
+                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
   def self.not_now_offers city_id = nil
@@ -462,7 +462,7 @@ class Offer < ActiveRecord::Base
                           and offers.paused <> 1
                           and offers.active = 1"+
                           ( city_id ? " and partners.city_id = :city " : "") +
-                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 3.hour}])
+                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
   def self.today_offers city_id = nil
@@ -552,6 +552,19 @@ class Offer < ActiveRecord::Base
                         AND start_date <= :date
                         AND active = 1", {:daynum => date.wday + 1, :date => date}])
 
+  end
+
+  def self.fora_de_hora city_id
+    Offer.find_by_sql(["select offers.*, (select count(*) from cupons where offer_id = offers.id and DATE(cupons.good_date) = DATE(:now)) as count_cupons
+                          from offers
+                          join partners on offers.partner_id = partners.id
+                          where DATE(start_date) <= DATE(:now)
+                          and DATE(:today) between DATE(start_date) and DATE(end_date)
+                          and cupon_counter > 0
+                          and offers.paused <> 1
+                          and offers.active = 1"+
+                          (city_id ? " and partners.city_id = :city " : "" )+
+                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
   end
 
 end
