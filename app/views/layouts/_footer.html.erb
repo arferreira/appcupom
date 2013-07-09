@@ -8,7 +8,7 @@
 			<li>
         <a href="/" class="bt-nowon">
           <span>
-            <img class="mobile" style="margin: -15px 0;" src="/assets/images/logo.png" width="100" height="55">
+            <img class="mobile" style="margin: -10px 0;" src="/assets/images/logo.png" width="100" height="55">
           </span>
         </a>
       </li>
@@ -24,12 +24,12 @@
 			<li>
 				<a href="/" class="bt-nowon">
           <span>
-            <img class="mobile" style="margin: -5px 0;" src="/assets/images/logo.png" width="100" height="55">
+            <img class="mobile" style="margin: -0px 0;" src="/assets/images/logo.png" width="100" height="55">
           </span>
         </a>
 		  </li>
 			<li><%= link_to content_tag(:span, "Timeline"), '/signin', :class => ("bt-mainmenu bt-happening "+ (@feed ? "active" : "") )%></li>
-			<li><%= link_to content_tag(:span, "Perfil"), '/signin', :class => "bt-mainmenu bt-profile"+ (@profile ? "active" : "") %></li>
+			<li><%= link_to content_tag(:span, "Login"), '/signin', :class => "bt-mainmenu bt-profile"+ (@profile ? "active" : "") %></li>
 		</ul>
 	</nav>
 	<% end %>

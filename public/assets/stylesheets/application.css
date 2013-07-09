@@ -864,22 +864,7 @@ table{border-collapse:collapse;border-spacing:0}
             display:block;
             min-width: 28%;
             height: 44px;
-            background-position: center -380px;
-            background-repeat: no-repeat;
             text-indent: -5000px;
-          }
-
-          #main-menu .bt-nowon span:before
-          {
-            /*content:"";*/
-            position: absolute;
-            display:block;
-            width: 90px;
-            height: 7px;
-            top:-7px;
-            left:50%;
-            margin-left:-45px;
-            background-position: center -373px;
           }
 
           #header-container #title
@@ -1158,9 +1143,11 @@ table{border-collapse:collapse;border-spacing:0}
           position:relative;
           list-style: none;
         }
-	    #main .cupom:hover{box-shadow: 10px 10px 5px #888; border: 1px solid black;}
+	      #main .cupom:hover{
+          box-shadow: 3px 3px 1px #888;
+          border: 1px solid #444;
+        }
         .cupom:after{
-          content: "";
           display: block;
           width: 13px;
           height: 19px;
@@ -1175,6 +1162,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         .cupom header{
+          min-width: 300px;
           float:left;
           position: relative;
           margin: 0px;
@@ -1198,7 +1186,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         .cupom .thumb{
-          width: 273px;
+          width: 300px;
           overflow: hidden;
           border:2px solid #fff;
           -webkit-box-shadow: 0px 0px 6px -1px rgba(0, 0, 0, .3);
@@ -1207,7 +1195,7 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
         .cupom .thumb img{
-          width: 273px;
+          width: 300px;
         }
 
         .cupom .trend,
