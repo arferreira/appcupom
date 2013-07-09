@@ -48,7 +48,7 @@
 						<a href="#recommend" name="modal" class="establishments items">Estabelecimentos</a>
 					</li>
 					<li class="sections">
-						<a href="#cardapio" name="modal" class="menu items">Cardápio</a>
+						<a href="#cardapio" name="modal" class="menu items">Produtos</a>
 					</li>
 					<li class="sections">
 						<a href="#desejos" name="modal" class="desires items">Desejos</a>
@@ -59,15 +59,12 @@
 </div> <!-- #main-container -->
  		
 <div id="boxes">
-	
-
 	<div id="friends" class="window">
 		<div class="wrapper">
 			<h2>Meus amigos</h2>
 		
 			<!-- Botão para fechar a janela tem class="close" -->
 			<a href="#" class="close">Fechar [X]</a>
-		
 			<div class="content-container">
 				<div class="content">
 					<% if current_user.name == @user.name %>
@@ -111,7 +108,6 @@
 	<div id="cardapio" class="window">
 		<div class="wrapper">
 			<h2>Ver recomendações</h2>
-		
 			<!-- Botão para fechar a janela tem class="close" -->
 			<a href="#" class="close">Fechar [X]</a>
 		
@@ -163,8 +159,3 @@
 	<!-- Não remova o div#mask, pois ele é necessário para preencher toda a janela -->
 	<div id="mask" ontouchmove="blockMove(event)"></div>
 </div>
-
-
-	
-
-

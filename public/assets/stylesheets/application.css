@@ -2494,18 +2494,12 @@ table{border-collapse:collapse;border-spacing:0}
           margin: 3px 2px;
         }
         .sections .items{
-          background: #FFF;
-          -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .4);
-          -moz-box-shadow:  0px 1px 2px 0px rgba(0, 0, 0, .4);
-          box-shadow:     0px 1px 2px 0px rgba(0, 0, 0, .4);
-          border-radius:    2px;
-          -moz-border-radius: 2px;
-          -webkit-border-radius: 2px;
+          background: #000;
           display: block;
           width: 136px;
           height: 29px;
           padding-top: 61px;
-          color: #0070ed;
+          color: #fff;
           font-size: 1.3em;
           font-weight: bold;
           text-decoration: none;
@@ -4121,7 +4115,7 @@ table{border-collapse:collapse;border-spacing:0}
           display:  none;
           z-index:  9999;
 
-          background-image:url("/assets/images/mobile/modal-bg@2x.jpg");
+          background-color:black;
           background-repeat: repeat;
 
           max-width: 640px;
