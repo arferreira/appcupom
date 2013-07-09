@@ -2362,37 +2362,14 @@ table{border-collapse:collapse;border-spacing:0}
         text-align: center;
 
         /* IE7-8-9*/
-        background: #a0a0a0;
+        background: #000;
 
-        /* Safari 4-5, Chrome 1-9 */
-        background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#a0a0a0), to(#838383));
-
-        /* Safari 5.1, Chrome 10+ */
-        background: -1-linear-gradient(top, #a0a0a0, #838383);
-
-        /* Firefox 3.6+ */
-        background: -moz-linear-gradient(top, #a0a0a0, #838383);
-
-        /* IE 10 */
-        background: -ms-linear-gradient(top, #a0a0a0, #838383);
-
-        /* Opera 11.10+ */
-        background: -o-linear-gradient(top, #a0a0a0, #838383);
-
-        -webkit-border-radius:  5px;
-        -moz-border-radius:   5px;
-        border-radius:      5px;
-
-        -webkit-box-shadow: inset 0px -3px 0px 0px rgba(0, 0, 0, .2);
-
-        -moz-box-shadow:  inset 0px -3px 0px 0px rgba(0, 0, 0, .2);
-
-        box-shadow:     inset 0px -3px 0px 0px rgba(0, 0, 0, .2);
+   
 
         padding:10px;
         margin:4px;
 
-        color:#fff;
+        color:#45a4dc;
         text-decoration: none;
         font-weight: bold;
         font-size: 12px;
