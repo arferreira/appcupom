@@ -447,7 +447,7 @@ class Offer < ActiveRecord::Base
                           and offers.paused <> 1
                           and offers.active = 1"+
                           (city_id ? " and partners.city_id = :city " : "" )+
-                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 3.hour}])
   end
 
   def self.not_now_offers city_id = nil
@@ -462,7 +462,7 @@ class Offer < ActiveRecord::Base
                           and offers.paused <> 1
                           and offers.active = 1"+
                           ( city_id ? " and partners.city_id = :city " : "") +
-                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 2.hour}])
+                          " order by count_cupons desc", {:today => Date.today,:daynum => Time.now.wday + 1, :city => city_id, :now => Time.now, :now_utc => Time.now - 3.hour}])
   end
 
   def self.today_offers city_id = nil
