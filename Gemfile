@@ -32,6 +32,7 @@ group :assets do
   gem 'coffee-rails'
 end
 
+gem 'pag_seguro'
 
 group :development do
   gem "capistrano"
