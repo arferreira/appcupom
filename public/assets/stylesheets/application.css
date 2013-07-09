@@ -1158,7 +1158,7 @@ table{border-collapse:collapse;border-spacing:0}
           position:relative;
           list-style: none;
         }
-
+	    #main .cupom:hover{box-shadow: 10px 10px 5px #888; border: 1px solid black;}
         .cupom:after{
           content: "";
           display: block;
