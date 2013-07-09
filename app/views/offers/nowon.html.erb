@@ -30,9 +30,17 @@
 							<%= render "use_now" %>
 							<%= render "not_use_now" %>
 						<% else %>
-							<span style="width: 95.8%;display: block;" id="warning-home-show">
-								Ainda não temos ofertas cadastradas para essa cidade.
-							</span>
+							<%time = Time.new %>
+							<% if time.hour >= 0 && time.hour <= 6 %>
+								<h4 class="section-title not-use-now">Use depois</h4>
+								<ul class="cupons">
+								  <%= render @sem_hora, :locals => { :list => true }  %>
+								</ul>
+							<% else %>
+								<span style="width: 95.8%;display: block;" id="warning-home-show">
+									Ainda não temos ofertas cadastradas para essa cidade.
+								</span>
+							<%end%>
 						<% end %>
 
 					<% end %>

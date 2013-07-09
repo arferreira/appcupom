@@ -95,6 +95,9 @@ class OffersController < ApplicationController
 
       @not_now_offers = Offer.not_now_offers session[:city]
       @not_now_offers.collect { |item| item[:temp_distance] = (item.distance lat.to_f, long.to_f).round(2) }
+
+      @sem_hora = Offer.fora_de_hora session[:city]
+      @sem_hora.collect { |item| item[:temp_distance] = (item.distance lat.to_f, long.to_f).round(2) }
     #end
 
     #@bc = ["Nowon",'offers']
