@@ -3,7 +3,7 @@
 	<div class="top-tool">
 		<label>Cidade: </label>
 			<div class="col-20 cell">
-				<%= select_tag :city, options_from_collection_for_select(get_cities, "id", "name", get_selected_city), :onchange => "root_city_change(this.value)" %>
+				<%= select_tag :city, options_from_collection_for_select(get_cities, "id", "name", get_selected_city), :onchange => "root_city_change(this.value)", :style => "text-weight:bold;" %>
 			</div>
 
 			<div class="col-80 top-right cell">
