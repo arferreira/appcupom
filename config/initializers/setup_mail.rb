@@ -1,9 +1,9 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "email-smtp.us-east-1.amazonaws.com",
+  :address              => "smtp.gmail.com",
   :port                 => 587,
-  :domain               => "nowon.com.br",
-  :user_name            => "AKIAIBXCNZQPPG7L77EQ",
-  :password             => "At28SDH+ZcDdRVVcs/owsEoRDDWNU5Y1twx2vnVQZxlP",
+  :domain               => "gmail.com",
+  :user_name            => "taralloqueiroiz@gmail.com",
+  :password             => "98912849",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }
