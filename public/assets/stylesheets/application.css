@@ -4219,38 +4219,7 @@ table{border-collapse:collapse;border-spacing:0}
           overflow: hidden;
          }
 
-         .list-users .user-data:before,
-         .list-users .user-data:after{
-          content:  "";
-          position: absolute;
-          display:  block;
-          width:    25px;
-          height:   25px;
-         }
-
-         .list-users .user-data:before{
-          -moz-border-radius:   13px;
-          -webkit-border-radius:  13px;
-          border-radius:      13px;
-
-          left:   61px;
-          top:    17px;
-
-          /* IE7-8-9*/
-          background: #ffab2b;
-
-          /* Safari 4-5, Chrome 1-9 */
-          background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffab2b), to(#ff851d));
-          /* Safari 5.1, Chrome 10+ */
-          background: -webkit-linear-gradient(top, #ffab2b, #ff851d);
-          /* Firefox 3.6+ */
-          background: -moz-linear-gradient(top, #ffab2b, #ff851d);
-          /* IE 10 */
-          background: -ms-linear-gradient(top, #ffab2b, #ff851d);
-          /* Opera 11.10+ */
-          background: -o-linear-gradient(top, #ffab2b, #ff851d);
-         }
-
+        
          .list-users .user-data:after{
           left:65px;
           top:22px;
@@ -4283,7 +4252,7 @@ table{border-collapse:collapse;border-spacing:0}
          }
 
          .list-users .user-data p{
-          margin:   5px 0px 5px 40px;
+          margin: 5px 0px 5px 5px;
           max-width:  61%;
           font-size:  12px;
           color:    #999;
