@@ -181,13 +181,12 @@
 		</section>
 
 
-		<div id="footer-partial">
-			<%= render "layouts/footer"%>
+			<div id="footer-partial">
+				<%= render "layouts/footer"%>
+			</div>
 		</div>
 
-
-
-		</div>
+		<%= yield(:footer_foo) if content_for?(:footer_foo) %>
 
 		<script type="text/javascript">
 		$(document).ready(function(){

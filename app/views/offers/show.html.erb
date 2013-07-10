@@ -5,33 +5,9 @@
 	<meta property="og:title"  content="<%= @offer.company_name %>" />
 	<meta property="og:description"   content="<%= @offer.resume %>" />
 	<meta property="og:image"  content="<%= "#{root_url}#{@partner.pic(:perfil)}" %>" />
-
-	<script type="text/javascript">
-
-	window.fbAsyncInit = function () {
-		FB.init({
-			appId  : '<%= FacebookAPI.app_id %>',
-			status : true, // check login status
-			cookie : true, // enable cookies to allow the server to access the session
-			xfbml  : true,  // parse XFBML
-			oauth  : true // enable OAuth 2.0
-		});
-	};
-</script>
 <% end %>
-<script>
-$('#share-button').click(function (e){
-	e.preventDefault();
-	FB.ui({
-		method: 'feed',
-		name: '<%= @partner.name %>',
-		link: '<%= "#{root_url}offers/#{@offer.id}" %>',
-		picture: '<%= "#{root_url}#{@partner.pic(:perfil)}" %>',
-		caption: '<%= @offer.resume %>',
-		description: '<%= @offer.description %>'
-	});
-});
-</script>
+
+
 <%= hidden_field_tag :get_location_callback, @location_callback %>
 <%= hidden_field_tag :cached_location, @cached_location %>
 
@@ -149,3 +125,28 @@ $('#share-button').click(function (e){
 		<span class="highlights use-time"><%= @offer.next_ocurrency %></span>
 	</div>
 </div>
+<%= content_for :footer_foo do %>
+	<script type="text/javascript">
+
+		window.fbAsyncInit = function () {
+			FB.init({
+				appId  : '<%= FacebookAPI.app_id %>',
+				status : true, // check login status
+				cookie : true, // enable cookies to allow the server to access the session
+				xfbml  : true,  // parse XFBML
+				oauth  : true // enable OAuth 2.0
+			});
+		};
+		var el = document.getElementById('share-button');
+		el.onclick = function (e) {
+			e.preventDefault();
+			FB.ui({
+				method: 'feed',
+				name: '<%= @partner.name %>',
+				link: '<%= "#{root_url}offers/#{@offer.id}" %>',
+				picture: '<%= "#{root_url}#{@partner.pic(:perfil)}" %>',
+				caption: '<%= @offer.resume %>'
+			});
+		}
+	</script>
+<% end %>
