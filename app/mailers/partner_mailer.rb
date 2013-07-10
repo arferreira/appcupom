@@ -1,5 +1,5 @@
 class PartnerMailer < ActionMailer::Base
-  default from: "TrazCupom <noreply@trazcupom.com>"
+  default from: "TrazCupom <contato@ifollowagencia.com.br>"
 
   def registration_confirmation(partner)
     @partner = partner

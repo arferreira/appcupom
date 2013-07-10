@@ -1,6 +1,6 @@
 # encoding: utf-8
 class UserMailer < ActionMailer::Base
-  default from: "TrazCupom <trazcupom@trazcupom.com.br>"
+  default from: "TrazCupom <contato@ifollowagencia.com.br>"
 
   def registration_confirmation(user, password)
     @user = user
@@ -27,7 +27,7 @@ class UserMailer < ActionMailer::Base
   #Autor: Paulo Henrique
   def new_message(message)
     @message = message
-    mail(:to => "contato@trazcupom.com.br") do |format|
+    mail(:to => "contato@ifollowagencia.com.br") do |format|
       format.html
     end
     mail :subject => "[Fale Conosco] #{message.subject}"
