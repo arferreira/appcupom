@@ -117,7 +117,7 @@
 			</p>
 		<% end %>
 		<% ja_comprou = @offer.ja_comprou?(current_user) if current_user %>
-		<% if @offer.is_today? && !@offer.is_full? && !@offer.paused && (user_type == USER_TYPE || current_user.nil? ) && @offer.active && !ja_comprou %>
+		<% if @offer.is_today? && !@offer.is_full? && !@offer.paused && (user_type == USER_TYPE || current_user.nil? ) && @offer.active %>
 	  		<%= link_to content_tag(:span, "Pegar cupom"), {:controller => "offers", :action => "payment_info"}, :class => "std-button bt-bigsize" %>
 	  	<% elsif @partner_user &&  !@offer.active %>
 	  		<%= link_to content_tag(:span, "Editar oferta"), [:edit, @partner_user, @offer], :class => "padraoBtn", :title => "Editar oferta", :class => "std-button bt-bigsize" %>
