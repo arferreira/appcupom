@@ -221,7 +221,7 @@ class User < ActiveRecord::Base
   end
 
   def facebook_user
-    social_links.where(:social_type => "F").first
+    self.social_links.where(:social_type => "F").first
   end
 
   def social_allowed? privacy_type
