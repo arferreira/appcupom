@@ -33,10 +33,9 @@ group :assets do
 end
 
 gem 'pag_seguro'
-
+gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
 group :development do
   gem "capistrano"
-  gem 'sunspot_solr', :git => "https://github.com/mrcsparker/sunspot.git"
 end
 
 #Dev and test only

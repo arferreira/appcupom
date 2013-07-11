@@ -124,3 +124,25 @@ namespace :unicorn do
   end
 end
 
+namespace :solr do
+  desc "Start solr"
+  task :start, :roles => :app do
+      #run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec sunspot-solr start --data-directory=#{shared_path}/solr/data --pid-dir=#{shared_path}/solr/pids; true"
+      run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:start; true" #port and data-directory configured on sunspot.yml
+  end
+
+  desc "Stop solr"
+  task :stop, :roles => :app do
+    run "killall -v java; true"
+  end
+
+  desc "Reindex solr"
+  task :reindex, :roles => :app do
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex; true"
+  end
+
+  desc "Checar se o Solr esta rodando"
+  task :check, :roles => :app do
+    run "ps aux | grep java"
+  end
+end
