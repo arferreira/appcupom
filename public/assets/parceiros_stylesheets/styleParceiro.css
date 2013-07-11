@@ -1384,16 +1384,7 @@ MENU
 	border-radius:	20px;
 
 	/* Safari 4-5, Chrome 1-9 */
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffab2b), to(#ff851d));
-	/* Safari 5.1, Chrome 10+ */
-	background: -webkit-linear-gradient(top, #ffab2b, #ff851d);
-	/* Firefox 3.6+ */
-	background: -moz-linear-gradient(top, #ffab2b, #ff851d);
-	/* IE 10 */
-	background: -ms-linear-gradient(top, #ffab2b, #ff851d);
-	/* Opera 11.10+ */
-	background: -o-linear-gradient(top, #ffab2b, #ff851d);
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ffab2b', endColorstr='#ff851d');/*For IE7-8-9*/
+	background:#000;
 
 	vertical-align: middle;
 }
