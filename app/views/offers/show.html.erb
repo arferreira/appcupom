@@ -63,7 +63,7 @@
 						</ul>
 					</div>
 
-			<% unless @offer.is_credit_offer? %>
+			<% unless @offer.is_credit_offer? || @offer.is_percent_offer? %>
 				<section class="group">
 					<div class="wrapper_ntr">
 						<h4>Produtos inclusos</h4>

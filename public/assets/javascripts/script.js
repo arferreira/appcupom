@@ -262,12 +262,25 @@ $(document).ready(function() {
 	$('.tipoOferta').change(function() {
 		atualizaPreview();
 		var valorSelecionado = $(this).val();
-		if(valorSelecionado=='po'){
+		if(valorSelecionado == 'po'){
 			$('.areaProdutos').show();
 			$('.areaCreditos').hide();
-		}else{
+			$('.areaCreditosPorcentagem').hide();
+			$('.ValorDaOferta8').show();
+		}
+		if(valorSelecionado == 'pco'){
+			$('.areaCreditosPorcentagem').show();
 			$('.areaProdutos').hide();
+			$('.areaCreditos').hide();
+			$('.ValorDaOferta8').hide();
+			$('#price_field').val(1)
+			$('#offer_value_field').val(1)
+		}
+		if(valorSelecionado == 'co'){
 			$('.areaCreditos').show();
+			$('.ValorDaOferta8').show();
+			$('.areaCreditosPorcentagem').hide();
+			$('.areaProdutos').hide();
 		}
 	});
 	$('.valorOfertaCredito').keyup(function() {
@@ -357,10 +370,16 @@ function atualizaPreview(){
 		var valorSemDesconto = $('#price_field').val();
 		var valorComconto = $('#offer_value_field').val();
 		var nomeRestaurante = $('#partner_name').val();		
-		var resultadoFraseOferta = "Crédito de R$"+valorSemDesconto+" por R$"+valorComconto+" no "+nomeRestaurante+" para saborear o cardápio.";		
+		var resultadoFraseOferta = "Crédito de R$"+valorSemDesconto+" por R$"+valorComconto+" no "+nomeRestaurante+" usar a vontade!";		
 		$('.resultadoInfoOferta').html(resultadoFraseOferta);
 		$('.resultadoInfoOferta').show();
-	}	
+	}else if($('.tipoOferta:checked').val()=='pco'){
+		var valorDescontao = $('#discount').val() + "%";
+		var nomeRestaurante = $('#partner_name').val();		
+		var resultadoFraseOferta = "Desconto de " +valorDescontao+ " no "+nomeRestaurante+" usar em qualquer produto.";		
+		$('.resultadoInfoOferta').html(resultadoFraseOferta);
+		$('.resultadoInfoOferta').show();
+	}
 
 	if($('#limiteCuponsPorMesa').val()=='sim')
 		$('#txtLimiteCupom').show();

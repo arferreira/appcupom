@@ -23,8 +23,12 @@
 			<div id="divErrorRadio" name="divErrorRadio"></div>
 			<%= f.radio_button :ttype, product_offer, :class => "offer_ttype tipoOferta", :disabled => !(@offer.new_record?) %>
 			<%= f.label t("offer.ttype.product") %>
+
 			<%= f.radio_button :ttype, credit_offer, :class => "offer_ttype tipoOferta", :disabled => !(@offer.new_record?) %>
 			<%= f.label t("offer.ttype.credit") %>
+
+			<%= f.radio_button :ttype, percent_offer, :class => "offer_ttype tipoOferta", :disabled => !(@offer.new_record?) %>
+			<%= f.label 'Porcentagem' %>
 
 			<div>
 				<div class="areaProdutos">

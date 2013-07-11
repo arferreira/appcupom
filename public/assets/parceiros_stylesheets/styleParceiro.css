@@ -1115,7 +1115,7 @@ MENU
 #listaProdutos{
 	margin: 0 auto 20px;
 }
-.areaCreditos, .areaProdutos{
+.areaCreditosPorcentagem, .areaCreditos, .areaProdutos{
 	display: none;
 }
 .adicaoSucesso{
