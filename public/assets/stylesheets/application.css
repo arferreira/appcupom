@@ -2786,7 +2786,7 @@ table{border-collapse:collapse;border-spacing:0}
 
           .toggle-item.opened .toggle-title{
             background-color: #fff;
-            color: #FF9B25;
+            color: #45a4dc;
           }
 
           .content-toggle-item{
@@ -4280,7 +4280,7 @@ table{border-collapse:collapse;border-spacing:0}
 
          /*   MEUS AMIGOS   */
          .window h3{
-          color:    #ff9b25;
+          color:    #45a4dc;
           font-size:  12px;
           font-weight: bold;
           padding:  11px;

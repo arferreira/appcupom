@@ -33,13 +33,13 @@
 					<%= @partner.company_name %>
 				</p>
 				<ul class="counter medium">
-					<li class="count <%= get_category_icon(@partner) %>">
+					<li class="counts">
 						<%= @partner.category.name %>
 					</li>
 					<li id="distance"></li>
-      <!--<li class="count recommend">
+                   <li class="count like">
 						<%= @partner.recommendations_count %>
-					</li>-->
+					</li>
 				</ul>
 
 			</section>
@@ -115,7 +115,7 @@
 				<!-- #Fotos -->
 				<li>
 					<div class="clear-box">
-						<h3 class="custom-title ic-pics">Fotos</h3>
+						<h3 class="custom-title ">Fotos</h3>
 
 						<ul id="Gallery" class="pic-gallery">
 							<% @partner_partner_pics.each do |partner_pic|%>
@@ -159,7 +159,7 @@
 				<!--#Cardapio -->
 				<li>
 					<div class="wrapper">
-						<h3 class="custom-title ic-menu">Produtos</h3>
+						<h3 class="custom-title ">Produtos</h3>
 
 						<ul id="toggle-menu" class="clear-list toggle-list">
 
