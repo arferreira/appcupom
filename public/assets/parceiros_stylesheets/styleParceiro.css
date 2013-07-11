@@ -206,7 +206,10 @@ table.padraoTabela td{
 	background: -o-linear-gradient(top, #0070ec, #005bc1);
 	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#0070ec', endColorstr='#005bc1');/*For IE7-8-9*/
 }
-
+.tipoOferta{
+	float: left;
+	margin-right: 8px;
+}
 .breadCrumb{
 	text-align: left;
 	height: 18px;
@@ -1112,7 +1115,7 @@ MENU
 #listaProdutos{
 	margin: 0 auto 20px;
 }
-.areaCreditos, .areaProdutos{
+.areaCreditosPorcentagem, .areaCreditos, .areaProdutos{
 	display: none;
 }
 .adicaoSucesso{

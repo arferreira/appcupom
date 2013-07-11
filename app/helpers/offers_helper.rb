@@ -41,6 +41,10 @@ module OffersHelper
     CREDIT_OFFER
   end
 
+  def percent_offer
+    PERCENT_OFFER
+  end
+
   #teste selected_products
   def get_offer_product_selected_prod offer_id, prod_id, index
     offer_product = Product.where('id = ?', prod_id)

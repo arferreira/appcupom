@@ -1,9 +1,8 @@
 ActionMailer::Base.smtp_settings = {
-  :address              => "smtp.gmail.com",
+  :address              => "smtp.mandrillapp.com",
   :port                 => 587,
-  :domain               => "gmail.com",
-  :user_name            => "php.comercial@gmail.com",
-  :password             => 98912849,
+  :user_name            => "taralloqueiroiz@gmail.com",
+  :password             => "9F8UgIyFlI0YG43BMPbIbA",
   :authentication       => "plain",
   :enable_starttls_auto => true
 }

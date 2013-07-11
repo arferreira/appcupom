@@ -155,12 +155,18 @@ class Offer < ActiveRecord::Base
     self.ttype == CREDIT_OFFER
   end
 
+  def is_percent_offer?
+    self.ttype == PERCENT_OFFER
+  end
+
   def resume
       #return "De #{number_to_currency(original_price)} por #{number_to_currency(self.price)} " + (self.is_credit_offer? ? "" : "- " << self.get_products_names)
       if self.is_credit_offer?
-        @resume = "Crédito de #{number_to_currency(original_price)} por #{number_to_currency(self.price)} para saborear o cardápio"
-      else
+        @resume = "Crédito de #{number_to_currency(original_price)} por #{number_to_currency(self.price)} usar a vontade!"
+      elsif self.is_product_offer?
         @resume = "De #{number_to_currency(original_price)} por #{number_to_currency(self.price)} - " << self.get_products_names
+      else
+        @resume = "Desconto de #{self.porcentagen_de_desconto}% usar em qualquer produto!"
       end
       @resume
   end

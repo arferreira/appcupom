@@ -23,8 +23,12 @@
 			<div id="divErrorRadio" name="divErrorRadio"></div>
 			<%= f.radio_button :ttype, product_offer, :class => "offer_ttype tipoOferta", :disabled => !(@offer.new_record?) %>
 			<%= f.label t("offer.ttype.product") %>
+
 			<%= f.radio_button :ttype, credit_offer, :class => "offer_ttype tipoOferta", :disabled => !(@offer.new_record?) %>
 			<%= f.label t("offer.ttype.credit") %>
+
+			<%= f.radio_button :ttype, percent_offer, :class => "offer_ttype tipoOferta", :disabled => !(@offer.new_record?) %>
+			<%= f.label 'Porcentagem' %>
 
 			<div>
 				<div class="areaProdutos">
@@ -37,6 +41,11 @@
 				<div class="areaCreditos">
 					<p class="textoDescricao">
 						Esta opção oferece desconto no valor total dos produtos a serem consumidos pelos clientes. As ofertas de crédito fazem sucesso porque permitem a escolha de produtos pelos clientes. Defina o valor do crédito, escolha o desconto e as regras que se aplicam a oferta, carregue uma foto, defina o horário de validade da oferta e os dias da semana em que deseja ativá-la.
+					</p>
+				</div>
+				<div class="areaCreditosPorcentagem">
+					<p class="textoDescricao">
+						Esta opção oferece desconto no valor total dos produtos a serem consumidos pelos clientes. Defina a porcentagem de desconto total nas compras em qualquer valor.
 					</p>
 				</div>
 
