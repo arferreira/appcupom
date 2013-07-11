@@ -53,6 +53,11 @@ before 'deploy:update_code' do
   deploy.check_folders
 end
 
+after 'deploy:update_code' do
+  solr.stop
+  solr.start
+  solr.reindex
+end
 
 
 namespace :deploy do
@@ -138,7 +143,7 @@ namespace :solr do
 
   desc "Reindex solr"
   task :reindex, :roles => :app do
-    run "cd #{current_path} && RAILS_ENV=#{rails_env} bundle exec rake sunspot:solr:reindex; true"
+    run "cd #{current_path} && RAILS_ENV=#{rails_env} yes | bundle exec rake sunspot:solr:reindex; true"
   end
 
   desc "Checar se o Solr esta rodando"
