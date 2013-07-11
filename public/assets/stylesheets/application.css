@@ -2012,7 +2012,8 @@ table{border-collapse:collapse;border-spacing:0}
 
         #login-container h1
         {
-          background-position: 0px 0px;
+          background:url('/assets/images/logo.png');
+          background-size: 131px 36px;
           width:  131px;
           height: 36px;
           margin: 25px auto 20px auto;
