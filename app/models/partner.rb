@@ -125,12 +125,12 @@ class Partner < ActiveRecord::Base
 
 
   #Search
-  #searchable do
-    #text :company_name, :boost => 5.0
-    #text :address
-    #text :description
-    #integer :id
-  #end
+  searchable do
+    text :company_name, :boost => 5.0
+    text :address
+    text :description
+    integer :id
+  end
 
   #Verify password
   def has_password?(submitted_password)

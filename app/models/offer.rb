@@ -136,16 +136,16 @@ class Offer < ActiveRecord::Base
   end
 
   #Search
-  #searchable do
-    #text :description
-    #text :company_name
+  searchable do
+    text :description
+    text :company_name
 
-    #text :products do
-      #products.map(&:name)
-    #end
+    text :products do
+      products.map(&:name)
+    end
 
-    #text :description, :stored => true
-  #end
+    text :description, :stored => true
+  end
 
   def is_product_offer?
     self.ttype == PRODUCT_OFFER
