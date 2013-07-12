@@ -81,13 +81,9 @@
 			<section class="group">
 				<div class="wrapper_ntr">
 					<h3 class="title"><%= @partner.name %></h3>
-					
-
-						<div id="profile-image" style="margin-bottom:10px;">
+					<div id="profile-image" style="margin-bottom:10px;margin-right:10px;">
 						<%= image_tag @partner.pic(:perfil) %>
-						</div>
-
-					<br>
+					</div>
 					<h4>Endereço</h4>
 					<div class="to-left col-66">
 						<p class="address to-left"><%= @partner.get_address %></p>

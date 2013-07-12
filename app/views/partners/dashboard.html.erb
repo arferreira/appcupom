@@ -2,7 +2,6 @@
 	<div class="areaTitulo">				
 		<div class="limitadorTitulo">
 			<h1 class="titEstabelecimento"> 	
-				<span class="establishment-icon <%= get_category_icon @partner %> "></span>
 				<%= @partner.company_name %>
 			</h1>
 		</div>
@@ -20,8 +19,6 @@
 					<%= submit_tag "X", :name => "cancel", :class => "btnFalseAlwaysOn" %>
 					<%= submit_tag "V", :name => "validate", :class => "btnTrueAlwaysOn" %>	
 				<% end %>
-
-<!-- 			<input class="validarCupons" id="validateCupons" type="text" value="Insira a lista de cupons..." onclick="if(this.value=='Insira a lista de cupons...'){this.value='';}" onblur="if(this.value==''){this.value='Insira a lista de cupons...';}"> -->
 			<% @cupons.each do |cupon| %>
 				<div class="itemCupom <%= "itemCupomValidado" if cupon.validated %>">
 					<span class="idCupom descPrograma" id="cupon_code_<%= cupon.id %>">#<%= cupon.cupon_code %></span>
@@ -39,36 +36,7 @@
 			<% end %>
 			<% end %>
 		</div>
-		<!--<div class="boxPadrao">
-			<h3 class="titBoxPadrao">Notícias</h3>
-			<div class="containerBoxPadrao">
-				<div class="itemNoticia">
-					<div class="metaDadosNoticias">
-						<span class="dataNoticia">12/03/13</span>
-						<div class="horarioNoticia">13:40</div>
-					</div>
-					<div class="txtNoticia">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
-					</div>
-				</div>
-				<div class="itemNoticia">
-					<div class="metaDadosNoticias">
-						<span class="dataNoticia">12/03/13</span>
-						<div class="horarioNoticia">13:40</div>
-					</div>
-					<div class="txtNoticia">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.
-					</div>
-				</div>
-
-			</div>
-		</div>-->
+		
 		<div class="boxPadrao">
 			<h3 class="titBoxPadrao">Estatísticas Gerais</h3>
 			<table class="padraoTabela">
@@ -128,29 +96,6 @@
 					</div>
 				</div>
 			<% end %>
-			
-			
-<!-- 			<div class="programa">
-				<div class="boxDataPrograma">
-					<div class="data">
-						<p class="diaSemana">sex</p>
-						<p class="diaMes">2</p>
-					</div>
-				</div>
-				<div class="confirmacaoPrograma">
-					<span class="textoConfirmacao">Feriado: Confirma funcionamento?</span>	
-					<a href="javascript:void(0);" class="btn btn-primary">Não</a>
-					<a href="javascript:void(0);" class="btn btn-primary">Sim</a>
-				</div>
-				<div class="boxInfoPrograma">							
-					<p class="descPrograma descProgramaDesativada">Descrição da Oferta</p>
-					<p class="horarioPrograma">De 14:00 às 15:00</p>
-					<p class="programasVendidos">2 / 5 Vendidos</p>							
-				</div>
-				<div class="btnsPrograma">
-					<a href="javascript:void(0);" class="btn btn-primary">Interromper Oferta</a>
-				</div>
-			</div> -->
 		</div>				
 	</div>			
 </div><!-- #main-container -->

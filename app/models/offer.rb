@@ -85,6 +85,11 @@ class Offer < ActiveRecord::Base
                               :geometry => "72x72#",
                               :quality => 60,
                               :format => "jpg"
+                            },
+                            :banner_offer =>{
+                              :geometry => "180x180#",
+                              :quality => 60,
+                              :format => "jpg"
                             }
 
                           }

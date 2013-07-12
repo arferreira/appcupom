@@ -2826,21 +2826,66 @@ table{border-collapse:collapse;border-spacing:0}
           .content-toggle-item p{
             clear:  both;
           }
+          .ticket-box{
+            /*border: 2px dashed grey;*/
+            clear: both;
+          }
+          
 
           .ticket-box h3{
-            font-size:  13px;
-            padding-bottom: 5px;
+            font-size:  22px;
+            padding-bottom: 15px;
             margin: 0px;
           }
-
+          .ticket-box .thumb img{
+            width: 180px;
+            height: 180px;
+          }
           #main .ticket-box p{
             font-weight:  bold;
             color:      #333;
-            font-size:    13px;
+            font-size:    17px;
             padding-top:  0px;
             margin-top:   0px;
           }
-
+          .ticket-info{
+            float: left;
+            height: 180px;
+            width: 79.5%;
+            background: #F2F2F2;
+          }
+          .tab-info-discount {
+            padding-top: 3px;
+            background-color: #45A4DC;
+            margin-right: 2px;
+            width: 190px;
+            float: left;
+            font-size: 16px;
+            color: white;
+            line-height: 33px;
+            height: 32px;            
+          }
+          .tab-info-discount span{
+            text-align: center;
+            display: block;
+            background: url(http://cupom.com/images/xoffer.png.pagespeed.ic.EQSUXJQlaX.png) no-repeat 7px 5px;
+          }
+          .tab-price-time-wrapper span{
+            text-align: center;
+            display: block;
+            background: url(http://cupom.com/images/xpictogram-clock.png.pagespeed.ic.Gga4o7iGuB.png) no-repeat 7px 5px;
+          }
+          .tab-price-time-wrapper {
+            border: 1px solid #CECECE;
+            padding-top: 1px;
+            float: left;
+            background-color: #DFDFDF;
+            height: 32px;
+            font-size: 13px;
+            line-height: 32px;
+            width: 100px;
+            color: #313131;
+          }
           .box-share-bar{
             margin:   0px;
             padding:  0px;

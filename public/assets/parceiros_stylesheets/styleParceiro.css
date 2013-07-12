@@ -316,8 +316,8 @@ table.padraoTabela td{
 
 .btnTrueAlwaysOn{
 	float: right;
-	width: 25px;
-	height: 25px;
+	width: 25px!important;
+	height: 25px!important;
 	background:url("/assets/images/spriteParceiro.png") no-repeat -25px 0;
 	text-indent: -9999px;
 	display: inline-block;
@@ -327,8 +327,8 @@ table.padraoTabela td{
 
 .btnFalseAlwaysOn{
 	float: right;
-	width: 25px;
-	height: 25px;
+	width: 25px!important;
+	height: 25px!important;
 	background:url("/assets/images/spriteParceiro.png") no-repeat -25px -25px;
 	text-indent: -9999px;
 	display: inline-block;
@@ -338,8 +338,8 @@ table.padraoTabela td{
 
 .btnFalse{
 	float: right;
-	width: 25px;
-	height: 25px;
+	width: 25px!important;
+	height: 25px!important;
 	background:url("/assets/images/spriteParceiro.png") no-repeat 0 -25px;
 	text-indent: -9999px;
 	display: inline-block;
@@ -541,6 +541,7 @@ MENU
 	margin: 15px 10px;
 	padding: 6px;
 	width: 415px;
+	height: 35px!important;
 }
 .itemCupom{
 	border-top: 1px solid #DEDEDE;
