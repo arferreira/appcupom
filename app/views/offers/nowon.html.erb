@@ -25,7 +25,7 @@
 					<% if @searched_offers %>
 						<%= render @searched_offers, :locals => { :list => true }  %>
 					<% else %>
-						<% if @now_offers.size > 0 %>
+						<% if @now_offers.size > 0 || @not_now_offers.size > 0 %>
 							<!-- User Agora -->
 							<%= render "use_now" %>
 							<%= render "not_use_now" %>
