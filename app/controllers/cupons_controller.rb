@@ -79,6 +79,10 @@ class CuponsController < ApplicationController
     @offer.cupon_counter = @offer.cupon_counter - 1
     @offer.save
 
+    UserMailer.send_offer(@cupon).deliver
+    PartnerMailer.partner_send_offer(@cupon, @offer).deliver
+    publish_cupon @cupon
+
     success_message = "Sua transação está #{@cupon.moip_status} e o código  é #{ @cupon.transaction_id }.
     Caso tenha alguma dúvida referente a transação, entre em contato."
 

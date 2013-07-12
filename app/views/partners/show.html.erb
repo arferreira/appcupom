@@ -100,7 +100,7 @@
 									</div>
 									<li class="ui-box ticket-box">
 										<%= link_to "/offers/#{offer.id}", :class => "full" do %>
-										<div class="thumb" style="float:left; margin-right:10px;">
+										<div class="thumb" style="float:left;">
 											<%= image_tag offer.pic1.image.url(:thumb) unless offer.partner_pic1_id.nil? %>
 										</div>
 										<div class="ticket-info">
