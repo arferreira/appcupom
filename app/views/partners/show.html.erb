@@ -91,27 +91,29 @@
 						<ul class="clear-list ">
 
 							<% @offers.each do |offer| %>
-							<div class="tab-info-discount">
-								<span><%= offer.porcentagen_de_desconto %>%</span> 
-							</div>
-							<div class="tab-price-time-wrapper">
-								<span>35 dias</span>
-							</div>
-							<li class="ui-box ticket-box">
-								<%= link_to "/offers/#{offer.id}", :class => "full" do %>
-								<div class="thumb" style="float:left; margin-right:10px;">
-									<%= image_tag offer.pic1.image.url(:thumb) unless offer.partner_pic1_id.nil? %>
-								</div>
-								<div class="ticket-info">
-									<div class="wrapper medium-pad">
-										<h3>Até <%= offer.porcentagen_de_desconto %>% <%= @partner.company_name%></h3>
-										<p>
-											<%= offer.resume %>
-										</p>
+								<section style="margin-bottom:35px;">
+									<div class="tab-info-discount">
+										<span><%= offer.porcentagen_de_desconto %>%</span> 
 									</div>
-								</div>
-								<% end %>
-							</li>
+									<div class="tab-price-time-wrapper">
+										<span>35 dias</span>
+									</div>
+									<li class="ui-box ticket-box">
+										<%= link_to "/offers/#{offer.id}", :class => "full" do %>
+										<div class="thumb" style="float:left; margin-right:10px;">
+											<%= image_tag offer.pic1.image.url(:thumb) unless offer.partner_pic1_id.nil? %>
+										</div>
+										<div class="ticket-info">
+											<div class="wrapper medium-pad">
+												<h3>Até <%= offer.porcentagen_de_desconto %>% <%= @partner.company_name%></h3>
+												<p>
+													<%= offer.resume %>
+												</p>
+											</div>
+										</div>
+										<% end %>
+									</li>
+								</section>
 							<% end %>
 						</ul>
 					</div>
