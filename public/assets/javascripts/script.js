@@ -376,7 +376,7 @@ function atualizaPreview(){
 	}else if($('.tipoOferta:checked').val()=='pco'){
 		var valorDescontao = $('#discount').val() + "%";
 		var nomeRestaurante = $('#partner_name').val();		
-		var resultadoFraseOferta = "Desconto de " +valorDescontao+ " no "+nomeRestaurante+" usar em qualquer produto.";		
+		var resultadoFraseOferta = "Desconto de " +valorDescontao+ " no "+nomeRestaurante+" para usar em qualquer produto.";		
 		$('.resultadoInfoOferta').html(resultadoFraseOferta);
 		$('.resultadoInfoOferta').show();
 	}
