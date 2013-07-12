@@ -121,10 +121,14 @@ class SessionsController < ApplicationController
         @offer_list = true
         @search = true
 
-        if session[:location_time].nil? || timeout || !session[:gps]
-          format.html
+        if (signed_in? || facebook_logged?)
+          if session[:location_time].nil? || timeout || !session[:gps]
+            format.html
+          else
+            format.html {redirect_to '/offers'}
+          end
         else
-          format.html {redirect_to '/offers'}
+          format.html {redirect_to '/comofunciona'}
         end
       end
     end
