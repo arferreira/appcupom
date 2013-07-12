@@ -96,7 +96,7 @@
 										<span><%= offer.porcentagen_de_desconto %>%</span> 
 									</div>
 									<div class="tab-price-time-wrapper">
-										<span>35 dias</span>
+										<span><%= offer.dias_pra_acabar %></span>
 									</div>
 									<li class="ui-box ticket-box">
 										<%= link_to "/offers/#{offer.id}", :class => "full" do %>
