@@ -166,7 +166,7 @@ class Offer < ActiveRecord::Base
       elsif self.is_product_offer?
         @resume = "De #{number_to_currency(original_price)} por #{number_to_currency(self.price)} - " << self.get_products_names
       else
-        @resume = "Desconto de #{self.porcentagen_de_desconto}% usar em qualquer produto!"
+        @resume = "Desconto de #{self.porcentagen_de_desconto}% para usar em qualquer produto!"
       end
       @resume
   end
