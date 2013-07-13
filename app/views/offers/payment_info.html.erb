@@ -53,11 +53,13 @@
 </div> <!-- #main-container -->
 
 <div id="bottom-bar" class="dark-background small">
-	<div class="wrapper">
-		<%= form_tag :controller => "cupons", :action => "confirm_printed" do %>
-	  	<%= hidden_field_tag :offer_id, @offer.id %>
-	  	<%= hidden_field_tag :user_id, @current_user.id %>
-	  	<%= link_to_submit_pay content_tag(:span, "Baixar"), :class => "std-button bt-bigsize" %>
-	  <% end %>
-	</div>
+	<% if @offer.ja_comprou? @current_user %>
+		<div class="wrapper">
+			<%= form_tag :controller => "cupons", :action => "confirm_printed" do %>
+		  	<%= hidden_field_tag :offer_id, @offer.id %>
+		  	<%= hidden_field_tag :user_id, @current_user.id %>
+		  	<%= link_to_submit_pay content_tag(:span, "Baixar"), :class => "std-button bt-bigsize" %>
+		  <% end %>
+		</div>
+	<%end%>
 </div>

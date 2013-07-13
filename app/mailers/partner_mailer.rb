@@ -18,7 +18,7 @@ class PartnerMailer < ActionMailer::Base
     @user = cupon.user
     @cupon = cupon
     
-    mail :to => "#{@offer.company_name} <#{@offer.email}>" do |format|
+    mail :to => "#{@offer.partner.company_name} <#{@offer.partner.email}>" do |format|
       format.html
     end
     mail :subject => "Uma compra realizada no TrazCupom: #{cupon.offer.resume}."
