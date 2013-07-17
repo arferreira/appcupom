@@ -1069,8 +1069,8 @@ table{border-collapse:collapse;border-spacing:0}
         }
 
       /*************************************************
-        VARIAÇÕES DO SUB-MENU
-        altera a largura dos botões de acordo com o número de opções
+        VARIAÃ‡Ã•ES DO SUB-MENU
+        altera a largura dos botÃµes de acordo com o nÃºmero de opÃ§Ãµes
         **************************************************/
 
         .mn-filter ul li{
@@ -2293,7 +2293,7 @@ table{border-collapse:collapse;border-spacing:0}
         padding:15px 10px;
        }
 
-       .size2c /* 2 colunas de botão */
+       .size2c /* 2 colunas de botÃ£o */
        {
         float:left;
         width: 49%;
@@ -2354,7 +2354,7 @@ table{border-collapse:collapse;border-spacing:0}
        END BOTAO PADRAO
        ==================== */
     /* ====================
-      TITULOS ESTÁTICOS
+      TITULOS ESTÃTICOS
       ==================== */
       .static-title{
         color: #000;
@@ -2364,7 +2364,7 @@ table{border-collapse:collapse;border-spacing:0}
         position: relative;
       }
     /* ====================
-      END TITULOS ESTÁTICOS
+      END TITULOS ESTÃTICOS
       ==================== */
     /* ====================
         PROFILE
@@ -2736,7 +2736,7 @@ table{border-collapse:collapse;border-spacing:0}
           margin:   0px;
           padding:  0px;
 
-          }​
+          }â€‹
 
           .toggle-list .ui-box{
             margin:   0px;
@@ -4245,7 +4245,7 @@ table{border-collapse:collapse;border-spacing:0}
          }
 
 
-         /* Recomendaçao e Desejo */
+         /* RecomendaÃ§ao e Desejo */
 
          .list-users{
           margin:   0px;
