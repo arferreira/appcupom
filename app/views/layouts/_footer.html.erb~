@@ -20,7 +20,7 @@
 	<nav id="main-menu">
 		<ul>
 			<li><%= link_to content_tag(:span, "Cupons"), '/signin', :class => "bt-mainmenu bt-shopping"  %></li>
-			<li><%= link_to content_tag(:span, "Explorar"), '/signin', :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%></li>
+			<li><%= link_to content_tag(:span, "Parceiros"), '/signin', :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%></li>
 			<li>
 				<a href="/" class="bt-nowon">
           <span>
