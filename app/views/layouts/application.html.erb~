@@ -78,15 +78,15 @@
 
 			<!-- IOS Settings -->
 			<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-			<link rel="apple-touch-startup-image" sizes="640x960" href="/assets/mobile/splash@2x.png" /> 
+			<!-- <link rel="apple-touch-startup-image" sizes="640x960" href="/assets/mobile/splash@2x.png" /> -->
 			<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="/assets/mobile/splash460.jpg" /> 
-			<link rel="apple-touch-startup-image" href="img/iphone.png" media="screen and (max-device-width: 320px)" /> 
+			<!-- <link rel="apple-touch-startup-image" href="img/iphone.png" media="screen and (max-device-width: 320px)" /> -->
 
 			<link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon-114x114-precomposed.png" />
 
 			<link rel="apple-touch-startup-image" media="(device-width: 320px)" href="/assets/mobile/splash460.png">
-			
-			<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="/assets/mobile/splash920.png"> 
+			<!-- iPhone (Retina)
+			<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="/assets/mobile/splash920.png"> -->
 		<!-- / Mobile-->
 
 		<title>TrazCupom - O seu site de cupons</title>
