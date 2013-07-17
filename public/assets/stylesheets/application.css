@@ -2034,15 +2034,15 @@ table{border-collapse:collapse;border-spacing:0}
         {
           display: table;
           width:  246px;
-          height: 47px;
-          background:url('/assets/images/facebook-login-button.png') no-repeat;
+          height: 30px;
+          background:#3b5998;
           font-size: 1.4em;
           color:#fff;
           text-decoration: none;
           margin:0 auto 24px auto;
           font-weight: bold;
-          padding-bottom: 15px;
-
+          padding-bottom: 20px;
+	  border-radius:10px;
           text-shadow: 0px 2px 0px rgba(0, 0, 0, .15);
         }
         #login-container .facebookConnect span{
