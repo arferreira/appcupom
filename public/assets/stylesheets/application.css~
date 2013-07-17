@@ -2035,7 +2035,7 @@ table{border-collapse:collapse;border-spacing:0}
           display: table;
           width:  128px;
           height: 113px;
-          background:url('/assets/images/facebook-icon.png');
+          background:url('/assets/images/facebook-login-button.png') no-repeat;
           font-size: 1.4em;
           color:#fff;
           text-decoration: none;
@@ -5604,7 +5604,7 @@ table{border-collapse:collapse;border-spacing:0}
         #main-menu .bt-mainmenu:before
         {
           background-image:url("/assets/images/mobile/main-menu@2x.png");
-          -moz-background-size:   0px 425px;
+          -moz-background-size:   70px 425px;
           -ie-background-size:    70px 425px;
           -o-background-size:     70px 425px;
           -webkit-background-size:  70px 425px;

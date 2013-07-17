@@ -2033,9 +2033,9 @@ table{border-collapse:collapse;border-spacing:0}
         #login-container .facebookConnect
         {
           display: table;
-          width:  128px;
-          height: 113px;
-          background:url('/assets/images/facebook-icon.png');
+          width:  246px;
+          height: 47px;
+          background:url('/assets/images/facebook-login-button.png') no-repeat;
           font-size: 1.4em;
           color:#fff;
           text-decoration: none;
