@@ -1143,10 +1143,7 @@ table{border-collapse:collapse;border-spacing:0}
           position:relative;
           list-style: none;
         }
-	      #main .cupom:hover{
-          box-shadow: 3px 3px 1px #888;
-          border: 1px dashed #444;
-        }
+
         .cupom:after{
           display: block;
           width: 13px;
