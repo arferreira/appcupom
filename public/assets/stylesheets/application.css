@@ -579,7 +579,9 @@ table{border-collapse:collapse;border-spacing:0}
 
 
        
-       #main-menu .bt-mainmenu:before
+        #main-menu .bt-nowon span:before,
+		   #main-menu .bt-nowon span,
+		   #main-menu .bt-mainmenu:before
        {
         background-image:url("/assets/images/mobile/main-menu.png");
        }
