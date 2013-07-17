@@ -4673,7 +4673,7 @@ table{border-collapse:collapse;border-spacing:0}
       }
       .search-mobile .search-input
       {
-        background:#004696 url("/assets/images/top-icon-search.png") no-repeat 10px center;
+        background:#000 url("/assets/images/top-icon-search.png") no-repeat 10px center;
 
         border: none;
 

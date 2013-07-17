@@ -5607,7 +5607,7 @@ table{border-collapse:collapse;border-spacing:0}
           -moz-background-size:   90px 425px;
           -ie-background-size:    90px 425px;
           -o-background-size:     90px 425px;
-          -webkit-background-size:  90px 425px;
+          -webkit-background-size:  0px 425px;
           background-size:      90px 425px;
         }
 
