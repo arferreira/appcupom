@@ -1,0 +1,53 @@
+<!--
+<%= form_tag  @offer, :method => :get do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :description => nil %>
+  </p>
+<% end %>
+-->
+
+	<div id="main-container" class="scrollable internal view-nowon">
+		<div id="main" class="clearfix">
+			<article>
+				<% if params[:no_location] %>
+					<%= link_to get_location_before_link({controller: "offers", action: "nowon"}), :class => "no-decoration" do %>
+					<div id="warning-home-show">
+						<%= "Desculpe, não temos como encontrar os parceiros mais próximos sem saber onde você está. Atualize sua localização clicando aqui!" %>
+					</div>
+					<% end %>
+				<% elsif !@gps %>
+					<%= hidden_field_tag :request_location, @request_location %>
+				<% end %>
+				<%= hidden_field_tag :user_latlong, @user_latlong %>
+				<%= hidden_field_tag :get_location_callback, @location_callback %>
+				<div class="offers-items">
+					<% if @searched_offers %>
+						<%= render @searched_offers, :locals => { :list => true }  %>
+					<% else %>
+						<% if @now_offers.size > 0 || @not_now_offers.size > 0 %>
+							<!-- User Agora -->
+							<%= render "use_now" %>
+							<%= render "not_use_now" %>
+						<% else %>
+							<%time = Time.new %>
+							<% if time.hour >= 0 && time.hour <= 6 || time.hour >= 22 %>
+								<h4 class="section-title not-use-now">Use depois</h4>
+								<ul class="cupons">
+								  <%= render @sem_hora, :locals => { :list => true }  %>
+								</ul>
+							<% else %>
+								<span style="width: 95.8%;display: block;" id="warning-home-show">
+									Ainda não temos ofertas cadastradas para essa cidade.
+								</span>
+							<%end%>
+						<% end %>
+
+					<% end %>
+				</div>
+
+				<div class="clearfix"></div>
+			</article>
+
+		</div> <!-- #main -->
+	</div> <!-- #main-container -->
