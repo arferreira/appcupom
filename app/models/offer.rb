@@ -174,6 +174,7 @@ class Offer < ActiveRecord::Base
   end
 
   def resume
+      
       #return "De #{number_to_currency(original_price)} por #{number_to_currency(self.price)} " + (self.is_credit_offer? ? "" : "- " << self.get_products_names)
       if self.is_credit_offer?
         @resume = "Crédito de #{number_to_currency(original_price)} por #{number_to_currency(self.price)} usar a vontade!"

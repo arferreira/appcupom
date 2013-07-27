@@ -29,7 +29,7 @@
 			<%= link_to 'Opções de Pagamento', payment_options_path %>
 		</td>
 		<td>
-			<%= link_to 'Registros', register_path %>
+			<%= link_to 'Registros', :controller => 'register', :action => 'index' %>
 		</td>
 	</tr>
 	<tr>
@@ -38,7 +38,7 @@
 		</td>
 		<td></td>
 		<td>
-			<%= link_to 'Facilidades', facilities_path %>
+			
 		</td>
 		<td></td>
 		<td>
@@ -100,7 +100,7 @@ pra index de city
 <table>
 	<tr>
 		<td align="left">
-			Quantidade de Cupons:
+			Quantidade de Cupons baixados:
 		</td>
 		<td align="left">
 			<%= @numCupons %>
@@ -108,10 +108,10 @@ pra index de city
 	</tr>
 	<tr>
 		<td align="left">
-			Lucro:
+			Quanto os usuarios ja economizaram:
 		</td>
 		<td align="left">
-			<%= number_to_currency @money %>
+			<%= number_to_currency @economizaram %>
 		</td>
 	</tr>
 

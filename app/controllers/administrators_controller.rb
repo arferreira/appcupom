@@ -89,9 +89,27 @@ class AdministratorsController < ApplicationController
     
     @money = @money / PROFIT;
     
+    #economia
+    valores_originais = Offer.all.map(&:original_price).inject(:+)
+    valores_com_desconto = Offer.all.map(&:price).inject(:+)
+    @economizaram = valores_originais - valores_com_desconto
+
     respond_to do |format|
       format.html # dashboard.html.erb
     end
+  end
+
+  def economia
+    @numero_de_ofertas = Offer.all
+    #somando valores originais das ofertas 
+    @numero_de_ofertas.each do |oferta|
+      valores_originais += oferta.original_price
+      valores_com_desconto += oferta.price
+    end
+
+    #calculo dificilimo kkkk
+    @economizaram = valores_originais - valores_com_desconto
+
   end
   
   def pending_partners
