@@ -10,10 +10,14 @@
 				<div class="wrapper">
 					<h3><%= @partner.name %></h3>
 
-					<p><b><%= @offer.resume %></b></p>
+				<% if @offer.id == 46 %>
+				<h3><%= "30% de desconto na lavagem e limpeza a seco em peças de couro" %></h3>
+				<% else %>
+				<h3><%= @offer.resume %></h3>
+				<% end %>
 
 					<ul class="cupom-info">
-						<li><%= @offer.next_ocurrency %></li>
+						<li><%=l @offer.end_date, :format => :default %></li>
 					</ul>
 
 				</div>

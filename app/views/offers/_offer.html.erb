@@ -9,7 +9,11 @@
 		</header>
 		<div class="info-group">
 		<h3><%= offer.partner.name%></h3>
+		<% if offer.id == 46 %>
+		<p><%= "30% de desconto na lavagem e limpeza a seco em peças de couro" %></p>
+		<% else %>
 		<p><%= offer.resume %></p>
+		<% end %>
 
 		<ul class="cupom-info">
 			<li class="use-time"><%= offer.next_ocurrency %></li>

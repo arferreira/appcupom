@@ -34,7 +34,12 @@
               	Compartilhar
               </a>
             </div>
-						<h3><%= @offer.resume %></h3>
+		        <% if @offer.id == 46 %>
+				<h3><%= "30% de desconto na lavagem e limpeza a seco em peças de couro" %></h3>
+				<% else %>
+				<h3><%= @offer.resume %></h3>
+				<% end %>
+						
 						</a>
 
 						<ul class="cupom-info">
@@ -105,9 +110,14 @@
 <div id="bottom-bar" class="dark-background">
 	<div class="wrapper_ntr">
 		<% unless mobile_device? %>
-			<p class="highlights">
+		       <% if @offer.id == 46 %>
+				<p class="highlights"><%= "30% de desconto na lavagem e limpeza a seco em peças de couro" %></p>
+				<% else %>
+				<p class="highlights">
 				<%= @offer.resume %>
 			</p>
+				<% end %>
+			
 		<% end %>
 		<% if @offer.is_today? && !@offer.is_full? && !@offer.paused && (user_type == USER_TYPE || current_user.nil? ) && @offer.active %>
 	  		<%= link_to content_tag(:span, "Pegar cupom"), {:controller => "offers", :action => "payment_info"}, :class => "std-button bt-bigsize" %>

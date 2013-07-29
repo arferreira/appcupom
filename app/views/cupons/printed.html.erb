@@ -15,12 +15,18 @@
           <tr>
             <td>
 
-              <h4><%= @cupon.offer.partner.company_name %></h4>
+    <h4><%= @cupon.offer.partner.company_name %></h4>
+  
+    <% if @cupon.offer_id == 46 %>
+    <h4><%= "30% de desconto na lavagem e limpeza a seco em peças de couro" %></h4>
+    <% else %>
+    <h4><%= @cupon.offer.resume %></h4>
+    <% end %>
 
-              <h4><%= @cupon.offer.resume %></h4>
+              
               <!--<div style="width:50%;float:left;margin-top:15px;">-->
 
-              <strong>Horário:</strong> <span><%= @cupon.offer.next_ocurrency %></span>
+              <strong>Data limite de uso:</strong> <span><%=l @cupon.offer.end_date, :format => :default %></span>
               <br />
 
               <strong>Regras:</strong>

@@ -181,7 +181,11 @@ class Offer < ActiveRecord::Base
       elsif self.is_product_offer?
         @resume = "De #{number_to_currency(original_price)} por #{number_to_currency(self.price)} - " << self.get_products_names
       else
+        if :offer_id == 46
+         @resume = "Desconto de #{self.porcentagen_de_desconto}% na lavagem e limpeza a seco em peças de couro!"  
+        else
         @resume = "Desconto de #{self.porcentagen_de_desconto}% para usar em qualquer produto!"
+        end
       end
       @resume
   end
