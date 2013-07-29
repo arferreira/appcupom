@@ -3,11 +3,6 @@
 
 <ul>
 
-<% @usuario.each do |user|%>
-
-<li><%= user.name %></li>
-<hr>
-
-<% end %>
+<%= will_paginate @usuario %>
 <p>Total: <%= @usuario.count %></p>
 </ul>
