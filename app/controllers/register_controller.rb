@@ -1,7 +1,7 @@
 class RegisterController < ApplicationController
   before_filter :authenticate
   def index
-  	@usuario = User.paginate(:page => params[:page], :per_page => 30)
+  	@usuario = User.all
   end
 
   private
