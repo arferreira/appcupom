@@ -89,7 +89,7 @@ class SessionsController < ApplicationController
     elsif mobile_device?
       redirect_to '/signin'
     else
-      redirect_to '/comofunciona'
+      redirect_to root_path
     end
     
     

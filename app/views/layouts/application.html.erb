@@ -1,201 +1,52 @@
-<% if request.xhr? %>
-	<script type="text/javascript">
-		$("#header-container").replaceWith("<%= escape_javascript render("layouts/header") unless @no_header%>");
-		$("#footer-partial").html("<%= escape_javascript render("layouts/footer")%>");
-	</script>
-	<% if params[:get_location] %>
-		<%= hidden_field_tag :request_location, @request_location %>
-		<%= hidden_field_tag :get_location_callback, @location_callback %>
-		<script type="text/javascript">
-			m_startDate = new Date().getTime();
-			m_watchId = navigator.geolocation.watchPosition(get_location_callback,
-				get_location_error,
-				{maximumAge:0, timeout:3000, enableHighAccuracy:true});
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 
-			m_interval = setTimeout(function(){clearWatch()},7000);
-		</script>
-	<% end %>
-	<% flash.each do |key, value| %>
-		<% vd('APP HTML', key, value, flash.count) %>
-		<% unless flash[key].blank? %>
-			<div class="flash <%= key %>">
-				<%= value %>
-			</div>
-		<% end %>
-	<% end %>
-	<%= yield %>
-	<script type="text/javascript">
-		<% if @dark %>
-			if(!$("body").hasClass("dark-background")){
-				$("body").addClass("dark-background");
-			}
-		<% else %>
-			if($("body").hasClass("dark-background")){
-				$("body").removeClass("dark-background");
-			}
-		<% end %>
-		<% if @menu %>
-			if(!$("body").hasClass("nowon-inner")){
-				$("body").addClass("nowon-inner");
-			}
-		<% else %>
-			if($("body").hasClass("nowon-inner")){
-				$("body").removeClass("nowon-inner");
-			}
-		<% end %>
-		if( $("#request_maps").val() == "partner" ){
-			loadGMaps_partnerShow();
-		}
+<head>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,maximum-scale=1">
+  <title>Traz Cupom  - O seu guia de descontos pela cidades</title>
 
-		if ($("#cached_location").val() == "true") {
-			//navigator.geolocation.getCurrentPosition(get_cached_location_callback, get_location_error, {maximumAge:5000, enableHighAccuracy:true});
-			post_empty_location();
-		}
-
-		if ($("#print_this_page").val() == "true") {
-			window.print();
-		}
-		<%= yield(:extra_scripts) %>
-	</script>
-
-<% else %>
-<!doctype html>
-	<head  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# <%= FacebookAPI.app_namespace %>: http://ogp.me/ns/fb/<%= FacebookAPI.app_namespace %>#">
-		<%= yield(:head) if content_for?(:head) %>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />-->
-		<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="description" content="TrazCupom o seu cupom fácil">
-		<link rel="shortcut icon" href="/assets/images/favicon.ico" />
-
-		<!-- Mobile -->
-			<!-- 57 x 57 Android and iPhone 3 icon ->
-			<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 163dpi)" href="/assets/apple-touch-icon-57x57-precomposed.png" />
-			<!-- 114 x 114 iPhone 4 icon ->
-			<link rel="apple-touch-icon-precomposed" media="screen and (resolution: 326dpi)" href="icon57.png" />
-
-			<!-- IOS Settings -->
-			<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-			<link rel="apple-touch-startup-image" sizes="640x960" href="/assets/mobile/splash@2x.png" /> 
-			<link rel="apple-touch-startup-image" media="(max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2)" href="/assets/mobile/splash460.jpg" /> 
-			<link rel="apple-touch-startup-image" href="img/iphone.png" media="screen and (max-device-width: 320px)" /> 
-
-			<link rel="apple-touch-icon-precomposed" href="/assets/apple-touch-icon-114x114-precomposed.png" />
-
-			<link rel="apple-touch-startup-image" media="(device-width: 320px)" href="/assets/mobile/splash460.png">
-			
-			<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" href="/assets/mobile/splash920.png"> 
-		<!-- / Mobile-->
-
-		<title>TrazCupom - O seu site de cupons</title>
-
-		<%= stylesheet_link_tag "/assets/stylesheets/application", :media => "all" %>
-		<%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js' %>
-		<!-- jQuery ScrollTo Plugin -->
-
-		<!-- History.js -->
-		<script defer src="/assets/javascripts/jquery.history.js"></script>
-
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=<%= Google.key %>&sensor=true"></script>
-
-		<script type="text/javascript" src="/assets/javascripts/modernizr-2.5.3-respond-1.1.0.min.js"></script>
-		<script type="text/javascript" src="/assets/javascripts/klass.min.js"></script>
-		<script type="text/javascript" src="/assets/javascripts/code.photoswipe-3.0.5.min.js"></script>
-		<script type="text/javascript" src="/assets/javascripts/iscroll.js"></script>
-		<script type="text/javascript" src="/assets/javascripts/jquery.placeholder.js"></script>
-    <script type="text/javascript" src="/assets/javascripts/jquery.maskedinput.js"></script>
-    <script type="text/javascript" src="/assets/javascripts/jquery.validate.min.js"></script>
-
-
-
-		<!--%= javascript_include_tag "/assets/history-it" %-->
-		<% if @partner_script_and_css %>
-		<!--
-		<link rel="stylesheet" type="text/css" href="/css/colorbox.css">
-		<link rel="stylesheet" type="text/css" href="/css/styleParceiro.css">
-		-->
-		<%= stylesheet_link_tag "/assets/parceiros_stylesheets/colorbox" %>
-		<%= stylesheet_link_tag "/assets/parceiros_stylesheets/styleParceiro" %>
-
-		<% end %>
-		<%= javascript_include_tag "application" %>
-
-		<%= csrf_meta_tags %>
-
-	</head>
-	<body class="<%= "#{@dark ? "dark-background " : "" }#{@menu ? "nowon-inner " : ""}" %>">
-
-	<div id="fb-root"></div>
-		<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=199059563474840";
-	  fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-42260545-1', 'trazcupom.com');
-  ga('send', 'pageview');
-
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+  <link rel="stylesheet" href="/css/foundation-blue.css">
+ 
+  <link rel="stylesheet" href="/css/style-blue.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <link rel="stylesheet" href="/css/flexslider.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/social_foundicons.css">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+<script src="/assets/javascripts/application.js"></script>  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
+<script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-tooltip.js"></script>  
+<script src="/twitter-bootstrap/twitter-bootstrap-v2/js/bootstrap-popover.js"></script>  
+<script>  
+$(function ()  
+{ $("#example").popover();  
+});  
 </script>
 
 
-		<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-		<div id="global-container">
+</head>
+<body>
+<section id="home">
+  <!-- Renderizar topo -->
+  <%= render "shared/header" %>
+ <div style="min-height:160px;" ></div>
 
-		<% unless @no_header %>
-			<%= render "layouts/header"%>
-		<% end %>
+<%= yield %>
+<%= render "shared/footer" %>
+</section>
+  <script src="/js/vendor/custom.modernizr.js"></script>
+  <script src="/js/vendor/jquery.js"></script> 
+  <script src="/js/foundation.min.js"></script>
+  <script src="/js/jquery.flexslider-min.js"></script>
+  <script src="/js/scripts.js"></script>
+  
+  <script>
+    $(document).foundation();
+  </script>
 
-		<section class="round">
-			<% if params[:get_location] %>
-				<%= hidden_field_tag :request_location, @request_location %>
-				<%= hidden_field_tag :get_location_callback, @location_callback %>
-			<% end %>
-			<% flash.each do |key, value| %>
-				<% vd('APP HTML', key, value, flash.count) %>
-				<% unless flash[key].blank? %>
-					<div class="alert <%= key %>">
-						<%= value %>
-					</div>
-					<script type="text/javascript">
-						$().ready(function(){
-							var flash = $('section.round .flash');
-							if (flash.length) {
-							    $(flash).prependTo('#main-container #main')
-							}
-						});
-					</script>
-				<% end %>
-			<% end %>
-
-
-			<%= yield %>
-		</section>
-
-
-			<div id="footer-partial">
-				<%= render "layouts/footer"%>
-			</div>
-		</div>
-
-		<%= yield(:footer_foo) if content_for?(:footer_foo) %>
-
-		<script type="text/javascript">
-		$(document).ready(function(){
-			$('input[placeholder], textarea[placeholder]').placeholder();
-		});
-		</script>
-
-		<div class="loading">
-		</div>
-	</body>
+</body>
 </html>
-<% end %>
