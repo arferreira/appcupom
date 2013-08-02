@@ -35,6 +35,8 @@ class FacebookOauthController < ApplicationController
                                  :image_url => client.get_picture(credentials["id"]),
                                  :graph => client
                                 }
+
+
       
       session.delete :facebook_client
       

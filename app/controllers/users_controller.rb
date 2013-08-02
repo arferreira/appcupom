@@ -280,6 +280,7 @@ class UsersController < ApplicationController
       @title = "timeline"
       @menu = true
       #@config = true BUG 13
+      @img_user = "http://graph.facebook.com/#{current_user }/picture"
       @feed = true
       @no_back = true
 

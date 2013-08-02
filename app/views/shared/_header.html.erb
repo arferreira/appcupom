@@ -1,0 +1,70 @@
+<div id="main-nav">
+	<div class="row">
+			<div class="twelve columns">
+			<div id="logo" class="left">
+				
+				<%= link_to image_tag('/img/logo01.png'), root_path %>
+
+			</div>
+			
+			<div id="mobile-toggle" class="show-for-small"><i class="batch" data-icon="&#xF0A9;"></i></div>
+			<div id="nav-holder" class="right" style="width:740px; margin-right: -264px;">
+				<ul>
+					<% if signed_in? and user_type == USER_TYPE %>
+					
+					<li>	
+						<%= link_to "Cupons", {:controller => "offers", :action => "nowon"}, :class => @nowon ? "active" : ""  %>
+					</li>
+					<li>
+						<%= link_to content_tag(:span, "Parceiros"), {:controller => "partners", :action => "index"}, :class => ("bt-mainmenu bt-explore " + (@explore ? "active" : "") )%>
+						
+					</li>
+					<li>
+						<a href="#" ><i class="batch" data-icon=""></i><span class="menu-title">Delivery</span></a>
+						
+					</li>
+					<li>
+						<a href="#" ><i class="batch" data-icon=""></i><span class="menu-title">Reservas</span></a>
+					
+					</li>
+					<li>	
+						<%= link_to "Olá, #{current_user.name}", {:controller => get_controller(user_type), :action => "show", :id => current_user.id}, :style => "width:190px; display:inline;", :alt => "Acesse o seu perfil" %>
+						
+						<ul class="sub">
+							
+							<li><%= link_to "Configurações", edit_user_path(:id => current_user.id)%></li>
+							<li><%= link_to "Timeline", {:controller => "users", :action => "timeline", :id => current_user.id} %></li>
+							<li><%= link_to "Cupons", {:controller => "cupons", :action => "index", :user_id => current_user.id} %></li>
+							<li><%= link_to "Sair", "/signout" %></li>
+						</ul>
+						
+					</li>
+					<% else %>
+					<li>	
+						<a href="index-2.html" ><i class="batch" data-icon=""></i><span class="menu-title">Cupons</span></a>
+					</li>
+					<li>
+						<a href="#" ><i class="batch" data-icon=""></i><span class="menu-title">Parceiros</span></a>
+						
+					</li>
+					<li>
+						<a href="#" ><i class="batch" data-icon=""></i><span class="menu-title">Delivery</span></a>
+						
+					</li>
+					<li>
+						<a href="#" ><i class="batch" data-icon=""></i><span class="menu-title">Reservas</span></a>
+					
+					</li>
+					<li>
+						<a href="/signin" style="background:#1e3b62; color:white; padding:13px; height:30px; padding-top:5px; font-weight:bold; "><i class="batch" data-icon=""></i><span class="menu-title">Entrar</span></a>
+					</li>
+					
+					<% end %>
+				
+				</ul>
+
+			</div>
+
+		</div>
+	</div>
+</div>

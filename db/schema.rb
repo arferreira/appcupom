@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130706150342) do
+ActiveRecord::Schema.define(:version => 20130710005527) do
 
   create_table "admin_roles", :force => true do |t|
     t.string   "name",        :null => false
@@ -326,6 +326,12 @@ ActiveRecord::Schema.define(:version => 20130706150342) do
   add_index "partners", ["sub_category_id"], :name => "index_partners_on_sub_category_id"
 
   create_table "payment_options", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "plans", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

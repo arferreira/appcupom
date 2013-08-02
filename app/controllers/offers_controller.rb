@@ -14,6 +14,8 @@ class OffersController < ApplicationController
   add_breadcrumb 'Ofertas', 'offers_path'
   add_breadcrumb 'Nova oferta', '', :only => [:new, :create]
   add_breadcrumb 'Editar oferta', '', :only => [:edit, :update]
+  
+  
 
   # GET /offers
   # GET /offers.json

@@ -1,0 +1,245 @@
+    <%= render "shared/front" %>
+    <section id="top-band" class="hide-for-small">
+    
+		<div class="row pad-small">
+		
+			<div class="large-4 columns">
+				<div class="stat-holder">
+					<i class="batch left h-color" data-icon="&#xF043;"></i>
+					<h2 class="left"><%= @usuarios_satisfeitos %></h2>
+				</div>
+				<h4 class="text-light">Clientes satisfeitos</h4>
+			</div>
+			
+			<div class="large-4 columns">
+				<div class="stat-holder">
+						<i class="batch left h-color" data-icon="&#xF0DA;"></i>
+						<h2 class="left"><%= number_to_currency @economy %></h2>
+					</div>
+					<h4 class="text-light">Economizado</h4>
+				</div>
+				
+			<div class="large-4 columns">
+				<div class="stat-holder">
+						<i class="batch left h-color" data-icon="&#xF131;"></i>
+						<h2 class="left"><%= @cupons %></h2>
+					</div>
+					<h4 class="text-light">Cupons baixados</h4>
+				</div>
+			
+		</div>
+    
+    </section>
+    
+    <section id="front-hero">
+    
+    	<div class="row pad-top pad-bottom">
+    	
+    		<div class="large-6 columns ">
+				<h3>O seu guia de cupons, <br />rápido e fácil.</h3>
+				<p class="hero-p">
+					Agora ficou mais fácil ainda explorar sua cidade, com apenas 3 cliques você ja poderá usufruir dos seus descontos.
+				</p>
+				<ul class="custom-bullet">
+					<li>Cadastre-se</li>
+					<li>Explore sua cidade</li>
+					<li>Economize</li>
+				</ul>
+				<div class="btn btn-blue"><h6>Explorar Campo Grande</h6></div>
+    		</div>
+    		
+    		<div class="large-6 columns">
+    		
+    			<div class="feature-panel">
+    				<div class="upper">
+    					<div class="large-4">
+    						<div class="selector text-center selected" data-panel-id="panel-1">
+    							1
+    						</div>
+    					</div>
+    					
+    					<div class="large-4">
+    						<div class="selector text-center"  data-panel-id="panel-2">2</div>
+    					</div>
+    					
+    					<div class="large-4">
+    						<div class="selector text-center"  data-panel-id="panel-3">3</div>
+    					</div>
+    				</div>
+    				
+    				<div class="middle">
+    					<div class="large-4">
+    						<div class="arrow-holder">
+    							<div class="arrow-down active" data-panel-id="panel-1"></div>	
+    						</div>
+    					</div>
+    					
+    					<div class="large-4">
+    						<div class="arrow-holder">
+    							<div class="arrow-down" data-panel-id="panel-2"></div>	
+    						</div>
+    					</div>
+    					
+    					<div class="large-4">
+    						<div class="arrow-holder">
+    							<div class="arrow-down" data-panel-id="panel-3"></div>	
+    						</div>
+    					</div>
+    				</div>
+    				
+    				<div class="lower">
+    				
+    					<div class="feature-box active" id="panel-1">
+    						<div class="large-4 columns text-center">
+    							<i class="batch" data-icon="&#xF166;"></i>
+    						</div>
+    						
+    						<div class="large-8 columns">
+    							<h4>Cadastre-se</h4>
+    							<p>
+    								Basta criar sua conta Traz Cupom ou efetuar login com sua conta do Facebook, rápido e fácil.
+    							</p>
+    						</div>
+    					</div>
+    					
+    					<div class="feature-box" id="panel-2">
+    						<div class="large-4 columns text-center">
+    							<i class="batch" data-icon="&#xF0AE;"></i>
+    						</div>
+    						
+    						<div class="large-8 columns">
+    							<h4>Explore a cidade</h4>
+    							<p>
+    								Explore as cidades, conheça os estabelecimentos, veja os seus produtos on-line.
+    							</p>
+    						</div>
+    					</div>
+    					
+    					<div class="feature-box" id="panel-3">
+    						<div class="large-4 columns text-center">
+    							<i class="batch" data-icon="&#xF07A;"></i>
+    						</div>
+    						
+    						<div class="large-8 columns">
+    							<h4>Baixe cupons de desconto</h4>
+    							<p>
+    								Economize baixando cupons de descontos dos mais variados estabelecimentos da cidade.
+                                    Nunca foi tão fácil conhecer um estabelecimento novo.
+    							</p>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    		
+    		</div>
+    			
+    	</div>
+
+    </section>
+    
+    <section id="related-work" class="pad-small">
+			
+			<div class="row">
+				<div class="large-12 columns">
+					<h4>Estabelecimentos em Campo Grande</h4>
+				</div>
+			</div>
+		
+			<div class="row">
+				
+				<div class="large-3 columns">
+					<p>
+						Acompanhe agora mesmo o que há de melhor em sua cidade para conhecer e economizar.
+					</p>
+					
+					<div class="btn btn-blue"><a href="work-2col.html"><h6>Conhecer</h6></a></div>
+				</div>
+				<% @parceiros.each do |p| %>
+				<div class="large-3 columns work-item">
+                    
+    				<div class="work-img-preview">
+    					<div class="work-overlay fast-anim bounceIn">
+    						<a href="work-single.html" target="_blank">
+    							<i class="batch" data-icon="&#xF098;"></i>
+    						</a>
+    					</div>
+    					<%= image_tag p.pic(:perfil) %>
+    				</div>
+    				<div class="work-title text-center">
+    					<h6><%= p.company_name %></h6>
+    					<h6 class="text-light"><%=  truncate(p.description) %></h6>
+    				</div>
+  
+                 </div>
+                  <% end %>
+    			
+			</div>
+			
+		</section>
+            <section id="front-hero" class="pad-small">
+            
+            <div class="row">
+                <div class="large-12 columns">
+                    <h4>Aproveite, estes cupons estão acabando ...</h4>
+                </div>
+            </div>
+        
+            <div class="row">
+                
+                <div class="large-3 columns">
+                    <p>
+                        Esses cupons estão se esgotando, baixe agora mesmo o seu e garanta já o seu desconto.
+                    </p>
+                    
+                    <div class="btn btn-blue"><a href="work-2col.html"><h6>Ver Cupons</h6></a></div>
+                </div>
+                <% @ofertas.each do |o| %>
+                <% parceiro = Partner.find(o.partner_id) %>
+                <div class="large-3 columns work-item">
+                    <div class="work-img-preview">
+                        <div class="work-overlay fast-anim bounceIn">
+                            <a href="work-single.html" target="_blank">
+                                <i class="batch" data-icon="&#xF098;"></i>
+                            </a>
+                        </div>
+                        <%= image_tag o.pic(:perfil) %>
+                    </div>
+                    <div class="work-title text-center">
+                        <h6><%= parceiro.company_name %></h6>
+                        <h6 class="text-light">Porção de cabra com suco de goiaba, de <s>R$ 50,00</s> por <strong><h5 style="color:red;">R$ 25,00.</h5></strong> </h6>
+                    </div>
+                    </div>
+                 <% end %>
+                
+                
+            </div>
+            
+        </section>
+    
+    
+    <!-- Seção Clientes -->
+     <section id="clients">
+		<div class="row pad-small">
+			<div class="large-12 columns text-center">
+				<h3>Parceiros Traz Cupom</h3>
+			</div>
+			<div class="large-3 columns">
+				<img alt="Client Image" src="/assets/images/logos/44.jpg" />
+			</div>
+			
+			<div class="large-3 columns">
+				<img alt="Client Image" src="/assets/images/logos/42.jpg" />
+			</div>
+			
+			<div class="large-3 columns">
+				<img alt="Client Image" src="/assets/images/logos/40.jpg" />
+			</div>
+			
+			<div class="large-3 columns">
+				<img alt="Client Image" src="/assets/images/logos/41.jpg" />
+			</div>
+		</div>
+	</section>
+    
+</section>
+<!-- Final Seção Parceiros -->
