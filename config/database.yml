@@ -5,7 +5,7 @@ development:
   pool: 5
   username: root
   password: rub32912289
-  host: www.ifollowagencia.com
+  host: 127.0.0.1
   database: appcupom_development
 
 test:
