@@ -1,16 +1,16 @@
     <%= render "shared/front" %>
     <section id="top-band" class="hide-for-small">
-    <% if params[:no_location] %>
-        <%= link_to get_location_before_link({controller: "offers", action: "nowon"}), :class => "no-decoration" do %>
-        <div id="warning-home-show">
-            <%= "Desculpe, não temos como encontrar os parceiros mais próximos sem saber onde você está. Atualize sua localização clicando aqui!" %>
-        </div>
+        <% unless @gps %>
+            <%= link_to root_path, :class => "no-decoration" do %>
+            <div id="warning-home-show">
+                Para atualizar sua localização clique aqui.
+            </div>
+            <% end %>
+            <%= hidden_field_tag :request_location, @request_location %>
         <% end %>
-    <% elsif !@gps %>
-        <%= hidden_field_tag :request_location, @request_location %>
-    <% end %>
-    <%= hidden_field_tag :user_latlong, @user_latlong %>
-    <%= hidden_field_tag :get_location_callback, @location_callback %>
+        
+        <%= hidden_field_tag :get_location_callback, @location_callback %>
+        <%= hidden_field_tag :user_latlong, @user_latlong %>
 		<div class="row pad-small">
 		
 			<div class="large-4 columns">
@@ -216,7 +216,7 @@
                     </div>
                     <div class="work-title text-center">
                         <h6><%= parceiro.company_name %></h6>
-                        <h6 class="text-light">Porção de cabra com suco de goiaba, de <s>R$ 50,00</s> por <strong><h5 style="color:red;">R$ 25,00.</h5></strong> </h6>
+                        <h6 class="text-light"><%= o.resume %></h6>
                     </div>
                     </div>
                  <% end %>

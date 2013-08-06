@@ -40,11 +40,14 @@ class HomeController < ApplicationController
 
     @user_latlong = lat + "|" + long
     session[:user_latlong] = @user_latlong
+
+
   	@usuarios_satisfeitos = contabiliza_usuarios
   	@economy = economia
   	@cupons = Cupon.count
     @parceiros = ultimos_parceiros
-    @ofertas = ultimas_ofertas
+    #@ofertas = ultimas_ofertas
+    @ofertas = Offer.find_now_by_position lat, long, session[:city]
     
   end
 

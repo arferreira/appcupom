@@ -177,14 +177,14 @@ class Offer < ActiveRecord::Base
       
       #return "De #{number_to_currency(original_price)} por #{number_to_currency(self.price)} " + (self.is_credit_offer? ? "" : "- " << self.get_products_names)
       if self.is_credit_offer?
-        @resume = "Crédito de #{number_to_currency(original_price)} por #{number_to_currency(self.price)} usar a vontade!"
+        @resume = "Crédito de <s>#{number_to_currency(original_price)}</s> por <strong><h5 style='color:red;'>#{number_to_currency(self.price)}</h5></strong> usar a vontade!".html_safe
       elsif self.is_product_offer?
-        @resume = "De #{number_to_currency(original_price)} por #{number_to_currency(self.price)} - " << self.get_products_names
+        @resume = "De <s>#{number_to_currency(original_price)}</s> por <strong><h5 style='color:red;'>#{number_to_currency(self.price)}</h5></strong> - ".html_safe << self.get_products_names
       else
         if :offer_id == 46
          @resume = "Desconto de #{self.porcentagen_de_desconto}% na lavagem e limpeza a seco em peças de couro!"  
         else
-        @resume = "Desconto de #{self.porcentagen_de_desconto}% para usar em qualquer produto!"
+        @resume = "Desconto de <strong><h5 style='color:red;'>#{self.porcentagen_de_desconto}%</h5></strong> para usar em qualquer produto!".html_safe
         end
       end
       @resume
