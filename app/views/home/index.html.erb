@@ -1,6 +1,16 @@
     <%= render "shared/front" %>
     <section id="top-band" class="hide-for-small">
-    
+    <% if params[:no_location] %>
+        <%= link_to get_location_before_link({controller: "offers", action: "nowon"}), :class => "no-decoration" do %>
+        <div id="warning-home-show">
+            <%= "Desculpe, não temos como encontrar os parceiros mais próximos sem saber onde você está. Atualize sua localização clicando aqui!" %>
+        </div>
+        <% end %>
+    <% elsif !@gps %>
+        <%= hidden_field_tag :request_location, @request_location %>
+    <% end %>
+    <%= hidden_field_tag :user_latlong, @user_latlong %>
+    <%= hidden_field_tag :get_location_callback, @location_callback %>
 		<div class="row pad-small">
 		
 			<div class="large-4 columns">

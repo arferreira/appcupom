@@ -4,7 +4,7 @@ development:
   reconnect: false
   pool: 5
   username: root
-  password: rub32912289
+  password: 
   host: 127.0.0.1
   database: appcupom_development
 

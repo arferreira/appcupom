@@ -1,5 +1,45 @@
 class HomeController < ApplicationController
   def index
+    if params[:get_location]
+      @request_location = "true"
+      @location_callback = "/offers"
+    end
+    if params[:gps] == "1"
+      lat = params[:lat]
+      long = params[:long]
+
+      session[:location_time] = Time.now
+      session[:gps] = 1
+
+      city = City.find_by_name(params[:city])
+      session[:city] = city.id unless city.nil?
+      @gps = session[:gps]
+    else
+      if params[:city_id]
+        @gps = nil
+        session[:city] = params[:city_id]
+        @city = City.find params[:city_id]
+        @city ||= City.first
+
+        lat = @city.latitude.to_s
+        long = @city.longitude.to_s
+      else
+        @gps = session[:gps]
+        if session[:user_latlong]
+          user_latlong = session[:user_latlong]
+          lat = user_latlong.split('|')[0]
+          long = user_latlong.split('|')[1]
+        else
+          city = City.first
+          lat = city.latitude.to_s
+          long = city.longitude.to_s
+        end
+      end
+
+    end
+
+    @user_latlong = lat + "|" + long
+    session[:user_latlong] = @user_latlong
   	@usuarios_satisfeitos = contabiliza_usuarios
   	@economy = economia
   	@cupons = Cupon.count
