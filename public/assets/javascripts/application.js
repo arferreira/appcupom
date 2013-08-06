@@ -224,7 +224,12 @@ function clearWatch(){
   get_location_callback(null);
 }
 
-
+function city_selected(){
+$('#city').change(function() {
+   // Antonio solução temporaria
+   
+});
+}
 function getCity(lat, lng){
   var geocoder = new google.maps.Geocoder();
   var locality = null;

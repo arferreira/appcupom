@@ -8,7 +8,7 @@
 			</div>
 			
 			<div id="mobile-toggle" class="show-for-small"><i class="batch" data-icon="&#xF0A9;"></i></div>
-			<div id="nav-holder" class="right" style="width:740px; margin-right: -264px;">
+			<div id="nav-holder" class="right" style="width:740px; margin-right: -170px;">
 				<ul>
 					<% if signed_in? and user_type == USER_TYPE %>
 					
@@ -39,6 +39,14 @@
 						</ul>
 						
 					</li>
+					<li>
+
+						<label style="color:#1e3b62; font-weight:bold;">Cidade: </label>
+						<div class="col-20 cell">
+							<%= select_tag :city, options_from_collection_for_select(get_cities, "id", "name", get_selected_city), :onchange => "root_city_change(this.value)", :style => "background:#1e3b62; color:white; border:none;" %>
+						</div>
+
+					</li>	
 					<% else %>
 					<li>	
 						<a href="index-2.html" ><i class="batch" data-icon=""></i><span class="menu-title">Cupons</span></a>
@@ -57,6 +65,14 @@
 					</li>
 					<li>
 						<a href="/signin" style="background:#1e3b62; color:white; padding:13px; height:30px; padding-top:5px; font-weight:bold; "><i class="batch" data-icon=""></i><span class="menu-title">Entrar</span></a>
+					</li>
+					<li>
+
+						<label style="color:#1e3b62; font-weight:bold;">Cidade: </label>
+						<div class="col-20 cell">
+							<%= select_tag :city, options_from_collection_for_select(get_cities, "id", "name", get_selected_city), :onchange => "root_city_change(this.value)", :style => "background:#1e3b62; color:white; border:none;" %>
+						</div>
+
 					</li>
 					
 					<% end %>

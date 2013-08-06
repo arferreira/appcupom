@@ -48,6 +48,7 @@ class HomeController < ApplicationController
     @parceiros = ultimos_parceiros
     #@ofertas = ultimas_ofertas
     @ofertas = Offer.find_now_by_position lat, long, session[:city]
+    @city_name = session[:city]
     
   end
 
@@ -73,4 +74,5 @@ class HomeController < ApplicationController
     # que estão com os cupons se esgotando
     @offers = Offer.last(3)
   end
+
 end
